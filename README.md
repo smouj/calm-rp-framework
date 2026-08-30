@@ -8,9 +8,24 @@ Private planning repository and technical foundation for a future **GTA VI rolep
 
 The goal is to arrive prepared for the moment a legitimate GTA VI community-server/runtime path exists.
 
-This repository is where we define, prototype and validate the parts of a serious RP server that do **not** need to depend on undocumented GTA VI internals: server rules, domain models, persistence, security, administration, economy, inventory, jobs, factions, emergency services, ownership, observability and adapter boundaries.
+This repository defines, prototypes and validates the parts of a serious RP server that do **not** need undocumented GTA VI internals: server rules, domain models, persistence, security, administration, economy, inventory, jobs, factions, emergency services, ownership, observability and adapter boundaries.
 
-When Rockstar Games and/or Cfx.re publish the relevant GTA VI contracts, we should be able to integrate the game-facing layer without redesigning the entire server.
+When Rockstar Games and/or Cfx.re publish the relevant GTA VI contracts, the project should be able to integrate the game-facing layer without redesigning the authoritative server core.
+
+## Current maturity
+
+| Area | State | Current position |
+| --- | --- | --- |
+| Project scope | `ACTIVE` | Single future server/community; not a generic framework |
+| Architecture | `ACTIVE` | Server-authoritative modular monolith with runtime adapters |
+| Simulator | `FOUNDATION` | Game-independent boundary available for deterministic development |
+| Persistence | `FOUNDATION` | PostgreSQL-first model and initial migration direction |
+| Security | `ACTIVE` | Trust boundaries, abuse catalogue and authority rules documented |
+| Operations | `ACTIVE` | Production-readiness, recovery and observability baseline documented |
+| Cfx.re research | `RESEARCH` | Current ecosystem patterns may inform design, never GTA VI contracts |
+| GTA VI runtime integration | `BLOCKED` | Waiting for legitimate public runtime/community-server documentation |
+
+`BLOCKED` is intentional here: preserving an explicit unknown is safer than encoding a fictional integration contract.
 
 ## Explicit non-goals
 
@@ -82,13 +97,15 @@ infrastructure/
   database/             persistence and migrations
   docker/               local development infrastructure
 docs/
+  README.md              canonical documentation map
   adr/                   architecture decisions
-  architecture/          technical boundaries
-  research/              confirmed facts vs unknowns
+  architecture/          technical and authority boundaries
+  research/              evidence protocol and platform status
   roadmap/               phased preparation plan
-  server/                RP server blueprint
+  server/                RP blueprint and runtime requirements
   security/              threat model
-.github/                 CI, ownership and repository hygiene
+  operations/            production operations baseline
+.github/                 CI, ownership, issue/PR templates and dependency policy
 ```
 
 ## Engineering principles
@@ -101,6 +118,8 @@ docs/
 6. **Modular monolith before microservices.** Complexity must be earned by real requirements.
 7. **No invented GTA VI API.** Unknown runtime details stay unknown until verified.
 8. **Single-server first.** Decisions optimize our future community, not a generic framework market.
+9. **Evidence before coupling.** Runtime-specific implementation follows verified public evidence and an ADR.
+10. **Operations are part of the product.** Backup, restore, observability and auditability are release gates.
 
 ## Technology direction
 
@@ -114,24 +133,29 @@ These are internal implementation choices, not assumptions about GTA VI's future
 - Docker Compose for reproducible local infrastructure;
 - GitHub Actions for automated validation.
 
-## Development gate
+## GTA VI integration gate
 
-Before implementing any GTA VI-specific adapter capability, require all of the following:
+Before implementing any real GTA VI-specific adapter capability, require all of the following:
 
 1. a public and legitimate source describing the capability;
 2. an entry in the platform-status research document;
-3. an ADR documenting the integration decision;
-4. adapter conformance tests;
-5. no leakage of game-specific APIs into the domain layer.
+3. the relevant runtime requirement moved out of `UNKNOWN`;
+4. an ADR documenting the integration decision;
+5. adapter conformance tests;
+6. no leakage of game-specific APIs into the domain layer.
 
 ## Start here
 
+- [Documentation map](./docs/README.md)
 - [Project scope](./docs/PROJECT_SCOPE.md)
-- [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
-- [Server blueprint](./docs/server/SERVER_BLUEPRINT.md)
 - [Architecture](./ARCHITECTURE.md)
+- [Server blueprint](./docs/server/SERVER_BLUEPRINT.md)
+- [GTA VI runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md)
+- [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
+- [Platform research protocol](./docs/research/RESEARCH_PROTOCOL.md)
 - [Roadmap](./docs/roadmap/ROADMAP.md)
 - [Threat model](./docs/security/THREAT_MODEL.md)
+- [Operations baseline](./docs/operations/OPERATIONS_BASELINE.md)
 
 ## Local development
 
@@ -143,6 +167,18 @@ cp .env.example .env
 docker compose -f infrastructure/docker/compose.yml up -d
 pnpm check
 ```
+
+The dependency graph is still in bootstrap stabilization. CI intentionally uses a non-frozen install until the reviewed `pnpm-lock.yaml` work tracked by the repository is completed.
+
+## Repository discipline
+
+- short-lived branches from `main`;
+- Conventional Commits;
+- squash-oriented history for normal changes;
+- CI validation before merge;
+- first-party evidence for GTA VI runtime claims;
+- no secrets, proprietary game files, leaked material or private APIs;
+- no generated-looking signatures, assistant/model attribution or generic decorative footers in project documents.
 
 ## Legal / project note
 
