@@ -84,13 +84,13 @@ Rumors, social-media claims, leaked material, private APIs and reverse-engineere
 
 Research entries should be classified as one of:
 
-| State | Meaning |
-| --- | --- |
-| `CONFIRMED` | Public first-party Rockstar/Cfx.re documentation or announcement |
+| State             | Meaning                                                                |
+| ----------------- | ---------------------------------------------------------------------- |
+| `CONFIRMED`       | Public first-party Rockstar/Cfx.re documentation or announcement       |
 | `PUBLIC_OBSERVED` | Publicly observable current ecosystem behavior, not a GTA VI guarantee |
-| `INFERENCE` | Reasoned planning assumption that must not become an adapter contract |
-| `RUMOR` | Unverified; never used as an implementation dependency |
-| `UNKNOWN` | Required information has not been publicly established |
+| `INFERENCE`       | Reasoned planning assumption that must not become an adapter contract  |
+| `RUMOR`           | Unverified; never used as an implementation dependency                 |
+| `UNKNOWN`         | Required information has not been publicly established                 |
 
 ## GTA VI integration unlock checklist
 
