@@ -31,11 +31,5 @@ jobs:
           corepack prepare pnpm@10.34.5 --activate
       - name: Install
         run: pnpm install --no-frozen-lockfile
-      - name: Validate and show formatting diff
-        run: |
-          pnpm lint
-          pnpm typecheck
-          pnpm test
-          pnpm exec prettier --write packages/core/src/index.ts tests/architecture.test.ts
-          git diff -- packages/core/src/index.ts tests/architecture.test.ts
-          git diff --exit-code -- packages/core/src/index.ts tests/architecture.test.ts
+      - name: Validate
+        run: pnpm check
