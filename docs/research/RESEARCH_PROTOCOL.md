@@ -8,13 +8,13 @@ Its purpose is to prevent rumors, current FiveM behavior and implementation gues
 
 ## Evidence classes
 
-| Class | Meaning | May unlock GTA VI adapter work? |
-| --- | --- | ---: |
-| `CONFIRMED` | Public first-party Rockstar Games or Cfx.re documentation/announcement directly supports the claim | Yes, when sufficiently specific |
-| `PUBLIC_OBSERVED` | Behavior can be observed in a current public ecosystem but is not a GTA VI guarantee | No |
-| `INFERENCE` | Reasoned planning assumption based on available evidence | No |
-| `RUMOR` | Unverified third-party claim | No |
-| `UNKNOWN` | Information required by the project has not been publicly established | No |
+| Class             | Meaning                                                                                            | May unlock GTA VI adapter work? |
+| ----------------- | -------------------------------------------------------------------------------------------------- | ------------------------------: |
+| `CONFIRMED`       | Public first-party Rockstar Games or Cfx.re documentation/announcement directly supports the claim | Yes, when sufficiently specific |
+| `PUBLIC_OBSERVED` | Behavior can be observed in a current public ecosystem but is not a GTA VI guarantee               |                              No |
+| `INFERENCE`       | Reasoned planning assumption based on available evidence                                           |                              No |
+| `RUMOR`           | Unverified third-party claim                                                                       |                              No |
+| `UNKNOWN`         | Information required by the project has not been publicly established                              |                              No |
 
 `CONFIRMED` is about the specific claim, not the reputation of a source in general. A first-party statement about FiveM does not automatically confirm the same behavior for GTA VI.
 
