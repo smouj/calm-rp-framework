@@ -16,11 +16,11 @@ Production readiness is not equivalent to “the game server starts”.
 
 Plan for at least three logical environments:
 
-| Environment | Purpose | Persistent data policy |
-| --- | --- | --- |
-| Local | Development and deterministic simulation | Disposable |
-| Staging | Integration, migration and release verification | Non-production, resettable |
-| Production | Live community | Durable and protected |
+| Environment | Purpose                                         | Persistent data policy     |
+| ----------- | ----------------------------------------------- | -------------------------- |
+| Local       | Development and deterministic simulation        | Disposable                 |
+| Staging     | Integration, migration and release verification | Non-production, resettable |
+| Production  | Live community                                  | Durable and protected      |
 
 Production credentials, identifiers and player data must never be reused in local development fixtures.
 
