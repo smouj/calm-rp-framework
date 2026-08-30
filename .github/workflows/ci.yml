@@ -36,10 +36,5 @@ jobs:
       - name: Install
         run: pnpm install --no-frozen-lockfile
 
-      - name: Inspect formatter output
-        run: |
-          pnpm exec prettier --write .github/dependabot.yml
-          git diff -- .github/dependabot.yml
-
       - name: Validate
         run: pnpm check
