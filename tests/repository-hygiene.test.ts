@@ -2,11 +2,10 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-const read = (path: string): string => readFileSync(resolve(process.cwd(), path), 'utf8');
+const read = (path: string): string =>
+  readFileSync(resolve(process.cwd(), path), 'utf8');
 
-const rootPackage = JSON.parse(read('package.json')) as {
-  packageManager?: string;
-};
+const rootPackage = JSON.parse(read('package.json')) as { packageManager?: string };
 
 describe('repository hygiene', () => {
   it('pins the package manager and freezes the dependency graph', () => {
