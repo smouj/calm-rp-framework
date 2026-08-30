@@ -14,16 +14,16 @@ When Rockstar Games and/or Cfx.re publish the relevant GTA VI contracts, the pro
 
 ## Current maturity
 
-| Area | State | Current position |
-| --- | --- | --- |
-| Project scope | `ACTIVE` | Single future server/community; not a generic framework |
-| Architecture | `ACTIVE` | Server-authoritative modular monolith with runtime adapters |
-| Simulator | `FOUNDATION` | Game-independent boundary available for deterministic development |
-| Persistence | `FOUNDATION` | PostgreSQL-first model and initial migration direction |
-| Security | `ACTIVE` | Trust boundaries, abuse catalogue and authority rules documented |
-| Operations | `ACTIVE` | Production-readiness, recovery and observability baseline documented |
-| Cfx.re research | `RESEARCH` | Current ecosystem patterns may inform design, never GTA VI contracts |
-| GTA VI runtime integration | `BLOCKED` | Waiting for legitimate public runtime/community-server documentation |
+| Area                       | State        | Current position                                                     |
+| -------------------------- | ------------ | -------------------------------------------------------------------- |
+| Project scope              | `ACTIVE`     | Single future server/community; not a generic framework              |
+| Architecture               | `ACTIVE`     | Server-authoritative modular monolith with runtime adapters          |
+| Simulator                  | `FOUNDATION` | Game-independent boundary available for deterministic development    |
+| Persistence                | `FOUNDATION` | PostgreSQL-first model and initial migration direction               |
+| Security                   | `ACTIVE`     | Trust boundaries, abuse catalogue and authority rules documented     |
+| Operations                 | `ACTIVE`     | Production-readiness, recovery and observability baseline documented |
+| Cfx.re research            | `RESEARCH`   | Current ecosystem patterns may inform design, never GTA VI contracts |
+| GTA VI runtime integration | `BLOCKED`    | Waiting for legitimate public runtime/community-server documentation |
 
 `BLOCKED` is intentional here: preserving an explicit unknown is safer than encoding a fictional integration contract.
 
