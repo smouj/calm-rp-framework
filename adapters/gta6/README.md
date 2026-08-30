@@ -15,6 +15,22 @@ Before runtime-specific code is added here:
 5. a neutral adapter contract and conformance tests must exist;
 6. game-specific types and APIs must remain outside the core domain.
 
+## Technology evidence is context, not an adapter contract
+
+The project tracks current public Rockstar/Cfx engineering evidence in `docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md`.
+
+That baseline confirms, among other things, substantial current use of C++ in Rockstar gameplay/graphics/Cfx platform engineering and Lua/JavaScript/C# as current FiveM scripting runtimes. It does **not** unlock this adapter.
+
+Do not infer from that evidence that:
+
+- the future GTA VI community-server adapter must be written in C++;
+- Rockstar's internal `game script` is a public scripting API;
+- current FiveM Lua/JavaScript/C# runtimes will be available for GTA VI;
+- TypeScript used in this repository must match the game-facing runtime;
+- a Cfx.re GTA VI product exists.
+
+The adapter implementation language is selected only after `RT-003` and `RT-004` are supported by GTA VI-specific public evidence and the decision is recorded in an ADR.
+
 ## What may exist here before unlock
 
 Allowed pre-runtime content:
@@ -31,6 +47,7 @@ Not allowed before unlock:
 - code that pretends to connect to an unconfirmed runtime;
 - leaked/private APIs or services;
 - proprietary game code/assets;
-- current FiveM/RedM behavior presented as a GTA VI guarantee.
+- current FiveM/RedM behavior presented as a GTA VI guarantee;
+- language/runtime choices justified only by Rockstar's internal technology stack.
 
 The goal is to make GTA VI integration a replaceable boundary, not to predict the runtime before it is documented.
