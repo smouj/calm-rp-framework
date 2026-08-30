@@ -38,9 +38,6 @@ jobs:
 
       - name: Diagnose formatter
         run: |
-          pnpm lint
-          pnpm typecheck
-          pnpm test
           pnpm exec prettier --write tests/repository-hygiene.test.ts
           echo '--- PRETTIER OUTPUT START ---'
           cat tests/repository-hygiene.test.ts
