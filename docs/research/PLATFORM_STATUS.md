@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-08-30
+**Last verified:** 2026-08-31
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -41,10 +41,29 @@ Official source:
 
 - https://forum.cfx.re/t/cfx-re-officially-joins-rockstar-games/5158920
 
+## Confirmed technology signals outside a GTA VI contract
+
+Public first-party material establishes a useful **current Rockstar/Cfx engineering baseline** without establishing GTA VI-specific implementation details:
+
+- Rockstar Gameplay Programming publicly describes core gameplay systems and control interfaces built with a combination of **C++ and game script**;
+- Rockstar graphics engineering uses **C++** and modern graphics APIs, with shader-programming experience such as **HLSL** relevant to graphics roles;
+- Rockstar production/animation tooling uses **C++ and/or C#**;
+- Rockstar Online Services publicly uses **C#/.NET**, SQL and web technologies including **JavaScript/TypeScript + React**;
+- Rockstar currently recruits **C++** engineers for the Cfx.re creator platforms, including FiveM and RedM;
+- current FiveM documentation exposes **Lua, JavaScript and C#** scripting runtimes.
+
+These are confirmed statements about current public Rockstar/Cfx engineering practice. They are **not** evidence that GTA VI community servers will expose any particular language or runtime.
+
+Canonical evidence matrix and source list:
+
+- [`ROCKSTAR_TECHNOLOGY_BASELINE.md`](./ROCKSTAR_TECHNOLOGY_BASELINE.md)
+
 ## Not publicly confirmed for GTA VI
 
 As of the verification date, this project has **no legitimate public source** confirming any of the following specifically for GTA VI:
 
+- the complete implementation language set used by GTA VI;
+- the exact definition, syntax or runtime of Rockstar's internal "game script" in GTA VI;
 - a FiveM-equivalent GTA VI client;
 - a GTA VI Cfx.re product name;
 - GTA VI community-server binaries;
@@ -91,6 +110,8 @@ Research entries should be classified as one of:
 | `INFERENCE`       | Reasoned planning assumption that must not become an adapter contract  |
 | `RUMOR`           | Unverified; never used as an implementation dependency                 |
 | `UNKNOWN`         | Required information has not been publicly established                 |
+
+Leaked or stolen source code is not admissible implementation evidence. If a claim later becomes independently documented through a legitimate first-party source, the public source — not the leak — becomes the project's evidence.
 
 ## GTA VI integration unlock checklist
 
