@@ -17,30 +17,30 @@ A requirement cannot move to `VALIDATED` before it is `CONFIRMED`.
 
 ## Integration requirements
 
-| ID | Capability required | Current state | Why the server needs it |
-| --- | --- | --- | --- |
-| RT-001 | Authorized community-server/runtime path | `UNKNOWN` | Establishes that a legitimate custom RP runtime can exist |
-| RT-002 | Supported host platforms and lifecycle | `UNKNOWN` | Determines deployment, process management and infrastructure |
-| RT-003 | Server/client scripting model | `UNKNOWN` | Defines where adapter code executes |
-| RT-004 | Supported scripting languages/runtimes | `UNKNOWN` | Determines adapter implementation language and build chain |
-| RT-005 | Authentication and stable player identifiers | `UNKNOWN` | Maps runtime sessions to server accounts safely |
-| RT-006 | Client-to-server event/RPC mechanism | `UNKNOWN` | Carries untrusted player intent into authoritative commands |
-| RT-007 | Server-to-client event/state mechanism | `UNKNOWN` | Projects authoritative outcomes back to clients |
-| RT-008 | Entity creation and ownership semantics | `UNKNOWN` | Required for vehicles, characters and world entities |
-| RT-009 | State synchronization/replication semantics | `UNKNOWN` | Determines transient world-state adapter behavior |
-| RT-010 | Player connection/disconnection lifecycle | `UNKNOWN` | Required for session state and safe cleanup |
-| RT-011 | Character/model customization surface | `UNKNOWN` | Connects persistent character identity to game representation |
-| RT-012 | Vehicle spawning/state hooks | `UNKNOWN` | Connects durable vehicle ownership to transient entities |
-| RT-013 | Interior/property/door integration | `UNKNOWN` | Connects property access rules to the game world |
-| RT-014 | Interaction/input mechanism | `UNKNOWN` | Enables server-authorized gameplay interactions |
-| RT-015 | UI/web-view or equivalent integration | `UNKNOWN` | Provides in-game interfaces without coupling domain logic to UI |
-| RT-016 | Voice integration path | `UNKNOWN` | Required for proximity/radio/communications if supported |
-| RT-017 | Resource/asset packaging and streaming rules | `UNKNOWN` | Determines deployable game-facing resources |
-| RT-018 | Server permissions/admin runtime hooks | `UNKNOWN` | Connects staff operations to kick/ban/spectate/runtime actions |
-| RT-019 | Runtime security/anti-cheat boundary | `UNKNOWN` | Defines what platform protections exist versus server responsibilities |
-| RT-020 | Update/version compatibility model | `UNKNOWN` | Determines how runtime updates are qualified before production rollout |
-| RT-021 | Hosting/policy/monetization constraints | `UNKNOWN` | Ensures server operation remains within authorized policy |
-| RT-022 | Development/test workflow | `UNKNOWN` | Needed for repeatable local/staging integration and conformance tests |
+| ID     | Capability required                          | Current state | Why the server needs it                                                |
+| ------ | -------------------------------------------- | ------------- | ---------------------------------------------------------------------- |
+| RT-001 | Authorized community-server/runtime path     | `UNKNOWN`     | Establishes that a legitimate custom RP runtime can exist              |
+| RT-002 | Supported host platforms and lifecycle       | `UNKNOWN`     | Determines deployment, process management and infrastructure           |
+| RT-003 | Server/client scripting model                | `UNKNOWN`     | Defines where adapter code executes                                    |
+| RT-004 | Supported scripting languages/runtimes       | `UNKNOWN`     | Determines adapter implementation language and build chain             |
+| RT-005 | Authentication and stable player identifiers | `UNKNOWN`     | Maps runtime sessions to server accounts safely                        |
+| RT-006 | Client-to-server event/RPC mechanism         | `UNKNOWN`     | Carries untrusted player intent into authoritative commands            |
+| RT-007 | Server-to-client event/state mechanism       | `UNKNOWN`     | Projects authoritative outcomes back to clients                        |
+| RT-008 | Entity creation and ownership semantics      | `UNKNOWN`     | Required for vehicles, characters and world entities                   |
+| RT-009 | State synchronization/replication semantics  | `UNKNOWN`     | Determines transient world-state adapter behavior                      |
+| RT-010 | Player connection/disconnection lifecycle    | `UNKNOWN`     | Required for session state and safe cleanup                            |
+| RT-011 | Character/model customization surface        | `UNKNOWN`     | Connects persistent character identity to game representation          |
+| RT-012 | Vehicle spawning/state hooks                 | `UNKNOWN`     | Connects durable vehicle ownership to transient entities               |
+| RT-013 | Interior/property/door integration           | `UNKNOWN`     | Connects property access rules to the game world                       |
+| RT-014 | Interaction/input mechanism                  | `UNKNOWN`     | Enables server-authorized gameplay interactions                        |
+| RT-015 | UI/web-view or equivalent integration        | `UNKNOWN`     | Provides in-game interfaces without coupling domain logic to UI        |
+| RT-016 | Voice integration path                       | `UNKNOWN`     | Required for proximity/radio/communications if supported               |
+| RT-017 | Resource/asset packaging and streaming rules | `UNKNOWN`     | Determines deployable game-facing resources                            |
+| RT-018 | Server permissions/admin runtime hooks       | `UNKNOWN`     | Connects staff operations to kick/ban/spectate/runtime actions         |
+| RT-019 | Runtime security/anti-cheat boundary         | `UNKNOWN`     | Defines what platform protections exist versus server responsibilities |
+| RT-020 | Update/version compatibility model           | `UNKNOWN`     | Determines how runtime updates are qualified before production rollout |
+| RT-021 | Hosting/policy/monetization constraints      | `UNKNOWN`     | Ensures server operation remains within authorized policy              |
+| RT-022 | Development/test workflow                    | `UNKNOWN`     | Needed for repeatable local/staging integration and conformance tests  |
 
 ## Requirement acceptance template
 
