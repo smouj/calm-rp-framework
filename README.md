@@ -2,79 +2,86 @@
 
 Private, game-agnostic foundation for a future GTA VI roleplay platform.
 
-> **Status:** pre-platform architecture. GTA VI community-server APIs and scripting contracts are not assumed until Rockstar Games / Cfx.re publish them.
+> **Status:** pre-platform architecture. No GTA VI community-server API, native, scripting runtime or unofficial reverse-engineered contract is assumed.
 
-## Goals
+## Mission
 
-- Build the roleplay domain independently from any specific GTA runtime.
-- Keep gameplay authority on the server side.
-- Isolate game-specific integration behind adapters.
-- Make core systems testable without launching the game.
-- Prepare a clean path from current Cfx.re concepts to a future GTA VI integration.
-- Treat security, observability, migrations and operational tooling as first-class concerns.
+Build the roleplay platform now while keeping the game runtime replaceable later. Domain rules, persistence, security and tooling must remain usable whether the eventual integration is Cfx.re-based, Rockstar-provided, or something else.
 
-## Planned architecture
+## Principles
+
+1. **Server authoritative.** Clients request actions; the server validates and commits state.
+2. **Game agnostic core.** Domain code cannot import GTA/FiveM natives or browser/runtime globals.
+3. **Ports and adapters.** Game integration lives behind explicit adapter boundaries.
+4. **Ledger-first economy.** Financial state is auditable and transactional.
+5. **Security by default.** Trust boundaries and abuse cases are designed before features ship.
+6. **Observable operations.** Logs, metrics, migrations and deployment concerns are first-class.
+7. **No invented GTA VI API.** `adapters/gta6` remains a placeholder until public documentation exists.
+
+## Repository layout
 
 ```text
 apps/
-  api/                 HTTP/internal services
-  game-server/         runtime composition layer
-  nui/                 in-game web UI shell
-  web-admin/           administration console
+  api/                 transport/API composition
 packages/
-  core/                shared domain primitives
-  characters/          identity and character lifecycle
-  economy/             accounts, ledger and transactions
-  inventory/           items, containers and ownership
-  jobs/                jobs and progression
-  factions/            organizations and memberships
-  vehicles/            ownership and persistence
-  housing/             properties and access
-  police/              records, warrants and evidence
-  contracts/           typed messages/events
-  shared/              cross-cutting utilities
+  core/                domain primitives
+  contracts/           typed commands/events
 adapters/
-  cfx/                 current Cfx.re compatibility experiments
-  simulator/           local test/runtime adapter
+  simulator/           deterministic local runtime
+  cfx/                 current Cfx.re compatibility research boundary
   gta6/                reserved future GTA VI adapter
 infrastructure/
-  database/            migrations and persistence assets
-  docker/              local infrastructure
-  monitoring/          observability configuration
+  database/            schema migrations
+  docker/              local PostgreSQL + Redis
 docs/
-  architecture/        architecture documentation
-  adr/                 architecture decision records
-  security/            threat model and security guidance
-tools/                  repository tooling
-tests/                  cross-package and integration tests
+  adr/                 architecture decisions
+  architecture/        boundaries and design rules
+  roadmap/             phased delivery plan
+  security/            threat model
+.github/                CI, ownership, issue/PR templates, Dependabot
 ```
 
 ## Technology direction
 
-- **TypeScript** for domain packages, backend services, tooling and web UI.
-- **Lua / CfxLua** only inside runtime adapters where appropriate.
-- **PostgreSQL** as the primary durable data store.
-- **Redis** for ephemeral coordination/cache where justified.
-- **pnpm workspaces** for the TypeScript monorepo.
-- **Docker Compose** for local infrastructure.
-- **GitHub Actions** for validation and CI.
+- TypeScript for domain packages, services, tooling and web-facing systems.
+- Lua/CfxLua only inside Cfx runtime adapters when needed.
+- PostgreSQL for durable state and transactional records.
+- Redis for ephemeral coordination/cache only where justified.
+- pnpm workspaces for the monorepo.
+- Docker Compose for local infrastructure.
+- GitHub Actions for validation.
 
-## Core rule
+## Getting started
 
-The domain must never depend directly on GTA natives, FiveM globals, browser globals or transport-specific APIs. Platform-specific code belongs in an adapter.
+Requirements: Node.js 22+, pnpm 10+, and Docker for local infrastructure.
 
-```text
-Domain / use cases
-       ↓ ports
-Platform adapters
-       ↓
-Cfx.re today / GTA VI future / simulator
+```bash
+pnpm install
+cp .env.example .env
+docker compose -f infrastructure/docker/compose.yml up -d
+pnpm check
 ```
 
-## Development status
+## Architecture rule
 
-The repository is intentionally being initialized before an official GTA VI community-server development contract exists. Any GTA VI integration code must therefore remain an explicit placeholder until supported by public documentation.
+```text
+UI / Game Client
+      |
+      | untrusted requests
+      v
+Application / Domain
+      |
+      | validated ports
+      v
+Infrastructure + Game Adapter
+      |
+      +--> Simulator
+      +--> Cfx.re compatibility layer
+      `--> GTA VI adapter (future, official contract only)
+```
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md), [the roadmap](./docs/roadmap/ROADMAP.md), and [the threat model](./docs/security/THREAT_MODEL.md).
 
 ## Legal / project note
 
-This is an independent technical project. It is not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Cfx.re. No proprietary game assets or leaked/non-public materials belong in this repository.
+Independent technical project. Not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Cfx.re. Proprietary game assets, leaked materials and non-public APIs do not belong in this repository.
