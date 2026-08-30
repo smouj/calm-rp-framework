@@ -1,70 +1,70 @@
 name: Platform research
- description: Record a GTA VI, Rockstar, or Cfx.re platform finding with provenance
- title: "research: "
- labels: [research]
- body:
-   - type: input
-     id: subject
-     attributes:
-       label: Subject
-       description: Capability, policy, runtime, platform, or integration topic being investigated.
-     validations:
-       required: true
+description: Record a GTA VI, Rockstar, or Cfx.re platform finding with provenance
+title: "research: "
+labels: [research]
+body:
+  - type: input
+    id: subject
+    attributes:
+      label: Subject
+      description: Capability, policy, runtime, platform, or integration topic being investigated.
+    validations:
+      required: true
 
-   - type: dropdown
-     id: classification
-     attributes:
-       label: Evidence classification
-       description: Use the same states defined in docs/research/PLATFORM_STATUS.md.
-       options:
-         - CONFIRMED
-         - PUBLIC_OBSERVED
-         - INFERENCE
-         - RUMOR
-         - UNKNOWN
-     validations:
-       required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Evidence classification
+      description: Use the same states defined in docs/research/PLATFORM_STATUS.md.
+      options:
+        - CONFIRMED
+        - PUBLIC_OBSERVED
+        - INFERENCE
+        - RUMOR
+        - UNKNOWN
+    validations:
+      required: true
 
-   - type: textarea
-     id: finding
-     attributes:
-       label: Finding
-       description: State exactly what the evidence establishes and what it does not establish.
-     validations:
-       required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding
+      description: State exactly what the evidence establishes and what it does not establish.
+    validations:
+      required: true
 
-   - type: textarea
-     id: sources
-     attributes:
-       label: Sources
-       description: Prefer first-party Rockstar Games or Cfx.re URLs. Include publication/update dates when available.
-       placeholder: |
-         - URL — publisher — date — relevant claim
-     validations:
-       required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Prefer first-party Rockstar Games or Cfx.re URLs. Include publication/update dates when available.
+      placeholder: |
+        - URL — publisher — date — relevant claim
+    validations:
+      required: true
 
-   - type: textarea
-     id: impact
-     attributes:
-       label: Impact on our server plan
-       description: Explain which requirement, ADR, adapter boundary, or roadmap gate this affects.
-     validations:
-       required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on our server plan
+      description: Explain which requirement, ADR, adapter boundary, or roadmap gate this affects.
+    validations:
+      required: true
 
-   - type: textarea
-     id: unknowns
-     attributes:
-       label: Remaining unknowns
-       description: List what still cannot be safely implemented or assumed.
-     validations:
-       required: true
+  - type: textarea
+    id: unknowns
+    attributes:
+      label: Remaining unknowns
+      description: List what still cannot be safely implemented or assumed.
+    validations:
+      required: true
 
-   - type: checkboxes
-     id: integrity
-     attributes:
-       label: Research integrity
-       options:
-         - label: No leaked, private, or unverifiable material is being promoted to a confirmed project dependency.
-           required: true
-         - label: If this changes PLATFORM_STATUS.md, the source and verification date will be updated there.
-           required: true
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Research integrity
+      options:
+        - label: No leaked, private, or unverifiable material is being promoted to a confirmed project dependency.
+          required: true
+        - label: If this changes PLATFORM_STATUS.md, the source and verification date will be updated there.
+          required: true
