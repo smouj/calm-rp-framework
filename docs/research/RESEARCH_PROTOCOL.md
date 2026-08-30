@@ -16,7 +16,7 @@ Its purpose is to prevent rumors, current FiveM behavior and implementation gues
 | `RUMOR`           | Unverified third-party claim                                                                       |                              No |
 | `UNKNOWN`         | Information required by the project has not been publicly established                              |                              No |
 
-`CONFIRMED` is about the specific claim, not the reputation of a source in general. A first-party statement about FiveM does not automatically confirm the same behavior for GTA VI.
+`CONFIRMED` is about the specific claim, not the reputation of a source in general. A first-party statement about FiveM, a Rockstar engineering role or a current internal technology practice does not automatically confirm the same behavior for GTA VI.
 
 ## Source priority
 
@@ -24,11 +24,29 @@ Prefer sources in this order:
 
 1. Rockstar Games official product/support/legal/developer material.
 2. Cfx.re official documentation, support or announcements.
-3. First-party platform-holder documentation when directly relevant.
-4. Publicly observable behavior in currently supported products, classified as `PUBLIC_OBSERVED`.
-5. High-quality secondary reporting only as a pointer to primary evidence.
+3. Rockstar Games official engineering/careers material when the claim concerns current technology practice rather than a GTA VI product contract.
+4. First-party platform-holder documentation when directly relevant.
+5. Publicly observable behavior in currently supported products, classified as `PUBLIC_OBSERVED`.
+6. High-quality secondary reporting only as a pointer to primary evidence.
 
 Secondary reporting alone should not move an integration requirement to `CONFIRMED` when primary documentation should reasonably exist.
+
+### Careers and engineering-role evidence
+
+Official Rockstar job descriptions are admissible first-party evidence for narrowly scoped statements such as:
+
+- technologies currently used by a named Rockstar engineering discipline;
+- engineering responsibilities described by Rockstar;
+- languages or platforms explicitly required by the role.
+
+They are **not** sufficient by themselves to confirm:
+
+- the complete implementation stack of GTA VI;
+- a GTA VI community-server API;
+- a GTA VI scripting runtime;
+- the exact language used by a particular unreleased subsystem unless the posting explicitly says so.
+
+Because job pages can change or disappear, research based on them must record the exact claim, URL and verification date. When possible, corroborate a material architectural inference with more than one independent first-party signal.
 
 ## Required research record
 
@@ -75,6 +93,8 @@ If sources conflict without a clear authoritative resolution, classify the requi
 
 Leaked material, private services, stolen data, unverifiable screenshots and reverse-engineered private Rockstar infrastructure must not become implementation dependencies in this project.
 
+Public discussion of leaked material may identify a research question, but the project must independently resolve that question through legitimate public evidence before using it as a technical premise. If a leaked claim is later publicly documented by Rockstar Games or Cfx.re, cite the legitimate public source rather than the leak.
+
 Public reverse engineering of our own abstract interfaces or simulator behavior is unrelated; the restriction concerns non-public game/platform contracts that would create unsupported coupling or legal/security risk.
 
 ## Current-ecosystem research
@@ -91,12 +111,15 @@ FiveM/RedM can be studied for architectural patterns such as:
 
 Those observations belong in the Cfx research boundary and remain `PUBLIC_OBSERVED` unless GTA VI-specific documentation independently confirms them.
 
+Current Rockstar/Cfx technology evidence that informs language strategy without proving a GTA VI runtime belongs in `ROCKSTAR_TECHNOLOGY_BASELINE.md`.
+
 ## Review cadence
 
-`PLATFORM_STATUS.md` should be reviewed whenever any of these occur:
+`PLATFORM_STATUS.md` and material technology evidence should be reviewed whenever any of these occur:
 
 - Rockstar Games publishes material relevant to GTA VI online/community servers;
 - Cfx.re announces a GTA VI-related runtime or policy change;
+- Rockstar publishes a materially relevant engineering/runtime statement;
 - a platform requirement blocks planned work;
 - the project is about to start GTA VI adapter implementation;
 - an existing confirmed source is materially updated or removed.
