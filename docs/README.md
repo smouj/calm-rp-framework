@@ -6,17 +6,17 @@ The repository is intentionally split between **decisions we control now** and *
 
 ## Start here
 
-| Document | Purpose | Authority |
-| --- | --- | --- |
-| [`PROJECT_SCOPE.md`](./PROJECT_SCOPE.md) | Product boundary, goals, non-goals and decision gates | Project scope source of truth |
-| [`../ARCHITECTURE.md`](../ARCHITECTURE.md) | System-level architecture and dependency direction | Architecture overview |
-| [`server/SERVER_BLUEPRINT.md`](./server/SERVER_BLUEPRINT.md) | Functional blueprint for our future RP server | Server-design reference |
-| [`server/RUNTIME_REQUIREMENTS.md`](./server/RUNTIME_REQUIREMENTS.md) | Runtime capabilities required before real GTA VI integration | Integration readiness register |
-| [`research/PLATFORM_STATUS.md`](./research/PLATFORM_STATUS.md) | Confirmed public facts versus unknown GTA VI platform details | Platform-status source of truth |
-| [`research/RESEARCH_PROTOCOL.md`](./research/RESEARCH_PROTOCOL.md) | Evidence classification and research update process | Research governance |
-| [`roadmap/ROADMAP.md`](./roadmap/ROADMAP.md) | Phased work and integration gates | Delivery planning |
-| [`security/THREAT_MODEL.md`](./security/THREAT_MODEL.md) | Assets, trust boundaries, threats and controls | Security baseline |
-| [`operations/OPERATIONS_BASELINE.md`](./operations/OPERATIONS_BASELINE.md) | Operational requirements before production hosting | Operations baseline |
+| Document                                                                   | Purpose                                                       | Authority                       |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------- |
+| [`PROJECT_SCOPE.md`](./PROJECT_SCOPE.md)                                   | Product boundary, goals, non-goals and decision gates         | Project scope source of truth   |
+| [`../ARCHITECTURE.md`](../ARCHITECTURE.md)                                 | System-level architecture and dependency direction            | Architecture overview           |
+| [`server/SERVER_BLUEPRINT.md`](./server/SERVER_BLUEPRINT.md)               | Functional blueprint for our future RP server                 | Server-design reference         |
+| [`server/RUNTIME_REQUIREMENTS.md`](./server/RUNTIME_REQUIREMENTS.md)       | Runtime capabilities required before real GTA VI integration  | Integration readiness register  |
+| [`research/PLATFORM_STATUS.md`](./research/PLATFORM_STATUS.md)             | Confirmed public facts versus unknown GTA VI platform details | Platform-status source of truth |
+| [`research/RESEARCH_PROTOCOL.md`](./research/RESEARCH_PROTOCOL.md)         | Evidence classification and research update process           | Research governance             |
+| [`roadmap/ROADMAP.md`](./roadmap/ROADMAP.md)                               | Phased work and integration gates                             | Delivery planning               |
+| [`security/THREAT_MODEL.md`](./security/THREAT_MODEL.md)                   | Assets, trust boundaries, threats and controls                | Security baseline               |
+| [`operations/OPERATIONS_BASELINE.md`](./operations/OPERATIONS_BASELINE.md) | Operational requirements before production hosting            | Operations baseline             |
 
 ## Architecture decisions
 
