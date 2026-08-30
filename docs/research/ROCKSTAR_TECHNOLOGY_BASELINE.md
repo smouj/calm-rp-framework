@@ -1,6 +1,7 @@
 # Rockstar Technology Baseline
 
-**State:** ACTIVE  
+**State:** ACTIVE
+
 **Last verified:** 2026-08-31
 
 This document records public, first-party technical evidence from Rockstar Games and Cfx.re that is useful when planning this project.
@@ -25,74 +26,113 @@ Rockstar game technology
 
 This establishes a useful **Rockstar/Cfx technology baseline**. It does **not** establish the future GTA VI community-server scripting language.
 
-## Evidence matrix
+## Evidence records
 
-| ID | Public claim | Classification | Project relevance | What it does not establish |
-| --- | --- | --- | --- | --- |
-| TECH-001 | Rockstar Gameplay Programming builds and modifies core gameplay systems and control interfaces using a combination of **C++ and game script**. | `CONFIRMED` for current Rockstar engineering practice | C++ literacy is strategically useful; keep engine-facing assumptions outside the RP domain. | It does not identify GTA VI's complete language set, define "game script", or expose a public scripting runtime. |
-| TECH-002 | Rockstar graphics programmers build and modify rendering systems using **C++** and modern graphics APIs; HLSL is listed as relevant shader experience. | `CONFIRMED` for current Rockstar graphics engineering practice | Supports treating C++/graphics knowledge as low-level game-technology expertise rather than server-domain implementation guidance. | It does not document GTA VI renderer internals, shader source, APIs selected by GTA VI, or a modding interface. |
-| TECH-003 | Rockstar animation/tools roles use **C++ and/or C#** for exporters, editors and asset-processing pipelines. | `CONFIRMED` for current Rockstar tools engineering practice | Reinforces a multi-language production stack and the need not to equate tool languages with game/server scripting languages. | It does not establish GTA VI gameplay or community-server languages. |
-| TECH-004 | Rockstar Online Services uses **C#/.NET**, SQL and web technologies including **JavaScript/TypeScript + React** for connected services and tooling. | `CONFIRMED` for current Rockstar online-services engineering practice | Validates that TypeScript/C# are normal choices around game services even when the game engine itself is C++. | It does not expose GTA VI online-service contracts or authorize third-party server integration. |
-| TECH-005 | Rockstar currently recruits C++ engineers specifically for the **Cfx.re creator platforms**, including FiveM and RedM. | `CONFIRMED` for current Cfx/Rockstar platform engineering | Shows that creator-platform internals can be C++ while user resources remain scripted through higher-level runtimes. | It does not confirm a GTA VI Cfx product or future GTA VI community-server architecture. |
-| TECH-006 | Current Cfx.re/FiveM documentation exposes scripting runtimes for **Lua, JavaScript and C#**. | `CONFIRMED` for current FiveM | These languages remain useful compatibility knowledge for `adapters/cfx`. | Current FiveM runtimes are not a GTA VI scripting guarantee. |
-| TECH-007 | Cfx.re is part of Rockstar Games, while its public joining announcement explicitly scoped the partnership communication to **FiveM and RedM** and declined to provide information about the next GTA. | `CONFIRMED` | Cfx.re is relevant research context, but GTA VI assumptions require separate evidence. | Acquisition/integration does not itself confirm a GTA VI FiveM-equivalent runtime. |
+### TECH-001 — Gameplay engineering
+
+**Classification:** `CONFIRMED` for current Rockstar engineering practice.
+
+Rockstar Gameplay Programming publicly states that it builds and modifies core gameplay systems and control interfaces using a combination of **C++ and game script**.
+
+**Project relevance:** C++ literacy is strategically useful, while engine-facing assumptions must remain outside the RP domain.
+
+**Limit:** this does not identify GTA VI's complete language set, define the internal `game script`, or expose a public scripting runtime.
+
+### TECH-002 — Graphics engineering
+
+**Classification:** `CONFIRMED` for current Rockstar graphics engineering practice.
+
+Rockstar graphics programmers publicly build and modify rendering systems using **C++** and modern graphics APIs. HLSL is listed among relevant shader-programming skills.
+
+**Project relevance:** C++ and graphics knowledge are low-level game-technology expertise, not server-domain implementation requirements.
+
+**Limit:** this does not document GTA VI renderer internals, GTA VI shader source, the graphics APIs selected by GTA VI, or a modding interface.
+
+### TECH-003 — Production and animation tooling
+
+**Classification:** `CONFIRMED` for current Rockstar tools engineering practice.
+
+Rockstar animation/tools roles publicly use **C++ and/or C#** for tooling that supports exporters, editors and asset-processing pipelines.
+
+**Project relevance:** Rockstar's production environment is multi-language; a tooling language must not be confused with a gameplay or server scripting language.
+
+**Limit:** this does not establish GTA VI gameplay or community-server languages.
+
+### TECH-004 — Online services and web tooling
+
+**Classification:** `CONFIRMED` for current Rockstar online-services engineering practice.
+
+Rockstar Online Services publicly uses **C#/.NET**, SQL and web technologies including **JavaScript/TypeScript + React** for connected services and tooling.
+
+**Project relevance:** TypeScript and C# are normal choices around game services even when low-level game technology is C++.
+
+**Limit:** this does not expose GTA VI online-service contracts or authorize third-party server integration.
+
+### TECH-005 — Cfx.re platform engineering
+
+**Classification:** `CONFIRMED` for current Cfx/Rockstar platform engineering.
+
+Rockstar currently recruits C++ engineers specifically for the **Cfx.re creator platforms**, including FiveM and RedM.
+
+**Project relevance:** creator-platform internals can be implemented in C++ while server resources are exposed through higher-level scripting runtimes.
+
+**Limit:** this does not confirm a GTA VI Cfx product or future GTA VI community-server architecture.
+
+### TECH-006 — Current FiveM scripting runtimes
+
+**Classification:** `CONFIRMED` for current FiveM.
+
+Current Cfx.re/FiveM documentation exposes scripting runtimes for **Lua, JavaScript and C#**.
+
+**Project relevance:** those languages remain useful compatibility knowledge for `adapters/cfx`.
+
+**Limit:** current FiveM runtimes are not a GTA VI scripting guarantee.
+
+### TECH-007 — Cfx.re and Rockstar Games
+
+**Classification:** `CONFIRMED`.
+
+Cfx.re is part of Rockstar Games. Its public joining announcement explicitly scoped the partnership communication to **FiveM and RedM** and declined to provide information about the next GTA.
+
+**Project relevance:** Cfx.re is highly relevant research context, but GTA VI assumptions still require separate evidence.
+
+**Limit:** the acquisition/integration does not itself confirm a GTA VI FiveM-equivalent runtime.
 
 ## First-party sources
 
 ### Rockstar gameplay engineering
 
-- Rockstar Games — Senior Gameplay Programmer, Rockstar Australia  
-  https://www.rockstargames.com/kr/careers/openings/position/7695704003
+- [Rockstar Games — Senior Gameplay Programmer, Rockstar Australia](https://www.rockstargames.com/kr/careers/openings/position/7695704003)
 
 Relevant public statement: the Gameplay Programming team builds and modifies core gameplay systems and control interfaces using a combination of C++ and game script; the role requires professional C++ game-development experience.
 
 ### Rockstar graphics engineering
 
-- Rockstar Games — Senior Graphics Programmer, Rockstar Australia  
-  https://www.rockstargames.com/fr/careers/openings/position/7617658003
+- [Rockstar Games — Senior Graphics Programmer, Rockstar Australia](https://www.rockstargames.com/fr/careers/openings/position/7617658003)
 
 Relevant public statements: rendering systems and related tools are built, optimized and modified using C++ and modern graphics APIs; HLSL is included among useful shader-programming skills.
 
 ### Rockstar production tooling
 
-- Rockstar Games — Animation Tools Programmer, Rockstar Toronto  
-  https://www.rockstargames.com/intl/careers/openings/position/7632962003
+- [Rockstar Games — Animation Tools Programmer, Rockstar Toronto](https://www.rockstargames.com/intl/careers/openings/position/7632962003)
+- [Rockstar Games — Senior Web Developer - Tools, Rockstar North](https://www.rockstargames.com/es/careers/openings/position/7739156003)
 
-Relevant public statement: Rockstar tools supporting animation workflows require experience with C++ and/or C#.
-
-- Rockstar Games — Senior Web Developer - Tools, Rockstar North  
-  https://www.rockstargames.com/es/careers/openings/position/7739156003
-
-Relevant public statements: production tools include React front ends and ASP.NET Core/.NET services.
+Relevant public statements: Rockstar tools supporting animation workflows require C++ and/or C# experience, while web production tools include React front ends and ASP.NET Core/.NET services.
 
 ### Rockstar online services
 
-- Rockstar Games — Full Stack Engineer (C#/React), Rockstar New York  
-  https://www.rockstargames.com/br/careers/openings/position/7711703003
+- [Rockstar Games — Full Stack Engineer (C#/React), Rockstar New York](https://www.rockstargames.com/br/careers/openings/position/7711703003)
+- [Rockstar Games — Software Engineer (C#/.NET), Rockstar San Diego](https://www.rockstargames.com/careers/openings/position/7734679003)
 
-Relevant public statements: Online Services builds connected game services and tooling using C#, MSSQL, JavaScript/TypeScript and React.
-
-- Rockstar Games — Software Engineer (C#/.NET), Rockstar San Diego  
-  https://www.rockstargames.com/careers/openings/position/7734679003
-
-Relevant public statements: Rockstar Online Services builds scalable server-side features in .NET/C# and SQL-backed infrastructure for services including matchmaking, cloud saves, inventories and statistics.
+Relevant public statements: Rockstar Online Services builds connected game services and tooling using C#, MSSQL, JavaScript/TypeScript and React, and builds scalable server-side features in .NET/C# and SQL-backed infrastructure.
 
 ### Cfx.re platform engineering and scripting
 
-- Rockstar Games — Senior Software Engineer, FiveM, Rockstar London  
-  https://www.rockstargames.com/es/careers/openings/position/7806700003
+- [Rockstar Games — Senior Software Engineer, FiveM, Rockstar London](https://www.rockstargames.com/es/careers/openings/position/7806700003)
+- [Cfx.re Documentation — Scripting Runtimes](https://docs.fivem.net/docs/scripting-manual/runtimes/)
+- [Cfx.re — Cfx.re Officially Joins Rockstar Games](https://forum.cfx.re/t/cfx-re-officially-joins-rockstar-games/5158920)
 
-Relevant public statements: the role supports Cfx.re creator platforms including FiveM and RedM and requires substantial C++ development/debugging experience.
-
-- Cfx.re Documentation — Scripting Runtimes  
-  https://docs.fivem.net/docs/scripting-manual/runtimes/
-
-Current public scripting runtimes: Lua, JavaScript and C#.
-
-- Cfx.re — Cfx.re Officially Joins Rockstar Games  
-  https://forum.cfx.re/t/cfx-re-officially-joins-rockstar-games/5158920
-
-The announcement confirms that Cfx.re joined Rockstar Games and explicitly states that the public partnership discussion was focused on FiveM and RedM rather than the next GTA.
+The Rockstar role supports Cfx.re creator platforms including FiveM and RedM and requires substantial C++ development/debugging experience. Current Cfx.re documentation lists Lua, JavaScript and C# scripting runtimes. The Cfx.re joining announcement confirms the Rockstar relationship while explicitly avoiding claims about the next GTA.
 
 ## What this means for GTA VI
 
@@ -109,8 +149,8 @@ These are `INFERENCE` statements for GTA VI, not public GTA VI implementation co
 The public evidence above does **not** establish any of the following:
 
 - that every part of GTA VI is written in C++;
-- the exact implementation or syntax of Rockstar's "game script";
-- that "game script" is exposed to players or community-server developers;
+- the exact implementation or syntax of Rockstar's `game script`;
+- that `game script` is exposed to players or community-server developers;
 - that GTA VI community servers will support C++, Lua, JavaScript, TypeScript or C#;
 - that current FiveM resource manifests, natives, NUI, networking or entity semantics will carry forward unchanged;
 - that a GTA VI Cfx.re runtime exists;
