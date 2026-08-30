@@ -17,10 +17,7 @@ export const ok = <T>(value: T): Result<T, never> => ({ ok: true, value });
 export const err = <E>(error: E): Result<never, E> => ({ ok: false, error });
 
 export class DomainError extends Error {
-  public constructor(
-    public readonly code: string,
-    message: string,
-  ) {
+  public constructor(public readonly code: string, message: string) {
     super(message);
     this.name = 'DomainError';
   }
