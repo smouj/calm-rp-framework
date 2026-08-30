@@ -124,15 +124,24 @@ docs/
 
 ## Technology direction
 
-These are internal implementation choices, not assumptions about GTA VI's future scripting runtime:
+These are internal implementation choices, not assumptions about GTA VI's future scripting runtime.
 
-- TypeScript for game-agnostic domain code, tooling, services and web-based UI prototypes;
-- Lua/CfxLua only inside a Cfx adapter if public runtime requirements justify it;
-- PostgreSQL as durable source of truth;
-- Redis only for genuinely ephemeral coordination/cache needs;
+Public Rockstar engineering material currently establishes a useful technology baseline: gameplay work uses **C++ + game script**, graphics engineering is heavily **C++**-based, production tooling spans **C++/C#**, and online-service/tooling roles use **C#/.NET, SQL and JavaScript/TypeScript**. Current Cfx.re/FiveM scripting exposes **Lua, JavaScript and C#**. None of those facts confirms a GTA VI community-server scripting language.
+
+Accordingly, this repository uses:
+
+- **TypeScript** for game-agnostic domain code, tooling, services and web-based UI prototypes;
+- **PostgreSQL** as durable source of truth;
+- **Redis** only for genuinely ephemeral coordination/cache needs;
+- **Lua/JavaScript/C# knowledge** inside the Cfx research boundary because those are current public FiveM runtimes;
+- **C++ knowledge** as strategically useful for understanding Rockstar/Cfx low-level technology and for a future native bridge only if a legitimate GTA VI contract requires one;
 - pnpm workspaces for the monorepo;
 - Docker Compose for reproducible local infrastructure;
 - GitHub Actions for automated validation.
+
+The project will **not** be rewritten in C++ merely because Rockstar uses C++ internally. The runtime adapter language remains a deferred integration decision; the RP domain stays independent from it.
+
+See [Rockstar Technology Baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md) for the evidence matrix, source list, limitations and leak-handling policy.
 
 ## GTA VI integration gate
 
@@ -154,6 +163,7 @@ Before implementing any real GTA VI-specific adapter capability, require all of 
 - [Server domain catalog](./docs/server/DOMAIN_CATALOG.md)
 - [GTA VI runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md)
 - [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
+- [Rockstar technology baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md)
 - [Platform research protocol](./docs/research/RESEARCH_PROTOCOL.md)
 - [Roadmap](./docs/roadmap/ROADMAP.md)
 - [Project risk register](./docs/roadmap/RISK_REGISTER.md)
