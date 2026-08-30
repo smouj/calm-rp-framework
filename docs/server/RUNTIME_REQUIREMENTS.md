@@ -42,6 +42,21 @@ A requirement cannot move to `VALIDATED` before it is `CONFIRMED`.
 | RT-021 | Hosting/policy/monetization constraints      | `UNKNOWN`     | Ensures server operation remains within authorized policy              |
 | RT-022 | Development/test workflow                    | `UNKNOWN`     | Needed for repeatable local/staging integration and conformance tests  |
 
+## Technology evidence does not unlock the scripting requirements
+
+Current public Rockstar engineering material confirms substantial use of **C++**, an internal **game script** concept, C++/C# tooling and C#/.NET/web technologies around online services. Current FiveM documentation separately confirms **Lua, JavaScript and C#** scripting runtimes.
+
+Those facts are tracked in [`../research/ROCKSTAR_TECHNOLOGY_BASELINE.md`](../research/ROCKSTAR_TECHNOLOGY_BASELINE.md).
+
+They do **not** change `RT-003` or `RT-004` because neither source set publicly defines a GTA VI community-server scripting contract. In particular:
+
+- Rockstar's internal `game script` must not be treated as a public server scripting API;
+- C++ usage inside Rockstar game/Cfx platform engineering does not imply C++ will be the resource language for a future GTA VI server;
+- Lua, JavaScript and C# support in current FiveM must not be copied forward as a GTA VI guarantee;
+- TypeScript remains an internal project choice for game-agnostic code, not a prediction about the GTA VI runtime.
+
+The adapter language decision therefore remains intentionally deferred until the relevant GTA VI runtime contract is public and implementable.
+
 ## Requirement acceptance template
 
 Before changing any row to `CONFIRMED`, record:
