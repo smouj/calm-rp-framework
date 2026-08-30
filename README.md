@@ -168,7 +168,7 @@ docker compose -f infrastructure/docker/compose.yml up -d
 pnpm check
 ```
 
-The dependency graph is still in bootstrap stabilization. CI intentionally uses a non-frozen install until the reviewed `pnpm-lock.yaml` work tracked by the repository is completed.
+The dependency graph is versioned in `pnpm-lock.yaml`, and CI installs it with `--frozen-lockfile`. Major toolchain upgrades remain deliberate maintenance work rather than independent automated merges.
 
 ## Repository discipline
 
