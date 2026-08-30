@@ -17,17 +17,17 @@ It does not claim a GTA VI anti-cheat design before a legitimate runtime exists.
 
 ## Assets to protect
 
-| Asset | Primary integrity concern | Primary confidentiality concern |
-| --- | --- | --- |
-| Account/session mapping | account takeover, identifier substitution | authentication/session material |
-| Character state | forged progression or identity changes | player metadata |
-| Economy ledger | money creation, deletion or double-spend | transaction history where sensitive |
-| Inventory/ownership | duplication, forged ownership transfer | evidence/contraband metadata where sensitive |
-| Jobs/factions/permissions | rank escalation | internal/staff role data |
-| Justice/moderation records | deletion or fabricated sanctions | staff notes and sensitive case data |
-| Server configuration | unauthorized gameplay/economy rule changes | secrets embedded by mistake |
-| Audit history | tampering or omission | operational/security context |
-| Backups | corruption or untested restore | complete durable dataset exposure |
+| Asset                      | Primary integrity concern                  | Primary confidentiality concern              |
+| -------------------------- | ------------------------------------------ | -------------------------------------------- |
+| Account/session mapping    | account takeover, identifier substitution  | authentication/session material              |
+| Character state            | forged progression or identity changes     | player metadata                              |
+| Economy ledger             | money creation, deletion or double-spend   | transaction history where sensitive          |
+| Inventory/ownership        | duplication, forged ownership transfer     | evidence/contraband metadata where sensitive |
+| Jobs/factions/permissions  | rank escalation                            | internal/staff role data                     |
+| Justice/moderation records | deletion or fabricated sanctions           | staff notes and sensitive case data          |
+| Server configuration       | unauthorized gameplay/economy rule changes | secrets embedded by mistake                  |
+| Audit history              | tampering or omission                      | operational/security context                 |
+| Backups                    | corruption or untested restore             | complete durable dataset exposure            |
 
 ## Trust boundaries
 
@@ -61,26 +61,26 @@ Third-party packages and automation can execute during development/build workflo
 
 ## Threat catalogue
 
-| ID | Threat | Example | Required mitigation |
-| --- | --- | --- | --- |
-| T-001 | Client-forged state mutation | client sends a desired balance or rank | accept intent only; calculate/authorize server-side |
-| T-002 | Replay | repeat purchase/reward request | idempotency key or domain replay protection |
-| T-003 | Double-spend/race | concurrent purchases spend the same funds | transactional locking/concurrency invariant |
-| T-004 | Inventory duplication | retry transfers the same item twice | atomic ownership transfer + idempotency |
-| T-005 | Privilege escalation | client supplies staff/job grade | server-owned role membership and permission checks |
-| T-006 | Identifier spoofing | claim another character/account identifier | bind runtime identity to authenticated server session |
-| T-007 | Mass event abuse | spam expensive commands/events | rate limit, quotas, cheap rejection before heavy work |
-| T-008 | Injection | malicious input reaches SQL/command/template context | parameterization, strict parsing, context-safe APIs |
-| T-009 | Session theft/reuse | stolen token reused after expected invalidation | bounded sessions, revocation strategy, secure storage |
-| T-010 | Staff abuse | unauthorized grant/ban/economy correction | least privilege, reason required, immutable audit trail |
-| T-011 | Cache authority drift | stale Redis value treated as canonical balance | PostgreSQL/domain remains source of truth |
-| T-012 | Partial transaction failure | money removed but ownership not granted | atomic transaction or compensating state machine |
-| T-013 | Runtime/entity spoofing | fake entity ownership used to claim durable asset | map transient entities to server-owned durable records |
-| T-014 | Migration corruption | incompatible schema change loses state | reviewed migrations, staging exercise, verified backup |
-| T-015 | Secret exposure | production credentials committed/logged | external secret management, scanning, log redaction |
-| T-016 | Supply-chain compromise | mutable Action/tag or malicious package script | pinned Actions, reviewed lockfile/build scripts, least CI permissions |
-| T-017 | Audit evasion | privileged mutation leaves no trail | audit event in same authoritative use-case path |
-| T-018 | Resource exhaustion | expensive search/query invoked repeatedly | bounded inputs, pagination, timeouts, rate limits |
+| ID    | Threat                       | Example                                              | Required mitigation                                                   |
+| ----- | ---------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
+| T-001 | Client-forged state mutation | client sends a desired balance or rank               | accept intent only; calculate/authorize server-side                   |
+| T-002 | Replay                       | repeat purchase/reward request                       | idempotency key or domain replay protection                           |
+| T-003 | Double-spend/race            | concurrent purchases spend the same funds            | transactional locking/concurrency invariant                           |
+| T-004 | Inventory duplication        | retry transfers the same item twice                  | atomic ownership transfer + idempotency                               |
+| T-005 | Privilege escalation         | client supplies staff/job grade                      | server-owned role membership and permission checks                    |
+| T-006 | Identifier spoofing          | claim another character/account identifier           | bind runtime identity to authenticated server session                 |
+| T-007 | Mass event abuse             | spam expensive commands/events                       | rate limit, quotas, cheap rejection before heavy work                 |
+| T-008 | Injection                    | malicious input reaches SQL/command/template context | parameterization, strict parsing, context-safe APIs                   |
+| T-009 | Session theft/reuse          | stolen token reused after expected invalidation      | bounded sessions, revocation strategy, secure storage                 |
+| T-010 | Staff abuse                  | unauthorized grant/ban/economy correction            | least privilege, reason required, immutable audit trail               |
+| T-011 | Cache authority drift        | stale Redis value treated as canonical balance       | PostgreSQL/domain remains source of truth                             |
+| T-012 | Partial transaction failure  | money removed but ownership not granted              | atomic transaction or compensating state machine                      |
+| T-013 | Runtime/entity spoofing      | fake entity ownership used to claim durable asset    | map transient entities to server-owned durable records                |
+| T-014 | Migration corruption         | incompatible schema change loses state               | reviewed migrations, staging exercise, verified backup                |
+| T-015 | Secret exposure              | production credentials committed/logged              | external secret management, scanning, log redaction                   |
+| T-016 | Supply-chain compromise      | mutable Action/tag or malicious package script       | pinned Actions, reviewed lockfile/build scripts, least CI permissions |
+| T-017 | Audit evasion                | privileged mutation leaves no trail                  | audit event in same authoritative use-case path                       |
+| T-018 | Resource exhaustion          | expensive search/query invoked repeatedly            | bounded inputs, pagination, timeouts, rate limits                     |
 
 ## Mutation security pattern
 
