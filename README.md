@@ -100,9 +100,10 @@ docs/
   README.md              canonical documentation map
   adr/                   architecture decisions
   architecture/          technical and authority boundaries
+  branding/              project-owned identity and asset policy
   research/              evidence protocol and platform status
-  roadmap/               phased preparation plan
-  server/                RP blueprint and runtime requirements
+  roadmap/               phased preparation and risk planning
+  server/                RP blueprint, domains and runtime requirements
   security/              threat model
   operations/            production operations baseline
 .github/                 CI, ownership, issue/PR templates and dependency policy
@@ -150,12 +151,15 @@ Before implementing any real GTA VI-specific adapter capability, require all of 
 - [Project scope](./docs/PROJECT_SCOPE.md)
 - [Architecture](./ARCHITECTURE.md)
 - [Server blueprint](./docs/server/SERVER_BLUEPRINT.md)
+- [Server domain catalog](./docs/server/DOMAIN_CATALOG.md)
 - [GTA VI runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md)
 - [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
 - [Platform research protocol](./docs/research/RESEARCH_PROTOCOL.md)
 - [Roadmap](./docs/roadmap/ROADMAP.md)
+- [Project risk register](./docs/roadmap/RISK_REGISTER.md)
 - [Threat model](./docs/security/THREAT_MODEL.md)
 - [Operations baseline](./docs/operations/OPERATIONS_BASELINE.md)
+- [Project identity and asset policy](./docs/branding/PROJECT_IDENTITY.md)
 
 ## Local development
 
