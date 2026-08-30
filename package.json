@@ -2,6 +2,8 @@
   "name": "gta6-rp-platform",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.5",
   "description": "Game-agnostic foundation for a future GTA VI roleplay platform.",
   "engines": {
     "node": ">=22",
