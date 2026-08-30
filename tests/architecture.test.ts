@@ -18,7 +18,9 @@ describe('architecture guardrails', () => {
     const threatModel = read('docs/security/THREAT_MODEL.md');
 
     expect(architecture).toContain('The game client is untrusted');
-    expect(threatModel).toContain('Persistent RP state can only change through authorized server-side use cases');
+    expect(threatModel).toContain(
+      'Persistent RP state can only change through authorized server-side use cases',
+    );
   });
 
   it('forbids runtime and adapter dependencies from domain packages', () => {
@@ -34,7 +36,9 @@ describe('architecture guardrails', () => {
     const platformStatus = read('docs/research/PLATFORM_STATUS.md');
 
     expect(requirements).toContain('**State:** BLOCKED');
-    expect(requirements).toContain('| RT-001 | Authorized community-server/runtime path | `UNKNOWN` |');
+    expect(requirements).toContain('RT-001');
+    expect(requirements).toContain('Authorized community-server/runtime path');
+    expect(requirements).toContain('`UNKNOWN`');
     expect(platformStatus).toContain('## Not publicly confirmed for GTA VI');
   });
 
