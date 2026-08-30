@@ -1,36 +1,79 @@
-name: Feature proposal
-description: Propose a bounded RP capability
+name: Server capability proposal
+description: Propose a bounded capability for our future GTA VI RP server
 title: "feat: "
 labels: [enhancement]
 body:
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What player or operator problem should this solve?
+      label: Server need
+      description: What player, staff, moderation, or operational need should this solve?
     validations:
       required: true
+
   - type: textarea
     id: proposal
     attributes:
       label: Proposed behavior
+      description: Describe behavior and invariants, not an implementation tied to an assumed GTA VI API.
     validations:
       required: true
+
   - type: dropdown
     id: boundary
     attributes:
       label: Primary boundary
       options:
-        - Domain
-        - API
+        - Account / session
+        - Character / identity
+        - Economy / ledger
+        - Inventory / ownership
+        - Jobs / businesses
+        - Factions / organizations
+        - Vehicles / garages
+        - Properties / access
+        - Police / justice
+        - EMS
+        - Communications / phone
+        - Moderation / permissions
         - Simulator
-        - Cfx adapter
-        - GTA VI adapter
-        - Infrastructure
-        - UI
+        - Persistence / infrastructure
+        - Cfx research adapter
+        - GTA VI future adapter
+        - Internal tooling / UI
     validations:
       required: true
+
+  - type: textarea
+    id: authority
+    attributes:
+      label: Authority and persistence
+      description: Which state is authoritative, where it is validated, and what must persist?
+    validations:
+      required: true
+
+  - type: textarea
+    id: runtime
+    attributes:
+      label: GTA VI runtime dependency
+      description: List runtime capabilities required. If none are known, state what remains abstract or blocked.
+    validations:
+      required: true
+
   - type: textarea
     id: security
     attributes:
       label: Security / abuse considerations
+      description: Identify valuable state, player-controlled inputs, permissions, economic abuse, or moderation impact.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope_gate
+    attributes:
+      label: Scope gate
+      options:
+        - label: This is useful for our own server and is not being added only to make a generic public framework.
+          required: true
+        - label: Undocumented GTA VI behavior is not treated as confirmed.
+          required: true

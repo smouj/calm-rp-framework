@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.34.5",
-  "description": "Game-agnostic foundation for a future GTA VI roleplay platform.",
+  "description": "Private readiness blueprint and technical foundation for a future GTA VI roleplay server.",
   "engines": {
     "node": ">=22",
     "pnpm": ">=10"
