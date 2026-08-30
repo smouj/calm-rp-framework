@@ -213,17 +213,17 @@ Whether these are browser-based, in-game or hybrid is an implementation choice t
 
 These must stay abstract until GTA VI documentation exists:
 
-| Requirement        | Domain can be prepared now | Runtime binding blocked               |
-| ------------------ | -------------------------: | ------------------------------------: |
-| character identity |                        yes |             spawn/model customization |
-| inventory rules    |                        yes | in-world item/entity representation   |
-| economy            |                        yes |              game UI/interaction hooks |
-| jobs/factions      |                        yes |       world interactions/NPCs/zones   |
-| vehicles           |         ownership model yes |        spawning, keys, damage, sync   |
-| properties         |            access model yes |            interiors/doors/streaming   |
-| police/EMS         |              workflows yes |       dispatch/world/gameplay hooks   |
-| phone/comms        |              contracts yes | game phone UI/voice integration       |
-| moderation         |       permissions/audit yes |    runtime kick/ban/spectate hooks    |
+| Requirement        | Domain can be prepared now |             Runtime binding blocked |
+| ------------------ | -------------------------: | ----------------------------------: |
+| character identity |                        yes |           spawn/model customization |
+| inventory rules    |                        yes | in-world item/entity representation |
+| economy            |                        yes |           game UI/interaction hooks |
+| jobs/factions      |                        yes |       world interactions/NPCs/zones |
+| vehicles           |        ownership model yes |        spawning, keys, damage, sync |
+| properties         |           access model yes |           interiors/doors/streaming |
+| police/EMS         |              workflows yes |       dispatch/world/gameplay hooks |
+| phone/comms        |              contracts yes |     game phone UI/voice integration |
+| moderation         |      permissions/audit yes |     runtime kick/ban/spectate hooks |
 
 ## 9. Definition of readiness
 
