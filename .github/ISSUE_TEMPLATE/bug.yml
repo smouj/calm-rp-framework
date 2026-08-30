@@ -1,29 +1,70 @@
 name: Bug report
-description: Report a reproducible defect
+description: Report a reproducible defect in the server foundation or tooling
 title: "bug: "
 labels: [bug]
 body:
   - type: textarea
     id: summary
     attributes:
-      label: Summary
-      description: What is wrong?
+      label: What is broken?
+      description: Describe the observable defect and the affected area.
+      placeholder: Keep this factual and reproducible.
     validations:
       required: true
+
   - type: textarea
     id: reproduce
     attributes:
       label: Reproduction
-      description: Minimal deterministic steps to reproduce.
+      description: Provide the shortest deterministic sequence that reproduces the problem.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
     validations:
       required: true
+
   - type: textarea
     id: expected
     attributes:
       label: Expected behavior
+      description: State the expected invariant or outcome.
     validations:
       required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Domain / contracts
+        - Simulator
+        - API / transport
+        - Persistence / migrations
+        - Cfx research adapter
+        - GTA VI future adapter
+        - Infrastructure / CI
+        - Documentation / research
+        - Security / permissions
+    validations:
+      required: true
+
   - type: input
     id: revision
     attributes:
       label: Commit / revision
+      description: Commit SHA or branch where the defect was observed.
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, failing checks, screenshots, traces, or relevant public platform sources.
+
+  - type: checkboxes
+    id: runtime_assumption
+    attributes:
+      label: Runtime assumption check
+      options:
+        - label: This report does not treat undocumented GTA VI behavior as a confirmed API contract.
+          required: true
