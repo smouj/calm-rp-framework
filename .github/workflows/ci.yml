@@ -36,10 +36,5 @@ jobs:
       - name: Install
         run: pnpm install --no-frozen-lockfile
 
-      - name: Inspect documentation formatting
-        run: |
-          pnpm exec prettier --write README.md docs/README.md docs/operations/OPERATIONS_BASELINE.md docs/research/RESEARCH_PROTOCOL.md docs/security/THREAT_MODEL.md docs/server/RUNTIME_REQUIREMENTS.md tests/architecture.test.ts
-          git diff -- README.md docs/README.md docs/operations/OPERATIONS_BASELINE.md docs/research/RESEARCH_PROTOCOL.md docs/security/THREAT_MODEL.md docs/server/RUNTIME_REQUIREMENTS.md tests/architecture.test.ts
-
       - name: Validate
         run: pnpm check
