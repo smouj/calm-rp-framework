@@ -65,6 +65,27 @@ A material platform finding must record:
 
 Use the repository's `Platform research` issue form for work that needs discussion or follow-up.
 
+## Autonomous research execution
+
+The project maintains an external autonomous research watch defined in [`AUTONOMOUS_RESEARCH.md`](./AUTONOMOUS_RESEARCH.md).
+
+The watcher periodically evaluates first-party Rockstar/Cfx.re and directly relevant platform sources against the current `main` branch. Automation must follow the same evidence classes, source priority and promotion rules as manual research.
+
+Automation is allowed to:
+
+- detect material new evidence;
+- update canonical research documentation on a short-lived branch;
+- open a focused pull request;
+- merge low-risk documentation-only research updates after CI is green when the autonomous merge boundary is satisfied.
+
+Automation is not allowed to:
+
+- promote rumors or leaked material into implementation evidence;
+- implement speculative GTA VI adapter code;
+- automatically merge a change that promotes a runtime requirement, changes durable architecture or materially changes legal, monetization or security interpretation.
+
+A scheduled check that finds no material change should create no commit, PR or notification.
+
 ## Promotion rule
 
 A finding may move from `UNKNOWN`, `RUMOR`, `INFERENCE` or `PUBLIC_OBSERVED` to `CONFIRMED` only when a public source directly supports the relevant GTA VI/runtime claim.
@@ -117,6 +138,7 @@ Current Rockstar/Cfx technology evidence that informs language strategy without 
 
 `PLATFORM_STATUS.md` and material technology evidence should be reviewed whenever any of these occur:
 
+- the autonomous research watch detects a material first-party change;
 - Rockstar Games publishes material relevant to GTA VI online/community servers;
 - Cfx.re announces a GTA VI-related runtime or policy change;
 - Rockstar publishes a materially relevant engineering/runtime statement;
