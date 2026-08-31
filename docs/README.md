@@ -20,6 +20,7 @@ The repository is intentionally split between **decisions we control now** and *
 
 ## Supporting references
 
+- [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.
 - [`research/ROCKSTAR_TECHNOLOGY_BASELINE.md`](./research/ROCKSTAR_TECHNOLOGY_BASELINE.md) — first-party Rockstar/Cfx technology evidence, planning implications and explicit limits on GTA VI inference.
 - [`server/DOMAIN_CATALOG.md`](./server/DOMAIN_CATALOG.md) — domain ownership, invariants and runtime dependencies.
 - [`roadmap/RISK_REGISTER.md`](./roadmap/RISK_REGISTER.md) — material project risks, mitigations and reassessment triggers.
@@ -43,6 +44,7 @@ The research documents serve different responsibilities and should not be collap
 1. `PLATFORM_STATUS.md` answers **what is currently confirmed or unknown for GTA VI/community servers**.
 2. `ROCKSTAR_TECHNOLOGY_BASELINE.md` answers **what current first-party Rockstar/Cfx engineering evidence tells us about technology choices, and what it does not prove about GTA VI**.
 3. `RESEARCH_PROTOCOL.md` defines **how evidence is admitted, classified, promoted, contradicted and reviewed**.
+4. `AUTONOMOUS_RESEARCH.md` defines **how the periodic watcher applies those rules, opens PRs and decides what may or may not be integrated automatically**.
 
 This split prevents a true statement such as “Rockstar gameplay engineers use C++” from being silently transformed into the unsupported statement “GTA VI community servers will use C++”.
 
@@ -55,6 +57,7 @@ This split prevents a true statement such as “Rockstar gameplay engineers use 
 5. **Operations before production.** Backups, restore, auditing, observability and incident handling are release requirements, not post-launch extras.
 6. **Unknown means unknown.** Current FiveM/RedM behavior may inform research but cannot be silently promoted to a GTA VI guarantee.
 7. **Technology evidence is scoped.** A language or tool confirmed in Rockstar's current engineering stack does not become a GTA VI community-server runtime contract without GTA VI-specific evidence.
+8. **Automation follows governance.** Scheduled research may maintain documentation, but it cannot bypass evidence, CI, ADR or runtime-promotion gates.
 
 ## Document states
 
