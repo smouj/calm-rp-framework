@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-08-31
+**Last verified:** 2026-09-03
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -24,6 +24,32 @@ Official sources:
 - https://support.rockstargames.com/articles/LqoRbLhB9zJsqWt8LQFTK/i-found-an-unofficial-gta-multiplayer-server-will-i-get-in-trouble-for-playing-on-or-hosting-one-of-these-servers
 - https://support.rockstargames.com/articles/76vEOw8QDFtbtIxObtR5xM/support-for-rockstar-games-authorized-roleplay-and-community-created-servers
 - https://support.cfx.re/hc/en-us/sections/8856819954332-Community-Servers
+
+### Rockstar directly supports nopixel V distribution through Rockstar Games Launcher
+
+**Classification:** `CONFIRMED` for the current **Grand Theft Auto V roleplay ecosystem**. This is **not** a GTA VI runtime confirmation.
+
+On **September 1, 2026**, Rockstar Games officially announced **nopixel V** as the next evolution of the GTAV roleplay community. Rockstar states that its closed beta begins **September 8, 2026** and that invited players will access the experience through the **Rockstar Games Launcher**. Rockstar also describes GTA Roleplay as a community-run multiplayer version of Los Santos and explicitly states that it is supporting nopixel.
+
+Exact claim supported:
+
+- Rockstar is directly promoting and supporting a named GTAV roleplay experience;
+- Rockstar Games Launcher is an official access/distribution surface for the nopixel V closed beta;
+- Rockstar publicly characterizes GTA Roleplay as a community-run multiplayer experience.
+
+What this does **not** establish:
+
+- a GTA VI community-server runtime;
+- a GTA VI Cfx.re/FiveM-equivalent product;
+- GTA VI server binaries, APIs, natives, scripting languages, synchronization semantics or resource formats;
+- a GTA VI PC release or a Rockstar Games Launcher distribution contract for GTA VI roleplay;
+- portability of nopixel V/FiveM architecture to GTA VI.
+
+**Project impact:** this materially strengthens the evidence that Rockstar is investing in and operationally integrating the current RP ecosystem, including launcher-level distribution. It is useful planning evidence for authentication, distribution and creator-platform research, but it does not unlock any GTA VI adapter requirement. All GTA VI `RT-*` integration requirements remain `UNKNOWN` unless separately confirmed by GTA VI-specific first-party documentation.
+
+Official source:
+
+- Rockstar Games Newswire — _Introducing nopixel V_, published 2026-09-01: https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v
 
 ### Rockstar has a published RP-server policy
 
@@ -50,9 +76,10 @@ Public first-party material establishes a useful **current Rockstar/Cfx engineer
 - Rockstar production/animation tooling uses **C++ and/or C#**;
 - Rockstar Online Services publicly uses **C#/.NET**, SQL and web technologies including **JavaScript/TypeScript + React**;
 - Rockstar currently recruits **C++** engineers for the Cfx.re creator platforms, including FiveM and RedM;
-- current FiveM documentation exposes **Lua, JavaScript and C#** scripting runtimes.
+- current FiveM documentation exposes **Lua, JavaScript and C#** scripting runtimes;
+- Rockstar now publicly supports a named GTAV roleplay experience distributed to invited players through Rockstar Games Launcher.
 
-These are confirmed statements about current public Rockstar/Cfx engineering practice. They are **not** evidence that GTA VI community servers will expose any particular language or runtime.
+These are confirmed statements about current public Rockstar/Cfx engineering and RP-platform practice. They are **not** evidence that GTA VI community servers will expose any particular language, runtime or launcher path.
 
 Canonical evidence matrix and source list:
 
@@ -82,9 +109,9 @@ As of the verification date, this project has **no legitimate public source** co
 
 These items are requirements/unknowns, not TODOs that should be implemented speculatively.
 
-## What current FiveM/RedM can tell us
+## What current FiveM/RedM and Rockstar-supported RP can tell us
 
-The existing Cfx.re ecosystem is useful for studying **design patterns**:
+The existing Cfx.re ecosystem and Rockstar's direct support for nopixel V are useful for studying **design patterns and operational surfaces**:
 
 - server-authoritative validation;
 - client/server event boundaries;
@@ -93,9 +120,10 @@ The existing Cfx.re ecosystem is useful for studying **design patterns**:
 - web-based in-game UI patterns;
 - entity ownership and synchronization concerns;
 - server operations, permissions and moderation;
-- common security mistakes in RP resources.
+- common security mistakes in RP resources;
+- launcher/account integration as a current-ecosystem distribution concern.
 
-However, no current FiveM/RedM behavior is automatically a GTA VI contract.
+However, no current FiveM/RedM/nopixel V behavior is automatically a GTA VI contract.
 
 ## Project policy for rumors and leaks
 
