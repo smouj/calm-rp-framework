@@ -49,7 +49,7 @@ What this does **not** establish:
 
 Official source:
 
-- Rockstar Games Newswire — *Introducing nopixel V*, published 2026-09-01: https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v
+- Rockstar Games Newswire — _Introducing nopixel V_, published 2026-09-01: https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v
 
 ### Rockstar has a published RP-server policy
 
