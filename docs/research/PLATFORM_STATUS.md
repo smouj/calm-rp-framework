@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-09-03
+**Last verified:** 2026-09-06
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -51,6 +51,34 @@ Official source:
 
 - Rockstar Games Newswire — _Introducing nopixel V_, published 2026-09-01: https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v
 
+### Rockstar Games Launcher explicitly interoperates with FiveM
+
+**Classification:** `CONFIRMED` for the current **Rockstar Games Launcher / FiveM ecosystem**. This is **not** a GTA VI runtime confirmation.
+
+On **September 3, 2026**, Rockstar Games published Rockstar Games Launcher update `1.0.109.3031`. Its official release notes explicitly state that the update includes **improvements to the interoperability of the Rockstar Games Launcher with FiveM**.
+
+Exact claim supported:
+
+- Rockstar maintains launcher-level interoperability with FiveM as an explicit supported engineering concern;
+- FiveM interoperability is now named directly in first-party Rockstar Games Launcher release notes;
+- the current Cfx/FiveM ecosystem has an operational integration surface with Rockstar Games Launcher beyond generic account or support references.
+
+What this does **not** establish:
+
+- a GTA VI Cfx.re/FiveM runtime or product;
+- that GTA VI will use Rockstar Games Launcher for community-server access;
+- a GTA VI PC release;
+- any GTA VI scripting language, API, native-function set, networking contract, synchronization model, resource format or server binary;
+- portability of the current FiveM launcher integration to GTA VI.
+
+**Project impact:** this strengthens the current-ecosystem evidence behind treating launcher/runtime compatibility as a first-class adapter and operations concern. The project should preserve explicit version and compatibility boundaries between game, launcher, runtime and adapter layers. No GTA VI `RT-*` requirement changes state, no ADR is unlocked, and no roadmap gate advances because the evidence is not GTA VI-specific.
+
+**Affected project references:** `server/RUNTIME_REQUIREMENTS.md` remains unchanged; all GTA VI runtime requirements stay `UNKNOWN`. Existing game-agnostic architecture and adapter-boundary ADRs remain valid. This finding informs future compatibility-matrix and deployment planning only.
+
+Official source:
+
+- Rockstar Games Support — _Rockstar Games Launcher Update 1.0.109.3031 Notes_, updated 2026-09-03: https://support.rockstargames.com/articles/2N4ztI3jnLAEP77euIvhBD/rockstar-games-launcher-update-1-0-109-3031-notes
+
 ### Rockstar has a published RP-server policy
 
 Rockstar's public policy recognizes third-party RP servers as community-created experiences while reserving enforcement rights and identifying areas such as IP misuse, certain commercial exploitation, crypto assets and interference with official online services as enforcement priorities.
@@ -77,7 +105,8 @@ Public first-party material establishes a useful **current Rockstar/Cfx engineer
 - Rockstar Online Services publicly uses **C#/.NET**, SQL and web technologies including **JavaScript/TypeScript + React**;
 - Rockstar currently recruits **C++** engineers for the Cfx.re creator platforms, including FiveM and RedM;
 - current FiveM documentation exposes **Lua, JavaScript and C#** scripting runtimes;
-- Rockstar now publicly supports a named GTAV roleplay experience distributed to invited players through Rockstar Games Launcher.
+- Rockstar now publicly supports a named GTAV roleplay experience distributed to invited players through Rockstar Games Launcher;
+- Rockstar Games Launcher release notes explicitly identify **FiveM interoperability** as a supported compatibility concern.
 
 These are confirmed statements about current public Rockstar/Cfx engineering and RP-platform practice. They are **not** evidence that GTA VI community servers will expose any particular language, runtime or launcher path.
 
@@ -121,9 +150,10 @@ The existing Cfx.re ecosystem and Rockstar's direct support for nopixel V are us
 - entity ownership and synchronization concerns;
 - server operations, permissions and moderation;
 - common security mistakes in RP resources;
-- launcher/account integration as a current-ecosystem distribution concern.
+- launcher/account integration as a current-ecosystem distribution concern;
+- explicit launcher/runtime interoperability and version-compatibility concerns.
 
-However, no current FiveM/RedM/nopixel V behavior is automatically a GTA VI contract.
+However, no current FiveM/RedM/nopixel V behavior or launcher integration is automatically a GTA VI contract.
 
 ## Project policy for rumors and leaks
 
@@ -139,7 +169,7 @@ Research entries should be classified as one of:
 | `RUMOR`           | Unverified; never used as an implementation dependency                 |
 | `UNKNOWN`         | Required information has not been publicly established                 |
 
-Leaked or stolen source code is not admissible implementation evidence. If a claim later becomes independently documented through a legitimate first-party source, the public source — not the leak — becomes the project's evidence.
+Leaked or stolen source code is not admissible implementation evidence. If a claim later becomes independently documented through a legitimate public first-party source, the public source — not the leak — becomes the project's evidence.
 
 ## GTA VI integration unlock checklist
 
