@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-09-06
+**Last verified:** 2026-09-09
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -14,6 +14,35 @@ Official sources:
 
 - https://www.rockstargames.com/VI
 - https://support.rockstargames.com/articles/4QfG4FmZCf5W1gS8jy4UVT/grand-theft-auto-vi-platform-editions-and-versions
+
+### GTA VI is currently announced as a single-player experience
+
+**Classification:** `CONFIRMED` for the currently announced **Grand Theft Auto VI product experience**. This does **not** establish that Rockstar will never announce a separate or later multiplayer product or service.
+
+On **June 24, 2026**, Rockstar Games announced GTA VI pre-orders and explicitly described **Grand Theft Auto VI as a single-player experience**. PlayStation's current GTA VI product page independently presents the title as **1 player** and answers its multiplayer FAQ by stating that GTA VI is a single-player experience.
+
+Exact claim supported:
+
+- the currently announced GTA VI product is single-player;
+- Rockstar has not publicly announced GTA VI multiplayer as part of the currently documented launch product;
+- current PlayStation product metadata does not expose an online-player mode for GTA VI.
+
+What this does **not** establish:
+
+- that Rockstar will never announce GTA VI multiplayer, a successor to GTA Online, or another online service;
+- that GTA VI will never receive community-server support;
+- a GTA VI Cfx.re/FiveM-equivalent runtime or product;
+- GTA VI server binaries, APIs, natives, scripting languages, synchronization semantics, resource formats or hosting requirements;
+- a GTA VI PC release.
+
+**Project impact:** this strengthens the block on speculative GTA VI RP integration. The repository must not model a launch-day GTA VI multiplayer contract that Rockstar has not announced. The game-agnostic core, simulator and Cfx research boundary remain valid preparation work, but GTA VI-specific online/runtime integration stays gated behind future first-party evidence.
+
+**Affected project references:** `server/RUNTIME_REQUIREMENTS.md` remains unchanged because no GTA VI community-runtime capability has been confirmed; all GTA VI `RT-*` requirements remain `UNKNOWN`. Existing ADRs remain valid and no roadmap integration gate advances. The roadmap should continue treating GTA VI adapter/runtime implementation as externally blocked until a legitimate multiplayer/community-server path is publicly documented.
+
+Official sources:
+
+- Rockstar Games Newswire — _Pre-Order Grand Theft Auto VI on June 25_, published 2026-06-24: https://www.rockstargames.com/newswire/article/5171972o3ak5oa/pre-order-grand-theft-auto-vi-on-june-25
+- PlayStation — _Grand Theft Auto VI_, verified 2026-09-09: https://www.playstation.com/es-es/games/grand-theft-auto-vi/
 
 ### Rockstar recognizes Cfx.re community servers for current GTA titles
 
@@ -118,6 +147,7 @@ Canonical evidence matrix and source list:
 
 As of the verification date, this project has **no legitimate public source** confirming any of the following specifically for GTA VI:
 
+- any multiplayer mode or online service for the currently announced GTA VI product;
 - the complete implementation language set used by GTA VI;
 - the exact definition, syntax or runtime of Rockstar's internal "game script" in GTA VI;
 - a FiveM-equivalent GTA VI client;
