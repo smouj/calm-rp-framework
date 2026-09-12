@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-09-09
+**Last verified:** 2026-09-12
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -108,6 +108,34 @@ Official source:
 
 - Rockstar Games Support — _Rockstar Games Launcher Update 1.0.109.3031 Notes_, updated 2026-09-03: https://support.rockstargames.com/articles/2N4ztI3jnLAEP77euIvhBD/rockstar-games-launcher-update-1-0-109-3031-notes
 
+### Rockstar service status monitors Cfx as a first-party operational surface
+
+**Classification:** `CONFIRMED` for the current **Rockstar/Cfx operational ecosystem**. This is **not** a GTA VI runtime confirmation.
+
+On **September 12, 2026**, Rockstar Games Support's official Service Status page publicly exposes a dedicated **Cfx** section alongside Rockstar's other online services. The Cfx section reports operational state for **Authentication**, **FiveM**, **RedM**, **Community Servers**, and **Marketplace**.
+
+Exact claim supported:
+
+- Rockstar publicly treats Cfx availability as a monitored operational service surface;
+- Cfx authentication, FiveM, RedM, Community Servers and Marketplace are represented as individually observable service components on Rockstar's first-party status page;
+- availability and dependency monitoring for the current creator/community-server ecosystem is therefore an explicit operational concern within Rockstar's public support surface.
+
+What this does **not** establish:
+
+- a GTA VI community-server runtime or Cfx/FiveM-equivalent product;
+- that these same service components will be used by GTA VI;
+- GTA VI authentication identifiers, server binaries, APIs, scripting languages, synchronization semantics, resource formats or deployment topology;
+- a GTA VI PC release;
+- any guarantee that the current Cfx component taxonomy is a future GTA VI service contract.
+
+**Project impact:** this strengthens the case for keeping authentication, runtime availability, community-server availability and marketplace/resource distribution as separately observable operational dependencies in future adapter and operations planning. It supports the existing game-agnostic operations boundary, but it does not unlock implementation of a GTA VI adapter.
+
+**Affected project references:** `server/RUNTIME_REQUIREMENTS.md` remains unchanged and all GTA VI `RT-*` requirements remain `UNKNOWN`. No existing ADR changes state and no roadmap integration gate advances. The finding is planning evidence for observability, dependency health and incident-response design only.
+
+Official source:
+
+- Rockstar Games Support — _Service Status_, verified 2026-09-12: https://support.rockstargames.com/servicestatus?lang=en
+
 ### Rockstar has a published RP-server policy
 
 Rockstar's public policy recognizes third-party RP servers as community-created experiences while reserving enforcement rights and identifying areas such as IP misuse, certain commercial exploitation, crypto assets and interference with official online services as enforcement priorities.
@@ -135,9 +163,10 @@ Public first-party material establishes a useful **current Rockstar/Cfx engineer
 - Rockstar currently recruits **C++** engineers for the Cfx.re creator platforms, including FiveM and RedM;
 - current FiveM documentation exposes **Lua, JavaScript and C#** scripting runtimes;
 - Rockstar now publicly supports a named GTAV roleplay experience distributed to invited players through Rockstar Games Launcher;
-- Rockstar Games Launcher release notes explicitly identify **FiveM interoperability** as a supported compatibility concern.
+- Rockstar Games Launcher release notes explicitly identify **FiveM interoperability** as a supported compatibility concern;
+- Rockstar's first-party Service Status surface separately monitors Cfx authentication, FiveM, RedM, Community Servers and Marketplace.
 
-These are confirmed statements about current public Rockstar/Cfx engineering and RP-platform practice. They are **not** evidence that GTA VI community servers will expose any particular language, runtime or launcher path.
+These are confirmed statements about current public Rockstar/Cfx engineering, RP-platform and operational practice. They are **not** evidence that GTA VI community servers will expose any particular language, runtime, service taxonomy or launcher path.
 
 Canonical evidence matrix and source list:
 
@@ -181,9 +210,10 @@ The existing Cfx.re ecosystem and Rockstar's direct support for nopixel V are us
 - server operations, permissions and moderation;
 - common security mistakes in RP resources;
 - launcher/account integration as a current-ecosystem distribution concern;
-- explicit launcher/runtime interoperability and version-compatibility concerns.
+- explicit launcher/runtime interoperability and version-compatibility concerns;
+- first-party service-health monitoring for Cfx authentication, runtimes, community servers and marketplace availability.
 
-However, no current FiveM/RedM/nopixel V behavior or launcher integration is automatically a GTA VI contract.
+However, no current FiveM/RedM/nopixel V behavior, launcher integration or Cfx service-status taxonomy is automatically a GTA VI contract.
 
 ## Project policy for rumors and leaks
 
