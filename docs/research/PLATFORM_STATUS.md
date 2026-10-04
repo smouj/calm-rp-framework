@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-09-12
+**Last verified:** 2026-10-04
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -135,6 +135,34 @@ What this does **not** establish:
 Official source:
 
 - Rockstar Games Support — _Service Status_, verified 2026-09-12: https://support.rockstargames.com/servicestatus?lang=en
+
+### FiveM for GTAV Enhanced confirms version-coupled client/server protocol changes
+
+**Classification:** `CONFIRMED` for the current **FiveM for GTAV Enhanced Early Access** ecosystem. This is **not** a GTA VI runtime confirmation.
+
+On **September 30, 2026**, Cfx Admin published official FiveM for GTAV Enhanced Early Access patch notes documenting network-protocol changes that require servers to update to the latest `cfx-server` build for compatible clients to connect. The same update documents changes to state-bag limits, network-event rate limiting, parallel synchronization processing, and connection/disconnection handling under load.
+
+Exact claim supported:
+
+- current Cfx client/server compatibility can be version-coupled by protocol changes;
+- a client update can require a corresponding FXServer update;
+- Cfx is actively changing synchronization, event-rate and state-distribution behavior during GTAV Enhanced Early Access;
+- deployment planning for the current Cfx ecosystem therefore needs explicit client/server compatibility checks and rollback discipline.
+
+What this does **not** establish:
+
+- a GTA VI Cfx/FiveM runtime or product;
+- that GTA VI will inherit FiveM for GTAV Enhanced networking, state bags, events, synchronization or versioning behavior;
+- GTA VI server binaries, APIs, scripting languages, resource formats or hosting requirements;
+- a GTA VI PC release.
+
+**Project impact:** retain strict version boundaries and compatibility-matrix/rollback planning in the game-agnostic operations model. Treat this as a current-Cfx engineering signal only; do not implement GTA VI-specific runtime behavior from it.
+
+**Affected project references:** `server/RUNTIME_REQUIREMENTS.md` remains unchanged and all GTA VI `RT-*` requirements remain `UNKNOWN`. No ADR changes state and no GTA VI roadmap integration gate advances.
+
+Official source:
+
+- Cfx Admin — _FiveM for GTAV Enhanced: Early Access Patch Notes September 30_, published 2026-09-30; verified 2026-10-04: https://github.com/citizenfx/rfc/discussions/564
 
 ### Rockstar has a published RP-server policy
 
