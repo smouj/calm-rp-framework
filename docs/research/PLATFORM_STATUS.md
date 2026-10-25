@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-10-15
+**Last verified:** 2026-10-26
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -140,7 +140,7 @@ Official source:
 
 **Classification:** `CONFIRMED` for the current **FiveM/RedM server-list ecosystem**. This is **not** a GTA VI runtime confirmation.
 
-On **October 14, 2026**, Cfx.re announced that public server metadata previously configured locally in server configuration files — including server name, description, tags, language and imagery — is moving to management through the **Cfx Portal**. Cfx.re states that most of the change takes effect on **October 21, 2026**. Servers without required Portal metadata will be shown as missing server data in the server list. The update also limits public server tags to five, adds a Portal-managed Discord link, and publishes updated banner/profile-image requirements.
+On **October 14, 2026**, Cfx.re announced that public server metadata previously configured locally in server configuration files — including server name, description, tags, language and imagery — was moving to management through the **Cfx Portal**. On **October 21, 2026**, Cfx.re updated the same first-party announcement to confirm that the server-metadata changes had rolled out across FiveM and RedM: names, descriptions, tags, language settings, imagery and the associated Discord link are now managed through Cfx Portal. Servers without required Portal metadata are shown as missing server data in the server list. The update also limits public server tags to five and publishes updated banner/profile-image requirements.
 
 **Exact claim supported:**
 
@@ -152,7 +152,7 @@ On **October 14, 2026**, Cfx.re announced that public server metadata previously
 
 **Published:** 2026-10-14
 
-**Verified:** 2026-10-15
+**Verified:** 2026-10-26
 
 **Evidence classification:** `CONFIRMED` for current FiveM/RedM operations.
 
@@ -164,7 +164,7 @@ On **October 14, 2026**, Cfx.re announced that public server metadata previously
 
 Official source:
 
-- Cfx.re — _Portal Update: Server Metadata Management_, published 2026-10-14, verified 2026-10-15: https://forum.cfx.re/t/portal-update-server-metadata-management/5431315
+- Cfx.re — _Portal Update: Server Metadata Management_, published 2026-10-14; rollout confirmation added 2026-10-21; verified 2026-10-26: https://forum.cfx.re/t/portal-update-server-metadata-management/5431315
 
 ### Rockstar has a published RP-server policy
 
