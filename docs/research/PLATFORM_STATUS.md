@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-10-04
+**Last verified:** 2026-10-29
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -163,6 +163,36 @@ What this does **not** establish:
 Official source:
 
 - Cfx Admin — _FiveM for GTAV Enhanced: Early Access Patch Notes September 30_, published 2026-09-30; verified 2026-10-04: https://github.com/citizenfx/rfc/discussions/564
+
+### FiveM for GTAV Enhanced migration guide confirms breaking runtime semantics
+
+**Classification:** `CONFIRMED` only for the currently documented **FiveM for GTAV Enhanced** runtime. **Not** a GTA VI community-server contract.
+
+Cfx.re's first-party developer migration guide documents multiple breaking differences between FiveM for GTAV Legacy and FiveM for GTAV Enhanced. The page does not expose a publication or last-updated date; its contents were **verified on 2026-10-29**.
+
+**Exact claims supported:**
+
+- Enhanced replaces peer-to-peer synchronization with a client-server synchronization model; OneSync non-big mode is removed, leaving big mode as the only mode. Player connect/disconnect event scoping is therefore different from Legacy.
+- Server-side player IDs are released on disconnect and may be reused for the next connecting player, unlike Legacy's incrementing assignment until wraparound. Cfx.re explicitly warns this behavior may change.
+- State-bag callbacks fire only if the entity exists, and replicated values are replicated only when explicitly set.
+- Resource asset compatibility may require separate `stream_enhanced` assets, with `stream` serving as a fallback; `stream` is deprecated in this context.
+- Enhanced replaces Mono with .NET and the guide specifies a .NET 10 SDK for development. The guide also documents removed/deprecated server features and configuration variables, including OneSync non-big mode, HTTP/2 support through `sv_netHttp2`, and current lack of Asset Escrow implementation.
+
+**Publisher:** Cfx.re, official FiveM developer documentation.
+
+**Published/updated:** not provided by the source (do not infer a date).
+
+**Verified:** 2026-10-29.
+
+**Limitations:** these are FiveM for GTAV Enhanced migration semantics, not Rockstar GTA VI product/runtime documentation. The page describes current Enhanced behavior, including early-access limitations and explicitly changeable player-ID assignment. It does not establish a GTA VI multiplayer mode, authorized GTA VI community-server runtime, host binaries, scripting contract, authentication model, synchronization API, PC release or supported migration path from FiveM.
+
+**Project impact:** reinforces the existing game-agnostic adapter boundary and the need for version-specific conformance tests. Never treat a transient runtime player ID as a durable account identifier; keep session identity and domain identity separate. Plan compatibility checks for client/server versions, synchronization semantics, resource variants and lifecycle event scoping in the Cfx research lab. These are design safeguards, not claims about GTA VI.
+
+**Affected references:** `RT-003`, `RT-004`, `RT-005`, `RT-008`, `RT-009`, `RT-010`, `RT-017`, `RT-020` and `RT-022` remain `UNKNOWN` for GTA VI; no row in `docs/server/RUNTIME_REQUIREMENTS.md` changes. `ADR-0001` (game-agnostic core and adapters) remains accepted. `docs/roadmap/ROADMAP.md` P4 may use this as a research/conformance reference, while P5 remains blocked. No runtime code or architecture change is authorized.
+
+Official source:
+
+- Cfx.re — _What's Changed in FiveM for GTAV Enhanced_, publication/update date not shown; verified 2026-10-29: https://docs.fivem.net/docs/developers/legacy-vs-enhanced/
 
 ### Rockstar has a published RP-server policy
 
