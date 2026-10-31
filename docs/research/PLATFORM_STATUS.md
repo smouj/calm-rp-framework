@@ -1,6 +1,7 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-09-12
+**Last full platform-research snapshot:** 2026-09-12  
+**Targeted first-party follow-up:** 2026-10-31 (release/platform, Launcher/FiveM, Cfx service components, RP licensing; not a complete re-audit of the technology matrix)
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -136,13 +137,25 @@ Official source:
 
 - Rockstar Games Support — _Service Status_, verified 2026-09-12: https://support.rockstargames.com/servicestatus?lang=en
 
-### Rockstar has a published RP-server policy
+### Rockstar has a published Creator Platform RP-server policy
 
-Rockstar's public policy recognizes third-party RP servers as community-created experiences while reserving enforcement rights and identifying areas such as IP misuse, certain commercial exploitation, crypto assets and interference with official online services as enforcement priorities.
+**Classification:** `CONFIRMED` only for Rockstar's **currently covered Creator Services/games**. Whether GTA VI is an authorized Covered Game remains `UNKNOWN`.
 
-Official source:
+The Rockstar support page for RP policies was updated **September 15, 2026** and directs server operators to the Rockstar Terms of Service, **Creator Platform License Agreement** (dated **September 10, 2026**) and Mod Guidelines. The Creator Platform License Agreement describes the current Creator Services, expressly names FiveM/RedM, and requires authorization for each **Covered Game** (§§1.1–1.3). It also has provisions on independent server branding (§2.3), commercial exploitation (§3) and availability/updates (§7), which must be reviewed for the applicable authorized product before operating a commercial server.
 
-- https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers
+What this does **not** establish:
+
+- that GTA VI is a Covered Game or has an authorized community-server path;
+- that current creator-runtime, launcher, identity or scripting contracts apply to GTA VI;
+- that any planned monetization, asset reuse or branding is already compliant with future GTA VI terms.
+
+**Project impact (targeted review 2026-10-31):** keep `RT-001` and `RT-021` at `UNKNOWN`, preserve P5 as `BLOCKED`, and require **human policy/legal review** before making runtime authorization, commercialization or branding decisions. Current Rockstar Creator Platform support must not be transformed into GTA VI rights by analogy. See [assumptions and dependencies](../roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md) (F-06, E-01/E-08) and [risk register](../roadmap/RISK_REGISTER.md) (R-001/R-004). This is evidence tracking, not a legal approval.
+
+Official sources:
+
+- Rockstar Games Support — _Policies and guidelines regarding Roleplay (RP) Servers_, last updated 2026-09-15, checked 2026-10-31: https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers
+- Rockstar Games — _Creator Platform License Agreement_, last updated 2026-09-10, checked 2026-10-31: https://fivem.net/terms
+- Rockstar Games — _Mod Guidelines_: https://www.rockstargames.com/community-resources/mod-guidelines
 
 ### Cfx.re is part of Rockstar Games
 
@@ -151,6 +164,13 @@ Cfx.re announced in 2023 that the team behind FiveM and RedM joined Rockstar Gam
 Official source:
 
 - https://forum.cfx.re/t/cfx-re-officially-joins-rockstar-games/5158920
+
+## Targeted verification after the September snapshot (2026-10-31)
+
+- Rockstar's 2026-10-15 GTA VI launch-trailer announcement and current [official GTA VI page](https://www.rockstargames.com/VI) continue to list **November 19, 2026**, PlayStation 5 and Xbox Series X|S. This confirms the advertised product/release scope only; it does **not** supply a PC or community-server contract.
+- The Rockstar Launcher [1.0.109.3031 notes](https://support.rockstargames.com/articles/2N4ztI3jnLAEP77euIvhBD/rockstar-games-launcher-update-1-0-109-3031-notes) (last updated 2026-10-02) still explicitly discuss interoperability with **FiveM**. The [Rockstar service-status page](https://support.rockstargames.com/servicestatus) still enumerates Cfx service components. Neither is a GTA VI integration promise, service SLA or versioned API.
+- The [RP policy page](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers) and [Creator Platform License Agreement](https://fivem.net/terms) have post-snapshot dates (2026-09-15 and 2026-09-10 respectively). Authorization and commercial/legal interpretation remain subject to human review.
+- This targeted pass provides **no basis to promote any GTA VI RT requirement**, validate an adapter, change accepted ADRs or advance P5. It does not claim to exhaustively verify every upstream source or rule out future announcements.
 
 ## Confirmed technology signals outside a GTA VI contract
 
