@@ -24,6 +24,7 @@ The repository is intentionally split between **decisions we control now** and *
 - [`research/ROCKSTAR_TECHNOLOGY_BASELINE.md`](./research/ROCKSTAR_TECHNOLOGY_BASELINE.md) — first-party Rockstar/Cfx technology evidence, planning implications and explicit limits on GTA VI inference.
 - [`server/DOMAIN_CATALOG.md`](./server/DOMAIN_CATALOG.md) — domain ownership, invariants and runtime dependencies.
 - [`roadmap/RISK_REGISTER.md`](./roadmap/RISK_REGISTER.md) — material project risks, mitigations and reassessment triggers.
+- [`roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md`](./roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md) — dated fact/hypothesis/dependency map, external proof gates, reversible versus deferred decisions and readiness by phase.
 - [`branding/PROJECT_IDENTITY.md`](./branding/PROJECT_IDENTITY.md) — independent identity, asset and documentation-style policy.
 
 ## Architecture decisions
@@ -58,6 +59,7 @@ This split prevents a true statement such as “Rockstar gameplay engineers use 
 6. **Unknown means unknown.** Current FiveM/RedM behavior may inform research but cannot be silently promoted to a GTA VI guarantee.
 7. **Technology evidence is scoped.** A language or tool confirmed in Rockstar's current engineering stack does not become a GTA VI community-server runtime contract without GTA VI-specific evidence.
 8. **Automation follows governance.** Scheduled research may maintain documentation, but it cannot bypass evidence, CI, ADR or runtime-promotion gates.
+9. **Risk and assumptions are distinct.** The risk register tracks consequences and mitigations; the assumptions map traces confirmed evidence, hypotheses, external gating requirements and reversibility. Neither changes the canonical `RT-*` state by itself.
 
 ## Document states
 
