@@ -13,7 +13,7 @@ It focuses on decisions and mitigations we control. Unknown external facts remai
 
 - **External blockers (not our delivery failures):** R-001–R-004. No GTA VI community-server permission, PC/host toolchain or real runtime API is currently established in the project's GTA VI requirements register. Rockstar's current GTAV/Cfx tooling, Launcher integration and service status do not remove these blockers.
 - **Architecture/implementation control:** R-005–R-009, R-012, R-013. Keep the simulator authoritative, experiments isolated, and architectural decisions traceable to ADRs.
-- **Production/security control:** R-007, R-008, R-010, R-014, R-015. Recovery, permissions, dependency health and compatibility must be *demonstrated* before shipping.
+- **Production/security control:** R-007, R-008, R-010, R-014, R-015. Recovery, permissions, dependency health and compatibility must be _demonstrated_ before shipping.
 
 **Priority review:** R-001 (authorization), R-002 (runtime mismatch), R-003 (host/toolchain availability), R-004 (license/policy), R-007 (economic integrity), R-010 (recovery). These priorities reflect consequences and blocking dependencies, not fabricated likelihoods. An accepted ADR is an internal design decision, not a GTA VI capability claim.
 
@@ -64,7 +64,7 @@ Trigger for reassessment: verified GTA VI community-server host OS, binary distr
 
 **Impact:** High
 
-Rockstar Games, Take-Two or Cfx.re policies may restrict covered games, branding, monetization, assets, integrations, third-party services or server operation. The Rockstar RP policy page was updated 2026-09-15 and points to a Creator Platform License Agreement dated 2026-09-10. Its *Covered Games* condition does not itself authorize GTA VI.
+Rockstar Games, Take-Two or Cfx.re policies may restrict covered games, branding, monetization, assets, integrations, third-party services or server operation. The Rockstar RP policy page was updated 2026-09-15 and points to a Creator Platform License Agreement dated 2026-09-10. Its _Covered Games_ condition does not itself authorize GTA VI.
 
 Mitigation:
 
@@ -214,7 +214,7 @@ Trigger for reassessment: explicit first-party GTA VI community-runtime/launcher
 
 **Impact:** High
 
-A future authorized runtime may rely on authentication, distribution or runtime services beyond our control. Existing Cfx status components are evidence of *current* operational surfaces, not proof of a GTA VI dependency list or service-level guarantees.
+A future authorized runtime may rely on authentication, distribution or runtime services beyond our control. Existing Cfx status components are evidence of _current_ operational surfaces, not proof of a GTA VI dependency list or service-level guarantees.
 
 Mitigation:
 
@@ -233,7 +233,7 @@ An evolving game, launcher, creator runtime and adapter may become incompatible 
 
 Mitigation:
 
-- reserve separate game/runtime/launcher/adapter version dimensions in *future* compatibility documentation;
+- reserve separate game/runtime/launcher/adapter version dimensions in _future_ compatibility documentation;
 - keep deployments and migrations reversible where possible; use staging and conformance tests before promotion;
 - do not pin a GTA VI launcher version, resource manifest or bridge implementation before documentation exists;
 - require an explicit update/rollback/forward-fix policy for each confirmed adapter capability.
