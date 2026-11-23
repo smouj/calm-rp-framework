@@ -22,3 +22,5 @@ export class SimulatorPlayerDirectory {
     this.#players.delete(id);
   }
 }
+
+export { createSampleWorldPlanningCatalog } from './world-planning.js';
