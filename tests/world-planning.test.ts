@@ -1,8 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  WorldPlanningCatalog,
-  type PlannedLocation,
-} from '../packages/core/src/world-planning.js';
+import { WorldPlanningCatalog, type PlannedLocation } from '../packages/core/src/world-planning.js';
 
 const square: PlannedLocation = {
   id: 'district_alpha',
@@ -43,7 +40,7 @@ describe('game-independent world planning', () => {
     expect(catalog.at('space_b', { x: 1, y: 0, z: 0 })).toEqual([]);
   });
 
-  it('filters reviewed locations without confusing conceptual hierarchy with spatial routing', () => {
+  it('filters reviewed locations independently of conceptual parents', () => {
     const catalog = new WorldPlanningCatalog([lobby, square]);
 
     expect(catalog.list({ status: 'reviewed' }).map((value) => value.id)).toEqual([
