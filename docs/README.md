@@ -20,6 +20,8 @@ The repository is intentionally split between **decisions we control now** and *
 
 ## Supporting references
 
+- [`research/LEONIDA_2026-11-23.md`](./research/LEONIDA_2026-11-23.md) — dated assessment of a third-party recompilation project; research only, not GTA VI runtime evidence.
+- [`operations/THIRD_PARTY_ARTIFACT_POLICY.md`](./operations/THIRD_PARTY_ARTIFACT_POLICY.md) — workspace isolation, provenance review and game-file safeguards.
 - [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.
 - [`research/ROCKSTAR_TECHNOLOGY_BASELINE.md`](./research/ROCKSTAR_TECHNOLOGY_BASELINE.md) — first-party Rockstar/Cfx technology evidence, planning implications and explicit limits on GTA VI inference.
 - [`server/DOMAIN_CATALOG.md`](./server/DOMAIN_CATALOG.md) — domain ownership, invariants and runtime dependencies.
