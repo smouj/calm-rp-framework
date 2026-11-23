@@ -1,6 +1,6 @@
 # Documentation Map
 
-This directory is the maintained knowledge base for the future GTA VI RP server project.
+This directory is the maintained knowledge base for the future GTA VI RP community platform project.
 
 The repository is intentionally split between **decisions we control now** and **runtime facts that must be verified later**. Documentation should make that boundary obvious at all times.
 
@@ -10,7 +10,7 @@ The repository is intentionally split between **decisions we control now** and *
 | -------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------- |
 | [`PROJECT_SCOPE.md`](./PROJECT_SCOPE.md)                                   | Product boundary, goals, non-goals and decision gates         | Project scope source of truth   |
 | [`../ARCHITECTURE.md`](../ARCHITECTURE.md)                                 | System-level architecture and dependency direction            | Architecture overview           |
-| [`server/SERVER_BLUEPRINT.md`](./server/SERVER_BLUEPRINT.md)               | Functional blueprint for our future RP server                 | Server-design reference         |
+| [`server/SERVER_BLUEPRINT.md`](./server/SERVER_BLUEPRINT.md)               | Reference RP server feature blueprint                 | Server-design reference         |
 | [`server/RUNTIME_REQUIREMENTS.md`](./server/RUNTIME_REQUIREMENTS.md)       | Runtime capabilities required before real GTA VI integration  | Integration readiness register  |
 | [`research/PLATFORM_STATUS.md`](./research/PLATFORM_STATUS.md)             | Confirmed public facts versus unknown GTA VI platform details | Platform-status source of truth |
 | [`research/RESEARCH_PROTOCOL.md`](./research/RESEARCH_PROTOCOL.md)         | Evidence classification and research update process           | Research governance             |
@@ -31,9 +31,21 @@ The repository is intentionally split between **decisions we control now** and *
 Architecture Decision Records live in [`adr/`](./adr/).
 
 - [`0001-game-agnostic-core.md`](./adr/0001-game-agnostic-core.md) — domain code remains independent from game runtimes.
-- [`0002-single-server-not-framework.md`](./adr/0002-single-server-not-framework.md) — optimize for our server, not a generic framework product.
+- [`0002-single-server-not-framework.md`](./adr/0002-single-server-not-framework.md) — historical single-server scope; supersession proposed in ADR-0006.
 - [`0003-modular-monolith-first.md`](./adr/0003-modular-monolith-first.md) — keep deployment simple until measured requirements justify extraction.
 - [`0004-authoritative-postgresql-ephemeral-redis.md`](./adr/0004-authoritative-postgresql-ephemeral-redis.md) — durable RP state has one authoritative store; Redis remains reconstructable.
+
+- [`0006-community-open-platform.md`](./adr/0006-community-open-platform.md) — proposed shift to an open-source, community-contributed RP platform.
+
+## Open-source community
+
+- [`../README.md`](../README.md) and [`../README.es.md`](../README.es.md) — international and Spanish onboarding.
+- [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contributor workflow and quality standards.
+- [`../CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md) — expectations for respectful collaboration.
+- [`../GOVERNANCE.md`](../GOVERNANCE.md) — review, decision and maintainer responsibilities.
+- [`../SUPPORT.md`](../SUPPORT.md) — support channels and their limitations.
+- [`../TRADEMARKS.md`](../TRADEMARKS.md) — fan-project identity and third-party rights.
+- [`community/PUBLIC_LAUNCH_CHECKLIST.md`](./community/PUBLIC_LAUNCH_CHECKLIST.md) — safety gates and GitHub publication settings.
 
 New ADRs are required when a change introduces a durable architectural constraint, changes a cross-module contract, adopts a new authoritative data store, or binds the project to a verified GTA VI runtime capability.
 
