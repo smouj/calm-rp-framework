@@ -10,7 +10,7 @@ The repository is intentionally split between **decisions we control now** and *
 | -------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------- |
 | [`PROJECT_SCOPE.md`](./PROJECT_SCOPE.md)                                   | Product boundary, goals, non-goals and decision gates         | Project scope source of truth   |
 | [`../ARCHITECTURE.md`](../ARCHITECTURE.md)                                 | System-level architecture and dependency direction            | Architecture overview           |
-| [`server/SERVER_BLUEPRINT.md`](./server/SERVER_BLUEPRINT.md)               | Reference RP server feature blueprint                 | Server-design reference         |
+| [`server/SERVER_BLUEPRINT.md`](./server/SERVER_BLUEPRINT.md)               | Reference RP server feature blueprint                         | Server-design reference         |
 | [`server/RUNTIME_REQUIREMENTS.md`](./server/RUNTIME_REQUIREMENTS.md)       | Runtime capabilities required before real GTA VI integration  | Integration readiness register  |
 | [`research/PLATFORM_STATUS.md`](./research/PLATFORM_STATUS.md)             | Confirmed public facts versus unknown GTA VI platform details | Platform-status source of truth |
 | [`research/RESEARCH_PROTOCOL.md`](./research/RESEARCH_PROTOCOL.md)         | Evidence classification and research update process           | Research governance             |
