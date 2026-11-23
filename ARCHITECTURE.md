@@ -10,7 +10,7 @@ The architecture is not a functioning FiveM replacement today. It must remain us
 
 ### Portable, server-authoritative domain
 
-Persistent RP state belongs in domain/application services: accounts, characters, economy, inventory, jobs, permissions and property ownership. Clients and adapters communicate *intent*, not authoritative balances or ownership.
+The game client is untrusted. Persistent RP state belongs in domain/application services: accounts, characters, economy, inventory, jobs, permissions and property ownership. Clients and adapters communicate *intent*, not authoritative balances or ownership.
 
 ```text
 client / simulator input
