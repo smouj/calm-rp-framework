@@ -28,6 +28,7 @@ These topics express interests and project aspiration; they are **not** evidence
 - [ ] Inspect GitHub Actions history, job logs, artifacts and failed workflow output for passwords, tokens, private URLs, copyrighted data, personal details and secrets.
 - [ ] Check issue/PR bodies, comments and attachments; public visibility may expose historical discussions.
 - [ ] Run an independent local secret scan against all reachable history; review results manually.
+- [ ] Establish and test a confidential way to report serious conduct concerns without publishing personal details.
 - [ ] Verify ownership and the ability to distribute every committed file and dependency. Do not license third-party code without permission.
 - [ ] Rotate compromised keys **before** exposure, even if the secret is removed from the latest commit.
 - [ ] If history cannot be cleaned safely, **create a new clean public repository** containing only approved content instead of exposing the private repository's history.
