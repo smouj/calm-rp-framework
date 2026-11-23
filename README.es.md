@@ -35,7 +35,7 @@ Podemos construir ya lógica de personajes, economía, inventarios, propiedades,
 
 Rockstar anunció el lanzamiento del juego en consolas el **19 de noviembre de 2026**, pero eso **no confirma** soporte para servidores comunitarios. [Fuente oficial](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-**Estado de CI alojado (23 de noviembre de 2026):** la última [ejecución de GitHub Actions](https://github.com/smouj/gta6-rp-platform/actions/runs/45200562038) falló antes de asignar un runner y no ejecutó ningún paso. `pnpm check` pasa localmente en `main`; la insignia refleja el fallo del runner alojado.
+**Estado de CI alojado:** las ejecuciones recientes de `main` fallaron antes de que GitHub asignara un runner y no ejecutaron ningún paso. Las comprobaciones locales pasaron durante esta auditoría de lanzamiento; consulta las [ejecuciones del flujo de CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml) para ver el estado actual.
 
 La estructura conocida de algunos archivos del juego puede inspirar decisiones de diseño, pero no confirma una interfaz de desarrollo ni autorización para distribuir modificaciones.
 

@@ -38,7 +38,7 @@ Developers, artists, testers, documentation writers, security specialists and fa
 
 Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-**Hosted CI note (23 November 2026):** the latest [GitHub Actions run](https://github.com/smouj/gta6-rp-platform/actions/runs/45200562038) failed before a runner was assigned and executed no steps. `pnpm check` passes locally on `main`; the badge reflects the hosted runner failure.
+**Hosted CI status:** recent runs on `main` failed before GitHub assigned a runner and executed no steps. Local development checks passed during this launch audit; see the [CI workflow runs](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml) for the live status.
 
 See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 
