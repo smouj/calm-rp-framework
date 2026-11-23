@@ -37,6 +37,8 @@ Architecture Decision Records live in [`adr/`](./adr/).
 
 - [`0006-community-open-platform.md`](./adr/0006-community-open-platform.md) — proposed shift to an open-source, community-contributed RP platform.
 
+New ADRs are required when a change introduces a durable architectural constraint, changes a cross-module contract, adopts a new authoritative data store, or binds the project to a verified GTA VI runtime capability.
+
 ## Open-source community
 
 - [`../README.md`](../README.md) and [`../README.es.md`](../README.es.md) — international and Spanish onboarding.
@@ -48,7 +50,6 @@ Architecture Decision Records live in [`adr/`](./adr/).
 - [`../TRADEMARKS.md`](../TRADEMARKS.md) — fan-project identity and third-party rights.
 - [`community/PUBLIC_LAUNCH_CHECKLIST.md`](./community/PUBLIC_LAUNCH_CHECKLIST.md) — safety gates and GitHub publication settings.
 
-New ADRs are required when a change introduces a durable architectural constraint, changes a cross-module contract, adopts a new authoritative data store, or binds the project to a verified GTA VI runtime capability.
 
 ## Research document responsibilities
 
