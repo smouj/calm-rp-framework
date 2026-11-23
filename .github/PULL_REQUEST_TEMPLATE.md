@@ -1,25 +1,21 @@
 ## Purpose
 
-State the problem this change solves and why it belongs in our future GTA VI RP server.
+Link the issue or describe the contributor/user problem and the tested outcome.
 
-## Scope
+## Scope and maturity
 
-- [ ] The change is focused on one concern
-- [ ] It serves our own server/community rather than a generic framework use case
-- [ ] Any GTA VI-specific dependency is backed by a public first-party source
-- [ ] Unknown runtime behavior is documented instead of guessed
+- [ ] This change is bounded and useful for the open RP platform or its simulator
+- [ ] The PR distinguishes implemented, prototype, research, proposed and blocked work
+- [ ] No unsupported GTA VI API, multiplayer capability or authorization is claimed
+- [ ] No game binaries, extracted assets, leaks, secrets or protected data are included
 
-## Architecture
+## Engineering and review
 
-- [ ] Domain packages remain independent from game/runtime-specific APIs
-- [ ] Server authority remains intact for persistent or valuable state
-- [ ] Cross-module contract changes are explicit
-- [ ] Persistence changes include a forward migration
-- [ ] Operational complexity added by this change is justified
-
-## Security and abuse cases
-
-Describe new player-controlled input, permissions, trust boundaries, economic impact, moderation impact, or abuse paths. Write `None` only when the change cannot affect them.
+- [ ] Game-specific APIs stay outside portable domain code
+- [ ] Security-sensitive state remains server-authoritative
+- [ ] Contract changes and persistence migrations are documented and tested where applicable
+- [ ] New dependencies have a licensing/security rationale
+- [ ] Changes to architecture, licensing, platform policy or security have human review
 
 ## Verification
 
@@ -27,12 +23,16 @@ Describe new player-controlled input, permissions, trust boundaries, economic im
 - [ ] `pnpm typecheck`
 - [ ] `pnpm test`
 - [ ] `pnpm format:check`
-- [ ] Relevant simulator or migration checks were added when needed
+- [ ] Relevant conformance, simulator or migration tests added if necessary
 
-## Evidence
+Record the actual command outcomes. Do not mark CI green if GitHub never assigned a runner.
 
-For platform/runtime research or GTA VI integration work, list the public first-party sources and the classification used in `docs/research/PLATFORM_STATUS.md`. Otherwise write `Not applicable`.
+## Evidence and attribution
+
+For platform/runtime research include publisher, URL, publication date, verification date, exact confirmed scope and unknowns. Otherwise write `Not applicable`.
+
+Confirm contributed material can be licensed under the project MIT license, and identify third-party sources where needed.
 
 ## Follow-up
 
-List intentionally deferred work, blocked runtime requirements, or `None`.
+Deferred work, intentionally unresolved questions, blocked GTA VI requirements or `None`.
