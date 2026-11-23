@@ -35,6 +35,8 @@ Developers, artists, testers, documentation writers, security specialists and fa
 | GTA VI game/runtime adapter                                 | **BLOCKED** — authorization and runtime contracts unknown |
 | GTA VI client, multiplayer server or downloadable release   | **NOT IMPLEMENTED**                                       |
 
+Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
+
 See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 
 ## How it is designed
