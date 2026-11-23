@@ -64,19 +64,20 @@ Mitigation:
 
 Trigger for reassessment: new or revised first-party RP/community-server policy.
 
-## R-005 — Premature framework/platform scope
+## R-005 — Open-platform feature sprawl
 
 **Impact:** High
 
-Building extension systems, plugin APIs, hosting features or public framework compatibility could consume effort without helping our own server.
+A public FiveM-inspired vision may attract premature demands for plugin ABIs, hosting, marketplaces, network clients and compatibility layers before the project has verified domain functionality or game-runtime authorization.
 
 Mitigation:
 
-- enforce ADR-0002;
-- require feature proposals to state the server need;
-- extract reusable components only after proven internal use.
+- use proposed ADR-0006 as the scope transition record;
+- require feature proposals to state a reusable, tested contributor or RP need;
+- stabilize domain contracts only after simulator and security tests;
+- keep conditional GTA VI-specific requirements blocked until first-party evidence.
 
-Trigger for reassessment: concrete need to distribute a proven component externally.
+Trigger for reassessment: a proven integration requirement, representative user need or reliable platform announcement.
 
 ## R-006 — Premature distributed architecture
 
@@ -183,6 +184,36 @@ Mitigation:
 - remove or mark superseded documents instead of leaving contradictory guidance.
 
 Trigger for reassessment: any architecture, runtime or source-of-truth change.
+
+## R-013 — Private history exposed during publication
+
+**Impact:** Critical
+
+Changing repository visibility could expose prior commits, branches, issues, PR attachments or GitHub Actions logs that contain sensitive information or third-party content.
+
+Mitigation:
+
+- require the [public launch checklist](../community/PUBLIC_LAUNCH_CHECKLIST.md);
+- audit historical data and job artifacts, not just current tracked files;
+- rotate any secrets and publish a clean repository instead if the history cannot be safely sanitized;
+- enable appropriate secret scanning, push protection and restricted merge permissions.
+
+Trigger for reassessment: proposed visibility change or new sensitive finding.
+
+## R-014 — Fan branding mistaken for authorized GTA VI support
+
+**Impact:** High
+
+Names, badges, logos or download descriptions could imply official endorsement, trademark permission, a working game client or an authorized third-party server.
+
+Mitigation:
+
+- apply [trademark and fan-project rules](../../TRADEMARKS.md);
+- use original graphics and explicit non-affiliation wording;
+- link official terms and distinguish a research goal from a supported runtime;
+- require human review for any game-facing release or legal interpretation.
+
+Trigger for reassessment: external launch, branding refresh, proposed game integration or policy update.
 
 ## Review rule
 
