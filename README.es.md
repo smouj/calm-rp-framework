@@ -7,10 +7,11 @@
 [![CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml)
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-275D88.svg)](./LICENSE)
 [![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
-[![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-326E74.svg)](./CONTRIBUTING.md)
+[![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-326E74.svg)](./CONTRIBUTING.es.md)
+[![Comunidad en Discord](https://img.shields.io/badge/Discord-comunidad-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![Multijugador de GTA VI](https://img.shields.io/badge/multijugador%20GTA%20VI-no%20disponible-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
-**[English](./README.md) · [Español](./README.es.md) · [Contribuir](./CONTRIBUTING.md) · [Hoja de ruta](./docs/roadmap/ROADMAP.md)**
+**[English](./README.md) · [Español](./README.es.md) · [Contribuir](./CONTRIBUTING.es.md) · [Código de conducta](./CODE_OF_CONDUCT.es.md) · [Soporte](./SUPPORT.es.md) · [Hoja de ruta](./docs/roadmap/ROADMAP.md) · [Discord comunitario](https://discord.com/invite/BVWXWY5eUT)**
 
 </div>
 
@@ -33,6 +34,8 @@ Podemos construir ya lógica de personajes, economía, inventarios, propiedades,
 - **Bloqueado:** adaptador real de GTA VI, cliente multijugador y servidor jugable.
 
 Rockstar anunció el lanzamiento del juego en consolas el **19 de noviembre de 2026**, pero eso **no confirma** soporte para servidores comunitarios. [Fuente oficial](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
+
+**Estado de CI alojado (23 de noviembre de 2026):** la última [ejecución de GitHub Actions](https://github.com/smouj/gta6-rp-platform/actions/runs/45200562038) falló antes de asignar un runner y no ejecutó ningún paso. `pnpm check` pasa localmente en `main`; la insignia refleja el fallo del runner alojado.
 
 La estructura conocida de algunos archivos del juego puede inspirar decisiones de diseño, pero no confirma una interfaz de desarrollo ni autorización para distribuir modificaciones.
 

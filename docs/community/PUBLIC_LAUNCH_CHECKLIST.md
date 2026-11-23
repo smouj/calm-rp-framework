@@ -8,9 +8,9 @@ This is the maintainer's release gate for opening an existing private repository
 
 **Repository name:** `gta6-rp-platform` (retain the existing URL)
 
-**Short description** (copy to GitHub About):
+**Short description** (set on GitHub About):
 
-> Unofficial open-source GTA VI RP platform project. Community-built roleplay foundations, simulator and research; GTA VI multiplayer integration not available.
+> Unofficial, community-built open-source foundations for a future GTA VI roleplay platform. GTA VI multiplayer integration is not available.
 
 **Topics** (copy to GitHub About; all lower-case):
 
@@ -25,10 +25,10 @@ These topics express interests and project aspiration; they are **not** evidence
 ## Security review before visibility changes
 
 - [x] Inspect all commits reachable from the fetched branches, including deleted files, merge history and tags; review the available pull request history.
-- [ ] Inspect GitHub Actions history, job logs, artifacts and failed workflow output for passwords, tokens, private URLs, copyrighted data, personal details and secrets.
+- [x] Inspect GitHub Actions history, available job logs, artifacts and failed workflow output for passwords, tokens, private URLs, copyrighted data, personal details and secrets.
 - [x] Check issue/PR bodies, comments and available attachments; public visibility may expose historical discussions.
 - [x] Run an independent local secret-pattern scan against all reachable history and manually review the two local-placeholder matches.
-- [ ] Establish and test a confidential way to report serious conduct concerns without publishing personal details.
+- [x] Document conduct-report boundaries: GitHub's **Report content** controls cover GitHub-hosted content; the linked Discord is for general questions only and is not monitored for private moderator messages. There is no confidential project channel for off-platform conduct reports; do not solicit sensitive details in public.
 - [ ] Verify ownership and the ability to distribute every committed file and dependency. Do not license third-party code without permission.
 - [ ] Rotate compromised keys **before** exposure, even if the secret is removed from the latest commit.
 - [ ] If history cannot be cleaned safely, **create a new clean public repository** containing only approved content instead of exposing the private repository's history.
@@ -42,11 +42,13 @@ The following local/API checks were completed, but **do not amount to public-rel
 
 - Fetched all **18 current remote branches** and scanned all reachable Git history: **193 commits, 878 objects and 228 file blobs**. No private-key, AWS/GitHub/Slack token patterns were found. The only credential-pattern matches were the known local placeholders in `.env.example` and `infrastructure/docker/compose.yml`; commit author identities use GitHub's `users.noreply.github.com` address format. No tags were present.
 - Reviewed the bodies and file patches for all **25 pull requests**, the discussion timelines, and the five standalone issues. No user-uploaded attachments or proprietary game-file paths were found. The only broad-pattern matches were `.env.example` and `infrastructure/docker/compose.yml`; their values are local-development placeholders, not credentials.
-- The CI workflow uses read-only repository permissions, pinned checkout/setup actions and does not reference repository secrets. This PR's initial [CI run](https://github.com/smouj/gta6-rp-platform/actions/runs/45199513965) and rerun [#120](https://github.com/smouj/gta6-rp-platform/actions/runs/45199743913) both failed before a runner was assigned: there are no job steps or artifacts, and the log endpoint returned `404 BlobNotFound`. Local validation passed, but historical Actions logs and artifacts remain **unreviewed**.
-- The connected GitHub API does not expose secret-scanning alerts. A repository owner must inspect the Security page and any available alerts before changing visibility.
-- The repository is still private. About metadata, Discussions, branch protection, private conduct reporting and visibility settings have not been configured or verified.
+- The CI workflow uses read-only repository permissions, pinned checkout/setup actions and does not reference repository secrets. The full available Actions history contained **154 runs** and **153 jobs**. All **135 available job logs** were scanned; **18 jobs** had no steps or logs; none of the 154 runs had artifacts. No credential, non-GitHub email or proprietary game-file patterns were found in the available logs. The latest [main run #122](https://github.com/smouj/gta6-rp-platform/actions/runs/45200562038) failed before runner assignment; its log endpoint returned `404 BlobNotFound`. Local validation passed, but hosted CI remains unavailable.
+- The GitHub Security page reports **zero open Dependabot vulnerability alerts** and **zero open malware alerts** after the dependency scan on 2026-11-23. The dependency graph, Dependabot alerts, malware alerts and security updates are enabled.
+- GitHub code scanning is disabled for this private personal repository; the Security page says Advanced Security is only available for organizations. Secret scanning, push protection and private vulnerability reporting do not appear in the available settings. Check what becomes available after public visibility and enable it where offered.
+- Actions are enabled. The repository requires actions to be pinned to full-length commit SHAs, and the default `GITHUB_TOKEN` has read-only contents/packages permissions. Fork-PR workflows are not enabled for this private repository; public fork PRs use GitHub's restricted token and first-time runs require approval.
+- The repository is still private. The About description and 12 topics are configured. Discussions are enabled without a welcome post. Direct access review found **zero collaborators**; only the owner has access. A `main` branch protection rule requires pull requests, linear history and resolved conversations, disallows force pushes/deletion and does not allow admin bypass. GitHub says the rule is not enforced while this repository is private on the current plan; verify enforcement after public visibility. The maintainer supplied a Discord invite for general questions only; no private moderator route or confidential off-platform conduct channel is offered.
 
-Before public visibility, still complete the Actions log/artifact review, inspect secret-scanning results and repository access, establish and test a confidential conduct-reporting route, and finish GitHub settings. If any historically exposed credential was live, rotate it.
+Before public visibility, the historical Git/PR/Actions review is complete, no current dependency or malware alerts are open, and direct access is owner-only. After public visibility, verify `main` protection, enable available secret/code scanning and private vulnerability reporting, and keep sensitive conduct details out of public GitHub content and Discord. If any historically exposed credential was live, rotate it.
 
 ## Merge and validation gates
 
@@ -54,19 +56,19 @@ Before public visibility, still complete the Actions log/artifact review, inspec
 - [x] Review [PR #25](https://github.com/smouj/gta6-rp-platform/pull/25) and [PR #26](https://github.com/smouj/gta6-rp-platform/pull/26); keep both as drafts for separate research/architecture review, and do not mix their feature work into the community-foundation merge.
 - [x] Run `pnpm check` on the merged `main` tree (lint, typecheck, 11 tests and Prettier all pass).
 - [ ] Resolve GitHub Actions jobs that fail **before starting any steps**; runner failures cannot be counted as a passing build.
-- [ ] Verify the MIT license applies only to contributor-owned code and documentation.
-- [ ] Verify README, translated README, scope, ADRs, roadmap, templates and security links do not contradict each other.
+- [x] Verify the MIT license applies only to original project code and documentation; game IP and third-party material remain excluded.
+- [x] Reconcile the README, translated README, scope, accepted ADRs, roadmap, templates and security links; correct references that still called ADR-0006 proposed.
 
 ## Configure GitHub
 
 After the security and merge gates are complete:
 
-1. In the repository **About** settings, set description and topics exactly as proposed above; do not invent a homepage.
-2. In **Settings > General**, enable Issues and Discussions; keep Wiki and GitHub Pages disabled until useful.
-3. Enable squash merge and delete merged head branches. Require pull requests, review, resolved conversations and successful `CI / validate` on `main` through branch protection or a ruleset.
-4. Enable dependency alerts, code/secret scanning and push protection where available. Enable private vulnerability reporting.
-5. Review who has write/admin access. Keep `main` protected and prevent forced pushes or deletion.
-6. Verify labels used by issue forms (`bug`, `enhancement`, `dependencies`, `good first issue`, `help wanted`, `documentation`, `research`, `security`). Create missing labels if needed.
+1. The repository **About** description and topics are set; leave the homepage blank until a verified project website exists.
+2. In **Settings > General**, Issues and Discussions are enabled; keep Wiki and GitHub Pages disabled until useful.
+3. Squash merging and automatic deletion of merged head branches are enabled. A `main` branch protection rule requires PRs, resolved conversations and linear history; force pushes and deletion remain disallowed. The current plan does not enforce it while private. Require successful `CI / validate` only after GitHub-hosted runs can start and pass; the current runner assignment failure must not be recorded as a passing check.
+4. The dependency graph, Dependabot alerts, malware alerts and Dependabot security updates are enabled. Check whether code/secret scanning, push protection and private vulnerability reporting become available when public; enable them where available.
+5. Review who has write/admin access. Keep `main` protected and prevent forced pushes or deletion once GitHub enforcement is available.
+6. Verify labels used by issue forms and Dependabot (`bug`, `enhancement`, `dependencies`, `good first issue`, `help wanted`, `documentation`, `research`). Keep security vulnerabilities out of public issue labels and use [SECURITY.md](../../SECURITY.md).
 7. In **Settings > General > Danger Zone > Change repository visibility**, select **Public** only after all reviews are complete.
 8. Once public, verify README/badges, license detection, contributor workflow, discussion access and a clean checkout as an unauthenticated visitor.
 

@@ -6,7 +6,7 @@ Este proyecto es una iniciativa comunitaria de código abierto que busca constru
 
 ## Primeros pasos
 
-1. Lee el [README en español](./README.es.md), el [código de conducta](./CODE_OF_CONDUCT.md) y el [alcance](./docs/PROJECT_SCOPE.md).
+1. Lee el [README en español](./README.es.md), el [código de conducta en español](./CODE_OF_CONDUCT.es.md) y el [alcance](./docs/PROJECT_SCOPE.md).
 2. Busca una [incidencia](https://github.com/smouj/gta6-rp-platform/issues) pequeña que puedas solucionar o propón una tarea concreta.
 3. Crea una bifurcación (fork) y una rama con un nombre como `docs/traduccion-readme` o `test/simulador-personajes`.
 4. Añade pruebas si cambias el comportamiento del código, y explica lo que has comprobado.

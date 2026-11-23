@@ -31,11 +31,11 @@ The repository is intentionally split between **decisions we control now** and *
 Architecture Decision Records live in [`adr/`](./adr/).
 
 - [`0001-game-agnostic-core.md`](./adr/0001-game-agnostic-core.md) — domain code remains independent from game runtimes.
-- [`0002-single-server-not-framework.md`](./adr/0002-single-server-not-framework.md) — historical single-server scope; supersession proposed in ADR-0006.
+- [`0002-single-server-not-framework.md`](./adr/0002-single-server-not-framework.md) — historical single-server scope, superseded by ADR-0006.
 - [`0003-modular-monolith-first.md`](./adr/0003-modular-monolith-first.md) — keep deployment simple until measured requirements justify extraction.
 - [`0004-authoritative-postgresql-ephemeral-redis.md`](./adr/0004-authoritative-postgresql-ephemeral-redis.md) — durable RP state has one authoritative store; Redis remains reconstructable.
 
-- [`0006-community-open-platform.md`](./adr/0006-community-open-platform.md) — proposed shift to an open-source, community-contributed RP platform.
+- [`0006-community-open-platform.md`](./adr/0006-community-open-platform.md) — accepted open-source, community-contributed RP platform scope.
 
 New ADRs are required when a change introduces a durable architectural constraint, changes a cross-module contract, adopts a new authoritative data store, or binds the project to a verified GTA VI runtime capability.
 

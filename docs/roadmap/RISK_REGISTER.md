@@ -72,7 +72,7 @@ A public FiveM-inspired vision may attract premature demands for plugin ABIs, ho
 
 Mitigation:
 
-- use proposed ADR-0006 as the scope transition record;
+- follow the accepted ADR-0006 scope decision;
 - require feature proposals to state a reusable, tested contributor or RP need;
 - stabilize domain contracts only after simulator and security tests;
 - keep conditional GTA VI-specific requirements blocked until first-party evidence.

@@ -73,4 +73,4 @@ Cfx/FiveM concepts and Leonida's public file-format observations may inspire des
 - Prefer additive, versioned contracts and explicit migrations.
 - Keep reviews and security gates visible to outside contributors.
 - Avoid runtime claims until public evidence and reproducible integration tests exist.
-- Follow [ADR-0006](./docs/adr/0006-community-open-platform.md) for the proposed public-platform scope transition.
+- Follow the accepted [ADR-0006](./docs/adr/0006-community-open-platform.md) for the community-platform scope.

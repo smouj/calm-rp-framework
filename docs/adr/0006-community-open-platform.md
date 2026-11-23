@@ -10,7 +10,7 @@ The repository was originally a private blueprint for one future RP server. Its 
 
 That is a product and governance decision, **not** evidence that GTA VI modding, third-party networking or custom servers are authorized or technically supported.
 
-## Proposed decision
+## Decision
 
 - Invite contributions to reusable, game-independent RP systems and tooling.
 - Keep stable domain rules server-authoritative and independent from any game runtime.

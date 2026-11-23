@@ -8,9 +8,10 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-275D88.svg)](./LICENSE)
 [![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-326E74.svg)](./CONTRIBUTING.md)
+[![Discord community](https://img.shields.io/badge/Discord-community-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![GTA VI runtime](https://img.shields.io/badge/GTA_VI_runtime-unavailable-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
-**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Roadmap](./docs/roadmap/ROADMAP.md)**
+**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Code of Conduct](./CODE_OF_CONDUCT.md) · [Support](./SUPPORT.md) · [Roadmap](./docs/roadmap/ROADMAP.md) · [Discord community](https://discord.com/invite/BVWXWY5eUT)**
 
 </div>
 
@@ -36,6 +37,8 @@ Developers, artists, testers, documentation writers, security specialists and fa
 | GTA VI client, multiplayer server or downloadable release   | **NOT IMPLEMENTED**                                       |
 
 Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
+
+**Hosted CI note (23 November 2026):** the latest [GitHub Actions run](https://github.com/smouj/gta6-rp-platform/actions/runs/45200562038) failed before a runner was assigned and executed no steps. `pnpm check` passes locally on `main`; the badge reflects the hosted runner failure.
 
 See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 

@@ -6,7 +6,7 @@ This is a community-oriented open-source **research and prototype** project. The
 
 **Do not open a public issue or discussion containing a vulnerability or working exploit.**
 
-Use [GitHub private vulnerability reporting](https://github.com/smouj/gta6-rp-platform/security/advisories/new) **if enabled by the repository owner**. If the private reporting form is unavailable, contact a project maintainer through a private GitHub communication channel and request a secure way to share a minimal reproduction. Do not disclose secrets or exploit payloads publicly.
+Use [GitHub private vulnerability reporting](https://github.com/smouj/gta6-rp-platform/security/advisories/new) when the form is available. If it is unavailable, do not publish exploit details, secrets or proof-of-concept payloads in public issues, discussions or Discord. The project currently offers no email or private Discord reporting channel.
 
 Include the affected commit, impact, reproducible steps using synthetic data and any safe suggested fix. Maintainers will assess the issue, coordinate a fix and publish a security advisory if warranted. **No response-time or disclosure-date guarantee is currently offered.**
 

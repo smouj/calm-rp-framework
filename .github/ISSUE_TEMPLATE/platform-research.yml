@@ -1,6 +1,7 @@
 name: Platform research
 description: Record a GTA VI, Rockstar, or Cfx.re platform finding with provenance
 title: "research: "
+labels: [research]
 body:
   - type: input
     id: subject

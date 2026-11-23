@@ -2,6 +2,8 @@
 
 We want GTA VI RP Platform to be an inclusive, technically rigorous community where contributors can collaborate respectfully, regardless of experience or background.
 
+Spanish version: [Código de conducta de la comunidad](./CODE_OF_CONDUCT.es.md).
+
 ## Expected behavior
 
 - Be constructive, precise and respectful when proposing or reviewing changes.
@@ -20,11 +22,11 @@ We want GTA VI RP Platform to be an inclusive, technically rigorous community wh
 
 ## Where this applies
 
-This applies to GitHub issues, pull requests, reviews, project discussions and other spaces presented as part of the project.
+This applies to GitHub issues, pull requests, reviews, project discussions, the linked project Discord server and other spaces presented as part of the project.
 
 ## Reporting and enforcement
 
-For harassment or abuse on GitHub, use GitHub's **Report content** controls. For project moderation concerns without sensitive personal details, open a brief issue requesting maintainer attention; do not post private evidence, personal information or harassment details publicly. Maintainers must establish a confidential conduct-reporting channel before public launch if they expect contributors to submit sensitive reports. For code vulnerabilities, use the separate procedure in [SECURITY.md](./SECURITY.md).
+For harassment or abuse in content hosted on GitHub, use GitHub's **Report content** controls. For moderation concerns that do not involve sensitive details, open a brief issue requesting maintainer attention. The project Discord is for general questions only; it is not monitored for private moderator messages. There is currently no confidential project channel for conduct reports outside GitHub's reporting controls. Do not put private evidence, personal information or harassment details in public issues, discussions or Discord. For code vulnerabilities, use the separate procedure in [SECURITY.md](./SECURITY.md).
 
 Maintainers will assess reports impartially and may ask for changes, hide or remove contributions, lock discussions, or restrict participation. Repeated or serious violations can lead to permanent removal. We aim to provide an explanation to affected parties where doing so does not compromise privacy or safety.
 
