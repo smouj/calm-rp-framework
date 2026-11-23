@@ -27,3 +27,11 @@ Thumbs.db
 .data/
 .tmp/
 tmp/
+
+# Proprietary game packages/exports are never repository assets
+*.rpf
+*.ttpf
+*.awc
+*.xvc
+*.xex
+game_scarlett_master.exe
