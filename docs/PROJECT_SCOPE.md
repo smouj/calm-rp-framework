@@ -1,115 +1,61 @@
-# Project Scope
+# Project Scope — Open Community RP Platform
+
+**State:** Proposed transition for maintainer review  
+**Updated:** 2026-11-23
 
 ## Product definition
 
-This repository prepares the design and technical foundation for **one private GTA VI roleplay server/community** that we may operate in the future if Rockstar Games provides, or authorizes through Cfx.re or another official/public path, the required community-server/runtime capabilities.
+GTA VI RP Platform is an independent, fan-led **open-source** project aiming to develop a reusable roleplay platform inspired by the possibilities of FiveM, with GTA VI as a **conditional long-term target**.
 
-The repository is intentionally useful before that runtime exists.
+Today it is **not a playable mod, GTA VI client, custom game server, or supported multiplayer framework**. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
 
-## What success looks like
+This changes the previous *single private server only* goal. See [ADR-0006](./adr/0006-community-open-platform.md), proposed to supersede ADR-0002.
 
-When a legitimate GTA VI server/runtime integration becomes available, we should already have:
+## Intended contributors and users
 
-- a documented RP server vision;
-- clear gameplay and administration rules;
-- stable domain contracts for core server systems;
-- a persistence model with migrations and auditability;
-- a server-authoritative security model;
-- deterministic tests/simulation for game-independent behavior;
-- operational requirements for backups, logs and moderation;
-- a precise list of GTA VI capabilities still needed from the runtime;
-- a clean adapter boundary where the real game integration can be implemented.
-
-The desired outcome is **faster, safer server implementation**, not a generic ecosystem product.
+- Community developers building portable, server-authoritative RP logic.
+- Testers and designers improving deterministic simulation and developer tooling.
+- Writers and researchers documenting architecture, verified source material and risks.
+- Future communities that may reuse tested modules, without a current GTA VI compatibility promise.
 
 ## In scope now
 
-### Server design
+- Core RP concepts: accounts, sessions, characters, economy, ledger, inventory, jobs, factions, property, vehicles, emergency services, administration, moderation, permissions and audit.
+- Game-independent simulators, synthetic fixtures, automated tests and reproducible development infrastructure.
+- Clear internal contracts and **reviewed** extensibility only when a concrete use case justifies it.
+- PostgreSQL-first durable state; secure operations, observability, migrations and recovery.
+- Public contribution guidelines, governance, translated onboarding, community issue management and original branding.
+- Research into Rockstar/Cfx first-party announcements and clearly scoped third-party technology observations.
 
-- onboarding and character lifecycle
-- identity and documents
-- economy and banking
-- inventory and ownership
-- jobs and progression
-- factions and organizations
-- player-owned businesses
-- vehicles and garages
-- properties and access control
-- police and justice workflows
-- EMS workflows
-- communications / phone concepts
-- permissions and staff roles
-- moderation and audit trails
-- server rules and governance
+## Conditional, not implemented
 
-### Technical preparation
+Game-facing scripts, GTA VI client/server synchronization, game entity APIs, voice, asset streaming, world integration, hosting, multiplayer downloads, resource marketplaces and server discovery are **not available**. Implementing them requires legitimate authorization, compatible published interfaces, risk review, architecture decisions and conformance tests.
 
-- game-agnostic domain contracts
-- simulator and test harnesses
-- database schemas and migrations
-- threat modelling and abuse-case design
-- logging and observability requirements
-- backup/restore strategy
-- development tooling and CI
-- prototypes for internal/admin or in-game web UI where they do not depend on undocumented game APIs
+A FiveM-like ecosystem is the **aspiration**, not the current feature set or a scheduled release.
 
-### Research
+## Explicit exclusions
 
-- official Rockstar GTA VI platform announcements
-- official Rockstar RP/community-server policy
-- official Cfx.re announcements and public runtime documentation
-- current FiveM/RedM patterns only as comparative research
-- future GTA VI PC/runtime/community-server documentation when published
-
-## Deferred until public information exists
-
-The following stay blocked until legitimate documentation or tooling is available:
-
-- GTA VI player/entity APIs
-- GTA VI networking/event APIs
-- GTA VI server binaries or hosting model
-- GTA VI scripting runtimes and supported languages
-- GTA VI resource manifests
-- GTA VI synchronization/ownership semantics
-- GTA VI NUI/web-view integration
-- GTA VI voice integration
-- GTA VI asset streaming/modding contracts
-- GTA VI anti-cheat integration
-- GTA VI identifiers/authentication contracts
-- GTA VI native functions
-
-A FiveM equivalent must never be assumed merely because FiveM exists for GTA V.
-
-## Explicitly out of scope
-
-- creating a FiveM replacement
-- creating a public framework such as ESX/QBCore/Qbox
-- creating a server hosting marketplace
-- creating a public GTA VI RP directory
-- building a dedicated public website as the product
-- reverse engineering private Rockstar services
-- using leaked GTA VI code, assets, APIs or documentation
-- redistributing proprietary Rockstar assets
-- inventing compatibility claims for GTA VI
+- Impersonating or implying endorsement by Rockstar Games, Take-Two, FiveM or Cfx.re.
+- Redistributing proprietary GTA VI assets, archives, executables, keys, protected resources or leaks.
+- Accessing private Rockstar services or treating non-public interfaces as dependencies.
+- Claiming GTA VI server support based solely on technical file research.
+- Promising an executable, release date, plugin ABI or supported platform that is not verified.
+- Building a commercial hosting or marketplace offering before need, licensing and policy are reviewed.
 
 ## Design guardrails
 
-1. **Unknown means unknown.** Do not encode speculation as an API contract.
-2. **One server is the product.** Generic framework features require a concrete benefit to our server.
-3. **Server authority is mandatory.** Client input is never canonical state.
-4. **Modular monolith first.** Distribution is an optimization, not a starting point.
-5. **Game integration is replaceable.** Domain behavior survives adapter changes.
-6. **Operational simplicity matters.** Prefer systems we can actually run, audit and recover.
-7. **Research has provenance.** Material platform claims must point to an official/public source.
+1. Build independently testable functionality; do not wait for a speculative game API.
+2. Keep client input untrusted and persisted RP state server-authoritative.
+3. Prefer a modular monolith before microservices and unnecessary platform complexity.
+4. Separate confirmed facts, observed third-party behavior, hypotheses and blocked requirements.
+5. Maintain transparent code review, licensing, security and reproducibility for contributors.
+6. Keep visual identity original, with conspicuous non-affiliation and rights attribution.
+7. Require a specific, authorized GTA VI runtime contract before game-facing implementation.
 
-## Decision test for new work
+## Readiness goals
 
-Before adding a feature, ask:
+**Immediate:** publicly understandable source, safe contributor onboarding and passing tests.
 
-1. Does this help us design or operate our future RP server?
-2. Can it be built without inventing GTA VI behavior?
-3. Is it better represented as documentation/simulation until the runtime exists?
-4. Does it introduce infrastructure complexity without a current requirement?
-5. Would this still be useful if GTA VI's server model differs from FiveM?
+**Next:** reusable RP domain modules and simulator workflows with documented contracts.
 
-If the answer reveals a GTA VI-specific dependency that is still unknown, document the requirement instead of implementing a fake adapter.
+**Conditional future:** evaluate public, legitimate GTA VI integration capabilities using the runtime requirement register, ADRs and conformance tests. The GTA VI adapter remains **BLOCKED** until then.
