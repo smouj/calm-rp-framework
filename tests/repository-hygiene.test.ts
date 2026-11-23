@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -40,6 +41,31 @@ describe('repository hygiene', () => {
     expect(dependabot).toContain('open-pull-requests-limit: 2');
     expect(dependabot).toContain('development-toolchain:');
     expect(dependabot).toContain('package-ecosystem: github-actions');
+  });
+
+  it('does not track proprietary game package formats', () => {
+    const trackedFiles = execFileSync('git', ['ls-files', '-z'], {
+      cwd: process.cwd(),
+      encoding: 'utf8',
+    })
+      .split('\\0')
+      .filter(Boolean);
+
+    const forbiddenFiles = trackedFiles.filter((path) =>
+      /(?:^|\\/)(?:[^/]+\\.(?:rpf|ttpf|awc|xvc|xex)|game_scarlett_master\\.exe)$/i.test(path),
+    );
+
+    expect(forbiddenFiles).toEqual([]);
+  });
+
+  it('documents third-party research and provenance gates', () => {
+    const assessment = read('docs/research/LEONIDA_2026-11-23.md');
+    const policy = read('docs/operations/THIRD_PARTY_ARTIFACT_POLICY.md');
+
+    expect(assessment).toContain('**Decision:** RESEARCH ONLY');
+    expect(assessment).toContain('**BLOCKED**');
+    expect(policy).toContain('Git-tracked paths');
+    expect(policy).toContain('Human review remains required');
   });
 
   it('keeps project-facing identity independent', () => {
