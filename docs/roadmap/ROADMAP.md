@@ -46,7 +46,8 @@ Recommended first slices:
 3. ledger-based wallet/bank transfers;
 4. basic inventory/container ownership;
 5. permissions and immutable audit events;
-6. deterministic simulator workflows.
+6. deterministic simulator workflows;
+7. fictional RP location planning across separate coordinate spaces, without relying on game assets or navigation assumptions.
 
 **Exit:** two simulated players can execute representative RP actions through authoritative commands with persistence and auditability, without importing game-specific code.
 
