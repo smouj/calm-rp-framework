@@ -35,6 +35,12 @@ These topics express interests and project aspiration; they are **not** evidence
 
 Neither `.gitignore` nor a single-branch scan makes a private repository safe to publish.
 
+## Initial limited review record (2026-11-23)
+
+A preliminary scan inspected path listings on **19 accessible branches**; no paths with proprietary game package extensions, private-key file extensions or credential-file names were found beyond the intentional `.env.example` placeholder. The **eight commits on `main`** were sampled for common secret patterns in available GitHub diff patches (84 changed-file patches). Two files triggered heuristic matches: `.env.example` and `infrastructure/docker/compose.yml`, both currently configured with explicit *local-development placeholders* rather than actual credentials.
+
+This is **not** comprehensive clearance: the scan does not inspect every blob across all branch histories, removed files outside the sampled commits, Actions logs, PR comments/attachments or GitHub secret-scanning results. Those checks remain required before public visibility. If any historically exposed credential was live, rotate it.
+
 ## Merge and validation gates
 
 - [ ] Review and merge the open-source scope/license/documentation PR with deliberate maintainer approval.
