@@ -12,6 +12,12 @@ The server must be recoverable, observable and auditable without relying on staf
 
 Production readiness is not equivalent to “the game server starts”.
 
+## Local development network boundary
+
+`infrastructure/docker/compose.yml` is a **local development** stack, not a production deployment. PostgreSQL and Redis host ports are bound to `127.0.0.1` so they are not directly advertised to the local network. The `.env.example` uses an intentionally non-production placeholder; real credentials must never be committed.
+
+Do not expose these local services publicly, deploy the example unchanged to a remote host, or treat its default credentials as production-ready. Any production deployment requires separate network isolation, secret management, backups, access controls and a reviewed runbook.
+
 ## Environments
 
 Plan for at least three logical environments:
