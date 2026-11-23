@@ -14,11 +14,11 @@ For suspected compromise of a Rockstar account or official service, contact Rock
 
 ## Supported versions
 
-| Version | Security support |
-| --- | --- |
-| Current `main` development branch | Best-effort review; not production-supported |
-| Older branches, forks, unreleased experiments | No support commitment |
-| GTA VI game client/server | **Not distributed or supported** |
+| Version                                       | Security support                             |
+| --------------------------------------------- | -------------------------------------------- |
+| Current `main` development branch             | Best-effort review; not production-supported |
+| Older branches, forks, unreleased experiments | No support commitment                        |
+| GTA VI game client/server                     | **Not distributed or supported**             |
 
 ## Security invariants
 
