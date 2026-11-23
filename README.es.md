@@ -8,6 +8,7 @@
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-275D88.svg)](./LICENSE)
 [![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
 [![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-326E74.svg)](./CONTRIBUTING.md)
+[![Multijugador de GTA VI](https://img.shields.io/badge/multijugador%20GTA%20VI-no%20disponible-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
 **[English](./README.md) · [Español](./README.es.md) · [Contribuir](./CONTRIBUTING.md) · [Hoja de ruta](./docs/roadmap/ROADMAP.md)**
 
@@ -82,4 +83,4 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 La [licencia MIT](./LICENSE) cubre únicamente el **código y la documentación originales** de este repositorio; no concede derechos sobre el videojuego ni sobre las marcas de Rockstar. No distribuimos ejecutables, claves ni contenido extraído de GTA VI, ni afirmamos disponer de autorización para alojar multijugador.
 
-Consulta [TRADEMARKS.md](./TRADEMARKS.md), las [directrices de Rockstar](https://www.rockstargames.com/es/community-resources/mod-guidelines) y su [política sobre RP](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers). Esta declaración de atribución **no sustituye ningún permiso** del titular de los derechos.
+Consulta [TRADEMARKS.md](./TRADEMARKS.md), las [directrices de Rockstar](https://www.rockstargames.com/es/community-resources/mod-guidelines), su [política sobre RP](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers) y las [condiciones de Creator Platform](https://fivem.net/terms/). Esta declaración de atribución **no sustituye ningún permiso** del titular de los derechos.

@@ -1,12 +1,12 @@
 # ADR-0006: Open community RP platform scope
 
-- **Status:** Proposed, pending maintainer review
+- **Status:** Accepted
 - **Date:** 2026-11-23
-- **Supersedes:** ADR-0002 when accepted
+- **Supersedes:** The single-server product scope in ADR-0002 and the audience context in ADR-0003; retains ADR-0003's modular-monolith architecture decision
 
 ## Context
 
-The repository was originally a private blueprint for one future RP server. Its maintainer now wants an open-source community-led platform with a long-term ambition similar in *scope* to FiveM, but with GTA VI as a conditional target.
+The repository was originally a private blueprint for one future RP server. Its maintainer now wants an open-source community-led platform with a long-term ambition similar in _scope_ to FiveM, but with GTA VI as a conditional target.
 
 That is a product and governance decision, **not** evidence that GTA VI modding, third-party networking or custom servers are authorized or technically supported.
 

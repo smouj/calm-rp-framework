@@ -50,7 +50,6 @@ New ADRs are required when a change introduces a durable architectural constrain
 - [`../TRADEMARKS.md`](../TRADEMARKS.md) — fan-project identity and third-party rights.
 - [`community/PUBLIC_LAUNCH_CHECKLIST.md`](./community/PUBLIC_LAUNCH_CHECKLIST.md) — safety gates and GitHub publication settings.
 
-
 ## Research document responsibilities
 
 The research documents serve different responsibilities and should not be collapsed into one:

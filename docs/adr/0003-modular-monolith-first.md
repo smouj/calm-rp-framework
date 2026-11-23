@@ -1,11 +1,15 @@
 # ADR-0003: Modular monolith first
 
-- **Status:** Accepted
+- **Status:** Accepted — architecture decision; original audience context superseded
 - **Date:** 2026-08-30
+
+## Scope note
+
+The original single-server audience in this ADR's context has been superseded by [ADR-0006](./0006-community-open-platform.md). The modular-monolith decision remains in effect for the game-independent platform foundation; it does not limit the project to one server or deployment.
 
 ## Context
 
-The project is preparing one future RP server, not a generic hosted platform. The eventual GTA VI runtime model, hosting requirements, player limits and synchronization constraints are not yet public.
+The project is building a game-independent RP platform foundation. The eventual GTA VI runtime model, hosting requirements, player limits and synchronization constraints are not yet public.
 
 Splitting the system into microservices before those requirements exist would add deployment, networking, observability, consistency and failure-mode complexity without solving a demonstrated problem.
 

@@ -1,6 +1,7 @@
 # Project Scope — Open Community RP Platform
 
-**State:** Proposed transition for maintainer review  
+**State:** Active community-led project scope
+
 **Updated:** 2026-11-23
 
 ## Product definition
@@ -9,7 +10,7 @@ GTA VI RP Platform is an independent, fan-led **open-source** project aiming to 
 
 Today it is **not a playable mod, GTA VI client, custom game server, or supported multiplayer framework**. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
 
-This changes the previous *single private server only* goal. See [ADR-0006](./adr/0006-community-open-platform.md), proposed to supersede ADR-0002.
+This replaces the previous _single private server only_ goal recorded in [ADR-0002](./adr/0002-single-server-not-framework.md). The accepted scope change is recorded in [ADR-0006](./adr/0006-community-open-platform.md); the modular-monolith architecture decision remains in effect.
 
 ## Intended contributors and users
 

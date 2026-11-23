@@ -1,6 +1,6 @@
 # Project Governance
 
-**Status:** Community onboarding policy — review before public release.
+**Status:** Active community onboarding policy.
 
 ## Mission
 

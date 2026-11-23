@@ -33,7 +33,7 @@ Optional local infrastructure:
 docker compose -f infrastructure/docker/compose.yml up -d
 ```
 
-This verifies the *foundation*, not a GTA VI runtime. Never include local secrets or game data in test fixtures.
+This verifies the _foundation_, not a GTA VI runtime. Never include local secrets or game data in test fixtures.
 
 ## Contribution workflow
 
