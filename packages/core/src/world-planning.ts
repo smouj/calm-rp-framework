@@ -183,7 +183,11 @@ export class WorldPlanningCatalog {
   }
 
   /** Bounds containment; a point-only location matches its exact anchor. */
-  public at(spaceId: string, point: PlanningPoint, filter: LocationFilter = {}): readonly PlannedLocation[] {
+  public at(
+    spaceId: string,
+    point: PlanningPoint,
+    filter: LocationFilter = {},
+  ): readonly PlannedLocation[] {
     validPoint(point);
     return this.list({ ...filter, spaceId }).filter((location) => {
       if (location.bounds === undefined) {
@@ -213,8 +217,13 @@ export class WorldPlanningCatalog {
       throw new RangeError('Planning search radius must be a finite nonnegative number.');
     }
     return this.list({ ...filter, spaceId })
-      .map((location) => Object.freeze({ location, distance: distanceBetween(location.position, point) }))
+      .map((location) =>
+        Object.freeze({ location, distance: distanceBetween(location.position, point) }),
+      )
       .filter((hit) => hit.distance <= radius)
-      .sort((first, second) => first.distance - second.distance || first.location.id.localeCompare(second.location.id));
+      .sort(
+        (first, second) =>
+          first.distance - second.distance || first.location.id.localeCompare(second.location.id),
+      );
   }
 }
