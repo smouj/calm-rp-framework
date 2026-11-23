@@ -24,7 +24,7 @@ This applies to GitHub issues, pull requests, reviews, project discussions and o
 
 ## Reporting and enforcement
 
-For ordinary conduct concerns, contact the repository maintainers privately through an appropriate GitHub channel. Do not post personal information or harassment evidence publicly. For code vulnerabilities, use the private procedure in [SECURITY.md](./SECURITY.md).
+For harassment or abuse on GitHub, use GitHub's **Report content** controls. For project moderation concerns without sensitive personal details, open a brief issue requesting maintainer attention; do not post private evidence, personal information or harassment details publicly. Maintainers must establish a confidential conduct-reporting channel before public launch if they expect contributors to submit sensitive reports. For code vulnerabilities, use the separate procedure in [SECURITY.md](./SECURITY.md).
 
 Maintainers will assess reports impartially and may ask for changes, hide or remove contributions, lock discussions, or restrict participation. Repeated or serious violations can lead to permanent removal. We aim to provide an explanation to affected parties where doing so does not compromise privacy or safety.
 
