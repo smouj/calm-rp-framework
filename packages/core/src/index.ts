@@ -32,3 +32,16 @@ export const assertMinorUnits = (value: bigint): bigint => {
 
   return value;
 };
+
+export type {
+  LocationFilter,
+  NearbyLocation,
+  PlannedLocation,
+  PlanningBounds,
+  PlanningLayer,
+  PlanningPoint,
+  PlanningProvenance,
+  PlanningStatus,
+  PlanningUse,
+} from './world-planning.js';
+export { WorldPlanningCatalog } from './world-planning.js';
