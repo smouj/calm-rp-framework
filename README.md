@@ -1,199 +1,122 @@
-# GTA VI RP Server Readiness
+<div align="center">
 
-Private planning repository and technical foundation for a future **GTA VI roleplay server of our own**.
+# GTA VI RP Platform
 
-> **Status:** pre-runtime / research phase. This repository does not claim GTA VI multiplayer, community-server, scripting, modding or Cfx.re compatibility that has not been publicly documented.
+**An open-source community foundation for future Grand Theft Auto VI roleplay.**
 
-## Purpose
+[![CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml)
+[![MIT License](https://img.shields.io/badge/license-MIT-275D88.svg)](./LICENSE)
+[![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-326E74.svg)](./CONTRIBUTING.md)
+[![GTA VI runtime](https://img.shields.io/badge/GTA_VI_runtime-unavailable-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
-The goal is to arrive prepared for the moment a legitimate GTA VI community-server/runtime path exists.
+**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Roadmap](./docs/roadmap/ROADMAP.md)**
 
-This repository defines, prototypes and validates the parts of a serious RP server that do **not** need undocumented GTA VI internals: server rules, domain models, persistence, security, administration, economy, inventory, jobs, factions, emergency services, ownership, observability and adapter boundaries.
+</div>
 
-When Rockstar Games and/or Cfx.re publish the relevant GTA VI contracts, the project should be able to integrate the game-facing layer without redesigning the authoritative server core.
+> [!IMPORTANT]
+> **Not playable.** There is no GTA VI multiplayer client, custom server, installer or mod download here. This is an early, independent fan-made project developing roleplay systems and preparing for a **possible future authorized** GTA VI development/runtime path. It is not FiveM for GTA VI or an official Rockstar product.
 
-## Current maturity
+## Our vision
 
-| Area                       | State        | Current position                                                     |
-| -------------------------- | ------------ | -------------------------------------------------------------------- |
-| Project scope              | `ACTIVE`     | Single future server/community; not a generic framework              |
-| Architecture               | `ACTIVE`     | Server-authoritative modular monolith with runtime adapters          |
-| Simulator                  | `FOUNDATION` | Game-independent boundary available for deterministic development    |
-| Persistence                | `FOUNDATION` | PostgreSQL-first model and initial migration direction               |
-| Security                   | `ACTIVE`     | Trust boundaries, abuse catalogue and authority rules documented     |
-| Operations                 | `ACTIVE`     | Production-readiness, recovery and observability baseline documented |
-| Cfx.re research            | `RESEARCH`   | Current ecosystem patterns may inform design, never GTA VI contracts |
-| GTA VI runtime integration | `BLOCKED`    | Waiting for legitimate public runtime/community-server documentation |
+Build an openly developed roleplay platform **inspired by the possibilities of FiveM**, with GTA VI as the long-term aspiration. Contributors can create reusable gameplay logic, test it without the game, improve tools and documentation, and explore integration **only when permission and technical support are verifiable**.
 
-`BLOCKED` is intentional here: preserving an explicit unknown is safer than encoding a fictional integration contract.
+Developers, artists, testers, documentation writers, security specialists and fans are welcome. This project is not a fork of FiveM and does not currently implement a GTA VI modification or multiplayer network.
 
-## Explicit non-goals
+## Project status
 
-This project is **not** intended to become:
+| Area                                                        | Actual state                                              |
+| ----------------------------------------------------------- | --------------------------------------------------------- |
+| TypeScript workspace, domain primitives and typed contracts | Initial code                                              |
+| Game-independent simulator                                  | Basic player-directory prototype                          |
+| API and local PostgreSQL infrastructure                     | Scaffolding and initial migration                         |
+| Security, research and automated checks                     | Foundation                                                |
+| Public Cfx/FiveM ecosystem research                         | Research only, not GTA VI compatibility                   |
+| GTA VI game/runtime adapter                                 | **BLOCKED** — authorization and runtime contracts unknown |
+| GTA VI client, multiplayer server or downloadable release   | **NOT IMPLEMENTED**                                       |
 
-- a FiveM replacement;
-- a generic public RP framework;
-- a GTA VI modding SDK;
-- a community-server browser or hosting platform;
-- a public website dedicated to GTA VI RP;
-- an implementation based on leaks, reverse-engineered private services or invented GTA VI APIs.
+Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-The target product is one well-designed RP server/community, not infrastructure for everybody else's servers.
+See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 
-## Current strategy
-
-### 1. Design the server before the runtime
-
-We can define today:
-
-- character and identity lifecycle;
-- economy and banking rules;
-- inventory and ownership semantics;
-- jobs, factions and businesses;
-- police, EMS and justice workflows;
-- vehicles, garages and properties;
-- communications and phone contracts;
-- permissions, moderation and auditing;
-- persistence, backups and operational requirements;
-- UI flows and prototypes that remain independent from the game adapter.
-
-### 2. Keep the game boundary replaceable
+## How it is designed
 
 ```text
-                         OUR RP SERVER
-
-  rules / economy / inventory / jobs / factions / police / EMS
-                              |
-                              v
-                   application contracts
-                              |
-                              v
-                    game adapter boundary
-                       /       |       \
-                      /        |        \
-              simulator    Cfx lab    GTA VI
-                            research   future
+                 COMMUNITY CONTRIBUTORS
+                          |
+             documentation + pull requests
+                          |
+               GAME-INDEPENDENT RP CORE
+            characters / economy / inventory
+           property / permissions / contracts
+                       /       \
+                      /         \
+              SIMULATOR       RUNTIME ADAPTER
+          test without GTA VI   (future, blocked)
+                                     |
+                            GTA VI authorization
+                            & APIs NOT CONFIRMED
 ```
 
-The simulator lets us validate server behavior before a GTA VI runtime exists. The Cfx boundary is only a compatibility/research lab based on public FiveM/RedM concepts. `adapters/gta6` remains intentionally unimplemented until a legitimate public contract exists.
+The core is server-authoritative: clients request actions; validated server commands decide the outcome. We keep unknown game APIs, client-native functions, asset formats and networking protocols out of domain logic. Existing FiveM/Cfx work and third-party GTA VI research are useful references, **not** evidence of a working GTA VI integration.
 
-### 3. Prefer a modular monolith first
+## Repository structure
 
-This repository is not a reason to invent production-scale infrastructure prematurely. The default architecture is a modular, server-authoritative application with PostgreSQL. Redis, extra services and horizontal scaling are introduced only when a measured requirement justifies them.
+- [`packages/core`](./packages/core/src/index.ts): game-independent primitives and rules.
+- [`packages/contracts`](./packages/contracts/src/index.ts): typed commands and events.
+- [`adapters/simulator`](./adapters/simulator/src/index.ts): deterministic tests without any game.
+- [`adapters/cfx`](./adapters/cfx/README.md): current ecosystem research only.
+- [`adapters/gta6`](./adapters/gta6/README.md): future integration boundary; currently reserved.
+- [`apps/api`](./apps/api/src/index.ts): application/transport scaffold.
+- [`infrastructure`](./infrastructure): local development services.
+- [`docs`](./docs/README.md): architecture, research, security, roadmap and decisions.
 
-## Repository layout
+## Run the development checks
 
-```text
-apps/
-  api/                  composition / transport boundary
-packages/
-  core/                 game-agnostic domain primitives
-  contracts/            typed commands and events
-adapters/
-  simulator/            deterministic development runtime
-  cfx/                  public Cfx.re compatibility research
-  gta6/                 reserved future GTA VI integration
-infrastructure/
-  database/             persistence and migrations
-  docker/               local development infrastructure
-docs/
-  README.md              canonical documentation map
-  adr/                   architecture decisions
-  architecture/          technical and authority boundaries
-  branding/              project-owned identity and asset policy
-  research/              evidence protocol and platform status
-  roadmap/               phased preparation and risk planning
-  server/                RP blueprint, domains and runtime requirements
-  security/              threat model
-  operations/            production operations baseline
-.github/                 CI, ownership, issue/PR templates and dependency policy
-```
+You do **not** need GTA VI or any game files.
 
-## Engineering principles
-
-1. **Server authoritative.** The client requests actions; the server validates and commits state.
-2. **Game-agnostic domain.** Core rules do not import GTA/FiveM natives or runtime globals.
-3. **Ports and adapters.** Game integration is isolated behind explicit contracts.
-4. **Transactional persistence.** Money, ownership and inventory changes are auditable.
-5. **Security by default.** Trust boundaries and abuse cases are part of feature design.
-6. **Modular monolith before microservices.** Complexity must be earned by real requirements.
-7. **No invented GTA VI API.** Unknown runtime details stay unknown until verified.
-8. **Single-server first.** Decisions optimize our future community, not a generic framework market.
-9. **Evidence before coupling.** Runtime-specific implementation follows verified public evidence and an ADR.
-10. **Operations are part of the product.** Backup, restore, observability and auditability are release gates.
-
-## Technology direction
-
-These are internal implementation choices, not assumptions about GTA VI's future scripting runtime.
-
-Public Rockstar engineering material currently establishes a useful technology baseline: gameplay work uses **C++ + game script**, graphics engineering is heavily **C++**-based, production tooling spans **C++/C#**, and online-service/tooling roles use **C#/.NET, SQL and JavaScript/TypeScript**. Current Cfx.re/FiveM scripting exposes **Lua, JavaScript and C#**. None of those facts confirms a GTA VI community-server scripting language.
-
-Accordingly, this repository uses:
-
-- **TypeScript** for game-agnostic domain code, tooling, services and web-based UI prototypes;
-- **PostgreSQL** as durable source of truth;
-- **Redis** only for genuinely ephemeral coordination/cache needs;
-- **Lua/JavaScript/C# knowledge** inside the Cfx research boundary because those are current public FiveM runtimes;
-- **C++ knowledge** as strategically useful for understanding Rockstar/Cfx low-level technology and for a future native bridge only if a legitimate GTA VI contract requires one;
-- pnpm workspaces for the monorepo;
-- Docker Compose for reproducible local infrastructure;
-- GitHub Actions for automated validation.
-
-The project will **not** be rewritten in C++ merely because Rockstar uses C++ internally. The runtime adapter language remains a deferred integration decision; the RP domain stays independent from it.
-
-See [Rockstar Technology Baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md) for the evidence matrix, source list, limitations and leak-handling policy.
-
-## GTA VI integration gate
-
-Before implementing any real GTA VI-specific adapter capability, require all of the following:
-
-1. a public and legitimate source describing the capability;
-2. an entry in the platform-status research document;
-3. the relevant runtime requirement moved out of `UNKNOWN`;
-4. an ADR documenting the integration decision;
-5. adapter conformance tests;
-6. no leakage of game-specific APIs into the domain layer.
-
-## Start here
-
-- [Documentation map](./docs/README.md)
-- [Project scope](./docs/PROJECT_SCOPE.md)
-- [Architecture](./ARCHITECTURE.md)
-- [Server blueprint](./docs/server/SERVER_BLUEPRINT.md)
-- [Server domain catalog](./docs/server/DOMAIN_CATALOG.md)
-- [GTA VI runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md)
-- [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
-- [Rockstar technology baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md)
-- [Platform research protocol](./docs/research/RESEARCH_PROTOCOL.md)
-- [Roadmap](./docs/roadmap/ROADMAP.md)
-- [Project risk register](./docs/roadmap/RISK_REGISTER.md)
-- [Threat model](./docs/security/THREAT_MODEL.md)
-- [Operations baseline](./docs/operations/OPERATIONS_BASELINE.md)
-- [Project identity and asset policy](./docs/branding/PROJECT_IDENTITY.md)
-
-## Local development
-
-Requirements: Node.js 22+, pnpm 10+, and Docker when infrastructure services are needed.
+**Prerequisites:** Node.js 22+, pnpm 10.34.5 and, optionally, Docker for the local database.
 
 ```bash
-pnpm install
-cp .env.example .env
-docker compose -f infrastructure/docker/compose.yml up -d
+git clone https://github.com/smouj/gta6-rp-platform.git
+cd gta6-rp-platform
+corepack enable
+corepack prepare pnpm@10.34.5 --activate
+pnpm install --frozen-lockfile
 pnpm check
 ```
 
-The dependency graph is versioned in `pnpm-lock.yaml`, and CI installs it with `--frozen-lockfile`. Major toolchain upgrades remain deliberate maintenance work rather than independent automated merges.
+Optional development infrastructure:
 
-## Repository discipline
+```bash
+docker compose -f infrastructure/docker/compose.yml up -d
+```
 
-- short-lived branches from `main`;
-- Conventional Commits;
-- squash-oriented history for normal changes;
-- CI validation before merge;
-- first-party evidence for GTA VI runtime claims;
-- no secrets, proprietary game files, leaked material or private APIs;
-- no generated-looking signatures, assistant/model attribution or generic decorative footers in project documents.
+`pnpm check` runs linting, TypeScript checks, unit tests and formatting validation. It does **not** run GTA VI or start a roleplay server.
 
-## Legal / project note
+## Get involved
 
-Independent private technical project. Not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Cfx.re. Proprietary game assets, leaked materials and non-public APIs do not belong in this repository.
+- Read [CONTRIBUTING.md](./CONTRIBUTING.md) ([español](./CONTRIBUTING.es.md)), [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) and [GOVERNANCE.md](./GOVERNANCE.md).
+- Browse [issues](https://github.com/smouj/gta6-rp-platform/issues), including [good first issues](https://github.com/smouj/gta6-rp-platform/labels/good%20first%20issue) and [help wanted](https://github.com/smouj/gta6-rp-platform/labels/help%20wanted).
+- Propose one scoped change, create a fork and open a [pull request](https://github.com/smouj/gta6-rp-platform/pulls).
+- Prefer reproducible tests, safe mock data and documentation with public sources. No secrets, leaks or proprietary game files.
+
+Contributions are welcome; merging requires review and passing checks. Check the [FAQ](./docs/community/FAQ.md) and [SUPPORT.md](./SUPPORT.md) for help and [SECURITY.md](./SECURITY.md) for private vulnerability reports.
+
+## Roadmap
+
+1. **Public foundation:** license, contribution rules, security, project identity and reproducible CI.
+2. **Portable RP systems:** server-authoritative characters, economy, inventory, jobs, property, moderation and simulator workflows.
+3. **Developer experience:** conformance tests, example scenarios and reviewed extension contracts.
+4. **GTA VI research:** continuously distinguish confirmed public facts from claims and assumptions.
+5. **GTA VI integration:** **blocked** until legitimate authorization and implementable runtime documentation exist.
+
+[Full roadmap](./docs/roadmap/ROADMAP.md) · [Architecture](./ARCHITECTURE.md) · [Scope](./docs/PROJECT_SCOPE.md) · [Research protocol](./docs/research/RESEARCH_PROTOCOL.md)
+
+## Intellectual property and non-affiliation
+
+**Unofficial fan project. Not affiliated with, endorsed by or sponsored by Rockstar Games, Take-Two Interactive or Cfx.re.** Grand Theft Auto, GTA, Grand Theft Auto VI, game logos, names, artwork, characters, audio and other protected game content belong to their respective rights holders, including Rockstar Games and Take-Two Interactive. All rights to that content are reserved by its owners.
+
+The [MIT license](./LICENSE) covers **only the original source code and documentation** contributed to this repository. It does not license Rockstar's games, assets or trademarks. No game binaries, keys, extracted assets or leaked material are included. We do not claim authorization to host GTA VI multiplayer servers.
+
+Read [TRADEMARKS.md](./TRADEMARKS.md), the [Rockstar RP policy](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers), [mod guidelines](https://www.rockstargames.com/es/community-resources/mod-guidelines) and [Creator Platform terms](https://fivem.net/terms/). Attribution and disclaimers **do not constitute permission** from the rights holders.

@@ -1,111 +1,85 @@
-# Contributing
+# Contributing to GTA VI RP Platform
 
-This repository is the technical preparation space for our future GTA VI roleplay server. Changes should improve that server directly, reduce future integration risk, or strengthen the engineering baseline.
+Thanks for helping build an independent, community-led roleplay foundation. **All skill levels are welcome.** This project is early-stage: contributions should improve testable source code, tooling, documentation or research rather than promise an unverified GTA VI multiplayer capability.
 
-## Working model
+Read our [Code of Conduct](./CODE_OF_CONDUCT.md), [scope](./docs/PROJECT_SCOPE.md), [governance](./GOVERNANCE.md) and [trademark policy](./TRADEMARKS.md) before contributing.
 
-1. Start from an up-to-date `main`.
-2. Create one short-lived branch for one coherent change.
-3. Keep domain behavior independent from game-specific APIs.
-4. Add or update tests when behavior or invariants change.
-5. Add a migration for durable schema changes.
-6. Update research provenance before introducing a GTA VI-specific integration assumption.
-7. Run `pnpm check` before requesting review.
-8. Use a pull request; avoid direct feature work on `main`.
+## Where to start
 
-## Branch naming
+- **First contribution:** fix unclear documentation, improve accessibility, add a simulator test, or reproduce a small bug.
+- **Bug:** open an issue with the failing revision and minimum steps to reproduce.
+- **Feature:** describe the problem and proposed behavior before starting a large PR.
+- **Platform research:** cite primary Rockstar/Cfx sources, date them, record remaining unknowns and classify evidence.
+- **Security:** never report vulnerabilities publicly; use [SECURITY.md](./SECURITY.md).
 
-Use lowercase kebab-case after the prefix:
+Browse [good first issues](https://github.com/smouj/gta6-rp-platform/labels/good%20first%20issue) or [help wanted](https://github.com/smouj/gta6-rp-platform/labels/help%20wanted). If those lists are empty, propose a bounded improvement.
 
-- `feat/<scope>-<summary>`
-- `fix/<scope>-<summary>`
-- `docs/<scope>-<summary>`
-- `chore/<scope>-<summary>`
-- `refactor/<scope>-<summary>`
-- `test/<scope>-<summary>`
-- `security/<scope>-<summary>`
-- `research/<scope>-<summary>`
+## Set up your environment
 
-Examples:
+You need Node.js 22+ and pnpm 10.34.5. **No GTA VI game files or tools are required.**
 
-- `feat/economy-ledger-transfer`
-- `fix/inventory-negative-quantity`
-- `research/cfx-runtime-capabilities`
-- `docs/server-access-model`
+```bash
+git clone https://github.com/<YOUR_USERNAME>/gta6-rp-platform.git
+cd gta6-rp-platform
+corepack enable
+corepack prepare pnpm@10.34.5 --activate
+pnpm install --frozen-lockfile
+pnpm check
+```
 
-Delete merged branches. Keep `main` as the only permanent development branch unless a concrete release strategy later requires otherwise.
+Optional local infrastructure:
 
-## Commit convention
+```bash
+docker compose -f infrastructure/docker/compose.yml up -d
+```
 
-Use Conventional Commits with a meaningful scope when useful:
+This verifies the _foundation_, not a GTA VI runtime. Never include local secrets or game data in test fixtures.
 
-- `feat(economy): add ledger transfer command`
-- `fix(inventory): reject negative quantities`
-- `docs(adr): define game adapter boundary`
-- `research(platform): verify public runtime status`
-- `chore(ci): tighten dependency update policy`
+## Contribution workflow
 
-Commit messages should describe the repository change itself. Do not append generated-by signatures, model names, tooling attribution, or unrelated boilerplate.
+1. Open or choose an issue; discuss significant interface changes before implementation.
+2. Fork and create a short-lived branch: `feat/...`, `fix/...`, `docs/...`, `test/...`, `research/...`, or `security/...`.
+3. Keep the change focused. Follow the [architecture](./ARCHITECTURE.md) and accepted ADRs.
+4. Add tests for behavior or security invariants; document externally visible changes.
+5. Run `pnpm check` and record the outcome honestly. If it fails, describe where and why.
+6. Open a PR against `main`, complete the template and link the issue.
+7. Respond to review feedback. Maintainers merge approved contributions only after valid checks.
 
-## Pull requests
+Conventional Commit examples: `feat(simulator): model session expiration`, `fix(core): reject invalid transfer`, `docs(research): verify official runtime guidance`.
 
-A pull request should explain:
+## Engineering standards
 
-- the server need or engineering problem;
-- the bounded change being proposed;
-- architecture and persistence impact;
-- security or abuse implications;
-- validation performed;
-- public evidence for any platform-specific claim;
-- intentionally deferred work.
+- Keep GTA/Cfx-specific code out of domain packages.
+- Treat clients as untrusted; validate commands and ownership on the server.
+- Use typed contracts, migrations and testable state transitions.
+- Use integer minor units for money; ensure idempotency and auditability for sensitive changes.
+- Prefer simple modules before microservices or untested plugin APIs.
+- Avoid new dependencies unless necessary; pin and review the changes to lockfiles.
+- Do not reformat unrelated files or rewrite existing ADR history silently.
+- Clearly distinguish **implemented**, **prototype**, **research**, **proposed** and **blocked** features.
 
-Prefer squash merging for normal feature branches so `main` remains readable. Large refactors should be split into reviewable, independently valid changes rather than accumulated into long-lived branches.
+## Evidence and game-data restrictions
 
-## Architecture constraints
+Public research into GTA VI assets or third-party tools such as Leonida **does not** establish a supported modding interface or grant permission to distribute the game's materials.
 
-- Domain packages cannot import game natives or adapter implementation code.
-- Clients cannot authoritatively mutate persistent or valuable RP state.
-- Durable state changes must be transactional where partial application would be unsafe.
-- Database changes require explicit migrations.
-- Cross-module dependencies must have a clear contract rather than shared-table coupling.
-- Redis must never become the only copy of canonical player state.
-- GTA VI-specific assumptions require public evidence and belong behind the GTA VI adapter boundary.
-- Current FiveM/RedM patterns may inform research but are not GTA VI contracts.
-- New infrastructure must solve a measured requirement; modular-monolith simplicity is preferred by default.
+Do **not** submit:
 
-## Research changes
+- game archives, executables, ripped models/textures/audio, keys, derived shaders, proprietary data exports or leaks;
+- private Rockstar APIs, stolen credentials, bypasses or game-service abuse code;
+- official logos or copied promotional graphics used as project branding;
+- invented GTA VI event, native, networking or scripting contracts;
+- secrets, access tokens, private addresses, personal data or reproduction logs containing these.
 
-For Rockstar Games, Cfx.re, GTA VI runtime, community-server, policy, scripting, networking, UI, voice, hosting, or asset-delivery findings:
+Use synthetic mock data and project-owned assets. Cite original public sources for research.
 
-1. classify the evidence using `docs/research/PLATFORM_STATUS.md`;
-2. prefer first-party public sources;
-3. record the verification date;
-4. distinguish what the source confirms from what remains unknown;
-5. update an ADR before the finding changes an integration boundary.
+## Licensing and attribution
 
-Rumors, leaks, private services, or unverifiable claims must not become implementation dependencies.
+By submitting a contribution, you confirm that you have the right to license it under this repository's [MIT license](./LICENSE) and that you have complied with any dependencies' licenses. Keep copyright notices where required; indicate material third-party sources explicitly.
 
-## Documentation style
+The MIT license does **not** cover Rockstar intellectual property.
 
-Documentation should read like project documentation, not generated filler:
+## Reviews, conduct and releases
 
-- lead with the decision, invariant, or operational fact;
-- prefer specific language over promotional wording;
-- avoid repetitive summaries and generic closing paragraphs;
-- do not add "generated by", assistant/model attribution, canned signatures, or synthetic footers;
-- use project-specific terminology consistently;
-- keep facts, decisions, assumptions, and unknowns visibly distinct.
+Maintainers may ask for changes or decline proposals that are unsafe, unsupported, off-scope or legally uncertain. Contributors should not expect an immediate response or a fixed release date. Follow [GOVERNANCE.md](./GOVERNANCE.md) for decisions and [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) for respectful collaboration.
 
-## Secrets and proprietary material
-
-Never commit:
-
-- tokens or credentials;
-- production connection strings;
-- private keys;
-- personal data dumps;
-- proprietary Rockstar assets;
-- leaked game material or non-public APIs;
-- third-party material that cannot legally be redistributed.
-
-Use `.env.example` only for non-secret configuration examples.
+Do not claim a green CI result unless the final head actually completed tests. GitHub runners failing before starting jobs are an infrastructure blocker, **not** verification.

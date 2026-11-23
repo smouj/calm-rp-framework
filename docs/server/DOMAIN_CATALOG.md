@@ -2,7 +2,7 @@
 
 **State:** ACTIVE
 
-This catalog defines the initial responsibility boundaries for our future RP server.
+This catalog defines the initial candidate responsibility boundaries for reusable RP domain systems.
 
 It is a planning and architecture reference, not a commitment to one package or service per domain. The default deployment model remains the modular monolith defined by ADR-0003.
 

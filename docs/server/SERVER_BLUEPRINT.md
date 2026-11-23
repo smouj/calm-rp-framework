@@ -1,10 +1,10 @@
-# Future GTA VI RP Server Blueprint
+# Reference RP Server Capability Blueprint
 
-This is the design skeleton for **our own future roleplay server**. It describes the product and operational areas we can prepare before GTA VI community-server technology is known.
+This document is a **reference set of roleplay capabilities and invariants** that community contributors can use when designing portable modules or a future example server. It is not an implemented multiplayer server, a stable public extension API or a claim about GTA VI runtime support.
 
-It is intentionally not a FiveM framework specification.
+The platform may eventually serve different RP communities; individual rules such as whitelist policy, economy and progression remain configurable example-server decisions. No current FiveM/GTA VI compatibility is implied.
 
-## 1. Server identity
+## 1. Example-server identity and policy
 
 Decisions to define before implementation:
 
@@ -137,7 +137,7 @@ Plan for:
 
 ## 4. Administration and moderation
 
-A professional RP server needs operational systems from day one:
+An RP community operating a server eventually needs administration systems such as:
 
 - role-based staff permissions;
 - immutable staff action logs;
@@ -196,7 +196,7 @@ The future GTA VI runtime may own transient game entities, but it should not be 
 
 ## 7. Internal tools
 
-Potential internal tools, not a public website product:
+Potential maintainer or server-operator tools, not currently implemented:
 
 - staff/admin console;
 - economy audit viewer;
@@ -227,7 +227,7 @@ These must stay abstract until GTA VI documentation exists:
 
 ## 9. Definition of readiness
 
-The project is considered **server-design ready** before GTA VI runtime support when:
+The project is considered **portable reference-server-design ready** before GTA VI runtime support when:
 
 - the community/server rules are documented;
 - core domain invariants have tests;

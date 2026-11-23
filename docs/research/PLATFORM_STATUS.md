@@ -1,21 +1,25 @@
 # GTA VI RP / Community Server Platform Status
 
-**Last verified:** 2026-09-12
+**Targeted update:** 2026-11-23 — GTA VI launch, platform availability and RP policy; older sections retain their original per-source verification dates.
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
 ## Confirmed
 
-### GTA VI release and currently announced platforms
+### GTA VI released on PlayStation 5 and Xbox Series X|S
 
-Rockstar Games currently lists **Grand Theft Auto VI** for **November 19, 2026** on **PlayStation 5** and **Xbox Series X|S**.
+**Classification:** `CONFIRMED` for the official game's release and supported console platforms; **not** a community-server authorization.
+
+Rockstar's **November 19, 2026** Newswire announcement says Grand Theft Auto VI is now available. The official product page identifies **PlayStation 5** and **Xbox Series X|S** as launch platforms; PlayStation's current store page lists a **single-player** product. This targeted 2026-11-23 review found no first-party PC release or GTA VI custom-server developer contract. Lack of a confirmed contract is **not** a claim that future PC, online or creator features will never be announced.
 
 Official sources:
 
-- https://www.rockstargames.com/VI
-- https://support.rockstargames.com/articles/4QfG4FmZCf5W1gS8jy4UVT/grand-theft-auto-vi-platform-editions-and-versions
+- Rockstar Games — _Grand Theft Auto VI Now Available_ (2026-11-19): https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available
+- Rockstar Games — product page: https://www.rockstargames.com/VI
+- PlayStation Store — GTA VI product metadata (verified 2026-11-23): https://store.playstation.com/es-es/product/EP1004-PPSA01547_00-GTAVISTANDARD001
+- Rockstar Support — platform editions and versions: https://support.rockstargames.com/articles/4QfG4FmZCf5W1gS8jy4UVT/grand-theft-auto-vi-platform-editions-and-versions
 
-### GTA VI is currently announced as a single-player experience
+### GTA VI is distributed as a single-player experience
 
 **Classification:** `CONFIRMED` for the currently announced **Grand Theft Auto VI product experience**. This does **not** establish that Rockstar will never announce a separate or later multiplayer product or service.
 
@@ -136,13 +140,17 @@ Official source:
 
 - Rockstar Games Support — _Service Status_, verified 2026-09-12: https://support.rockstargames.com/servicestatus?lang=en
 
-### Rockstar has a published RP-server policy
+### Rockstar allows RP through its Creator Platform, subject to policy
 
-Rockstar's public policy recognizes third-party RP servers as community-created experiences while reserving enforcement rights and identifying areas such as IP misuse, certain commercial exploitation, crypto assets and interference with official online services as enforcement priorities.
+**Classification:** `CONFIRMED` only for the scope of Rockstar's stated Creator Platform policies. It does **not** confirm a GTA VI creator runtime or provide blanket permission for a GTA VI multiplayer modification.
 
-Official source:
+Rockstar Support's RP guidance (updated **2026-09-15**) states that RP servers are allowed **through its Creator Platform**, provided they follow the applicable policies, including the Creator Platform License Agreement and mod guidelines. This project's future GTA VI integration requires a separate verified authorization and a supported technical pathway.
 
-- https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers
+Official sources:
+
+- Rockstar Support — RP policy: https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers
+- Rockstar — mod guidelines: https://www.rockstargames.com/es/community-resources/mod-guidelines
+- Cfx — Creator Platform License Agreement: https://fivem.net/terms/
 
 ### Cfx.re is part of Rockstar Games
 

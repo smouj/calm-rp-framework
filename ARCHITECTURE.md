@@ -1,26 +1,32 @@
-# Architecture
+# Architecture — Community RP Platform
 
-## Objective
+## Purpose
 
-Prepare the technical foundation for **one future GTA VI roleplay server/community of our own** while keeping every unknown GTA VI integration detail isolated.
+Develop reusable and verifiable roleplay systems as an **open-source foundation**, with GTA VI integration as a long-term goal contingent on public, legitimate runtime documentation.
 
-The architecture exists to reduce future rework, not to pre-build a FiveM replacement or a generic hosting platform.
+The architecture is not a functioning FiveM replacement today. It must remain useful even if GTA VI never receives an authorized community-server API.
 
 ## Architectural posture
 
-### Modular monolith by default
+### Portable, server-authoritative domain
 
-Start with one deployable authoritative application split into strict modules. Do not introduce microservices, event brokers, distributed caches or multi-region topology without a measured operational requirement.
+The game client is untrusted. Persistent RP state belongs in domain/application services: accounts, characters, economy, inventory, jobs, permissions and property ownership. Clients and adapters communicate _intent_, not authoritative balances or ownership.
 
-### Single-server first
+```text
+client / simulator input
+    -> parse
+    -> authenticate
+    -> authorize
+    -> validate
+    -> transact / persist
+    -> audit / project result
+```
 
-The primary product boundary is our RP server. Reusability is desirable inside the codebase, but public framework compatibility is not a design objective.
+### Modular monolith first
 
-### Game runtime as an external dependency
+Multiple contributors and potential future server communities do not require a microservice platform at this stage. Start with a modular deployable application and stable contracts. Introduce extension APIs, brokers, external plugins, multi-region infrastructure or a server browser only after tested use cases justify their cost.
 
-GTA/FiveM/Cfx-specific behavior belongs only in adapters. The domain remains useful even if the eventual GTA VI integration model differs completely from FiveM.
-
-## Dependency direction
+### Game-independent ports and adapters
 
 ```text
 apps -> packages/contracts -> packages/core
@@ -29,95 +35,42 @@ apps -> packages/contracts -> packages/core
 adapters ------+------------------+
 ```
 
-`packages/*` must never depend on `adapters/*`, GTA natives, Cfx natives, browser globals or undocumented game/runtime APIs.
+`packages/*` must not import runtime globals, GTA natives, Cfx natives, adapter implementations or proprietary asset formats.
 
-## Trust model
+## Current implementation
 
-The game client is untrusted. A client may express intent but may not authoritatively set money, inventory, permissions, ownership, job rank, persisted character state or canonical world state.
+- `packages/core`: base types, domain error and money primitives.
+- `packages/contracts`: typed envelopes and domain-event interfaces.
+- `adapters/simulator`: a basic, deterministic player directory.
+- `apps/api`: health-status scaffold.
+- `infrastructure/database`: initial SQL migration; `infrastructure/docker`: development services.
+- `adapters/cfx`: current FiveM/RedM ecosystem research, **not** proven GTA VI integration.
+- `adapters/gta6`: intentionally reserved and **not implemented**.
 
-Every state-changing command follows:
+Neither a game client, networking stack, plugin marketplace nor a playable RP server exists yet.
 
-```text
-request -> authenticate -> authorize -> validate -> transact -> persist -> emit audit/event -> project response
-```
+## Persistence and security
 
-## Initial server domains
+PostgreSQL is the planned durable source of truth. Redis, if used, only stores rebuildable ephemeral state. Money uses integer minor units; changes affecting money, inventory or ownership require transactions, idempotency and auditability.
 
-These are planning boundaries for the future server, not commitments to separate services:
+Admin operations must pass the same domain invariants with explicit, attributable privileges. Client-reported state is always untrusted.
 
-- accounts / sessions
-- identity / characters
-- economy / ledger
-- inventory / containers
-- jobs / progression
-- factions / memberships
-- businesses / employment
-- vehicles / ownership / garages
-- properties / access
-- police / justice records
-- EMS / medical RP workflows
-- communications / phone
-- permissions / moderation / audit
+## Community extension strategy
 
-Modules communicate through typed contracts rather than by reaching into each other's storage.
+The project may evolve toward reusable packages and resource contracts, but no public plugin ABI, scripting API, server network protocol or FiveM compatibility is specified today. Proposals need a real use case, stable naming, migration/compatibility rules, tests and an ADR.
 
-## Runtime adapters
+Reference implementations and sample servers are **examples**, not proof of GTA VI runtime readiness. Documentation should clearly label these maturity levels.
 
-### Simulator
+## GTA VI and other runtime research
 
-Deterministic local adapter used to model and test server behavior without any game runtime. It is the main development target during the pre-runtime phase.
+The GTA VI adapter is blocked until an implementable and authorized first-party path establishes the relevant capabilities, including authentication, lifecycle, scripting, client/server events, entities and policy. Before integration, update platform research, `RT-*` requirement states, ADRs and conformance tests.
 
-### Cfx compatibility lab
+Cfx/FiveM concepts and Leonida's public file-format observations may inspire design but may never be silently promoted to GTA VI guarantees. No proprietary game data belongs in this repository.
 
-A research boundary for **public** FiveM/RedM/Cfx.re concepts when studying how current RP servers solve integration concerns. It is not evidence that GTA VI will use the same APIs or runtimes.
+## Project evolution
 
-No Cfx native, event name, identifier format or resource assumption may become a core-domain requirement.
-
-### GTA VI
-
-Reserved future adapter. It remains intentionally empty until Rockstar Games and/or Cfx.re publish a legitimate public development/runtime contract that is relevant to GTA VI community servers.
-
-Before implementing a capability here:
-
-1. record the public source in `docs/research/PLATFORM_STATUS.md`;
-2. write or update an ADR;
-3. define the adapter contract;
-4. add conformance tests;
-5. verify that no GTA VI-specific assumption leaks into core modules.
-
-## Persistence
-
-PostgreSQL is the default durable source of truth for planned server state.
-
-Redis is non-authoritative. It may be used later for ephemeral coordination, rate limits, presence or cache only when justified; deleting Redis must not destroy canonical player state.
-
-Financial values use integer minor units. Ledger entries are immutable after commit; corrections use compensating transactions.
-
-Ownership and inventory changes must be transactional and auditable.
-
-## Deployment philosophy
-
-Initial target:
-
-```text
-Game runtime / simulator
-          |
-          v
-Authoritative RP application
-          |
-          +--> PostgreSQL
-          |
-          `--> optional Redis
-```
-
-Internal administration or web UI may exist as operational tooling, but a public GTA VI RP website is outside the project scope.
-
-Scale-out architecture is deferred until actual runtime limits, player counts and platform constraints are known.
-
-## Evolution rules
-
-- Prefer additive contracts and explicit migrations.
-- Breaking cross-module changes require an ADR.
-- Unknown GTA VI details must be represented as unknown, not guessed.
-- A current FiveM pattern may inform research but cannot silently become a GTA VI requirement.
-- Production complexity must be justified by an observed need.
+- Preserve the boundary between portable rules and game APIs.
+- Prefer additive, versioned contracts and explicit migrations.
+- Keep reviews and security gates visible to outside contributors.
+- Avoid runtime claims until public evidence and reproducible integration tests exist.
+- Follow [ADR-0006](./docs/adr/0006-community-open-platform.md) for the proposed public-platform scope transition.

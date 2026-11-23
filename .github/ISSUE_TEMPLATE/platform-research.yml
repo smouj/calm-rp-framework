@@ -45,7 +45,7 @@ body:
   - type: textarea
     id: impact
     attributes:
-      label: Impact on our server plan
+      label: Impact on platform readiness and integration gates
       description: Explain which requirement, ADR, adapter boundary, or roadmap gate this affects.
     validations:
       required: true

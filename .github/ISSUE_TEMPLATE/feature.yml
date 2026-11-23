@@ -1,13 +1,13 @@
-name: Server capability proposal
-description: Propose a bounded capability for our future GTA VI RP server
+name: Platform feature proposal
+description: Propose a testable, game-independent RP feature or public-platform improvement
 title: "feat: "
 labels: [enhancement]
 body:
   - type: textarea
     id: problem
     attributes:
-      label: Server need
-      description: What player, staff, moderation, or operational need should this solve?
+      label: Contributor or user need
+      description: What reusable RP, simulator, security, or developer experience need should this solve?
     validations:
       required: true
 
@@ -73,7 +73,7 @@ body:
     attributes:
       label: Scope gate
       options:
-        - label: This is useful for our own server and is not being added only to make a generic public framework.
+        - label: This change serves a concrete RP platform use case and does not invent a GTA VI integration contract.
           required: true
         - label: Undocumented GTA VI behavior is not treated as confirmed.
           required: true

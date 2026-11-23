@@ -1,0 +1,32 @@
+name: Good first contribution proposal
+description: Propose a small, testable onboarding task for community contributors
+title: "community: "
+labels: [help wanted]
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: Bounded task
+      description: Describe a useful and self-contained change.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List objective checks or visible outcomes; avoid promising GTA VI integration.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Work area
+      options:
+        - Documentation / translation
+        - Tests / simulator
+        - Domain rules / contracts
+        - Developer experience
+        - Accessibility / UI
+        - Research / source verification
+    validations:
+      required: true

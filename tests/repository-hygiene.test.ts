@@ -42,6 +42,15 @@ describe('repository hygiene', () => {
     expect(dependabot).toContain('package-ecosystem: github-actions');
   });
 
+  it('does not expose local development databases on public interfaces', () => {
+    const compose = read('infrastructure/docker/compose.yml');
+
+    expect(compose).toContain("'127.0.0.1:5432:5432'");
+    expect(compose).toContain("'127.0.0.1:6379:6379'");
+    expect(compose).not.toContain("'5432:5432'");
+    expect(compose).not.toContain("'6379:6379'");
+  });
+
   it('keeps project-facing identity independent', () => {
     const identity = read('docs/branding/PROJECT_IDENTITY.md');
 

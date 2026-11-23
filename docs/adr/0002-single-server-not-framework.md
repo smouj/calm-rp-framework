@@ -1,7 +1,9 @@
 # ADR 0002 — Single-server product, not a generic RP framework
 
-- **Status:** Accepted
+- **Status:** Accepted historically; superseded by ADR-0006
 - **Date:** 2026-08-30
+
+The original single-server scope is preserved here as a historical decision. [ADR-0006](./0006-community-open-platform.md) supersedes that product scope with an open community platform. The product exclusions below are no longer current positioning.
 
 ## Context
 
