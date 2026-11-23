@@ -56,7 +56,7 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 ## Participar
 
-1. Lee [CONTRIBUTING.md](./CONTRIBUTING.md), el [código de conducta](./CODE_OF_CONDUCT.md) y la [gobernanza](./GOVERNANCE.md).
+1. Lee [la guía para contribuir en español](./CONTRIBUTING.es.md), el [código de conducta](./CODE_OF_CONDUCT.md) y la [gobernanza](./GOVERNANCE.md).
 2. Consulta las [incidencias](https://github.com/smouj/gta6-rp-platform/issues) y las propuestas abiertas.
 3. Crea una bifurcación del repositorio, implementa un cambio acotado con pruebas y envía una [solicitud de integración](https://github.com/smouj/gta6-rp-platform/pulls).
 4. Nunca incluyas archivos propietarios del juego, filtraciones, contraseñas o datos personales.
@@ -68,6 +68,8 @@ docker compose -f infrastructure/docker/compose.yml up -d
 - [Hoja de ruta](./docs/roadmap/ROADMAP.md)
 - [Requisitos de GTA VI todavía sin confirmar](./docs/server/RUNTIME_REQUIREMENTS.md)
 - [Investigación y fuentes](./docs/research/PLATFORM_STATUS.md)
+- [Preguntas frecuentes](./docs/community/FAQ.md)
+- [Guía de contribución en español](./CONTRIBUTING.es.md)
 - [Licencia MIT](./LICENSE)
 - [Seguridad](./SECURITY.md)
 - [Lista de comprobación para publicación](./docs/community/PUBLIC_LAUNCH_CHECKLIST.md)
