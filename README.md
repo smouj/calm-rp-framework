@@ -94,12 +94,12 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 ## Get involved
 
-- Read [CONTRIBUTING.md](./CONTRIBUTING.md), [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) and [GOVERNANCE.md](./GOVERNANCE.md).
+- Read [CONTRIBUTING.md](./CONTRIBUTING.md) ([español](./CONTRIBUTING.es.md)), [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) and [GOVERNANCE.md](./GOVERNANCE.md).
 - Browse [issues](https://github.com/smouj/gta6-rp-platform/issues), including [good first issues](https://github.com/smouj/gta6-rp-platform/labels/good%20first%20issue) and [help wanted](https://github.com/smouj/gta6-rp-platform/labels/help%20wanted).
 - Propose one scoped change, create a fork and open a [pull request](https://github.com/smouj/gta6-rp-platform/pulls).
 - Prefer reproducible tests, safe mock data and documentation with public sources. No secrets, leaks or proprietary game files.
 
-Contributions are welcome; merging requires review and passing checks. Check [SUPPORT.md](./SUPPORT.md) for help and [SECURITY.md](./SECURITY.md) for private vulnerability reports.
+Contributions are welcome; merging requires review and passing checks. Check the [FAQ](./docs/community/FAQ.md) and [SUPPORT.md](./SUPPORT.md) for help and [SECURITY.md](./SECURITY.md) for private vulnerability reports.
 
 ## Roadmap
 
