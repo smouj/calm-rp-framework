@@ -81,6 +81,12 @@ The simulator lets us validate server behavior before a GTA VI runtime exists. T
 
 This repository is not a reason to invent production-scale infrastructure prematurely. The default architecture is a modular, server-authoritative application with PostgreSQL. Redis, extra services and horizontal scaling are introduced only when a measured requirement justifies them.
 
+## Synthetic world planning
+
+The repository now includes a read-only [world-planning catalog](./docs/server/WORLD_SPATIAL_READINESS.md) for proposed RP locations, separate coordinate spaces, exterior/interior relationships, bounding volumes and deterministic queries. Its example locations are **fictional**. It does not parse GTA VI files, provide a navmesh or unblock multiplayer integration.
+
+This keeps business/property/service IDs independent of model files, rendering, map streaming and runtime entity handles. The design is documented in [proposed ADR-0005](./docs/adr/0005-independent-world-planning.md).
+
 ## Repository layout
 
 ```text
@@ -161,6 +167,7 @@ Before implementing any real GTA VI-specific adapter capability, require all of 
 - [Architecture](./ARCHITECTURE.md)
 - [Server blueprint](./docs/server/SERVER_BLUEPRINT.md)
 - [Server domain catalog](./docs/server/DOMAIN_CATALOG.md)
+- [Spatial planning and GTA VI file-format research boundaries](./docs/server/WORLD_SPATIAL_READINESS.md)
 - [GTA VI runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md)
 - [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
 - [Rockstar technology baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md)
