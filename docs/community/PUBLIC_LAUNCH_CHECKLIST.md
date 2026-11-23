@@ -24,10 +24,10 @@ These topics express interests and project aspiration; they are **not** evidence
 
 ## Security review before visibility changes
 
-- [ ] Inspect **all commits and historical trees**, including deleted files, branches, tags, pull requests and merge references.
+- [x] Inspect all commits reachable from the fetched branches, including deleted files, merge history and tags; review the available pull request history.
 - [ ] Inspect GitHub Actions history, job logs, artifacts and failed workflow output for passwords, tokens, private URLs, copyrighted data, personal details and secrets.
-- [ ] Check issue/PR bodies, comments and attachments; public visibility may expose historical discussions.
-- [ ] Run an independent local secret scan against all reachable history; review results manually.
+- [x] Check issue/PR bodies, comments and available attachments; public visibility may expose historical discussions.
+- [x] Run an independent local secret-pattern scan against all reachable history and manually review the two local-placeholder matches.
 - [ ] Establish and test a confidential way to report serious conduct concerns without publishing personal details.
 - [ ] Verify ownership and the ability to distribute every committed file and dependency. Do not license third-party code without permission.
 - [ ] Rotate compromised keys **before** exposure, even if the secret is removed from the latest commit.
@@ -36,16 +36,22 @@ These topics express interests and project aspiration; they are **not** evidence
 
 Neither `.gitignore` nor a single-branch scan makes a private repository safe to publish.
 
-## Initial limited review record (2026-11-23)
+## Repository review record (2026-11-23)
 
-A preliminary scan inspected path listings on **19 accessible branches**; no paths with proprietary game package extensions, private-key file extensions or credential-file names were found beyond the intentional `.env.example` placeholder. The **eight commits on `main`** were sampled for common secret patterns in available GitHub diff patches (84 changed-file patches). Two files triggered heuristic matches: `.env.example` and `infrastructure/docker/compose.yml`, both currently configured with explicit _local-development placeholders_ rather than actual credentials.
+The following local/API checks were completed, but **do not amount to public-release clearance**:
 
-This is **not** comprehensive clearance: the scan does not inspect every blob across all branch histories, removed files outside the sampled commits, Actions logs, PR comments/attachments or GitHub secret-scanning results. Those checks remain required before public visibility. If any historically exposed credential was live, rotate it.
+- Fetched all **18 current remote branches** and scanned all reachable Git history: **193 commits, 878 objects and 228 file blobs**. No private-key, AWS/GitHub/Slack token patterns were found. The only credential-pattern matches were the known local placeholders in `.env.example` and `infrastructure/docker/compose.yml`; commit author identities use GitHub's `users.noreply.github.com` address format. No tags were present.
+- Reviewed the bodies and file patches for all **25 pull requests**, the discussion timelines, and the five standalone issues. No user-uploaded attachments or proprietary game-file paths were found. The only broad-pattern matches were `.env.example` and `infrastructure/docker/compose.yml`; their values are local-development placeholders, not credentials.
+- The CI workflow uses read-only repository permissions, pinned checkout/setup actions and does not reference repository secrets. The latest launch/dependency runs failed before a runner was assigned and have no job steps. The connected GitHub log tool returned no log content, so historical Actions logs and artifacts remain **unreviewed**.
+- The connected GitHub API does not expose secret-scanning alerts. A repository owner must inspect the Security page and any available alerts before changing visibility.
+- The repository is still private. About metadata, Discussions, branch protection, private conduct reporting and visibility settings have not been configured or verified.
+
+Before public visibility, still complete the Actions log/artifact review, inspect secret-scanning results and repository access, establish and test a confidential conduct-reporting route, and finish GitHub settings. If any historically exposed credential was live, rotate it.
 
 ## Merge and validation gates
 
 - [ ] Review and merge the open-source scope/license/documentation PR with deliberate maintainer approval.
-- [ ] Reconcile conflicting open work, particularly [PR #25](https://github.com/smouj/gta6-rp-platform/pull/25) and [PR #26](https://github.com/smouj/gta6-rp-platform/pull/26), which still assume parts of the old private-server scope.
+- [x] Review [PR #25](https://github.com/smouj/gta6-rp-platform/pull/25) and [PR #26](https://github.com/smouj/gta6-rp-platform/pull/26); keep both as drafts for separate research/architecture review, and do not mix their feature work into the community-foundation merge.
 - [ ] Ensure `pnpm check` passes on the **actual final commit** (lint, typecheck, unit tests and Prettier).
 - [ ] Resolve GitHub Actions jobs that fail **before starting any steps**; runner failures cannot be counted as a passing build.
 - [ ] Verify the MIT license applies only to contributor-owned code and documentation.
