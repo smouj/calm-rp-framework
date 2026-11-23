@@ -25,15 +25,15 @@ Developers, artists, testers, documentation writers, security specialists and fa
 
 ## Project status
 
-| Area | Actual state |
-| --- | --- |
-| TypeScript workspace, domain primitives and typed contracts | Initial code |
-| Game-independent simulator | Basic player-directory prototype |
-| API and local PostgreSQL infrastructure | Scaffolding and initial migration |
-| Security, research and automated checks | Foundation |
-| Public Cfx/FiveM ecosystem research | Research only, not GTA VI compatibility |
-| GTA VI game/runtime adapter | **BLOCKED** — authorization and runtime contracts unknown |
-| GTA VI client, multiplayer server or downloadable release | **NOT IMPLEMENTED** |
+| Area                                                        | Actual state                                              |
+| ----------------------------------------------------------- | --------------------------------------------------------- |
+| TypeScript workspace, domain primitives and typed contracts | Initial code                                              |
+| Game-independent simulator                                  | Basic player-directory prototype                          |
+| API and local PostgreSQL infrastructure                     | Scaffolding and initial migration                         |
+| Security, research and automated checks                     | Foundation                                                |
+| Public Cfx/FiveM ecosystem research                         | Research only, not GTA VI compatibility                   |
+| GTA VI game/runtime adapter                                 | **BLOCKED** — authorization and runtime contracts unknown |
+| GTA VI client, multiplayer server or downloadable release   | **NOT IMPLEMENTED**                                       |
 
 See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 
