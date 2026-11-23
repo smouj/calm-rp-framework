@@ -1,0 +1,26 @@
+name: Documentation or translation
+description: Suggest a documentation correction, clearer onboarding, or translation
+title: "docs: "
+labels: [documentation]
+body:
+  - type: textarea
+    id: issue
+    attributes:
+      label: Problem or missing information
+      description: Link the relevant document and explain why it is inaccurate, incomplete, or difficult to follow.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested improvement
+      description: Provide an example, proposed wording, translation, or reliable public source.
+    validations:
+      required: true
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Content integrity
+      options:
+        - label: This proposal contains no game leaks, proprietary files, private information, or unsupported GTA VI compatibility claims.
+          required: true
