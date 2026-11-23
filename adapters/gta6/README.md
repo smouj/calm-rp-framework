@@ -31,6 +31,12 @@ Do not infer from that evidence that:
 
 The adapter implementation language is selected only after `RT-003` and `RT-004` are supported by GTA VI-specific public evidence and the decision is recorded in an ADR.
 
+## Third-party tooling does not unlock the adapter
+
+The [Leonida technical assessment](../../docs/research/LEONIDA_2026-11-23.md) documents useful public research into Xbox file formats, a Windows loader and offline world tooling. Leonida is not a GTA VI community-server runtime, and its repository reports that the game does not yet boot.
+
+No Leonida packages, exported resources, console interfaces or speculative multiplayer hooks may be placed here on that basis. A successful future Leonida boot alone would not establish first-party GTA VI server authorization or the required adapter contracts.
+
 ## What may exist here before unlock
 
 Allowed pre-runtime content:
