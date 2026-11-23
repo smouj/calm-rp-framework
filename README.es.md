@@ -31,6 +31,8 @@ Podemos construir ya lógica de personajes, economía, inventarios, propiedades,
 - **Investigación:** arquitectura y conceptos públicos de FiveM/Cfx, sin asumir compatibilidad con GTA VI.
 - **Bloqueado:** adaptador real de GTA VI, cliente multijugador y servidor jugable.
 
+Rockstar anunció el lanzamiento del juego en consolas el **19 de noviembre de 2026**, pero eso **no confirma** soporte para servidores comunitarios. [Fuente oficial](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
+
 La estructura conocida de algunos archivos del juego puede inspirar decisiones de diseño, pero no confirma una interfaz de desarrollo ni autorización para distribuir modificaciones.
 
 ## Desarrollo local
