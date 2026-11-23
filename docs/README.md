@@ -40,10 +40,11 @@ Architecture Decision Records live in [`adr/`](./adr/).
 ## Open-source community
 
 - [`../README.md`](../README.md) and [`../README.es.md`](../README.es.md) — international and Spanish onboarding.
-- [`../CONTRIBUTING.md`](../CONTRIBUTING.md) — contributor workflow and quality standards.
+- [`../CONTRIBUTING.md`](../CONTRIBUTING.md) and [`../CONTRIBUTING.es.md`](../CONTRIBUTING.es.md) — contributor workflow and Spanish onboarding.
 - [`../CODE_OF_CONDUCT.md`](../CODE_OF_CONDUCT.md) — expectations for respectful collaboration.
 - [`../GOVERNANCE.md`](../GOVERNANCE.md) — review, decision and maintainer responsibilities.
 - [`../SUPPORT.md`](../SUPPORT.md) — support channels and their limitations.
+- [`community/FAQ.md`](./community/FAQ.md) — community FAQ, including the no-multiplayer status.
 - [`../TRADEMARKS.md`](../TRADEMARKS.md) — fan-project identity and third-party rights.
 - [`community/PUBLIC_LAUNCH_CHECKLIST.md`](./community/PUBLIC_LAUNCH_CHECKLIST.md) — safety gates and GitHub publication settings.
 
