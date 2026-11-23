@@ -164,8 +164,8 @@ export class WorldPlanningCatalog {
         }
         visited.add(parentId);
         const parent = this.#locations.get(parentId);
-        if (parent === undefined || parent.spaceId !== location.spaceId) {
-          throw new RangeError(`Invalid or cross-space parent for: ${location.id}`);
+        if (parent === undefined) {
+          throw new RangeError(`Unknown planning parent for: ${location.id}`);
         }
         parentId = parent.parentId;
       }
