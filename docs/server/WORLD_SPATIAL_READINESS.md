@@ -21,16 +21,14 @@ These observations justify separating **location identity**, **coordinate spaces
 
 `packages/core/src/world-planning.ts` provides a validated, read-only catalog for project-authored planning locations. It is used for synthetic prototyping, not world ingestion.
 
-| Feature | Behavior | Why it matters for our future server |
-| --- | --- | --- |
-| Stable project IDs | Unrelated to model names, hashes and runtime entity handles | Property/business/EMS identities survive platform changes |
-| Separate `spaceId` | Distinct coordinate spaces, including conceptual instanced interiors | Interior planning does not require a real-game world transform |
-| 3D position and optional AABB | Finite coordinates, ordered bounds and point containment | Spatial drafts can be inspected without game objects |
-| Parent relation | Referential integrity, forward references and cycle rejection, **including across spaces** | A lobby can belong to an exterior service building without sharing coordinates |
-| Layer and RP use | Exterior/interior/underground; region/business/property/service/transport/interaction | Server workflows can attach meaning without relying on render assets |
-| Draft vs reviewed | Filtering of planning records only | An idea does not silently become a published game capability |
-| Provenance | Only `synthetic` or `project-owned`; third-party records rejected | Game extracts cannot enter through the typed catalog by default |
-| Search | Bounded point lookup and deterministic anchor-distance query | Supports a test planner with no navmesh pathfinding claim |
+- **Stable project IDs:** independent of model names, hashes and runtime entity handles so property, business and service identities survive platform changes.
+- **Coordinate spaces:** a separate `spaceId` even for conceptual instanced interiors; no assumed transformation into GTA VI coordinates.
+- **3D placement:** finite position, ordered optional bounds and point containment for independently authored drafts.
+- **Hierarchy:** parent links, forward references and cycle rejection, including parent-child relationships across spaces.
+- **RP classifications:** exterior/interior/underground and region/business/property/service/transport/interaction.
+- **Review status:** filter `draft` or `reviewed` planning records; no game capability is implied.
+- **Provenance:** accept only `synthetic` or `project-owned` records; reject external-provenance records.
+- **Spatial search:** deterministic point lookup and anchor proximity in one space, never routing or travel time.
 
 The catalog is **not** an authority or permissions engine: `reviewed` is only editorial planning state, not a guarantee of staff approval or live deployment. Any future mutations will go through explicit authenticated/authorized application commands and auditable storage.
 
@@ -38,7 +36,7 @@ The catalog is **not** an authority or permissions engine: `reviewed` is only ed
 
 `adapters/simulator/src/world-planning.ts` creates a fictional district, a medical building, a separate-space lobby and a business draft. Its labels and coordinates are original fixtures unrelated to GTA VI locations, file names or map coordinates.
 
-The simulator may query proposed RP service locations, evaluate spatial overlaps and rehearse internal planning. It must never spawn game entities or claim access to Rockstar files.
+The simulator may query proposed RP service locations, inspect spatial containment and rehearse internal planning. It must never spawn game entities or claim access to Rockstar files.
 
 ## Later integration: bounded and separately approved
 
