@@ -48,11 +48,11 @@ describe('repository hygiene', () => {
       cwd: process.cwd(),
       encoding: 'utf8',
     })
-      .split('\\0')
+      .split('\0')
       .filter(Boolean);
 
     const forbiddenFiles = trackedFiles.filter((path) =>
-      /(?:^|\\/)(?:[^/]+\\.(?:rpf|ttpf|awc|xvc|xex)|game_scarlett_master\\.exe)$/i.test(path),
+      /(?:^|\/)(?:[^/]+\.(?:rpf|ttpf|awc|xvc|xex)|game_scarlett_master\.exe)$/i.test(path),
     );
 
     expect(forbiddenFiles).toEqual([]);
