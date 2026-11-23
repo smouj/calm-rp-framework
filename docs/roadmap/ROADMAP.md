@@ -1,152 +1,105 @@
-# Roadmap
+# Community Platform Roadmap
 
-This roadmap prepares **our future GTA VI RP server** without pretending the GTA VI server/runtime contract already exists.
+**State:** ACTIVE planning reference  
+**Reviewed:** 2026-11-23
 
-No calendar commitment is attached to GTA VI integration phases until Rockstar Games and/or Cfx.re publish the required information.
+Our goal is to build an independent community-led RP foundation **before** any GTA VI-specific integration becomes possible. The stages describe verifiable milestones, not a schedule or a guarantee of compatibility.
 
-## P0 — Repository and research discipline
+## P0 — Open-source project readiness
 
-**Goal:** keep the project technically clean and factually honest.
+**Goal:** make the repository genuinely accessible, safe, understandable and legally clear.
 
-- monorepo, lint/typecheck/test gates;
-- project scope and explicit non-goals;
-- architecture decision records;
-- threat model;
-- platform-status register with first-party sources;
-- reserved simulator/Cfx/GTA VI adapter boundaries;
-- reproducible local PostgreSQL/Redis tooling where needed.
+- license original code under MIT; distinguish Rockstar intellectual property;
+- English and Spanish onboarding, contribution rules, code of conduct and governance;
+- badges, truthful status, public roadmap, bug/research templates and clear ownership;
+- repository-history and Actions-log security audit before making an existing private repo public;
+- CI that actually executes lint, type checks, tests and formatting on the final head;
+- description, topics, Discussions, branch protection, dependency updates and security settings.
 
-**Exit:** the repository can distinguish confirmed facts, inferences and unknown GTA VI requirements, and CI protects the baseline.
+**Exit:** an unauthenticated visitor can clone a safe public repo, run checks and submit a documented PR. Follow the [public release checklist](../community/PUBLIC_LAUNCH_CHECKLIST.md).
 
-## P1 — Server product specification
+## P1 — Shared RP system specification
 
-**Goal:** define what our server should actually be before implementing large systems.
+**Goal:** define reusable game-independent requirements without overengineering a plugin framework.
 
-- community/server identity;
-- RP style and access model;
-- character lifecycle;
-- economy philosophy;
-- job/business/faction model;
-- police/EMS/justice workflows;
-- vehicle/property ownership rules;
-- staff roles and moderation model;
-- wipe/season/progression policy;
-- list of runtime-dependent requirements.
+- accounts and stable character identity;
+- server-authoritative money, inventory, ownership, employment and permissions;
+- example-server policies clearly separated from core rules;
+- component naming, contract versioning, security invariants and example API scenarios;
+- operational constraints and documented abuse cases.
 
-**Exit:** `SERVER_BLUEPRINT.md` and follow-up design documents are specific enough to drive implementation without requiring GTA VI APIs.
+**Exit:** individual contributions map to a reviewed domain/API use case and to explicit tests.
 
-## P2 — Game-independent vertical slices
+## P2 — Portable vertical slices
 
-**Goal:** implement only domain behavior that is very likely to survive any future runtime choice.
+**Goal:** ship real, tested RP behavior in the simulator.
 
-Recommended first slices:
+1. account and session lifecycle;
+2. character creation and identity boundaries;
+3. ledger-based wallet/bank operations with idempotent commands;
+4. inventory, container and ownership transactions;
+5. permission checks and attributable audit records;
+6. deterministic two-player simulator workflows;
+7. original synthetic world/location planning where it benefits tests.
 
-1. account/session boundary;
-2. character identity lifecycle;
-3. ledger-based wallet/bank transfers;
-4. basic inventory/container ownership;
-5. permissions and immutable audit events;
-6. deterministic simulator workflows.
+**Exit:** multiple simulated players exercise a representative, secure RP flow with durable state. A diagram or stub is not a completed slice.
 
-**Exit:** two simulated players can execute representative RP actions through authoritative commands with persistence and auditability, without importing game-specific code.
+## P3 — Developer experience and reference integrations
 
-## P3 — Server systems by validated need
+**Goal:** make the verified systems easy for contributors and future server authors to use.
 
-**Goal:** expand the server model only after the P1 product decisions exist.
+- API examples, complete fixtures, error contracts and conformance tests;
+- admin/moderation samples and safe configuration;
+- reproducible local services and migration tests;
+- documented, minimal extension points driven by actual use cases;
+- accessible UI prototypes, localization and developer documentation.
 
-Candidate modules:
+**Exit:** an external developer can understand, test and extend a supported component without GTA VI files.
 
-- jobs and businesses;
-- factions and memberships;
-- vehicles and garages;
-- properties and access;
-- police/justice;
-- EMS;
-- communications/phone contracts;
-- moderation/admin tooling.
+## P4 — Public Cfx/engine research boundary
 
-Do not build every possible RP feature simply because existing FiveM frameworks contain it.
+**Goal:** compare verified existing ecosystems without claiming GTA VI compatibility.
 
-**Exit:** each implemented module has documented invariants, tests, migrations and a clear reason to exist in our planned server.
+- documented FiveM/RedM/Cfx concepts, state/event and resource patterns;
+- public Leonida technical findings about world/asset structure as research only;
+- provenance, security, license and data-handling boundaries;
+- explicit hypotheses and failure modes for future platform transitions.
 
-## P4 — Cfx compatibility/research lab
+**Exit:** useful research is documented with precise evidence classifications and no hidden integration assumptions.
 
-**Goal:** study current public Cfx.re integration patterns without turning them into GTA VI assumptions.
+## P5 — Authorized GTA VI runtime integration
 
-Possible work:
+**State:** **BLOCKED** pending public first-party documentation and an implementable, legitimate integration path.
 
-- adapter experiments using public FiveM/RedM APIs;
-- client/server trust-boundary exercises;
-- resource lifecycle research;
-- NUI/web-view patterns;
-- entity synchronization/ownership research;
-- security failure-mode studies.
+Before any real GTA VI adapter/client/server code:
 
-**Constraint:** nothing learned here may become a GTA VI requirement without separate first-party GTA VI confirmation.
+1. verify allowed runtime/creator-platform scope and platform terms;
+2. update [platform status](../research/PLATFORM_STATUS.md) and relevant [RT requirements](../server/RUNTIME_REQUIREMENTS.md);
+3. define a reviewed adapter contract, security model and ADR;
+4. add conformance tests against a documented runtime;
+5. implement a minimal reproducible proof of concept only after authorization.
 
-## P5 — GTA VI integration discovery
+**Exit:** only a separately verified implementation may claim GTA VI compatibility. P5 currently has **no release date**.
 
-**Status:** BLOCKED by public platform information.
+## P6 — Optional multiplayer prototype
 
-Unlock only when a legitimate GTA VI community-server/runtime path is documented.
+**State:** Conditional on P5.
 
-Then:
+Only after authorized runtime support, evaluate real players, game-state sync, operations, security, voice, resources, client distribution and load. No prototype is currently playable or available to download.
 
-1. update `docs/research/PLATFORM_STATUS.md`;
-2. capture supported runtimes, hosting model and platform policy;
-3. enumerate capability gaps against our server blueprint;
-4. write ADRs for each major integration decision;
-5. define adapter conformance tests;
-6. build the smallest end-to-end GTA VI proof of concept;
-7. benchmark synchronization, latency, authority and persistence boundaries.
+## P7 — Public releases and community ecosystem
 
-**Exit:** one authenticated player can connect through the legitimate runtime and exercise a small authoritative RP vertical slice end-to-end.
+**State:** Conditional on working, documented and supportable functionality.
 
-## P6 — Private server prototype
+- release notes and security advisories;
+- versioned APIs, compatibility matrices and deprecation policy;
+- contributor governance and maintenance succession;
+- optional plugins, server tooling and broader community services only if tested and justified;
+- ongoing policy/license review before any game-facing release.
 
-**Goal:** assemble a playable private prototype of our own RP server.
+## Project rules
 
-- character onboarding;
-- persistence;
-- economy/inventory baseline;
-- one civilian gameplay loop;
-- one emergency-service workflow;
-- vehicles/properties only to the extent the runtime supports them;
-- staff/moderation tools;
-- observability and backups;
-- security review.
-
-**Exit:** a small invited test group can play repeatable sessions without manual database intervention for normal flows.
-
-## P7 — Community readiness
-
-**Goal:** prepare operation of the actual community rather than merely shipping code.
-
-- rules and onboarding;
-- whitelist/access workflow if used;
-- staff training and permissions;
-- incident/moderation procedures;
-- backups and disaster recovery drills;
-- economy monitoring;
-- release/change-management process;
-- performance/load testing based on real runtime limits;
-- policy/legal review against current Rockstar/Cfx.re rules.
-
-**Exit:** the server can be operated predictably, audited and recovered.
-
-## Always blocked from speculative implementation
-
-Until first-party public documentation exists, do not implement fake GTA VI versions of:
-
-- natives;
-- entity APIs;
-- event names;
-- resource manifests;
-- authentication identifiers;
-- voice APIs;
-- NUI/web-view APIs;
-- server binaries;
-- anti-cheat hooks;
-- asset-streaming contracts.
-
-Track those as requirements, not code.
+- **Implementation before claims:** a README or design document is not a functioning runtime.
+- **Evidence before coupling:** FiveM patterns and third-party file research do not unlock GTA VI.
+- **No game assets:** no proprietary files, leaked material, keys or unauthorized services.
+- **Community with review:** contributions are open, merges remain gated on verification and human decisions for high-risk changes.
