@@ -22,6 +22,7 @@ The repository is intentionally split between **decisions we control now** and *
 
 - [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.
 - [`research/ROCKSTAR_TECHNOLOGY_BASELINE.md`](./research/ROCKSTAR_TECHNOLOGY_BASELINE.md) — first-party Rockstar/Cfx technology evidence, planning implications and explicit limits on GTA VI inference.
+- [`server/WORLD_SPATIAL_READINESS.md`](./server/WORLD_SPATIAL_READINESS.md) — the synthetic world-planning prototype and its boundaries against proprietary GTA VI data.
 - [`server/DOMAIN_CATALOG.md`](./server/DOMAIN_CATALOG.md) — domain ownership, invariants and runtime dependencies.
 - [`roadmap/RISK_REGISTER.md`](./roadmap/RISK_REGISTER.md) — material project risks, mitigations and reassessment triggers.
 - [`branding/PROJECT_IDENTITY.md`](./branding/PROJECT_IDENTITY.md) — independent identity, asset and documentation-style policy.
@@ -34,6 +35,8 @@ Architecture Decision Records live in [`adr/`](./adr/).
 - [`0002-single-server-not-framework.md`](./adr/0002-single-server-not-framework.md) — optimize for our server, not a generic framework product.
 - [`0003-modular-monolith-first.md`](./adr/0003-modular-monolith-first.md) — keep deployment simple until measured requirements justify extraction.
 - [`0004-authoritative-postgresql-ephemeral-redis.md`](./adr/0004-authoritative-postgresql-ephemeral-redis.md) — durable RP state has one authoritative store; Redis remains reconstructable.
+
+- [`0005-independent-world-planning.md`](./adr/0005-independent-world-planning.md) — proposed, explicitly non-runtime spatial planning abstraction.
 
 New ADRs are required when a change introduces a durable architectural constraint, changes a cross-module contract, adopts a new authoritative data store, or binds the project to a verified GTA VI runtime capability.
 
