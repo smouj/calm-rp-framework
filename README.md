@@ -145,7 +145,7 @@ See [Rockstar Technology Baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.
 
 ## External technical research: Leonida
 
-Leonida is a public third-party Xbox-to-Windows recompilation project with offline asset and world research tools. It currently **does not boot GTA VI**, does not provide an RP server, and does not establish an authorized GTA VI community-server interface.
+Leonida is a public third-party Xbox-to-Windows recompilation project with offline asset and world research tools. **At the 2026-11-23 review**, upstream reported that GTA VI did not boot. Its code does not provide an RP server or establish an authorized GTA VI community-server interface.
 
 We track its publicly documented techniques **for research only**, without importing its code or extracted game content. The simulator and authoritative RP core remain our development targets; the GTA VI adapter and all GTA VI runtime requirements remain blocked.
 
