@@ -143,6 +143,15 @@ The project will **not** be rewritten in C++ merely because Rockstar uses C++ in
 
 See [Rockstar Technology Baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md) for the evidence matrix, source list, limitations and leak-handling policy.
 
+## External technical research: Leonida
+
+Leonida is a public third-party Xbox-to-Windows recompilation project with offline asset and world research tools. It currently **does not boot GTA VI**, does not provide an RP server, and does not establish an authorized GTA VI community-server interface.
+
+We track its publicly documented techniques **for research only**, without importing its code or extracted game content. The simulator and authoritative RP core remain our development targets; the GTA VI adapter and all GTA VI runtime requirements remain blocked.
+
+- [Leonida technical assessment (2026-11-23)](./docs/research/LEONIDA_2026-11-23.md)
+- [Third-party artifact and workspace policy](./docs/operations/THIRD_PARTY_ARTIFACT_POLICY.md)
+
 ## GTA VI integration gate
 
 Before implementing any real GTA VI-specific adapter capability, require all of the following:
@@ -165,6 +174,8 @@ Before implementing any real GTA VI-specific adapter capability, require all of 
 - [Current GTA VI / RP platform status](./docs/research/PLATFORM_STATUS.md)
 - [Rockstar technology baseline](./docs/research/ROCKSTAR_TECHNOLOGY_BASELINE.md)
 - [Platform research protocol](./docs/research/RESEARCH_PROTOCOL.md)
+- [Leonida technical assessment](./docs/research/LEONIDA_2026-11-23.md)
+- [Third-party artifact policy](./docs/operations/THIRD_PARTY_ARTIFACT_POLICY.md)
 - [Roadmap](./docs/roadmap/ROADMAP.md)
 - [Project risk register](./docs/roadmap/RISK_REGISTER.md)
 - [Threat model](./docs/security/THREAT_MODEL.md)
