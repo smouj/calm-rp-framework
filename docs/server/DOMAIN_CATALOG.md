@@ -239,6 +239,18 @@ Core invariants:
 
 Runtime dependency: none for the domain model; runtime-specific config remains in adapters.
 
+## World planning and spatial references (prototype)
+
+The world-planning catalog holds **conceptual**, project-owned RP location references for proposed services, businesses, properties and interactions. It is currently a read-only in-memory prototype and has no durable ownership or gameplay authority.
+
+- A location ID is stable project metadata, not a model hash, a scene file or a transient entity handle.
+- Each location belongs to a declared planning coordinate space. An interior may have a different coordinate space from its conceptual parent building.
+- Bounds checks and Euclidean anchor proximity are planning tools, not real gameplay reachability, network synchronization or pathfinding.
+- Property access, business ownership, service permissions and authoritative state remain with their respective domain modules.
+- No GTA VI source file, extracted resource, client native or undocumented API is loaded into this catalog.
+
+See [spatial planning specification](./WORLD_SPATIAL_READINESS.md) and proposed [ADR-0005](../adr/0005-independent-world-planning.md).
+
 ## Boundary rule
 
 A domain may reference another domain through an explicit contract or application use case. It must not reach into another domain's private tables or repository implementation.
