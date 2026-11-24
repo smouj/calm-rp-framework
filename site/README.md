@@ -5,14 +5,14 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 ## Funcionalidad
 
 - Identidad visual propia: el banner original de CALM en la portada, con variante blanca para el tema oscuro e índigo para el claro.
-- Secciones de arquitectura, módulos, investigación, hoja de ruta y contribuciones.
+- Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones.
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
 - Filtro interactivo de módulos.
-- Demostración de economía **exclusivamente en el navegador** con importes ficticios, saldo disponible, libro local de movimientos y reintento idempotente.
+- Sección de ingeniería con la estructura real del monorepo, las puertas de calidad y las verificaciones de higiene que revisan cada cambio.
 - Enlaces directos a código, documentación y fuentes públicas.
 
-**La demostración web NO usa el núcleo TypeScript, no identifica jugadores, no persiste datos y no es un juego ni un servidor RP funcional.** El paquete `packages/core` es la referencia de reglas en el servidor; deben probarse por separado.
+**La web es estática e informativa: NO ejecuta el núcleo TypeScript, no identifica jugadores, no persiste datos y no es un juego ni un servidor RP funcional.** El paquete `packages/core` es la referencia de reglas en el servidor; deben probarse por separado.
 
 ## Publicación en GitHub Pages
 

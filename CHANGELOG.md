@@ -4,6 +4,9 @@ Significant changes will be recorded here after review and merge. Releases will 
 
 ## Unreleased
 
+- Site: the browser-only economy calculator demo is retired; the page keeps its informational role and every interactive limit without the toy transfer form.
+- Site: the former demo section becomes an engineering overview of the actual monorepo layout, the eleven Vitest suites and the local verification gates, all content verifiable against the repository.
+- Docs: legal pages and operations notes no longer describe the removed interactive demo; the static, no-data-collection statement now matches the published site exactly.
 - Brand: the CALM banner is now a repository-owned asset in both READMEs (`site/assets/banner-calm-white.png` source, `banner-calm-indigo.png` export) instead of an unversioned user-attachment URL (#39).
 - Site: the community site shows the CALM banner logo on the homepage hero, with white-on-dark and indigo-chip variants switched by the existing theme mechanism (#40).
 - Brand: all surfaces use the applied banner palette (night indigo, warm salmon, deep coral, warm cream) — README badges, `theme-color` metas, hero glow and the documented palette in `PROJECT_IDENTITY.md` (#41).

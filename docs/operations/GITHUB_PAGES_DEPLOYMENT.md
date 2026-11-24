@@ -11,7 +11,8 @@ what unlocked Pages: GitHub does not offer Pages for a private repository on the
 ## What is published
 
 - `site/index.html` and `site/legal.html`, with original HTML/CSS/JS under `site/assets/`.
-- A local-only economy demo. No Rockstar assets, no external scripts, no fonts, no analytics.
+- An engineering overview of the real monorepo, its quality gates and the local verification
+  scripts. No Rockstar assets, no external scripts, no fonts, no analytics.
 - The legal notice covers non-affiliation, MIT scope, no game server, official source links,
   the local-only theme setting and third-party hosting.
 
