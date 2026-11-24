@@ -15,6 +15,20 @@
 
 At this check, the GitHub repository metadata endpoint returned 404 for the historical URL https://github.com/ItsNotRexed/Leonida . Search-engine results and forks may retain stale copies or show similarly named projects; do not present them as a verified currently accessible original. Recheck the exact upstream repository before citing or adopting any specific implementation.
 
+## Addendum — 25 November 2026 (autonomous research pass)
+
+Three material changes since the 24-Nov check, none of which promotes any `RT-*` requirement:
+
+1. **New pinned documentation source.** [TrinitronClient/GTA6-Asset-Info](https://github.com/TrinitronClient/GTA6-Asset-Info) — 19-part asset-format specification (RPF9, ttpf/BCPack, models, vehicles, map data, collision, navmesh, road graph, PSO schema, ADAT audio) maintained by the SixNG team, GPL-3.0, documentation-only by its own statement ("no game files, no extracted assets, no keys"). Structured into the project's knowledge via [GTA6_CAPABILITY_MATRIX_2026-11-25.md](./GTA6_CAPABILITY_MATRIX_2026-11-25.md).
+
+2. **TOC-decryptor tool class exists.** `OpenSix` and `forge9` now decrypt the RPF9 table of contents by extracting key material from the user's own copy of the executable (SHA-256-checked, no keys committed). Their operation presupposes possession of the leaked executable, so this tool class is **non-admissible input for this project**; record only.
+
+3. **Leonida 404 cause verified.** The 404 recorded on 24-Nov was a Take-Two DMCA takedown processed by GitHub on 2026-11-24 covering the repository and its 3,007-fork network. Community reference copies and continuations exist; treat them as unstable and legally contested.
+
+Context events (media layer, verified 2026-11-25): CyberLeek executable release on 2026-11-23 (PC Gamer/IGN report the event; file authenticity remains unverified); Take-Two CEO statements on "enhancing technical defenses and legal activities" (2026-11-09/10, IGN); Bitdefender documents a fake GTA VI "cloud player" ClickFix info-stealer (2026-11-20).
+
+**Decision:** unchanged — original core and simulator modules; all GTA VI runtime capabilities stay UNKNOWN. See [uncertainty register](./UNCERTAINTY_REGISTER_2026-11-25.md).
+
 ## What we can safely derive
 
 - Original project-owned resource descriptors: type, version, provenance, license, optional checksum for our _own_ data, availability and dependency states.

@@ -27,6 +27,13 @@ The repository is intentionally split between **decisions we control now** and *
 - [`operations/RELEASE_READINESS_2026-11-24.md`](./operations/RELEASE_READINESS_2026-11-24.md) — evidence-backed merge/release gates, hosted runner incident and required checks.
 - [`server/PORTABLE_ROLEPLAY_REFERENCE.md`](./server/PORTABLE_ROLEPLAY_REFERENCE.md) — limits and security gates of the in-memory character/economy example.
 
+## Research pass (25 November 2026)
+
+- [`research/GTA6_CAPABILITY_MATRIX_2026-11-25.md`](./research/GTA6_CAPABILITY_MATRIX_2026-11-25.md) — canonical engine-knowledge catalog: verified format/engine findings, confidence levels, CALM utility and architecture consequence per row.
+- [`research/UNCERTAINTY_REGISTER_2026-11-25.md`](./research/UNCERTAINTY_REGISTER_2026-11-25.md) — what is not legitimately known, why it matters, and the trigger that would resolve each item.
+- [`research/ARCHITECTURE_COMPARISON_2026-11-25.md`](./research/ARCHITECTURE_COMPARISON_2026-11-25.md) — pattern-by-pattern verdict of CALM versus FiveM/RedM, QBCore/Mantle, Qbox and ESX, plus the Phase-5 audit conclusion.
+- [`roadmap/ROADMAP_REVISION_2026-11-25.md`](./roadmap/ROADMAP_REVISION_2026-11-25.md) — evidence-based reorganization proposal and concrete edits proposed for `ROADMAP.md` (requires human review).
+
 - [`server/INVENTORY_REFERENCE.md`](./server/INVENTORY_REFERENCE.md) — tested in-memory item, inventory and ownership semantics; not a production persistence layer.
 - [`research/FIRST_PARTY_EVIDENCE_2026-11-24.md`](./research/FIRST_PARTY_EVIDENCE_2026-11-24.md) — first-party sources, scope limits and unconfirmed GTA VI runtime capabilities.
 
