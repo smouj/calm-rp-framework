@@ -160,6 +160,25 @@ Official source:
 
 - https://forum.cfx.re/t/cfx-re-officially-joins-rockstar-games/5158920
 
+### Cfx player identifiers can be removed or changed
+
+**Classification:** `CONFIRMED` for the documented **current FiveM/RedM identifier ecosystem** only. These records are a retrospective first-party evidence gap in this repository, not newly published October 2026 GTA VI specifications.
+
+**Identifier-type deprecation (FiveM).** On **April 14, 2026**, Cfx.re announced that the `xbl:` (Xbox Live) and `live:` (Microsoft PUID) identifier types would be removed from `GetPlayerIdentifiers` on **April 27, 2026**, citing platform integrity and player privacy. Current Cfx documentation for `GetPlayerIdentifiers` lists `steam`, `discord`, `license`, `license2`, `fivem`, and `ip` but not `xbl` or `live`. This supports the announced deprecation and current documented identifier set; it does not establish a GTA VI identifier scheme or guarantee that every third-party server resource has migrated.
+
+- Publisher: Cfx.re / Cfx Forum — *Deprecation Notice: Xbox Live and Microsoft Player Identifiers*, published **2026-04-14**: https://forum.cfx.re/t/deprecation-notice-xbox-live-and-microsoft-player-identifiers/5397645
+- Publisher: Cfx.re — *GetPlayerIdentifiers*, publication/update date not displayed, verified **2026-10-30**: https://docs.fivem.net/docs/scripting-reference/runtimes/lua/functions/GetPlayerIdentifiers/
+
+**License-identifier changes (FiveM/RedM).** In an official announcement dated **June 1, 2026**, Cfx.re said an account-security update scheduled to start **June 24, 2026** would gradually change `license:` and/or `license2:` identifiers for a **small number of players**. Depending on a server's persistence mapping, affected players could temporarily lose access to their characters/progression. Cfx.re documented selecting an alternative linked identity, with a self-service change window until **June 24, 2027**, after which affected players would need server-staff assistance. The announcement is evidence of an explicitly documented identifier-change/migration risk; it does **not** prove every account changed, provide a universal migration algorithm, or confirm a GTA VI authentication contract.
+
+- Publisher: Cfx.re / Cfx Forum — *Important Account Security Update*, published **2026-06-01** (scheduled rollout from 2026-06-24): https://forum.cfx.re/t/important-account-security-update/5406794
+
+**Verified:** **2026-10-30**.
+
+**Project impact:** current Cfx identifier types are not a permanent universal identity contract. The project should account for external identifier deprecation and legitimate identity remapping when reviewing the **P2 account/session and character lifecycle** and **P4 Cfx research** boundaries, including recovery/audit and the existing **T-006 identifier-substitution** threat. These findings inform future tests and review of identity mapping; they do not authorize a FiveM-specific identity schema in the game-agnostic core, establish a migration implementation, or change durable architecture.
+
+**Affected references:** `RT-005` (GTA VI authentication/stable player identifiers) remains `UNKNOWN`; `RT-001` and other GTA VI runtime requirements remain `UNKNOWN`. **P5** stays blocked. **ADR-0001** (game-agnostic core) and **ADR-0004** (PostgreSQL authoritative state) remain unchanged. No GTA VI adapter or production security behavior should be implemented from this evidence. Because the finding concerns identity/security interpretation, this research change requires **human review and must not be auto-merged**, even if CI becomes green.
+
 ## Confirmed technology signals outside a GTA VI contract
 
 Public first-party material establishes a useful **current Rockstar/Cfx engineering baseline** without establishing GTA VI-specific implementation details:
