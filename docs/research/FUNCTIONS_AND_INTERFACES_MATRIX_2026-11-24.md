@@ -32,7 +32,7 @@ Do **not** embed these names as GTA VI-facing APIs, silently port Lua FiveM reso
 | Public third-party research | Observed/reported area | What it informs | What it does **not** prove |
 | --- | --- | --- | --- |
 | `Ahmet-Dedeler/rage9-re` | `script.rpf` data graphs, `PSIN`, `LSCH`, `LENM`, `LSNS`, `LGID`, `LRSC`, `CHKS`, `anim.rpf` | Schema/versioning and object lifecycle planning | Public GTA VI script execution API, callable events or multiplayer |
-| `holdmysocks/SixNG` | RPF9 model/texture/world extraction experiments; declared gaps in TOC, BC codecs and formats | Design abstract resource descriptors, no game data | Valid IP redistribution, runtime API, playable server |
+| `holdmysocks/SixNG` | RPF9 extraction and previews; upstream now reports support for all six BCPack BC texture formats, with known block artifacts; native TOC remains unreadable | Design abstract resource descriptors, no game data | Valid IP redistribution, runtime API, playable server |
 | `breadbbbb/rpf9-explorer` | Indexing and preview of archive types | Future asset adapter boundary | Documented GTA VI API or game code |
 | `R0Y00/Xbox2Windows` | Experimental Windows translation, diagnostic boot claims, synthetic tests | Capability/version manifest and portability constraints | Reliable playable Windows release or authorized online server |
 | `Marvisak/VIctory` | Project-claimed offline boot/menus; incomplete world rendering | Runtime lifecycle research only | Working gameplay or multiplayer services |
@@ -70,3 +70,5 @@ These names and TypeScript signatures are our own portable contracts, not Rockst
 Official GTA VI-specific evidence for `RT-001` (authorization), `RT-003` (scripting model), `RT-005` (identity), `RT-006/7` (events), `RT-008/9` (entities/synchronization), `RT-010` (session lifecycle), `RT-017` (resources). Never upgrade these requirements because an archive viewer recognizes a format or someone reports a launcher screen.
 
 See [legal review](../legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md), [runtime requirements](../server/RUNTIME_REQUIREMENTS.md), [research protocol](./RESEARCH_PROTOCOL.md).
+
+Revision-pinned upstream research: [Public RAGE 9 tools snapshot, 24 November 2026](./THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md). Its claims are **third-party self-reports**, not verified Rockstar runtime functions.

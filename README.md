@@ -31,6 +31,7 @@ The independent core now has original, fail-closed runtime capability contracts 
 - [Documented functions and original interface mapping](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
 - [Spain/EU interoperability and intellectual-property review](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [Third-party RAGE 9 research status](./docs/research/GTA6_RESEARCH_2026-11-24.md)
+- [Revision-pinned third-party tools](./docs/research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md)
 
 Source links are research references; they are not game downloads or permission to run an unauthorized multiplayer service. This is a preliminary technical/legal assessment, not a legal opinion.
 

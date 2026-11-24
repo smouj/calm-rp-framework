@@ -49,3 +49,7 @@ No GTA VI game files, extracted models, maps, textures, scripts, executables, de
 Policy: https://www.rockstargames.com/es/community-resources/mod-guidelines
 
 See [research protocol](./RESEARCH_PROTOCOL.md), [platform status](./PLATFORM_STATUS.md), [server blueprint](../server/SERVER_BLUEPRINT.md), and [runtime requirements](../server/RUNTIME_REQUIREMENTS.md).
+
+## Revision pinning
+
+The [24 November 2026 upstream tool snapshot](./THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md) records exact GitHub commits for four live research tools and their stated limitations. In particular, SixNG's current README claims BCPack decoding support where earlier summaries described more substantial gaps. This is an upstream observation, not proof of runtime access or legal permission.
