@@ -40,3 +40,6 @@ tmp/
 *.nsp
 *.xip
 game_scarlett_master.exe
+
+# Branch backup bundles may contain private history. Never commit them.
+backups/
