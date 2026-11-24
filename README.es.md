@@ -13,9 +13,9 @@
 CALM es el nombre de trabajo elegido. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
-[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-275D88.svg)](./LICENSE)
-[![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
-[![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-326E74.svg)](./CONTRIBUTING.es.md)
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-1B1C3A.svg)](./LICENSE)
+[![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-E04A32.svg)](./docs/roadmap/ROADMAP.md)
+[![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-F4705A.svg)](./CONTRIBUTING.es.md)
 [![Comunidad en Discord](https://img.shields.io/badge/Discord-comunidad-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![Multijugador de GTA VI](https://img.shields.io/badge/multijugador%20GTA%20VI-no%20disponible-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
