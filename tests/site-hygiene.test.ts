@@ -40,6 +40,16 @@ describe('community site source checks', () => {
     expect(html).toContain('Sin afiliación ni autorización de Rockstar Games');
   });
 
+  it('publishes an accessible local legal notice without requiring repository access', () => {
+    const legal = read('legal.html');
+    expect(html).toContain('href="./legal.html"');
+    expect(legal).toContain('no equivale a un dictamen jurídico');
+    expect(legal).toContain('Este sitio no ofrece un cliente, servidor dedicado');
+    expect(legal).toContain('La licencia MIT del repositorio');
+    expect(legal).toContain('localStorage');
+    expect(legal).not.toMatch(/<script[^>]+src=["']https?:/i);
+  });
+
   it('avoids remote font requests and uses no embedded Rockstar media', () => {
     const css = read('assets/styles.css');
     expect(css).not.toContain('fonts.googleapis.com');

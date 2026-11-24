@@ -35,3 +35,9 @@ python -m http.server 8080 --directory site
 ```
 
 Visitar `http://localhost:8080`. Revisar manualmente los enlaces y acciones en el navegador.
+
+## Aviso legal autónomo
+
+[site/legal.html](./legal.html) se publica como parte de la web. Permite consultar no afiliación, marcas, política de GTA VI, límites de interoperabilidad y funcionamiento básico de la web, incluso si el repositorio de código permanece privado.
+
+**Estado verificado 24/11/2026:** los archivos de Pages están incorporados a `main`, pero la conexión actual de GitHub no permite activar Pages desde Settings, y Actions no llega a asignar un ejecutor. El sitio **no puede anunciarse como publicado** hasta activar Pages desde Settings y comprobar un despliegue exitoso.

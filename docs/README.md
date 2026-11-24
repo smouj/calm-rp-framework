@@ -39,6 +39,9 @@ The repository is intentionally split between **decisions we control now** and *
 
 - [`roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md`](./roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md) — official fact/hypothesis boundary, external proof gates, reversible decisions.
 
+- [`operations/GITHUB_PAGES_DEPLOYMENT.md`](./operations/GITHUB_PAGES_DEPLOYMENT.md) — website setup, verification and limits.
+- [`operations/BRANCH_RETIREMENT.md`](./operations/BRANCH_RETIREMENT.md) — stale refs, unmerged alternative, backup before branch removal.
+
 ## Supporting references
 
 - [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.

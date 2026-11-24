@@ -114,6 +114,10 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 `pnpm check` runs linting, TypeScript checks, unit tests and formatting validation. It does **not** run GTA VI or start a roleplay server.
 
+## Website and independent framework name
+
+The original static information website lives in [`site/`](./site/README.md), including a [self-contained legal notice](./site/legal.html). GitHub Pages deployment requires the repository owner's Pages settings and a successful build; do not advertise a live URL until verified. The independent framework name is **not selected yet**: see the [documented naming shortlist](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No trademark clearance is claimed.
+
 ## Get involved
 
 - Read [CONTRIBUTING.md](./CONTRIBUTING.md) ([español](./CONTRIBUTING.es.md)), [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) and [GOVERNANCE.md](./GOVERNANCE.md).

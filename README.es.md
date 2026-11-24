@@ -77,6 +77,10 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 `pnpm check` ejecuta análisis de código, comprobaciones de tipos, pruebas y verificación del formato. **No inicia un servidor de GTA VI.**
 
+## Página web y nombre del framework
+
+El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal autónomo](./site/legal.html) que no requiere acceder al código privado. La publicación en GitHub Pages está pendiente de activación en los ajustes y de un despliegue exitoso. El **nombre propio del framework todavía no está decidido**; consulta las [opciones de nombres](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md), sin atribuir disponibilidad de marcas.
+
 ## Participar
 
 1. Lee [la guía para contribuir en español](./CONTRIBUTING.es.md), el [código de conducta](./CODE_OF_CONDUCT.md) y la [gobernanza](./GOVERNANCE.md).
