@@ -37,6 +37,8 @@ The repository is intentionally split between **decisions we control now** and *
 - [`server/WORLD_SPATIAL_READINESS.md`](./server/WORLD_SPATIAL_READINESS.md) — independent synthetic world/location catalog and its runtime limits.
 - [`adr/0005-independent-world-planning.md`](./adr/0005-independent-world-planning.md) — proposed independent spatial-planning decision (not a game API).
 
+- [`roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md`](./roadmap/ASSUMPTIONS_AND_DEPENDENCIES.md) — official fact/hypothesis boundary, external proof gates, reversible decisions.
+
 ## Supporting references
 
 - [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.
