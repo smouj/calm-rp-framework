@@ -1,8 +1,10 @@
 <div align="center">
 
-# GTA VI RP Platform
+# CALM — Roleplay Framework
 
-**Una base comunitaria de código abierto para el futuro roleplay de Grand Theft Auto VI.**
+**Un framework de rol independiente, modular y de código abierto.**
+
+CALM es el nombre de trabajo elegido. El repositorio conserva por ahora la dirección histórica `gta6-rp-platform`, sin afirmar compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
 
 [![CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml)
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-275D88.svg)](./LICENSE)
@@ -79,7 +81,7 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 ## Página web y nombre del framework
 
-El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal autónomo](./site/legal.html) que no requiere acceder al código privado. La publicación en GitHub Pages está pendiente de activación en los ajustes y de un despliegue exitoso. El **nombre propio del framework todavía no está decidido**; consulta las [opciones de nombres](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md), sin atribuir disponibilidad de marcas.
+El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal autónomo](./site/legal.html) que no requiere acceder al código privado. La publicación en GitHub Pages está pendiente de activación en los ajustes y de un despliegue exitoso. El nombre de trabajo elegido es **CALM** (en contraste conceptual con RAGE). **No está acreditado que sea una marca exclusiva o libre de conflictos**: FINOS emplea CALM para una especificación de software y Calm.com para servicios y productos informáticos. Consulta la [decisión y las comprobaciones pendientes](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No se han renombrado aún los paquetes ni las APIs.
 
 ## Participar
 

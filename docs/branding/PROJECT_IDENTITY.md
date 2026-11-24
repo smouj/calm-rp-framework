@@ -1,11 +1,11 @@
 # Project Identity and Asset Policy
 
 **State:** ACTIVE — unofficial fan/community project  
-**Updated:** 2026-11-23
+**Updated:** 2026-11-24
 
 ## Positioning
 
-GTA VI RP Platform is an **independent technical project** developed by fans and open-source contributors. The title describes the long-term subject of the work, not an officially licensed product.
+**CALM — Roleplay Framework** is the user-selected **working name** of the independent technical framework. The repository's historic title `gta6-rp-platform` describes a research aspiration rather than an officially licensed Rockstar product. CALM is **not yet trademark-cleared**: the FINOS CALM architecture standard and existing CALM software-related trademarks require review before commercial/official brand registration.
 
 Our own branding must be recognizable, honest and distinguishable from Rockstar Games, Take-Two, Cfx.re and FiveM. A visual resemblance or a prominent disclaimer **does not confer trademark permission**.
 
@@ -23,7 +23,7 @@ Suggested **original** palette for project-owned UI and graphics:
 
 These colors are not copied from an official Rockstar brand system. Use sufficient contrast and avoid decorative elements that impair readability. Default to typography, spacing and strong information hierarchy before creating large promotional graphics.
 
-**Wordmark:** use our own text, for example `GTA VI RP Platform`, in generic typefaces. Do not redraw the official `Grand Theft Auto VI`, Rockstar, FiveM or Cfx.re logos or use a misleading official-looking launch banner.
+**Wordmark:** use our own `CALM` / `ROLEPLAY FRAMEWORK` typography, subject to legal name clearance, in generic typefaces. Do not redraw the official `Grand Theft Auto VI`, Rockstar, FiveM or Cfx.re logos or use a misleading official-looking launch banner.
 
 ## Badges and status labels
 

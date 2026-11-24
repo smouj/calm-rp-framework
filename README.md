@@ -1,8 +1,10 @@
 <div align="center">
 
-# GTA VI RP Platform
+# CALM — Roleplay Framework
 
-**An open-source community foundation for future Grand Theft Auto VI roleplay.**
+**An independent, modular, open-source roleplay foundation.**
+
+CALM is the framework's selected working name. The historic repository name `gta6-rp-platform` describes its research focus; it is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
 
 [![CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-275D88.svg)](./LICENSE)
@@ -116,7 +118,7 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 ## Website and independent framework name
 
-The original static information website lives in [`site/`](./site/README.md), including a [self-contained legal notice](./site/legal.html). GitHub Pages deployment requires the repository owner's Pages settings and a successful build; do not advertise a live URL until verified. The independent framework name is **not selected yet**: see the [documented naming shortlist](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No trademark clearance is claimed.
+The original static information website lives in [`site/`](./site/README.md), including a [self-contained legal notice](./site/legal.html). GitHub Pages deployment requires the repository owner's Pages settings and a successful build; do not advertise a live URL until verified. **CALM** is the framework's chosen working name (a deliberate contrast in tone with RAGE), but it is **not a cleared or exclusive trademark**. FINOS already uses CALM for a software architecture specification, and Calm.com uses CALM for software products. See the [brand decision and conflict notes](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No API or package namespace was renamed.
 
 ## Get involved
 

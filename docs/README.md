@@ -32,7 +32,7 @@ The repository is intentionally split between **decisions we control now** and *
 
 - [`research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md`](./research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md) — commit-pinned external tools, exact upstream claims and integration limits.
 
-- [`branding/FRAMEWORK_NAMING_OPTIONS.md`](./branding/FRAMEWORK_NAMING_OPTIONS.md) — naming workshop and identity/trademark decision gates.
+- [`branding/FRAMEWORK_NAMING_OPTIONS.md`](./branding/FRAMEWORK_NAMING_OPTIONS.md) — selected CALM framework working name, trademark collisions and migration gates.
 
 - [`server/WORLD_SPATIAL_READINESS.md`](./server/WORLD_SPATIAL_READINESS.md) — independent synthetic world/location catalog and its runtime limits.
 - [`adr/0005-independent-world-planning.md`](./adr/0005-independent-world-planning.md) — proposed independent spatial-planning decision (not a game API).

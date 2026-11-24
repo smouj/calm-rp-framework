@@ -1,4 +1,4 @@
-# Sitio público de GTA VI RP Platform
+# Sitio informativo de CALM — Roleplay Framework
 
 Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. No requiere NPM ni un backend para visualizarlo.
 
@@ -41,3 +41,7 @@ Visitar `http://localhost:8080`. Revisar manualmente los enlaces y acciones en e
 [site/legal.html](./legal.html) se publica como parte de la web. Permite consultar no afiliación, marcas, política de GTA VI, límites de interoperabilidad y funcionamiento básico de la web, incluso si el repositorio de código permanece privado.
 
 **Estado verificado 24/11/2026:** los archivos de Pages están incorporados a `main`, pero la conexión actual de GitHub no permite activar Pages desde Settings, y Actions no llega a asignar un ejecutor. El sitio **no puede anunciarse como publicado** hasta activar Pages desde Settings y comprobar un despliegue exitoso.
+
+## Identidad
+
+CALM es el nombre de trabajo del framework, no una marca registrada o liberada para uso comercial. El contraste conceptual con RAGE no implica vinculación con Rockstar. La web mantiene sus avisos de no afiliación y ausencia de integración GTA VI. Los paquetes técnicos y la URL del repositorio conservan sus identificadores actuales para evitar cambios incompatibles.
