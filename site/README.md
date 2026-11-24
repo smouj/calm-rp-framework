@@ -4,8 +4,8 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 
 ## Funcionalidad
 
-- Identidad visual propia: el banner original de CALM en la portada, con variante blanca para el tema oscuro e índigo para el claro.
-- Conjunto de iconos derivado del banner oficial: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` usan la estrella del banner trazada desde los píxeles fuente; `og-image.png` compone el banner completo sobre índigo para vistas previas sociales.
+- Identidad visual propia: el banner social oficial de CALM (navy + rosa Miami) en la portada de los README, con la variante blanca del wordmark para el tema oscuro y navy para el claro.
+- Conjunto de iconos derivado del banner oficial: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` usan la estrella del banner trazada desde los píxeles fuente sobre el navy `#101020` del propio banner; `og-image.png` es el banner social completo (1280×640) para vistas previas sociales.
 - Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones.
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
@@ -42,7 +42,7 @@ Visitar `http://localhost:8080`. Revisar manualmente los enlaces y acciones en e
 
 [site/legal.html](./legal.html) se publica como parte de la web. Permite consultar no afiliación, marcas, política de GTA VI, límites de interoperabilidad y funcionamiento básico de la web, incluso si el repositorio de código permanece privado.
 
-**Estado verificado 25/11/2026:** el sitio está publicado en `https://smouj.github.io/calm-rp-framework/` (HTTP 200 comprobado en `/`, `/legal.html` y los recursos de `assets/`). El lote local de mejora —sección de ingeniería, iconos derivados del banner y metas sociales— está pendiente de fusión y despliegue, así que la web pública muestra la versión anterior hasta que el flujo `Deploy community site` complete la publicación.
+**Estado verificado 25/11/2026:** el sitio está publicado en `https://smouj.github.io/calm-rp-framework/` (HTTP 200 comprobado en `/`, `/legal.html` y los recursos de `assets/`). El lote local de mejora —sección de ingeniería, iconos derivados del banner, paleta del banner social oficial y metas sociales— está pendiente de fusión y despliegue, así que la web pública muestra la versión anterior hasta que el flujo `Deploy community site` complete la publicación.
 
 ## Identidad
 

@@ -4,6 +4,11 @@ Significant changes will be recorded here after review and merge. Releases will 
 
 ## Unreleased
 
+- Brand: the owner's official 1280×640 social banner is now the README hero in both languages (`site/assets/banner-calm-social.png`) and the Open Graph/Twitter preview (`og-image.png` is that same banner, already the exact social-card ratio).
+- Brand: every surface is re-derived from the social banner palette by pixel sampling — banner navy `#101020`, Miami pink `#F86080` (bright sky tone, AA on navy), deep rose `#B8476A` light accent, banner white `#F8F8F8` — replacing the earlier indigo/salmon set in `styles.css`, `theme-color` metas, README badges and `PROJECT_IDENTITY.md`.
+- Site: both page headers show the official traced star beside an italic `CALM` wordmark instead of the abstract four-bar mark; the star is the same traced geometry as the favicon set.
+- Brand: the favicon set is regenerated on the banner navy `#101020` (`favicon.svg`, `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`); the traced star core matches the social banner star core with IoU 0.94 (same owner design), and `logo.svg` keeps the horizontal lockup on navy.
+- Site: the light-theme hero wordmark chip is composited on banner navy (`banner-calm-navy.png`) replacing the retired indigo export; the dark theme keeps the transparent white wordmark.
 - Docs: a verified improvement-goals register (`GOALS.md` / `GOALS.es.md`) records the audited baseline of the repository and the published site plus goals G1–G6 with checkable success criteria; both READMEs link it.
 - Brand: the favicon set is derived from the official banner instead of a hand-approximated mark: the banner star (tilted five-point, white on night indigo) is traced from the source pixels into `favicon.svg`, `favicon.ico`, `favicon-32.png` and `apple-touch-icon.png` (trace IoU 0.96), so every surface shows the same star as the README banner.
 - Site: `index.html` ships the complete icon links plus Open Graph and Twitter card metas backed by a new `og-image.png` composed from the full official banner on indigo; `site/README.md` now records the verified published state of Pages (HTTP 200) instead of the pre-publication note.

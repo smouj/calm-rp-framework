@@ -10,7 +10,7 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 
 - **Pages está publicado y sirviendo**: `https://smouj.github.io/calm-rp-framework/`, `/legal.html` y los recursos referenciados respondieron HTTP 200 (comprobación directa en vivo).
 - **El sitio en vivo sirve el contenido anterior**: aún muestra la demo «Laboratorio» retirada, porque el commit local que la sustituye por la panorámica de ingeniería verificada aún no se ha fusionado ni publicado.
-- **La coherencia de paleta se mantiene**: cada token de color de `site/assets/styles.css` coincide con la paleta documentada en `docs/branding/PROJECT_IDENTITY.md`, y el fondo del banner índigo está verificado por píxel como `#1B1C3A`.
+- **La coherencia de paleta se mantiene**: cada token de color de `site/assets/styles.css` coincide con la paleta documentada en `docs/branding/PROJECT_IDENTITY.md`; la paleta se re-deriva por muestreo de píxeles del banner social oficial del propietario, y el navy de la banda del banner está verificado por píxel como `#101020`.
 - **La estrella del banner es blanca, inclinada y de cinco puntas** (punta larga hacia la derecha): verificado por análisis de píxeles y por una descripción independiente con modelo de visión.
 - **El set de iconos divergía del banner antes de este lote**: `favicon.svg` y `logo.svg` usaban una estrella salmón rellena y texto Georgia, no la estrella del banner.
 - **Las afirmaciones del sitio son ciertas**: existen 11 suites Vitest y el árbol del monorepo mostrado coincide con los directorios reales `packages/`, `apps/`, `adapters/`, `infrastructure/` y `tests/`.
@@ -27,8 +27,8 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 ### G2 — Una sola marca en todas las superficies
 
 **Objetivo:** que la misma estrella del banner de los README aparezca en todas las superficies: pestaña del navegador, marcadores, pantalla de inicio de iOS y vistas previas sociales.
-**Aplicado en este lote:** set de favicon trazado desde los píxeles del banner (IoU 0,96 frente al núcleo real), `apple-touch-icon.png` y `og-image.png` compuesto con el banner completo; la política de identidad registra la derivación.
-**Hecho cuando:** G1 esté publicado y el icono se vea en cada contexto; cualquier cambio futuro de marca actualiza banner, favicon y README en el mismo commit.
+**Aplicado en este lote:** el banner social oficial del propietario (1280×640) pasa a ser la portada de los README y la vista previa Open Graph/Twitter; la paleta de todas las superficies se re-deriva de ese banner (navy `#101020`, rosa Miami `#F86080`, blanco del banner); el set de favicon se traza desde los píxeles del banner (núcleo de estrella con IoU 0,94 frente al núcleo del banner social) sobre el navy del banner, y las cabeceras de ambas páginas muestran la estrella trazada junto a un wordmark `CALM` en cursiva; la política de identidad registra la derivación.
+**Hecho cuando:** G1 esté publicado y el icono y el logo de cabecera se vean en cada contexto; cualquier cambio futuro de marca actualiza banner, favicon, logo de cabecera y README en el mismo commit.
 
 ### G3 — Mantener la información publicada contrastada y verificada
 

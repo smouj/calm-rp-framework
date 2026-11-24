@@ -10,7 +10,7 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 
 - **Pages is published and serving**: `https://smouj.github.io/calm-rp-framework/`, `/legal.html` and the referenced assets returned HTTP 200 (direct live checks).
 - **The live site serves the previous content**: it still shows the retired "Laboratorio" demo because the local commit replacing it with the verified engineering overview has not been merged or published yet.
-- **Palette coherence holds**: every color token in `site/assets/styles.css` equals the documented palette in `docs/branding/PROJECT_IDENTITY.md`, and the indigo banner background is pixel-verified `#1B1C3A`.
+- **Palette coherence holds**: every color token in `site/assets/styles.css` equals the documented palette in `docs/branding/PROJECT_IDENTITY.md`; the palette is re-derived by pixel sampling from the owner's official social banner, and the banner band navy is pixel-verified `#101020`.
 - **The banner star is white, tilted and five-pointed** (long point to the right): verified by pixel analysis and by an independent vision-model description of the banner.
 - **The icon set diverged from the banner before this batch**: `favicon.svg` and `logo.svg` used a filled salmon star and Georgia serif text instead of the banner star.
 - **The site claims are true**: the 11 Vitest suites exist and the monorepo tree shown matches the actual `packages/`, `apps/`, `adapters/`, `infrastructure/` and `tests/` directories.
@@ -27,8 +27,8 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 ### G2 — One brand across every surface
 
 **Goal:** the same star from the README banner appears on every surface: browser tab, bookmarks, iOS home screen and social previews.
-**Applied in this batch:** favicon set traced from the banner pixels (IoU 0.96 against the real core), `apple-touch-icon.png`, and `og-image.png` composed from the full banner; the identity policy records the derivation.
-**Done when:** G1 is published and the icon renders in each context; any future brand change updates banner, favicon and README in the same commit.
+**Applied in this batch:** the owner's official social banner (1280×640) becomes the README hero and the Open Graph/Twitter preview; the palette of every surface is re-derived from that banner (navy `#101020`, Miami pink `#F86080`, banner white); the favicon set is traced from the banner pixels (star core IoU 0.94 against the social banner core) on the banner navy, and both page headers show the traced star beside an italic `CALM` wordmark; the identity policy records the derivation.
+**Done when:** G1 is published and the icon and header logo render in each context; any future brand change updates banner, favicon, header logo and README in the same commit.
 
 ### G3 — Keep the published information contrasted and verified
 
