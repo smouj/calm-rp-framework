@@ -32,3 +32,25 @@ export const assertMinorUnits = (value: bigint): bigint => {
 
   return value;
 };
+
+export {
+  InMemoryRoleplay,
+} from './roleplay.js';
+export type {
+  Capability,
+  CharacterRecord,
+  GrantCommand,
+  LedgerEntry,
+  Principal,
+  TransferCommand,
+} from './roleplay.js';
+
+export { InMemoryInventory } from './inventory.js';
+export type {
+  ConsumeItemCommand,
+  InventoryReceipt,
+  InventoryStack,
+  ItemDefinition,
+  MintItemCommand,
+  TransferItemCommand,
+} from './inventory.js';

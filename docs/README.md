@@ -18,6 +18,22 @@ The repository is intentionally split between **decisions we control now** and *
 | [`security/THREAT_MODEL.md`](./security/THREAT_MODEL.md)                   | Assets, trust boundaries, threats and controls                | Security baseline               |
 | [`operations/OPERATIONS_BASELINE.md`](./operations/OPERATIONS_BASELINE.md) | Operational requirements before production hosting            | Operations baseline             |
 
+## Verified functions and legal research (24 November 2026)
+
+- [`legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md`](./legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md) — EU/Spanish interoperability limits, Rockstar/Cfx permissions, code and asset provenance controls (preliminary, not legal advice).
+- [`research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md`](./research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md) — real documented FiveM/Qbox symbols versus unavailable GTA VI equivalents, plus evidence-neutral runtime port contracts.
+- [`research/GTA6_RESEARCH_2026-11-24.md`](./research/GTA6_RESEARCH_2026-11-24.md) — third-party reverse-engineering claims, limitations, and safe project implications.
+- [`operations/THIRD_PARTY_ARTIFACT_POLICY.md`](./operations/THIRD_PARTY_ARTIFACT_POLICY.md) — third-party artifacts, protected file formats and research provenance safeguards.
+- [`operations/RELEASE_READINESS_2026-11-24.md`](./operations/RELEASE_READINESS_2026-11-24.md) — evidence-backed merge/release gates, hosted runner incident and required checks.
+- [`server/PORTABLE_ROLEPLAY_REFERENCE.md`](./server/PORTABLE_ROLEPLAY_REFERENCE.md) — limits and security gates of the in-memory character/economy example.
+
+- [`server/INVENTORY_REFERENCE.md`](./server/INVENTORY_REFERENCE.md) — tested in-memory item, inventory and ownership semantics; not a production persistence layer.
+- [`research/FIRST_PARTY_EVIDENCE_2026-11-24.md`](./research/FIRST_PARTY_EVIDENCE_2026-11-24.md) — first-party sources, scope limits and unconfirmed GTA VI runtime capabilities.
+
+- [`research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md`](./research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md) — commit-pinned external tools, exact upstream claims and integration limits.
+
+- [`branding/FRAMEWORK_NAMING_OPTIONS.md`](./branding/FRAMEWORK_NAMING_OPTIONS.md) — naming workshop and identity/trademark decision gates.
+
 ## Supporting references
 
 - [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.

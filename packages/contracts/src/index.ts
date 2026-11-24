@@ -19,3 +19,18 @@ export interface DomainEvent<Type extends string, Payload> {
 export interface IdempotentCommand {
   readonly idempotencyKey: string;
 }
+
+export {
+  GTA6_UNVERIFIED_CAPABILITIES,
+  PORTABLE_CAPABILITIES,
+  UnsupportedRuntimeCapabilityError,
+  requireRuntimeCapabilities,
+} from './runtime-port.js';
+export type {
+  ClientIntent,
+  PortableCapability,
+  PortableRuntimePort,
+  ResolvedSession,
+  RuntimeTarget,
+  ServerProjection,
+} from './runtime-port.js';

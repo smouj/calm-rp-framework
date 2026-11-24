@@ -22,3 +22,6 @@ export class SimulatorPlayerDirectory {
     this.#players.delete(id);
   }
 }
+
+export { runRoleplayScenario } from './roleplay-scenario.js';
+export type { ScenarioResult } from './roleplay-scenario.js';

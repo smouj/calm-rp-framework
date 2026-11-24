@@ -24,7 +24,20 @@ Build an openly developed roleplay platform **inspired by the possibilities of F
 
 Developers, artists, testers, documentation writers, security specialists and fans are welcome. This project is not a fork of FiveM and does not currently implement a GTA VI modification or multiplayer network.
 
+## Public interfaces, legal boundaries and reverse-engineering research (24 November 2026)
+
+The independent core now has original, fail-closed runtime capability contracts on the development PR. **Documented FiveM/Cfx/Qbox commands are not GTA VI commands.** RAGE 9 data-structure findings do not establish multiplayer or a supported scripting API.
+
+- [Documented functions and original interface mapping](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
+- [Spain/EU interoperability and intellectual-property review](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
+- [Third-party RAGE 9 research status](./docs/research/GTA6_RESEARCH_2026-11-24.md)
+- [Revision-pinned third-party tools](./docs/research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md)
+
+Source links are research references; they are not game downloads or permission to run an unauthorized multiplayer service. This is a preliminary technical/legal assessment, not a legal opinion.
+
 ## Project status
+
+The development branch also contains an **in-memory inventory reference** with ownership, capacity, transfer and idempotency tests. It is not persistent or connected to GTA VI. See [inventory reference](./docs/server/INVENTORY_REFERENCE.md) and [first-party evidence register](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
 
 | Area                                                        | Actual state                                              |
 | ----------------------------------------------------------- | --------------------------------------------------------- |

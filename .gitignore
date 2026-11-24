@@ -27,3 +27,16 @@ Thumbs.db
 .data/
 .tmp/
 tmp/
+
+# Proprietary game formats and export artifacts (never commit)
+*.rpf
+*.rpf9
+*.ttpf
+*.awc
+*.xvc
+*.xex
+*.xvd
+*.xci
+*.nsp
+*.xip
+game_scarlett_master.exe
