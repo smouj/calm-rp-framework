@@ -46,6 +46,8 @@ Current GTA V/FiveM authorization **does not extend automatically to GTA VI**. A
 | Offsets, internal native signatures or private protocols alleged to originate in a leak | Do not treat as authorized public contracts; escalate for provenance and legal review, avoid implementing them |
 | External GitHub README claims | Cite as claims by the third party; do not promote to verified Rockstar runtime facts without independent, legitimate evidence |
 
+The public `Qbox-project/qbx_core` and `overextended/ox_inventory` repositories currently declare GPL-3.0. Their published **function names and behavioral documentation** may inform our independent design, but directly copying GPL-licensed implementation into the MIT-only project is not acceptable without a separate, competent license-compliance decision. See https://github.com/Qbox-project/qbx_core and https://github.com/overextended/ox_inventory.
+
 Do not copy a project such as SixNG (GPL-3.0) directly into this MIT workspace. The repo does not currently need to copy any third-party implementation.
 
 ## 5. Clean-room workflow
