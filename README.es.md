@@ -38,6 +38,8 @@ Podemos construir ya lógica de personajes, economía, inventarios, propiedades,
 
 ## Estado del proyecto
 
+La rama de desarrollo incluye una **referencia de inventario en memoria** con comprobaciones de propiedad, capacidad, transferencias e idempotencia. No tiene persistencia ni conexión con GTA VI. Consulta la [referencia de inventario](./docs/server/INVENTORY_REFERENCE.md) y el [registro de fuentes oficiales](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
+
 - **Implementado parcialmente:** monorrepositorio TypeScript, contratos, tipos de dominio y simulador básico.
 - **Preparado como estructura:** API, PostgreSQL, infraestructura local y pruebas automatizadas.
 - **Investigación:** arquitectura y conceptos públicos de FiveM/Cfx, sin asumir compatibilidad con GTA VI.

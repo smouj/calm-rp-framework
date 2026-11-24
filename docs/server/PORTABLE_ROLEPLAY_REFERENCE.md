@@ -25,4 +25,4 @@ The caller-supplied `Principal` in this reference model is trusted **by assumpti
 - Restart and multi-instance test coverage.
 - GTA VI integration requires a separately authorized, documented adapter.
 
-No RP server, player networking, inventory, vehicles, property or jobs are implemented by this slice.
+A separate [in-memory inventory reference](./INVENTORY_REFERENCE.md) now covers item quantities and transfers. Neither slice provides production persistence, player networking, vehicles, property, jobs or a GTA VI integration.

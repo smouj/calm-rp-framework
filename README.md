@@ -36,6 +36,8 @@ Source links are research references; they are not game downloads or permission 
 
 ## Project status
 
+The development branch also contains an **in-memory inventory reference** with ownership, capacity, transfer and idempotency tests. It is not persistent or connected to GTA VI. See [inventory reference](./docs/server/INVENTORY_REFERENCE.md) and [first-party evidence register](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
+
 | Area                                                        | Actual state                                              |
 | ----------------------------------------------------------- | --------------------------------------------------------- |
 | TypeScript workspace, domain primitives and typed contracts | Initial code                                              |

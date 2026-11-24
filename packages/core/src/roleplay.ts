@@ -6,7 +6,7 @@ import { DomainError } from './index.js';
  * No authentication, persistence, locking, transport or GTA VI adapter is provided.
  * Principal must come from a trusted server-side session resolver, never from client JSON.
  */
-export type Capability = 'economy.grant';
+export type Capability = 'economy.grant' | 'inventory.mint';
 export interface Principal {
   readonly accountId: AccountId;
   readonly capabilities: readonly Capability[];
