@@ -18,6 +18,16 @@
 > [!IMPORTANT]
 > **Todavía no es jugable.** Este repositorio no ofrece ningún cliente o servidor multijugador de GTA VI, instalador ni modificación funcional. Es un proyecto independiente de aficionados que desarrolla sistemas de roleplay y se prepara para una posible integración **futura, legítima y autorizada**. No es un FiveM para GTA VI funcional ni un producto oficial de Rockstar.
 
+## Funciones públicas y revisión legal (24 de noviembre de 2026)
+
+El proyecto distingue las funciones oficiales **FiveM/Qbox** de las interfaces aún desconocidas de **GTA VI**. El núcleo de rol incorpora contratos originales y capacidades explícitas del adaptador; las capacidades reales de GTA VI siguen sin verificar.
+
+- [Matriz de funciones, eventos y conceptos técnicos](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
+- [Análisis preliminar de interoperabilidad, licencias y propiedad intelectual](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
+- [Referencias de investigación técnica de RAGE 9](./docs/research/GTA6_RESEARCH_2026-11-24.md)
+
+**Importante:** estudiar documentación de ingeniería inversa no concede permiso para publicar archivos filtrados, reutilizar código protegido ni poner en marcha servidores GTA VI no autorizados. No hay integración jugable.
+
 ## Nuestro objetivo
 
 Crear entre todos una **plataforma abierta de roleplay inspirada en las posibilidades de FiveM**, con GTA VI como aspiración a largo plazo.
