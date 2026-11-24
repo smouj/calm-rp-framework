@@ -50,9 +50,7 @@ describe('game-independent world planning', () => {
     expect(catalog.nearby('space_a', { x: 0, y: 0, z: 0 }, 5)).toEqual([
       { location: catalog.get('district_alpha'), distance: 0 },
     ]);
-    expect(catalog.nearby('space_b', { x: 0, y: 0, z: 0 }, 10, { status: 'reviewed' })).toEqual(
-      [],
-    );
+    expect(catalog.nearby('space_b', { x: 0, y: 0, z: 0 }, 10, { status: 'reviewed' })).toEqual([]);
   });
 
   it('rejects duplicate IDs, missing parents, cycles and malformed geometry', () => {
@@ -60,22 +58,20 @@ describe('game-independent world planning', () => {
     expect(() => new WorldPlanningCatalog([{ ...lobby, parentId: 'missing_location' }])).toThrow(
       /Unknown planning parent/,
     );
-    expect(() =>
-      new WorldPlanningCatalog([{ ...square, parentId: lobby.id }, lobby]),
-    ).toThrow(/Cyclic planning hierarchy/);
+    expect(() => new WorldPlanningCatalog([{ ...square, parentId: lobby.id }, lobby])).toThrow(
+      /Cyclic planning hierarchy/,
+    );
+    expect(
+      () => new WorldPlanningCatalog([{ ...square, position: { x: Infinity, y: 0, z: 0 } }]),
+    ).toThrow(/finite/);
     expect(
       () =>
         new WorldPlanningCatalog([
-          { ...square, position: { x: Infinity, y: 0, z: 0 } },
+          {
+            ...square,
+            bounds: { min: { x: 5, y: 0, z: 0 }, max: { x: 0, y: 1, z: 1 } },
+          },
         ]),
-    ).toThrow(/finite/);
-    expect(() =>
-      new WorldPlanningCatalog([
-        {
-          ...square,
-          bounds: { min: { x: 5, y: 0, z: 0 }, max: { x: 0, y: 1, z: 1 } },
-        },
-      ]),
     ).toThrow(/ordered/);
     const catalog = new WorldPlanningCatalog([square]);
     expect(() => catalog.nearby('space_a', { x: 0, y: 0, z: 0 }, -1)).toThrow(/radius/);

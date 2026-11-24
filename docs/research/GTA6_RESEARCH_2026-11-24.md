@@ -7,6 +7,7 @@
 CyberLeek has claimed distribution of approximately 209 GB of Xbox GTA VI game-build data and, later, an executable. Neither authenticity, integrity, redistribution rights nor the claimed completeness are independently confirmed by this project. Public GitHub repositories inspected by the community principally host research code, format notes, and tools; do not claim GitHub hosts the full 209 GB build. Hashes alone cannot establish publisher authenticity. A decompiler/recompiler project is not equivalent to the original Rockstar source code.
 
 Selected public documentation/tool repositories (not vetted, no endorsement):
+
 - https://github.com/ItsNotRexed/Leonida — historical recompilation/format research; **original repository returned 404 on 24 November 2026**. Do not rely on this as an available code source.
 - https://github.com/Ahmet-Dedeler/rage9-re — from-scratch Rust/Python readers describing `PSIN` script-data containers and animation structure; **not a public scripting API**.
 - https://github.com/holdmysocks/SixNG — RPF9/model/texture/world format/tooling observations; GPL-3.0.
@@ -26,14 +27,14 @@ Existing FiveM/Cfx event functions and Qbox/QBCore exports are real and document
 
 ## Implications for the independent RP core
 
-| Observation/research topic | Portable abstraction we can build | Runtime-dependent assumption still blocked |
-| --- | --- | --- |
-| World coordinate spaces and interiors | Synthetic locations, interior instances, spatial identifiers | Official coordinate conventions, map or navmesh APIs |
-| Resource streaming and archive formats | Resource descriptors and abstract lifecycle contracts | GTA VI archive loaders, downloadable game assets |
-| Vehicle and entity formats | Vehicle ownership, garage records, transient entity IDs | Network spawning, physics and vehicle native calls |
-| Animation and character data formats | Identity, character progression, abstract appearance traits | Character model/animation hooks |
-| Console compatibility research | Versioned runtime capability manifest | Usable PC runtime, authorized multiplayer transport |
-| Community FiveM/ESX/QBCore patterns | Server authority, jobs, inventory, banking, permissions | FiveM native/API compatibility with GTA VI |
+| Observation/research topic             | Portable abstraction we can build                            | Runtime-dependent assumption still blocked           |
+| -------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
+| World coordinate spaces and interiors  | Synthetic locations, interior instances, spatial identifiers | Official coordinate conventions, map or navmesh APIs |
+| Resource streaming and archive formats | Resource descriptors and abstract lifecycle contracts        | GTA VI archive loaders, downloadable game assets     |
+| Vehicle and entity formats             | Vehicle ownership, garage records, transient entity IDs      | Network spawning, physics and vehicle native calls   |
+| Animation and character data formats   | Identity, character progression, abstract appearance traits  | Character model/animation hooks                      |
+| Console compatibility research         | Versioned runtime capability manifest                        | Usable PC runtime, authorized multiplayer transport  |
+| Community FiveM/ESX/QBCore patterns    | Server authority, jobs, inventory, banking, permissions      | FiveM native/API compatibility with GTA VI           |
 
 No GTA VI game files, extracted models, maps, textures, scripts, executables, decryption keys, console binaries or downloadable leaks belong in the codebase or the website.
 

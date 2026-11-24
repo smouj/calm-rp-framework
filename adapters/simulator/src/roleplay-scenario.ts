@@ -17,8 +17,10 @@ export function runRoleplayScenario(): ScenarioResult {
   const operator: Principal = { accountId: accountA, capabilities: ['economy.grant'] };
   const player: Principal = { accountId: accountA, capabilities: [] };
   world.registerCharacter(player, { id: alice, accountId: accountA, displayName: 'Alex Rivera' });
-  world.registerCharacter({ accountId: accountB, capabilities: [] },
-    { id: bob, accountId: accountB, displayName: 'Morgan Cruz' });
+  world.registerCharacter(
+    { accountId: accountB, capabilities: [] },
+    { id: bob, accountId: accountB, displayName: 'Morgan Cruz' },
+  );
   world.grant(operator, { requestId: 'seed-001', to: alice, amount: 50_00n });
   const command = { requestId: 'transfer-001', from: alice, to: bob, amount: 12_50n };
   const first = world.transfer(player, command);

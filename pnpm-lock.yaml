@@ -16,6 +16,15 @@ importers:
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.11.0)
+      '@gta6-rp/contracts':
+        specifier: workspace:*
+        version: link:packages/contracts
+      '@gta6-rp/core':
+        specifier: workspace:*
+        version: link:packages/core
+      '@gta6-rp/simulator':
+        specifier: workspace:*
+        version: link:adapters/simulator
       '@types/node':
         specifier: ^22.20.5
         version: 22.20.5

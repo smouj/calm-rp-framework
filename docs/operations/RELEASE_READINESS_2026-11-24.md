@@ -6,20 +6,20 @@
 
 ## Evidence-backed status
 
-| Gate | Status | Evidence / limitation |
-| --- | --- | --- |
-| Original source and independent modular RP design | REVIEWED | Character/ledger reference and runtime-neutral contracts in PR #31 |
-| Public GTA VI scripting adapter | BLOCKED | No verified, authorized GTA VI runtime or community-server API |
-| Legal/IP scope | PRELIMINARY | [Interoperability review](../legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md); not legal advice |
-| Third-party/proprietary assets | GUARDED | [Artifact policy](./THIRD_PARTY_ARTIFACT_POLICY.md), `.gitignore` and tracked-path tests; **not** a full content or historical legal audit |
-| Browser site files, anchors and links | STATICALLY REVIEWED | Local paths, IDs and tested document links were reviewed; no browser-based accessibility certification |
-| Browser-site smoke tests | COMMITTED ONLY | `tests/site-hygiene.test.ts`; not yet executed in hosted CI |
-| TypeScript, ESLint, Vitest, Prettier and build | **NOT VERIFIED** | [Runner incident #33](https://github.com/smouj/gta6-rp-platform/issues/33) |
-| GitHub-hosted CI | **FAILED BEFORE RUNNING** | [Actions run #45352664284](https://github.com/smouj/gta6-rp-platform/actions/runs/45352664284): no runner assigned, zero steps; manual retry also failed |
-| GitHub Pages deployment | **NOT ACTIVE / UNCONFIRMED** | Workflow proposed; private repository requires owner-side settings/plan checks |
-| Public repository visibility | PRIVATE | No owner-approved visibility change or final history/IP publication clearance |
-| Old Leonida research PR #25 | CLOSED (SUPERSEDED) | Its useful artifact policy was consolidated into PR #31 |
-| Synthetic spatial planning PR #26 | DRAFT, UNMERGED | Requires independent tests/rebase/review before possible merge |
+| Gate                                              | Status                       | Evidence / limitation                                                                                                                                    |
+| ------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Original source and independent modular RP design | REVIEWED                     | Character/ledger reference and runtime-neutral contracts in PR #31                                                                                       |
+| Public GTA VI scripting adapter                   | BLOCKED                      | No verified, authorized GTA VI runtime or community-server API                                                                                           |
+| Legal/IP scope                                    | PRELIMINARY                  | [Interoperability review](../legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md); not legal advice                                                       |
+| Third-party/proprietary assets                    | GUARDED                      | [Artifact policy](./THIRD_PARTY_ARTIFACT_POLICY.md), `.gitignore` and tracked-path tests; **not** a full content or historical legal audit               |
+| Browser site files, anchors and links             | STATICALLY REVIEWED          | Local paths, IDs and tested document links were reviewed; no browser-based accessibility certification                                                   |
+| Browser-site smoke tests                          | COMMITTED ONLY               | `tests/site-hygiene.test.ts`; not yet executed in hosted CI                                                                                              |
+| TypeScript, ESLint, Vitest, Prettier and build    | **NOT VERIFIED**             | [Runner incident #33](https://github.com/smouj/gta6-rp-platform/issues/33)                                                                               |
+| GitHub-hosted CI                                  | **FAILED BEFORE RUNNING**    | [Actions run #45352664284](https://github.com/smouj/gta6-rp-platform/actions/runs/45352664284): no runner assigned, zero steps; manual retry also failed |
+| GitHub Pages deployment                           | **NOT ACTIVE / UNCONFIRMED** | Workflow proposed; private repository requires owner-side settings/plan checks                                                                           |
+| Public repository visibility                      | PRIVATE                      | No owner-approved visibility change or final history/IP publication clearance                                                                            |
+| Old Leonida research PR #25                       | CLOSED (SUPERSEDED)          | Its useful artifact policy was consolidated into PR #31                                                                                                  |
+| Synthetic spatial planning PR #26                 | DRAFT, UNMERGED              | Requires independent tests/rebase/review before possible merge                                                                                           |
 
 ## Required verification
 

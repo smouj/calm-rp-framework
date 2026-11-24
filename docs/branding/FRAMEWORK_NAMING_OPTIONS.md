@@ -2,7 +2,7 @@
 
 **Decision date:** 24 November 2026. **Selected by the project owner:** **CALM**. Descriptor: **Roleplay Framework**.
 
-CALM was chosen deliberately as a contrast in *tone and naming* with RAGE, Rockstar's game engine. **CALM does not run RAGE, replace it, or currently offer an interface to GTA VI.** This naming rationale does not imply partnership, reverse-engineering authority, interoperability or a Rockstar license.
+CALM was chosen deliberately as a contrast in _tone and naming_ with RAGE, Rockstar's game engine. **CALM does not run RAGE, replace it, or currently offer an interface to GTA VI.** This naming rationale does not imply partnership, reverse-engineering authority, interoperability or a Rockstar license.
 
 ## Product identity
 

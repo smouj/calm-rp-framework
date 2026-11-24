@@ -13,19 +13,29 @@ const staff: Principal = { accountId: accountA, capabilities: ['inventory.mint']
 function seeded(capacityGrams = 30_000): InMemoryInventory {
   const characters = new InMemoryRoleplay();
   characters.registerCharacter(userA, {
-    id: characterA, accountId: accountA, displayName: 'Alex Rivera',
+    id: characterA,
+    accountId: accountA,
+    displayName: 'Alex Rivera',
   });
   characters.registerCharacter(userB, {
-    id: characterB, accountId: accountB, displayName: 'Morgan Cruz',
+    id: characterB,
+    accountId: accountB,
+    displayName: 'Morgan Cruz',
   });
   const inventory = new InMemoryInventory((id) => characters.getCharacter(id), capacityGrams);
   inventory.registerItem({
-    id: 'water', displayName: 'Bottled water', weightGrams: 500,
-    maxStack: 10, tradeable: true,
+    id: 'water',
+    displayName: 'Bottled water',
+    weightGrams: 500,
+    maxStack: 10,
+    tradeable: true,
   });
   inventory.registerItem({
-    id: 'id-card', displayName: 'Identity card', weightGrams: 10,
-    maxStack: 1, tradeable: false,
+    id: 'id-card',
+    displayName: 'Identity card',
+    weightGrams: 10,
+    maxStack: 1,
+    tradeable: false,
   });
   return inventory;
 }
@@ -52,12 +62,23 @@ describe('inventory domain (reference only)', () => {
   it('enforces authenticated source ownership', () => {
     const inv = seeded();
     inv.mint(staff, { requestId: 'seed', to: characterA, itemId: 'water', count: 3 });
-    rejects('FORBIDDEN', () => inv.transfer(userB, {
-      requestId: 'steal', from: characterA, to: characterB, itemId: 'water', count: 1,
-    }));
-    rejects('FORBIDDEN', () => inv.consume(userB, {
-      requestId: 'consume', from: characterA, itemId: 'water', count: 1,
-    }));
+    rejects('FORBIDDEN', () =>
+      inv.transfer(userB, {
+        requestId: 'steal',
+        from: characterA,
+        to: characterB,
+        itemId: 'water',
+        count: 1,
+      }),
+    );
+    rejects('FORBIDDEN', () =>
+      inv.consume(userB, {
+        requestId: 'consume',
+        from: characterA,
+        itemId: 'water',
+        count: 1,
+      }),
+    );
     expect(inv.getCount(characterA, 'water')).toBe(3);
   });
 
@@ -75,11 +96,18 @@ describe('inventory domain (reference only)', () => {
     const inv = seeded();
     inv.mint(staff, { requestId: 'seed', to: characterA, itemId: 'water', count: 4 });
     const move = {
-      requestId: 'transfer', from: characterA, to: characterB, itemId: 'water', count: 3,
+      requestId: 'transfer',
+      from: characterA,
+      to: characterB,
+      itemId: 'water',
+      count: 3,
     };
     expect(inv.transfer(userA, move)).toBe(inv.transfer(userA, move));
     inv.consume(userB, {
-      requestId: 'drink', from: characterB, itemId: 'water', count: 1,
+      requestId: 'drink',
+      from: characterB,
+      itemId: 'water',
+      count: 1,
     });
     expect(inv.getCount(characterA, 'water')).toBe(1);
     expect(inv.getCount(characterB, 'water')).toBe(2);
@@ -90,15 +118,33 @@ describe('inventory domain (reference only)', () => {
   it('rejects self-transfers, overdrafts and non-tradeable items', () => {
     const inv = seeded();
     inv.mint(staff, { requestId: 'id', to: characterA, itemId: 'id-card', count: 1 });
-    rejects('SELF_TRANSFER', () => inv.transfer(userA, {
-      requestId: 'self', from: characterA, to: characterA, itemId: 'water', count: 1,
-    }));
-    rejects('NOT_TRADEABLE', () => inv.transfer(userA, {
-      requestId: 'id-move', from: characterA, to: characterB, itemId: 'id-card', count: 1,
-    }));
-    rejects('INSUFFICIENT_ITEMS', () => inv.transfer(userA, {
-      requestId: 'empty', from: characterA, to: characterB, itemId: 'water', count: 1,
-    }));
+    rejects('SELF_TRANSFER', () =>
+      inv.transfer(userA, {
+        requestId: 'self',
+        from: characterA,
+        to: characterA,
+        itemId: 'water',
+        count: 1,
+      }),
+    );
+    rejects('NOT_TRADEABLE', () =>
+      inv.transfer(userA, {
+        requestId: 'id-move',
+        from: characterA,
+        to: characterB,
+        itemId: 'id-card',
+        count: 1,
+      }),
+    );
+    rejects('INSUFFICIENT_ITEMS', () =>
+      inv.transfer(userA, {
+        requestId: 'empty',
+        from: characterA,
+        to: characterB,
+        itemId: 'water',
+        count: 1,
+      }),
+    );
     expect(inv.getCount(characterA, 'id-card')).toBe(1);
   });
 
@@ -106,39 +152,73 @@ describe('inventory domain (reference only)', () => {
     const inv = seeded(1_000);
     inv.mint(staff, { requestId: 'seed-a', to: characterA, itemId: 'water', count: 2 });
     inv.mint(staff, { requestId: 'seed-b', to: characterB, itemId: 'water', count: 1 });
-    rejects('CAPACITY_LIMIT', () => inv.transfer(userA, {
-      requestId: 'overweight', from: characterA, to: characterB, itemId: 'water', count: 2,
-    }));
+    rejects('CAPACITY_LIMIT', () =>
+      inv.transfer(userA, {
+        requestId: 'overweight',
+        from: characterA,
+        to: characterB,
+        itemId: 'water',
+        count: 2,
+      }),
+    );
     expect(inv.getCount(characterA, 'water')).toBe(2);
     expect(inv.getCount(characterB, 'water')).toBe(1);
     const normal = seeded();
     normal.mint(staff, { requestId: 'full', to: characterA, itemId: 'water', count: 10 });
-    rejects('STACK_LIMIT', () => normal.mint(staff, {
-      requestId: 'too-many', to: characterA, itemId: 'water', count: 1,
-    }));
+    rejects('STACK_LIMIT', () =>
+      normal.mint(staff, {
+        requestId: 'too-many',
+        to: characterA,
+        itemId: 'water',
+        count: 1,
+      }),
+    );
     expect(normal.getCount(characterA, 'water')).toBe(10);
   });
 
   it('validates bounded integer quantities and registered identities', () => {
     const inv = seeded();
-    rejects('INVALID_QUANTITY', () => inv.mint(staff, {
-      requestId: 'fraction', to: characterA, itemId: 'water', count: 1.5,
-    }));
-    rejects('INVALID_QUANTITY', () => inv.mint(staff, {
-      requestId: 'negative', to: characterA, itemId: 'water', count: -1,
-    }));
-    rejects('ITEM_NOT_FOUND', () => inv.mint(staff, {
-      requestId: 'missing', to: characterA, itemId: 'unknown', count: 1,
-    }));
-    rejects('CHARACTER_NOT_FOUND', () => inv.mint(staff, {
-      requestId: 'owner', to: 'missing' as CharacterId, itemId: 'water', count: 1,
-    }));
+    rejects('INVALID_QUANTITY', () =>
+      inv.mint(staff, {
+        requestId: 'fraction',
+        to: characterA,
+        itemId: 'water',
+        count: 1.5,
+      }),
+    );
+    rejects('INVALID_QUANTITY', () =>
+      inv.mint(staff, {
+        requestId: 'negative',
+        to: characterA,
+        itemId: 'water',
+        count: -1,
+      }),
+    );
+    rejects('ITEM_NOT_FOUND', () =>
+      inv.mint(staff, {
+        requestId: 'missing',
+        to: characterA,
+        itemId: 'unknown',
+        count: 1,
+      }),
+    );
+    rejects('CHARACTER_NOT_FOUND', () =>
+      inv.mint(staff, {
+        requestId: 'owner',
+        to: 'missing' as CharacterId,
+        itemId: 'water',
+        count: 1,
+      }),
+    );
   });
 
   it('defensively freezes public snapshots and receipts', () => {
     const inv = seeded();
     const receipt = inv.mint(staff, {
-      requestId: 'mint-1', to: characterA, itemId: 'water', count: 1,
+      requestId: 'mint-1',
+      to: characterA,
+      itemId: 'water',
+      count: 1,
     });
     const list = inv.list(characterA);
     expect(Object.isFrozen(list)).toBe(true);
@@ -150,10 +230,15 @@ describe('inventory domain (reference only)', () => {
 
   it('rejects duplicate definitions and invalid capacities', () => {
     const inv = seeded();
-    rejects('ITEM_EXISTS', () => inv.registerItem({
-      id: 'water', displayName: 'Other water', weightGrams: 1,
-      maxStack: 10, tradeable: true,
-    }));
+    rejects('ITEM_EXISTS', () =>
+      inv.registerItem({
+        id: 'water',
+        displayName: 'Other water',
+        weightGrams: 1,
+        maxStack: 10,
+        tradeable: true,
+      }),
+    );
     rejects('INVALID_QUANTITY', () => new InMemoryInventory(() => undefined, 0));
   });
 });

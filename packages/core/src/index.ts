@@ -33,9 +33,7 @@ export const assertMinorUnits = (value: bigint): bigint => {
   return value;
 };
 
-export {
-  InMemoryRoleplay,
-} from './roleplay.js';
+export { InMemoryRoleplay } from './roleplay.js';
 export type {
   Capability,
   CharacterRecord,

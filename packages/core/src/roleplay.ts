@@ -48,7 +48,10 @@ function assertId(value: string, label: string): void {
 }
 function assertAmount(amount: bigint): void {
   if (typeof amount !== 'bigint' || amount <= 0n || amount > MAX_AMOUNT) {
-    throw new DomainError('INVALID_AMOUNT', 'Amount must be a bounded positive integer in minor units.');
+    throw new DomainError(
+      'INVALID_AMOUNT',
+      'Amount must be a bounded positive integer in minor units.',
+    );
   }
 }
 
@@ -63,11 +66,21 @@ export class InMemoryRoleplay {
     assertId(data.id, 'character ID');
     assertId(data.accountId, 'account ID');
     if (principal.accountId !== data.accountId) {
-      throw new DomainError('FORBIDDEN', 'A character may only be created for the authenticated account.');
+      throw new DomainError(
+        'FORBIDDEN',
+        'A character may only be created for the authenticated account.',
+      );
     }
     const displayName = data.displayName.trim();
-    if (displayName.length < 2 || displayName.length > 40 || /[\u0000-\u001f\u007f]/.test(displayName)) {
-      throw new DomainError('INVALID_NAME', 'Character name must contain 2 to 40 printable characters.');
+    if (
+      displayName.length < 2 ||
+      displayName.length > 40 ||
+      /[\u0000-\u001f\u007f]/.test(displayName)
+    ) {
+      throw new DomainError(
+        'INVALID_NAME',
+        'Character name must contain 2 to 40 printable characters.',
+      );
     }
     if (this.#characters.has(data.id)) {
       throw new DomainError('CHARACTER_EXISTS', 'Character ID is already registered.');
@@ -102,7 +115,15 @@ export class InMemoryRoleplay {
     const previous = this.#previous(command.requestId, fingerprint);
     if (previous) return previous;
     this.#ensureWithinLimit(this.getBalance(command.to) + command.amount);
-    return this.#record(command.requestId, fingerprint, 'grant', principal.accountId, null, command.to, command.amount);
+    return this.#record(
+      command.requestId,
+      fingerprint,
+      'grant',
+      principal.accountId,
+      null,
+      command.to,
+      command.amount,
+    );
   }
 
   transfer(principal: Principal, command: TransferCommand): LedgerEntry {
@@ -123,7 +144,15 @@ export class InMemoryRoleplay {
       throw new DomainError('INSUFFICIENT_FUNDS', 'Insufficient funds.');
     }
     this.#ensureWithinLimit(this.getBalance(command.to) + command.amount);
-    return this.#record(command.requestId, fingerprint, 'transfer', principal.accountId, command.from, command.to, command.amount);
+    return this.#record(
+      command.requestId,
+      fingerprint,
+      'transfer',
+      principal.accountId,
+      command.from,
+      command.to,
+      command.amount,
+    );
   }
 
   #requirePrincipal(principal: Principal): void {
@@ -145,24 +174,40 @@ export class InMemoryRoleplay {
   #previous(requestId: string, fingerprint: string): LedgerEntry | undefined {
     const previous = this.#requests.get(requestId);
     if (previous && previous.fingerprint !== fingerprint) {
-      throw new DomainError('IDEMPOTENCY_CONFLICT', 'A request ID cannot be reused with different arguments.');
+      throw new DomainError(
+        'IDEMPOTENCY_CONFLICT',
+        'A request ID cannot be reused with different arguments.',
+      );
     }
     return previous?.entry;
   }
 
   #ensureWithinLimit(balance: bigint): void {
-    if (balance > MAX_BALANCE) throw new DomainError('BALANCE_LIMIT', 'Balance exceeds the allowed limit.');
+    if (balance > MAX_BALANCE)
+      throw new DomainError('BALANCE_LIMIT', 'Balance exceeds the allowed limit.');
   }
 
-  #record(requestId: string, fingerprint: string, operation: LedgerEntry['operation'],
-    performedBy: AccountId, from: CharacterId | null, to: CharacterId, amount: bigint): LedgerEntry {
+  #record(
+    requestId: string,
+    fingerprint: string,
+    operation: LedgerEntry['operation'],
+    performedBy: AccountId,
+    from: CharacterId | null,
+    to: CharacterId,
+    amount: bigint,
+  ): LedgerEntry {
     // This reference model is synchronous. A production adapter MUST perform these writes
     // in one durable, isolated PostgreSQL transaction with a unique idempotency constraint.
     if (from !== null) this.#balances.set(from, this.getBalance(from) - amount);
     this.#balances.set(to, this.getBalance(to) + amount);
     const entry = Object.freeze({
       sequence: this.#history.length + 1,
-      requestId, operation, performedBy, from, to, amount,
+      requestId,
+      operation,
+      performedBy,
+      from,
+      to,
+      amount,
     });
     this.#history.push(entry);
     this.#requests.set(requestId, { fingerprint, entry });

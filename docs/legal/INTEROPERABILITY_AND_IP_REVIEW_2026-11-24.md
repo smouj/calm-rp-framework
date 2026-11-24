@@ -10,6 +10,7 @@ An independently authored roleplay framework can define original accounts, chara
 EU Directive 2009/24/EC, Art. 1(2), and Spanish Intellectual Property Law (Real Decreto Legislativo 1/1996), Art. 96(4), distinguish unprotected software ideas and interface principles from protected program expression. **This is not a blanket right to publish someone else's implementation, assets or confidential interfaces.**
 
 Authoritative texts:
+
 - BOE consolidated law (Arts. 96, 99, 100, 102): https://www.boe.es/buscar/act.php?id=BOE-A-1996-8930
 - Directive 2009/24/EC (Arts. 1, 4, 5, 6, 7, 8): https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX:32009L0024
 
@@ -18,6 +19,7 @@ Authoritative texts:
 Spanish Art. 100(3) permits a **lawful user** to observe, study or test program operation to determine underlying ideas/principles **while performing operations they are entitled to perform**.
 
 Art. 100(5) permits certain necessary code reproduction/translation for interoperability of an independently created program only when:
+
 - performed by a lawful user/authorized person;
 - necessary information is not readily available;
 - activities are confined to the parts indispensable for interoperability.
@@ -36,15 +38,15 @@ Current GTA V/FiveM authorization **does not extend automatically to GTA VI**. A
 
 ## 4. Repository evidence hygiene
 
-| Input | Policy |
-| --- | --- |
-| Official Rockstar/Cfx API descriptions | May be cited and used to design independent interfaces **for the documented supported product only** |
-| Public technical descriptions of archive formats and data structures | Use narrow, attributed **facts and high-level insights** after assessing lawful access, provenance, license and certainty |
-| Original project-authored synthetic tests/fixtures | Allowed |
-| Third-party open-source code | May be reused **only after verifying its actual license**, attribution obligations and compatibility with MIT; do not assume GitHub = MIT |
-| Decompiled code, executable dumps, keys, models, game scripts, maps or textures from unauthorized GTA VI distributions | Do **not** import, redistribute, mirror, paste into tests, publish hashes as endorsement, or ship with tools |
-| Offsets, internal native signatures or private protocols alleged to originate in a leak | Do not treat as authorized public contracts; escalate for provenance and legal review, avoid implementing them |
-| External GitHub README claims | Cite as claims by the third party; do not promote to verified Rockstar runtime facts without independent, legitimate evidence |
+| Input                                                                                                                  | Policy                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Official Rockstar/Cfx API descriptions                                                                                 | May be cited and used to design independent interfaces **for the documented supported product only**                                      |
+| Public technical descriptions of archive formats and data structures                                                   | Use narrow, attributed **facts and high-level insights** after assessing lawful access, provenance, license and certainty                 |
+| Original project-authored synthetic tests/fixtures                                                                     | Allowed                                                                                                                                   |
+| Third-party open-source code                                                                                           | May be reused **only after verifying its actual license**, attribution obligations and compatibility with MIT; do not assume GitHub = MIT |
+| Decompiled code, executable dumps, keys, models, game scripts, maps or textures from unauthorized GTA VI distributions | Do **not** import, redistribute, mirror, paste into tests, publish hashes as endorsement, or ship with tools                              |
+| Offsets, internal native signatures or private protocols alleged to originate in a leak                                | Do not treat as authorized public contracts; escalate for provenance and legal review, avoid implementing them                            |
+| External GitHub README claims                                                                                          | Cite as claims by the third party; do not promote to verified Rockstar runtime facts without independent, legitimate evidence             |
 
 The public `Qbox-project/qbx_core` and `overextended/ox_inventory` repositories currently declare GPL-3.0. Their published **function names and behavioral documentation** may inform our independent design, but directly copying GPL-licensed implementation into the MIT-only project is not acceptable without a separate, competent license-compliance decision. See https://github.com/Qbox-project/qbx_core and https://github.com/overextended/ox_inventory.
 

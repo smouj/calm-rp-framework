@@ -15,12 +15,7 @@ export interface PlanningBounds {
 
 export type PlanningLayer = 'exterior' | 'interior' | 'underground';
 export type PlanningUse =
-  | 'region'
-  | 'business'
-  | 'property'
-  | 'public-service'
-  | 'transport'
-  | 'interaction';
+  'region' | 'business' | 'property' | 'public-service' | 'transport' | 'interaction';
 export type PlanningStatus = 'draft' | 'reviewed';
 export type PlanningProvenance = 'synthetic' | 'project-owned';
 

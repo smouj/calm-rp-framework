@@ -6,21 +6,22 @@
 
 These names refer to **FiveM/Qbox for supported existing GTA V ecosystems only**. They are not GTA VI native functions.
 
-| Publicly documented symbol / call | Documented ecosystem | Design meaning for our original core | GTA VI equivalent |
-| --- | --- | --- | --- |
-| `RegisterNetEvent` | FiveM/Cfx | Register a network-exposed event listener; validate client-supplied input on server | **UNKNOWN** |
-| `AddEventHandler` | FiveM/Cfx | Listen for local non-network events | **UNKNOWN** |
-| `TriggerServerEvent` | FiveM/Cfx | Send client intent to server; **not** a trusted state mutation | **UNKNOWN** |
-| `TriggerClientEvent` | FiveM/Cfx | Send server result/projection to a client | **UNKNOWN** |
-| `exports.qbx_core:GetPlayer(source)` | Qbox | Look up player session object | **UNKNOWN** |
-| `QBCore.Functions.GetPlayer(source)` | QBCore | Lookup in the QBCore public abstraction | **UNKNOWN** |
-| `exports.qbx_core:AddMoney(identifier,moneyType,amount,reason)` | Qbox | Authoritative credit workflow with auditable reason | **UNKNOWN** |
-| `exports.qbx_core:RemoveMoney(identifier,moneyType,amount,reason)` | Qbox | Authoritative debit workflow | **UNKNOWN** |
-| `exports.ox_inventory:GetItemCount(source,item)` | ox_inventory/Qbox docs | Query inventory; not proof of GTA VI inventory native | **UNKNOWN** |
+| Publicly documented symbol / call                                  | Documented ecosystem   | Design meaning for our original core                                                | GTA VI equivalent |
+| ------------------------------------------------------------------ | ---------------------- | ----------------------------------------------------------------------------------- | ----------------- |
+| `RegisterNetEvent`                                                 | FiveM/Cfx              | Register a network-exposed event listener; validate client-supplied input on server | **UNKNOWN**       |
+| `AddEventHandler`                                                  | FiveM/Cfx              | Listen for local non-network events                                                 | **UNKNOWN**       |
+| `TriggerServerEvent`                                               | FiveM/Cfx              | Send client intent to server; **not** a trusted state mutation                      | **UNKNOWN**       |
+| `TriggerClientEvent`                                               | FiveM/Cfx              | Send server result/projection to a client                                           | **UNKNOWN**       |
+| `exports.qbx_core:GetPlayer(source)`                               | Qbox                   | Look up player session object                                                       | **UNKNOWN**       |
+| `QBCore.Functions.GetPlayer(source)`                               | QBCore                 | Lookup in the QBCore public abstraction                                             | **UNKNOWN**       |
+| `exports.qbx_core:AddMoney(identifier,moneyType,amount,reason)`    | Qbox                   | Authoritative credit workflow with auditable reason                                 | **UNKNOWN**       |
+| `exports.qbx_core:RemoveMoney(identifier,moneyType,amount,reason)` | Qbox                   | Authoritative debit workflow                                                        | **UNKNOWN**       |
+| `exports.ox_inventory:GetItemCount(source,item)`                   | ox_inventory/Qbox docs | Query inventory; not proof of GTA VI inventory native                               | **UNKNOWN**       |
 
 Qbox's documented `identifier` parameter accepts a player `source` or `citizenid`; `moneyType` is one of `cash`, `bank`, or `crypto`; `amount` is a number, and `reason` is optional. These exact parameter names and types are **Qbox-specific**, not GTA VI API signatures. See the current official Qbox server exports reference.
 
 Primary public documentation:
+
 - https://docs.fivem.net/docs/developers/server-security/
 - https://docs.fivem.net/docs/scripting-manual/working-with-events/
 - https://docs.fivem.net/docs/scripting-reference/runtimes/lua/functions/TriggerServerEvent/
@@ -31,16 +32,17 @@ Do **not** embed these names as GTA VI-facing APIs, silently port Lua FiveM reso
 
 ## 2. Public RAGE 9 format research: useful, but not callable functions
 
-| Public third-party research | Observed/reported area | What it informs | What it does **not** prove |
-| --- | --- | --- | --- |
-| `Ahmet-Dedeler/rage9-re` | `script.rpf` data graphs, `PSIN`, `LSCH`, `LENM`, `LSNS`, `LGID`, `LRSC`, `CHKS`, `anim.rpf` | Schema/versioning and object lifecycle planning | Public GTA VI script execution API, callable events or multiplayer |
-| `holdmysocks/SixNG` | RPF9 extraction and previews; upstream now reports support for all six BCPack BC texture formats, with known block artifacts; native TOC remains unreadable | Design abstract resource descriptors, no game data | Valid IP redistribution, runtime API, playable server |
-| `breadbbbb/rpf9-explorer` | Indexing and preview of archive types | Future asset adapter boundary | Documented GTA VI API or game code |
-| `R0Y00/Xbox2Windows` | Experimental Windows translation, diagnostic boot claims, synthetic tests | Capability/version manifest and portability constraints | Reliable playable Windows release or authorized online server |
-| `Marvisak/VIctory` | Project-claimed offline boot/menus; incomplete world rendering | Runtime lifecycle research only | Working gameplay or multiplayer services |
-| `ItsNotRexed/Leonida` | Earlier recompilation/format claims; original GitHub URL returned 404 at review time | Historical context, do not rely on it as a live integration dependency | Source availability, authorized adapter, verified build |
+| Public third-party research | Observed/reported area                                                                                                                                      | What it informs                                                        | What it does **not** prove                                         |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `Ahmet-Dedeler/rage9-re`    | `script.rpf` data graphs, `PSIN`, `LSCH`, `LENM`, `LSNS`, `LGID`, `LRSC`, `CHKS`, `anim.rpf`                                                                | Schema/versioning and object lifecycle planning                        | Public GTA VI script execution API, callable events or multiplayer |
+| `holdmysocks/SixNG`         | RPF9 extraction and previews; upstream now reports support for all six BCPack BC texture formats, with known block artifacts; native TOC remains unreadable | Design abstract resource descriptors, no game data                     | Valid IP redistribution, runtime API, playable server              |
+| `breadbbbb/rpf9-explorer`   | Indexing and preview of archive types                                                                                                                       | Future asset adapter boundary                                          | Documented GTA VI API or game code                                 |
+| `R0Y00/Xbox2Windows`        | Experimental Windows translation, diagnostic boot claims, synthetic tests                                                                                   | Capability/version manifest and portability constraints                | Reliable playable Windows release or authorized online server      |
+| `Marvisak/VIctory`          | Project-claimed offline boot/menus; incomplete world rendering                                                                                              | Runtime lifecycle research only                                        | Working gameplay or multiplayer services                           |
+| `ItsNotRexed/Leonida`       | Earlier recompilation/format claims; original GitHub URL returned 404 at review time                                                                        | Historical context, do not rely on it as a live integration dependency | Source availability, authorized adapter, verified build            |
 
 Repositories:
+
 - https://github.com/Ahmet-Dedeler/rage9-re (MIT OR Apache-2.0 per README)
 - https://github.com/holdmysocks/SixNG (GPL-3.0)
 - https://github.com/breadbbbb/rpf9-explorer (license requires manual inspection; do not reuse code)
@@ -55,15 +57,15 @@ These are **third-party self-descriptions** and should be checked against tested
 
 `packages/contracts/src/runtime-port.ts` declares **our own** capabilities:
 
-| Our name | Purpose | Example pre-runtime work |
-| --- | --- | --- |
-| `session.resolve` | Map a trusted connection/session to account identity | Synthetic session directory |
-| `intent.receive` | Receive untrusted player command intent | Auth+validate+authorize tests |
-| `projection.send` | Project server-confirmed results | Fake notifier |
-| `entity.reference` | Associate durable domain ID with transient world entity | In-memory mapping |
-| `location.query` | Query synthetic coordinate-space model | Spatial lookup |
-| `world.interact` | Request a server-validated world action | Permission rules |
-| `resource.lifecycle` | Detect availability of versioned resources | Mock version registry |
+| Our name             | Purpose                                                 | Example pre-runtime work      |
+| -------------------- | ------------------------------------------------------- | ----------------------------- |
+| `session.resolve`    | Map a trusted connection/session to account identity    | Synthetic session directory   |
+| `intent.receive`     | Receive untrusted player command intent                 | Auth+validate+authorize tests |
+| `projection.send`    | Project server-confirmed results                        | Fake notifier                 |
+| `entity.reference`   | Associate durable domain ID with transient world entity | In-memory mapping             |
+| `location.query`     | Query synthetic coordinate-space model                  | Spatial lookup                |
+| `world.interact`     | Request a server-validated world action                 | Permission rules              |
+| `resource.lifecycle` | Detect availability of versioned resources              | Mock version registry         |
 
 These names and TypeScript signatures are our own portable contracts, not Rockstar nomenclature or extracted native interfaces. The exported `GTA6_UNVERIFIED_CAPABILITIES` is intentionally empty, and `requireRuntimeCapabilities` fails closed if an essential capability is missing. **No GTA VI game adapter is implemented.**
 

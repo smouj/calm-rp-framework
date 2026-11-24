@@ -12,6 +12,10 @@ export default tseslint.config(
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
+      // The domain layer deliberately rejects control characters in user-supplied
+      // names, so a range spanning U+0000-U+001F is the intended behaviour rather
+      // than an accidental control character in source.
+      'no-control-regex': 'off',
     },
   },
 );

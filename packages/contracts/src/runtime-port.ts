@@ -70,5 +70,4 @@ export function requireRuntimeCapabilities(
  * No legitimate GTA VI adapter contract is confirmed. An empty capability
  * set prevents callers from mistaking public format research for runtime support.
  */
-export const GTA6_UNVERIFIED_CAPABILITIES: readonly PortableCapability[] =
-  Object.freeze([]);
+export const GTA6_UNVERIFIED_CAPABILITIES: readonly PortableCapability[] = Object.freeze([]);

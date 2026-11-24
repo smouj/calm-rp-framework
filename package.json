@@ -16,10 +16,18 @@
     "test": "vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm format:check"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm format:check",
+    "verify": "bash scripts/verify-local.sh",
+    "verify:fast": "bash scripts/verify-local.sh --fast",
+    "check:artifacts": "bash scripts/check-no-proprietary-artifacts.sh",
+    "check:secrets": "bash scripts/check-no-secrets.sh",
+    "check:site": "bash scripts/check-site-integrity.sh"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@gta6-rp/contracts": "workspace:*",
+    "@gta6-rp/core": "workspace:*",
+    "@gta6-rp/simulator": "workspace:*",
     "@types/node": "^22.20.5",
     "eslint": "^10.11.0",
     "prettier": "^3.9.9",

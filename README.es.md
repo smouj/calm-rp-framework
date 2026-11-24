@@ -26,6 +26,8 @@ El proyecto distingue las funciones oficiales **FiveM/Qbox** de las interfaces a
 
 - [Matriz de funciones, eventos y conceptos técnicos](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
 - [Análisis preliminar de interoperabilidad, licencias y propiedad intelectual](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
+- [Base jurídica: artículos concretos que hacen legal este proyecto](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md)
+- [Verificación local: el gate autoritativo, sin depender del CI alojado](./docs/operations/LOCAL_VERIFICATION.md)
 - [Referencias de investigación técnica de RAGE 9](./docs/research/GTA6_RESEARCH_2026-11-24.md)
 - [Versiones comprobadas de herramientas de terceros](./docs/research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md)
 

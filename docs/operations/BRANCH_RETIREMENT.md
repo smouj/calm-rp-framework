@@ -28,6 +28,7 @@
 The GitHub connector used for the merge does not expose deleting Git branch refs. We therefore **have not deleted these 11 branches**. To reach one branch safely, use the reviewed PowerShell script `scripts/cleanup-legacy-branches.ps1` on a Windows machine with Git and the authenticated GitHub CLI installed.
 
 The script:
+
 1. Confirms the repository, enumerates remote branches and previews all non-`main` refs.
 2. Checks there are no open pull requests.
 3. Creates a **local complete mirror and Git bundle** preserving all branch and tag history. Never commit the bundle, which can contain private content.
@@ -35,6 +36,7 @@ The script:
 5. Verifies the remaining branch list and reports failures.
 
 Run:
+
 ```powershell
 gh auth login
 pwsh -File scripts/cleanup-legacy-branches.ps1

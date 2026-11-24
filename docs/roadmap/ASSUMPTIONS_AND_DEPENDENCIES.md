@@ -1,6 +1,6 @@
 # Assumptions, external dependencies and proof gates
 
-**Review:** 24 November 2026. **Status:** active planning; *not a GTA VI API claim*. This consolidates relevant elements from draft PR #24 without reviving the prior single-server scope. The repository now targets a reusable game-independent RP foundation.
+**Review:** 24 November 2026. **Status:** active planning; _not a GTA VI API claim_. This consolidates relevant elements from draft PR #24 without reviving the prior single-server scope. The repository now targets a reusable game-independent RP foundation.
 
 ## Confirmed, product-scoped observations
 
@@ -17,17 +17,17 @@
 
 ## External proof gates
 
-| Gate | Evidence required | Current decision |
-| --- | --- | --- |
-| Runtime permission | First-party GTA VI-specific terms and license | **BLOCKED** |
-| Supported host/platform | Official deployment and target-platform documentation | **UNKNOWN** |
-| Public scripting ABI | Official callable functions and versions | **UNKNOWN** |
-| Identity and reconnect | Authorized identity, rotation and lifecycle contract | **UNKNOWN** |
-| Events and security | Client/server event and validation semantics | **UNKNOWN** |
-| Entities and ownership | Server entity/synchronization contract | **UNKNOWN** |
-| Asset/resource lifecycle | Public authorized resource format and redistribution terms | **UNKNOWN** |
-| Compatibility | Published runtime/game/client version matrix | **UNKNOWN** |
-| Production readiness | Reproducible tests, legal review, history audit and working CI | **BLOCKED** |
+| Gate                     | Evidence required                                              | Current decision |
+| ------------------------ | -------------------------------------------------------------- | ---------------- |
+| Runtime permission       | First-party GTA VI-specific terms and license                  | **BLOCKED**      |
+| Supported host/platform  | Official deployment and target-platform documentation          | **UNKNOWN**      |
+| Public scripting ABI     | Official callable functions and versions                       | **UNKNOWN**      |
+| Identity and reconnect   | Authorized identity, rotation and lifecycle contract           | **UNKNOWN**      |
+| Events and security      | Client/server event and validation semantics                   | **UNKNOWN**      |
+| Entities and ownership   | Server entity/synchronization contract                         | **UNKNOWN**      |
+| Asset/resource lifecycle | Public authorized resource format and redistribution terms     | **UNKNOWN**      |
+| Compatibility            | Published runtime/game/client version matrix                   | **UNKNOWN**      |
+| Production readiness     | Reproducible tests, legal review, history audit and working CI | **BLOCKED**      |
 
 Never copy symbols, maps, archives, native offsets or leaked files as a substitute for these gates. The current neutral `packages/core`, `packages/contracts`, simulator and planned durable persistence are valid independent engineering work.
 

@@ -28,10 +28,27 @@ describe('repository hygiene', () => {
   });
 
   it('pins third-party GitHub Actions to reviewed revisions', () => {
-    const workflow = read('.github/workflows/ci.yml');
+    // Asserting an exact commit would break every legitimate dependency bump while
+    // proving nothing about the security property. The property under test is that
+    // every action reference is a full 40-character commit SHA, never a mutable tag.
+    for (const workflowPath of ['.github/workflows/ci.yml', '.github/workflows/pages.yml']) {
+      const workflow = read(workflowPath);
+      const references = [...workflow.matchAll(/uses:\s*(\S+)/g)]
+        .map((match) => match[1])
+        .filter((value): value is string => Boolean(value));
 
-    expect(workflow).toContain('actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09');
-    expect(workflow).toContain('actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444');
+      expect(references.length).toBeGreaterThan(0);
+      for (const reference of references) {
+        const separator = reference.lastIndexOf('@');
+        const action = separator > 0 ? reference.slice(0, separator) : '';
+        const revision = separator > 0 ? reference.slice(separator + 1) : '';
+        expect(action, `${workflowPath} action ${reference} is missing a revision`).toBeTruthy();
+        expect(
+          revision,
+          `${workflowPath} action ${reference} is not pinned to a commit SHA`,
+        ).toMatch(/^[0-9a-f]{40}$/);
+      }
+    }
   });
 
   it('keeps routine dependency automation grouped and bounded', () => {

@@ -6,8 +6,11 @@ describe('tracked-file intellectual-property hygiene', () => {
   it('does not commit proprietary game archives or binaries', () => {
     const tracked = execFileSync('git', ['ls-files', '--cached', '-z'], {
       encoding: 'utf8',
-    }).split('\u0000').filter(Boolean);
-    const banned = /(?:^|\/)(?:game_scarlett_master\.exe|[^/]+\.(?:rpf|rpf9|xvc|xvd|pkg|xci|nsp|xip|xex|iso|torrent))$/i;
+    })
+      .split('\u0000')
+      .filter(Boolean);
+    const banned =
+      /(?:^|\/)(?:game_scarlett_master\.exe|[^/]+\.(?:rpf|rpf9|xvc|xvd|pkg|xci|nsp|xip|xex|iso|torrent))$/i;
     expect(tracked.filter((path) => banned.test(path))).toEqual([]);
   });
 

@@ -150,8 +150,16 @@ export class InMemoryInventory {
     const previous = this.#previous(command.requestId, fingerprint);
     if (previous) return previous;
     this.#ensureFits(command.to, item, command.count);
-    return this.#commit(command.requestId, fingerprint, 'mint', principal.accountId, null,
-      command.to, item.id, command.count);
+    return this.#commit(
+      command.requestId,
+      fingerprint,
+      'mint',
+      principal.accountId,
+      null,
+      command.to,
+      item.id,
+      command.count,
+    );
   }
 
   consume(principal: Principal, command: ConsumeItemCommand): InventoryReceipt {
@@ -168,8 +176,16 @@ export class InMemoryInventory {
     const previous = this.#previous(command.requestId, fingerprint);
     if (previous) return previous;
     this.#ensureHas(command.from, item.id, command.count);
-    return this.#commit(command.requestId, fingerprint, 'consume', principal.accountId,
-      command.from, null, item.id, command.count);
+    return this.#commit(
+      command.requestId,
+      fingerprint,
+      'consume',
+      principal.accountId,
+      command.from,
+      null,
+      item.id,
+      command.count,
+    );
   }
 
   transfer(principal: Principal, command: TransferItemCommand): InventoryReceipt {
@@ -195,8 +211,16 @@ export class InMemoryInventory {
     if (previous) return previous;
     this.#ensureHas(command.from, item.id, command.count);
     this.#ensureFits(command.to, item, command.count);
-    return this.#commit(command.requestId, fingerprint, 'transfer', principal.accountId,
-      command.from, command.to, item.id, command.count);
+    return this.#commit(
+      command.requestId,
+      fingerprint,
+      'transfer',
+      principal.accountId,
+      command.from,
+      command.to,
+      item.id,
+      command.count,
+    );
   }
 
   #validate(requestId: string, count: number): void {

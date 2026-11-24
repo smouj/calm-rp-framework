@@ -32,6 +32,8 @@ The independent core now has original, fail-closed runtime capability contracts 
 
 - [Documented functions and original interface mapping](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
 - [Spain/EU interoperability and intellectual-property review](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
+- [Legal basis: the specific articles that make this project lawful](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md)
+- [Local verification: the authoritative gate, independent of hosted CI](./docs/operations/LOCAL_VERIFICATION.md)
 - [Third-party RAGE 9 research status](./docs/research/GTA6_RESEARCH_2026-11-24.md)
 - [Revision-pinned third-party tools](./docs/research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md)
 
