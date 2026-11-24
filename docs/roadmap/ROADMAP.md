@@ -40,7 +40,7 @@ Our goal is to build an independent community-led RP foundation **before** any G
 4. inventory, container and ownership transactions;
 5. permission checks and attributable audit records;
 6. deterministic two-player simulator workflows;
-7. original synthetic world/location planning where it benefits tests.
+7. original synthetic world/location planning where it benefits tests; see [the in-memory planning catalog](../server/WORLD_SPATIAL_READINESS.md) (not persisted, not a game map).
 
 **Exit:** multiple simulated players exercise a representative, secure RP flow with durable state. A diagram or stub is not a completed slice.
 

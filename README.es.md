@@ -52,6 +52,10 @@ Rockstar anunció el lanzamiento del juego en consolas el **19 de noviembre de 2
 
 La estructura conocida de algunos archivos del juego puede inspirar decisiones de diseño, pero no confirma una interfaz de desarrollo ni autorización para distribuir modificaciones.
 
+## Planificación espacial independiente
+
+El simulador incluye un [catálogo espacial](./docs/server/WORLD_SPATIAL_READINESS.md) de prueba, en memoria y con escenarios ficticios. Define ubicaciones, espacios de coordenadas, jerarquías e interiores sin utilizar mapas, archivos, rutas ni funciones reales de GTA VI. Consulta la [propuesta ADR-0005](./docs/adr/0005-independent-world-planning.md).
+
 ## Desarrollo local
 
 Necesitas Node.js 22+ y pnpm 10.34.5. No necesitas GTA VI.

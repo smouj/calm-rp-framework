@@ -76,6 +76,10 @@ See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/
 
 The core is server-authoritative: clients request actions; validated server commands decide the outcome. We keep unknown game APIs, client-native functions, asset formats and networking protocols out of domain logic. Existing FiveM/Cfx work and third-party GTA VI research are useful references, **not** evidence of a working GTA VI integration.
 
+## Independent synthetic world planning
+
+The simulator now includes an original, in-memory [world-planning catalog](./docs/server/WORLD_SPATIAL_READINESS.md): project-owned location IDs, distinct coordinate spaces, interior/exterior classifications, bounded 3D geometry, parent hierarchies and deterministic proximity queries. **No GTA VI map/asset data, navigation API, world hook, multiplayer interface or proprietary coordinates are involved.** The [proposed ADR-0005](./docs/adr/0005-independent-world-planning.md) documents its limitations.
+
 ## Repository structure
 
 - [`packages/core`](./packages/core/src/index.ts): game-independent primitives and rules.
