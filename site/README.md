@@ -4,6 +4,7 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 
 ## Funcionalidad
 
+- Identidad visual propia: el banner original de CALM en la portada, con variante blanca para el tema oscuro e índigo para el claro.
 - Secciones de arquitectura, módulos, investigación, hoja de ruta y contribuciones.
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.

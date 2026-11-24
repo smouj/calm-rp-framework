@@ -199,6 +199,22 @@ h3 {
   align-items: center;
   gap: 7%;
 }
+.hero-logo {
+  display: block;
+  width: min(330px, 74%);
+  height: auto;
+  margin: 0 0 18px;
+}
+html[data-theme='light'] .hero-logo-dark {
+  display: none;
+}
+html:not([data-theme='light']) .hero-logo-light {
+  display: none;
+}
+.hero-logo-light {
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
 .eyebrow {
   font:
     500 11px 'DM Mono',
