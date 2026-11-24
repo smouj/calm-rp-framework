@@ -1,5 +1,11 @@
 <div align="center">
 
+<img
+  width="860"
+  alt="CALM — Roleplay Framework banner: original white CALM wordmark and star on the project night indigo"
+  src="./site/assets/banner-calm-indigo.png"
+/>
+
 # CALM — Roleplay Framework
 
 **An independent, modular, open-source roleplay foundation.**

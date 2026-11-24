@@ -1,5 +1,11 @@
 <div align="center">
 
+<img
+  width="860"
+  alt="Banner de CALM — Roleplay Framework: marca original CALM blanca con estrella sobre el índigo noche del proyecto"
+  src="./site/assets/banner-calm-indigo.png"
+/>
+
 # CALM — Roleplay Framework
 
 **Un framework de rol independiente, modular y de código abierto.**
