@@ -2,8 +2,8 @@
 
 <img
   width="860"
-  alt="CALM — Roleplay Framework banner: original white CALM wordmark and star on the project night indigo"
-  src="./site/assets/banner-calm-indigo.png"
+  alt="Banner social oficial de CALM — Roleplay Framework: wordmark CALM blanco con estrella sobre la banda navy del banner, escena retro Miami en rosa y navy"
+  src="./site/assets/banner-calm-social.png"
 />
 
 # CALM — Roleplay Framework
@@ -13,13 +13,13 @@
 CALM is the framework's selected working name. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. It is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
-[![MIT License](https://img.shields.io/badge/license-MIT-1B1C3A.svg)](./LICENSE)
-[![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-E04A32.svg)](./docs/roadmap/ROADMAP.md)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-F4705A.svg)](./CONTRIBUTING.md)
+[![MIT License](https://img.shields.io/badge/license-MIT-101020.svg)](./LICENSE)
+[![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-D05070.svg)](./docs/roadmap/ROADMAP.md)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-F06080.svg)](./CONTRIBUTING.md)
 [![Discord community](https://img.shields.io/badge/Discord-community-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![GTA VI runtime](https://img.shields.io/badge/GTA_VI_runtime-unavailable-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
-**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Code of Conduct](./CODE_OF_CONDUCT.md) · [Support](./SUPPORT.md) · [Roadmap](./docs/roadmap/ROADMAP.md) · [Discord community](https://discord.com/invite/BVWXWY5eUT)**
+**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Code of Conduct](./CODE_OF_CONDUCT.md) · [Support](./SUPPORT.md) · [Roadmap](./docs/roadmap/ROADMAP.md) · [Goals](./GOALS.md) · [Discord community](https://discord.com/invite/BVWXWY5eUT)**
 
 </div>
 

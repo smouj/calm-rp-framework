@@ -2,8 +2,8 @@
 
 <img
   width="860"
-  alt="Banner de CALM — Roleplay Framework: marca original CALM blanca con estrella sobre el índigo noche del proyecto"
-  src="./site/assets/banner-calm-indigo.png"
+  alt="Banner social oficial de CALM — Roleplay Framework: wordmark CALM blanco con estrella sobre la banda navy del banner, escena retro Miami en rosa y navy"
+  src="./site/assets/banner-calm-social.png"
 />
 
 # CALM — Roleplay Framework
@@ -13,13 +13,13 @@
 CALM es el nombre de trabajo elegido. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
-[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-1B1C3A.svg)](./LICENSE)
-[![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-E04A32.svg)](./docs/roadmap/ROADMAP.md)
-[![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-F4705A.svg)](./CONTRIBUTING.es.md)
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-101020.svg)](./LICENSE)
+[![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-D05070.svg)](./docs/roadmap/ROADMAP.md)
+[![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-F06080.svg)](./CONTRIBUTING.es.md)
 [![Comunidad en Discord](https://img.shields.io/badge/Discord-comunidad-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![Multijugador de GTA VI](https://img.shields.io/badge/multijugador%20GTA%20VI-no%20disponible-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
-**[English](./README.md) · [Español](./README.es.md) · [Contribuir](./CONTRIBUTING.es.md) · [Código de conducta](./CODE_OF_CONDUCT.es.md) · [Soporte](./SUPPORT.es.md) · [Hoja de ruta](./docs/roadmap/ROADMAP.md) · [Discord comunitario](https://discord.com/invite/BVWXWY5eUT)**
+**[English](./README.md) · [Español](./README.es.md) · [Contribuir](./CONTRIBUTING.es.md) · [Código de conducta](./CODE_OF_CONDUCT.es.md) · [Soporte](./SUPPORT.es.md) · [Hoja de ruta](./docs/roadmap/ROADMAP.md) · [Metas](./GOALS.es.md) · [Discord comunitario](https://discord.com/invite/BVWXWY5eUT)**
 
 </div>
 

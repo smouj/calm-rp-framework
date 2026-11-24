@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 76" role="img" aria-label="CALM Roleplay Framework">
-  <rect width="260" height="76" rx="16" fill="#1b1c3a"/>
-  <text x="26" y="50" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" letter-spacing="2.5" fill="#fff3e2">CALM</text>
-  <path fill="#f4705a" fill-rule="evenodd" d="M188 20l3.9 8.1 8.9 1.1-6.5 6.1 1.6 8.8-7.9-4.3-7.9 4.3 1.6-8.8-6.5-6.1 8.9-1.1z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 76" role="img" aria-label="CALM Roleplay Framework">
+  <rect width="300" height="76" rx="16" fill="#101020"/>
+  <g transform="translate(22,18)">
+    <path fill="#ffffff" d="M43.8 51.9 L32.8 44.8 L20.0 51.2 L27.4 41.3 L20.8 36.4 L33.2 35.9 L38.7 28.1 L39.2 35.7 L60.0 34.8 L40.0 40.1 Z"/>
+  </g>
+  <text x="96" y="42" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" font-style="italic" letter-spacing="1" fill="#ffffff">CALM</text>
+  <text x="98" y="58" font-family="Arial, Helvetica, sans-serif" font-size="9.5" letter-spacing="3.2" fill="#a9abc8">ROLEPLAY FRAMEWORK</text>
 </svg>

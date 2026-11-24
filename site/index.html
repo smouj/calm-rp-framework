@@ -7,9 +7,33 @@
       name="description"
       content="CALM: framework modular de roleplay de código abierto en desarrollo. Núcleo independiente y simulador; sin cliente ni servidor multijugador funcional de GTA VI."
     />
-    <meta name="theme-color" content="#1b1c3a" />
+    <meta name="theme-color" content="#101020" />
     <title>CALM — Roleplay Framework</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="./assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+    <meta property="og:title" content="CALM — Roleplay Framework" />
+    <meta
+      property="og:description"
+      content="Framework modular de roleplay de código abierto en desarrollo. Núcleo independiente y simulador; sin cliente ni servidor multijugador funcional de GTA VI."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://smouj.github.io/calm-rp-framework/" />
+    <meta
+      property="og:image"
+      content="https://smouj.github.io/calm-rp-framework/assets/og-image.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CALM — Roleplay Framework" />
+    <meta
+      name="twitter:description"
+      content="Framework modular de roleplay de código abierto. Núcleo independiente y simulador; sin integración de GTA VI."
+    />
+    <meta
+      name="twitter:image"
+      content="https://smouj.github.io/calm-rp-framework/assets/og-image.png"
+    />
     <link rel="stylesheet" href="./assets/styles.css" />
     <script src="./assets/app.js" defer></script>
   </head>
@@ -18,8 +42,13 @@
     <header class="site-header">
       <div class="wrap header-inner">
         <a href="#inicio" class="brand" aria-label="CALM Roleplay Framework, inicio">
-          <span class="mark" aria-hidden="true"><b></b><b></b><b></b><b></b></span
-          ><span>CALM <strong>RP FRAMEWORK</strong></span></a
+          <svg class="brand-star" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M36.2 45.0 L24.2 37.2 L10.2 44.2 L18.3 33.5 L11.1 28.0 L24.6 27.6 L30.5 19.0 L31.1 27.4 L53.8 26.4 L32.0 32.1 Z"
+            />
+          </svg>
+          <span><em>CALM</em> <strong>RP FRAMEWORK</strong></span></a
         >
         <button
           class="menu-toggle"
@@ -32,7 +61,7 @@
         </button>
         <nav id="main-nav" class="nav" aria-label="Principal">
           <a href="#plataforma">Plataforma</a><a href="#modulos">Módulos</a
-          ><a href="#simulador">Simulador</a><a href="#investigacion">Investigación</a
+          ><a href="#ingenieria">Ingeniería</a><a href="#investigacion">Investigación</a
           ><a href="#hoja-de-ruta">Hoja de ruta</a>
         </nav>
         <div class="header-actions">
@@ -68,7 +97,7 @@
             />
             <img
               class="hero-logo hero-logo-light"
-              src="./assets/banner-calm-indigo.png"
+              src="./assets/banner-calm-navy.png"
               alt=""
               width="320"
               height="107"
@@ -84,7 +113,7 @@
               juego sigue condicionada a una vía técnica y legal autorizada.
             </p>
             <div class="button-row">
-              <a href="#simulador" class="button button-primary">Probar demostración ↗</a
+              <a href="#plataforma" class="button button-primary">Conocer la plataforma →</a
               ><a
                 href="https://github.com/smouj/calm-rp-framework"
                 class="button button-ghost"
@@ -257,77 +286,104 @@
           </div>
         </div>
       </section>
-      <section class="section" id="simulador">
+      <section class="section" id="ingenieria">
         <div class="wrap">
           <div class="section-head">
             <div>
-              <p class="eyebrow">03 / LABORATORIO</p>
-              <h2>Experimenta con <span>una economía RP.</span></h2>
+              <p class="eyebrow">03 / INGENIERÍA</p>
+              <h2>Un repositorio que se <span>verifica a sí mismo.</span></h2>
             </div>
             <p>
-              Demostración interactiva local e independiente. No se conecta a un juego, una API ni
-              una base de datos; no representa un servidor real.
+              El progreso se comprueba con herramientas, no con promesas: tipos estrictos, pruebas
+              automáticas y barreras de higiene revisan cada cambio antes de publicarse.
             </p>
           </div>
-          <div class="demo-layout">
-            <div class="demo-panel">
-              <div class="panel-header">
-                <strong>Estado simulado</strong
-                ><span class="state state-ready">SOLO NAVEGADOR</span>
+          <div class="engineering-grid">
+            <div class="repo-panel" aria-label="Estructura del monorepo">
+              <div class="repo-head">
+                <span class="dots"><i></i><i></i><i></i></span><span>calm-rp-framework/</span
+                ><span class="repo-badge">MONOREPO · PNPM</span>
               </div>
-              <div class="wallets">
-                <div class="wallet">
-                  <span>Alex Rivera</span><strong id="balance-alex" aria-live="polite">50,00</strong
-                  ><small>Saldo · unidades ficticias</small>
-                </div>
-                <div class="wallet">
-                  <span>Morgan Cruz</span
-                  ><strong id="balance-morgan" aria-live="polite">0,00</strong
-                  ><small>Saldo · unidades ficticias</small>
-                </div>
-              </div>
-              <form id="transfer-form" novalidate>
-                <label for="transfer-amount">Transferir de Alex a Morgan</label>
-                <div class="input-group">
-                  <input
-                    id="transfer-amount"
-                    name="amount"
-                    type="number"
-                    min="0.01"
-                    step="0.01"
-                    max="50"
-                    inputmode="decimal"
-                    value="12.50"
-                    required
-                  /><span>unidades</span>
-                </div>
-                <button class="button button-primary demo-submit" type="submit">
-                  Ejecutar transferencia →
-                </button>
-              </form>
-              <div class="demo-toolbar">
-                <button id="demo-replay" type="button" class="small-button" disabled>
-                  Reintentar solicitud</button
-                ><button id="demo-reset" type="button" class="small-button">Reiniciar</button>
-              </div>
-              <p id="demo-message" class="demo-message" role="status" aria-live="polite">
-                Prueba una transferencia y repítela para comprobar la protección frente a
-                solicitudes duplicadas.
-              </p>
+              <ul class="repo-tree">
+                <li>
+                  <span class="path">packages/core</span
+                  ><span class="desc">Personajes, economía e inventario de referencia</span>
+                </li>
+                <li>
+                  <span class="path">packages/contracts</span
+                  ><span class="desc">Contratos de dominio y puerto de runtime</span>
+                </li>
+                <li>
+                  <span class="path">apps/api</span
+                  ><span class="desc">Endpoint de estado, fase pre-plataforma</span>
+                </li>
+                <li>
+                  <span class="path">adapters/simulator</span
+                  ><span class="desc">Ejecución del dominio sin GTA VI</span>
+                </li>
+                <li>
+                  <span class="path">adapters/gta6</span
+                  ><span class="desc">Reservado a una vía autorizada</span>
+                </li>
+                <li>
+                  <span class="path">adapters/cfx</span
+                  ><span class="desc">Límite de compatibilidad documentado</span>
+                </li>
+                <li>
+                  <span class="path">infrastructure/</span
+                  ><span class="desc">Migraciones de datos y Docker Compose</span>
+                </li>
+                <li>
+                  <span class="path">tests/</span
+                  ><span class="desc">Once suites ejecutadas en cada cambio</span>
+                </li>
+              </ul>
+              <div class="repo-foot">TYPE-SAFE / SERVER AUTHORITY / MIT</div>
             </div>
-            <div class="demo-ledger">
-              <div class="panel-header">
-                <strong>Libro de movimientos</strong><span id="ledger-count">1 movimiento</span>
+            <div class="gates">
+              <div class="gate">
+                <span class="gate-index">G1</span>
+                <div>
+                  <strong>Calidad estática</strong>
+                  <p>ESLint y Prettier sobre todo el workspace, con TypeScript estricto.</p>
+                </div>
               </div>
-              <ol id="ledger-list" aria-label="Movimientos simulados"></ol>
-              <div class="ledger-foot">Sin servidor · Sin almacenamiento · Datos ficticios</div>
+              <div class="gate">
+                <span class="gate-index">G2</span>
+                <div>
+                  <strong>Pruebas de dominio</strong>
+                  <p>
+                    Once suites Vitest cubren arquitectura, personajes, inventario, simulador y la
+                    higiene del propio repositorio.
+                  </p>
+                </div>
+              </div>
+              <div class="gate">
+                <span class="gate-index">G3</span>
+                <div>
+                  <strong>Barreras de contenido</strong>
+                  <p>
+                    Comprobaciones automáticas de ausencia de artefactos propietarios, secretos y
+                    degradación del sitio.
+                  </p>
+                </div>
+              </div>
+              <div class="gate">
+                <span class="gate-index">G4</span>
+                <div>
+                  <strong>Verificación local</strong>
+                  <p>
+                    La puerta <code>verify-local</code> reproduce la validación de CI sin depender
+                    de ejecutores alojados.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div class="disclosure-box">
-            La demostración de esta página reproduce de forma ilustrativa algunos invariantes del
-            núcleo, pero está implementada en JavaScript para el navegador y
-            <strong>no ejecuta directamente el paquete TypeScript del servidor</strong>. Comprueba
-            la implementación y sus pruebas en
+            Esta página es informativa y
+            <strong>no ejecuta directamente el paquete TypeScript del servidor</strong> ni sistema
+            en red alguno. La implementación verificable y sus pruebas están en
             <a
               href="https://github.com/smouj/calm-rp-framework/tree/main/packages/core"
               target="_blank"

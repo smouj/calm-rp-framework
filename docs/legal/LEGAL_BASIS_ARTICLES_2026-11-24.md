@@ -171,7 +171,7 @@ presuntamente obtenidos de una filtración.
 - No hay analítica propia ni cookies de seguimiento.
 - La preferencia de tema se guarda **en el navegador** (`localStorage`), es decir, en el dispositivo
   del visitante, no en un servidor.
-- La demostración usa datos ficticios en memoria que se pierden al cerrar la pestaña.
+- El sitio es informativo: no recoge datos ni realiza operaciones en nombre del visitante.
 - El alojamiento por GitHub Pages trata datos técnicos de acceso bajo la política de privacidad de
   GitHub, ajena al proyecto.
 

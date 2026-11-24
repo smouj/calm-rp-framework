@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CALM">
-  <rect width="64" height="64" rx="14" fill="#1b1c3a"/>
-  <text x="32" y="30" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-weight="700" letter-spacing="1.5" fill="#fff3e2">CALM</text>
-  <path fill="#f4705a" d="M32 34l2.94 6.06 6.68.9-4.9 4.6 1.24 6.62L32 49.02l-5.96 3.16 1.24-6.62-4.9-4.6 6.68-.9z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Estrella de CALM, Roleplay Framework">
+  <rect width="64" height="64" rx="14" fill="#101020"/>
+  <path fill="#ffffff" d="M36.2 45.0 L24.2 37.2 L10.2 44.2 L18.3 33.5 L11.1 28.0 L24.6 27.6 L30.5 19.0 L31.1 27.4 L53.8 26.4 L32.0 32.1 Z"/>
 </svg>
