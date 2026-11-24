@@ -58,7 +58,7 @@ La rama de desarrollo incluye una **referencia de inventario en memoria** con co
 
 Rockstar anunció el lanzamiento del juego en consolas el **19 de noviembre de 2026**, pero eso **no confirma** soporte para servidores comunitarios. [Fuente oficial](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-**Estado de CI alojado:** las ejecuciones recientes de `main` fallaron antes de que GitHub asignara un runner y no ejecutaron ningún paso. Las comprobaciones locales pasaron durante esta auditoría de lanzamiento; consulta las [ejecuciones del flujo de CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) para ver el estado actual.
+**Estado de CI alojado:** las ejecuciones de `validate` en `main` y en las pull requests ahora se completan con pasos ejecutados y pasan (verificado el 25-11-2026, tras los fallos de asignación de runner registrados en #33). La verificación local (`bash scripts/verify-local.sh`) sigue siendo el gate autoritativo; consulta las [ejecuciones del flujo de CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) para ver el estado actual.
 
 La estructura conocida de algunos archivos del juego puede inspirar decisiones de diseño, pero no confirma una interfaz de desarrollo ni autorización para distribuir modificaciones.
 

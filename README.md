@@ -61,7 +61,7 @@ The development branch also contains an **in-memory inventory reference** with o
 
 Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-**Hosted CI status:** recent runs on `main` failed before GitHub assigned a runner and executed no steps. Local development checks passed during this launch audit; see the [CI workflow runs](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) for the live status.
+**Hosted CI status:** `validate` runs on `main` and pull requests now complete with steps executed and pass (verified 2026-11-25 after the runner-assignment failures recorded in #33). Local verification (`bash scripts/verify-local.sh`) remains the authoritative gate; see the [CI workflow runs](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) for the live status.
 
 See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 
