@@ -18,6 +18,13 @@ The repository is intentionally split between **decisions we control now** and *
 | [`security/THREAT_MODEL.md`](./security/THREAT_MODEL.md)                   | Assets, trust boundaries, threats and controls                | Security baseline               |
 | [`operations/OPERATIONS_BASELINE.md`](./operations/OPERATIONS_BASELINE.md) | Operational requirements before production hosting            | Operations baseline             |
 
+## Verified functions and legal research (24 November 2026)
+
+- [`legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md`](./legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md) — EU/Spanish interoperability limits, Rockstar/Cfx permissions, code and asset provenance controls (preliminary, not legal advice).
+- [`research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md`](./research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md) — real documented FiveM/Qbox symbols versus unavailable GTA VI equivalents, plus evidence-neutral runtime port contracts.
+- [`research/GTA6_RESEARCH_2026-11-24.md`](./research/GTA6_RESEARCH_2026-11-24.md) — third-party reverse-engineering claims, limitations, and safe project implications.
+- [`server/PORTABLE_ROLEPLAY_REFERENCE.md`](./server/PORTABLE_ROLEPLAY_REFERENCE.md) — limits and security gates of the in-memory character/economy example.
+
 ## Supporting references
 
 - [`research/AUTONOMOUS_RESEARCH.md`](./research/AUTONOMOUS_RESEARCH.md) — autonomous source-monitoring cadence, PR behavior, merge boundary and notification policy.
