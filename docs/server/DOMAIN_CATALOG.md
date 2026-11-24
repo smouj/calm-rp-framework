@@ -239,6 +239,10 @@ Core invariants:
 
 Runtime dependency: none for the domain model; runtime-specific config remains in adapters.
 
+## Spatial planning (synthetic, in-memory prototype)
+
+A project-owned, read-only [world-planning catalog](./WORLD_SPATIAL_READINESS.md) models fictional location IDs, spatial bounds and independent interior/exterior coordinate spaces. This is not a GTA VI map, navigation API, real-world location database or property-ownership authority. Business, EMS, property, security and admin actions remain separately authorized domain use cases. [ADR-0005](../adr/0005-independent-world-planning.md) is proposed for review.
+
 ## Boundary rule
 
 A domain may reference another domain through an explicit contract or application use case. It must not reach into another domain's private tables or repository implementation.

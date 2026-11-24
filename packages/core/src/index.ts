@@ -54,3 +54,16 @@ export type {
   MintItemCommand,
   TransferItemCommand,
 } from './inventory.js';
+
+export type {
+  LocationFilter,
+  NearbyLocation,
+  PlannedLocation,
+  PlanningBounds,
+  PlanningLayer,
+  PlanningPoint,
+  PlanningProvenance,
+  PlanningStatus,
+  PlanningUse,
+} from './world-planning.js';
+export { WorldPlanningCatalog } from './world-planning.js';

@@ -25,3 +25,5 @@ export class SimulatorPlayerDirectory {
 
 export { runRoleplayScenario } from './roleplay-scenario.js';
 export type { ScenarioResult } from './roleplay-scenario.js';
+
+export { createSampleWorldPlanningCatalog } from './world-planning.js';
