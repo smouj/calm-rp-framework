@@ -215,6 +215,36 @@ Mitigation:
 
 Trigger for reassessment: external launch, branding refresh, proposed game integration or policy update.
 
+## R-015 — Cfx/FiveM evidence mistaken for GTA VI capabilities
+
+**Impact:** High
+
+Official evidence that Rockstar supports existing FiveM/RedM technology, Launcher interoperability or nopixel V does not establish GTA VI APIs.
+
+Mitigation: keep Cfx/GTA VI adapter evidence separate, use first-party product-scoped sources, require an authorized GTA VI runtime contract, a documented adapter ABI, and conformance tests before implementation.
+
+Trigger: verified first-party GTA VI developer/runtime announcement.
+
+## R-016 — External identity or service outages disrupt an authorized future runtime
+
+**Impact:** High
+
+Authentication and developer/creator services may become dependencies outside our operational control; **which services GTA VI would use is unknown**.
+
+Mitigation: treat runtime identities as transient, preserve internal account IDs, use fail-closed authorization, bounded retries, idempotency and explicit degraded-mode decisions; specify concrete dependencies only after official verification.
+
+Trigger: published authorized runtime dependencies and failure semantics.
+
+## R-017 — Game, launcher and adapter version incompatibility
+
+**Impact:** High
+
+Current Cfx FiveM Enhanced migration demonstrates real version drift for **GTA V tooling only**, not a supported GTA VI protocol.
+
+Mitigation: track independent game, launcher, adapter and contract versions and maintain staged compatibility and rollback testing **when** legitimate runtime requirements exist.
+
+Trigger: a first-party supported runtime version contract or breaking update.
+
 ## Review rule
 
 Review this register when a major roadmap gate changes, a new first-party GTA VI/Cfx.re fact appears, a production-readiness milestone is approached or a material incident invalidates an existing mitigation.
