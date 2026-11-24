@@ -1,6 +1,10 @@
 <div align="center">
 
-<img width="2172" height="724" alt="banner, 14_44_17" src="https://github.com/user-attachments/assets/17812a46-cdc3-4be4-b3cd-7796a98cc114" />
+<img
+  width="860"
+  alt="CALM — Roleplay Framework banner: original white CALM wordmark and star on the project night indigo"
+  src="./site/assets/banner-calm-indigo.png"
+/>
 
 # CALM — Roleplay Framework
 
