@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="GTA VI RP Platform: núcleo abierto de rol, simulador sin el juego, arquitectura modular, investigación y contribuciones. No existe cliente ni servidor jugable de GTA VI.">
+<meta name="theme-color" content="#10283b">
+<title>GTA VI RP Platform — Open roleplay foundations</title>
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/styles.css">
+<script src="./assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="site-header"><div class="wrap header-inner">
+<a href="#inicio" class="brand" aria-label="GTA VI RP Platform, inicio">
+<span class="mark" aria-hidden="true"><b></b><b></b><b></b><b></b></span><span>GTA VI <strong>RP PLATFORM</strong></span></a>
+<button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menú <span aria-hidden="true">☰</span></button>
+<nav id="main-nav" class="nav" aria-label="Principal">
+<a href="#plataforma">Plataforma</a><a href="#modulos">Módulos</a><a href="#simulador">Simulador</a><a href="#investigacion">Investigación</a><a href="#hoja-de-ruta">Hoja de ruta</a>
+</nav>
+<div class="header-actions"><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema">◐</button>
+<a class="top-link" href="https://github.com/smouj/gta6-rp-platform" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+</div></header>
+<main id="main">
+<section class="hero" id="inicio"><div class="wrap hero-grid">
+<div><div class="eyebrow"><span class="signal"></span>OPEN SOURCE / INVESTIGACIÓN + PROTOTIPO</div>
+<h1>El rol del futuro necesita <em>una base sólida.</em></h1>
+<p class="hero-lead">Diseñamos los sistemas de un servidor de rol desde su núcleo: personajes, economía, permisos y herramientas que pueden desarrollarse sin GTA VI. La integración con el juego sigue condicionada a una vía técnica y legal autorizada.</p>
+<div class="button-row"><a href="#simulador" class="button button-primary">Probar demostración ↗</a><a href="https://github.com/smouj/gta6-rp-platform" class="button button-ghost" target="_blank" rel="noopener noreferrer">Ver código ↗</a></div>
+<p class="hero-note">No oficial · Sin archivos del juego · Sin cliente ni servidor multijugador GTA VI</p></div>
+<aside class="terminal" aria-label="Estado técnico">
+<div class="terminal-head"><span class="dots"><i></i><i></i><i></i></span><span>platform.status</span><span class="terminal-version">PRE-RUNTIME</span></div>
+<div class="terminal-body">
+<p class="muted">// Capas del proyecto</p>
+<p><span class="key">core.rules</span><span class="value ready">● referencia disponible</span></p>
+<p><span class="key">simulator</span><span class="value ready">● pruebas sin GTA VI</span></p>
+<p><span class="key">database</span><span class="value pending">◐ esquema inicial</span></p>
+<p><span class="key">gta6.adapter</span><span class="value blocked">○ sin implementar</span></p>
+<hr><p><span class="key">runtime.authorized</span><span class="value blocked">false</span></p>
+<p><span class="key">playable.multiplayer</span><span class="value blocked">false</span></p>
+<p><span class="key">game.assets.in.repo</span><span class="value ready">false</span></p>
+</div><div class="terminal-foot">TYPE-SAFE  /  SERVER AUTHORITY  /  MIT</div>
+</aside></div></section>
+<div class="status-strip"><div class="wrap strip-inner">
+<div><strong>01</strong><span>Núcleo independiente</span></div>
+<div><strong>02</strong><span>Personajes de demostración</span></div>
+<div><strong>00</strong><span>Adaptadores GTA VI funcionales</span></div>
+<div><strong>MIT</strong><span>Licencia del código propio</span></div>
+</div></div>
+<section class="section" id="plataforma"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">01 / ARQUITECTURA</p><h2>La lógica primero. <span>El juego después.</span></h2></div><p>El motor es solo una integración futura. Las reglas duraderas viven en un servidor autoritativo y no dependen de archivos propietarios.</p></div>
+<div class="architecture" aria-label="Diagrama de arquitectura">
+<div class="architecture-item"><span class="arch-index">01 — ENTRADA</span><strong>Jugador / panel</strong><small>Solo solicita acciones. Nunca decide saldos ni propiedad.</small></div>
+<div class="arch-arrow" aria-hidden="true">→</div>
+<div class="architecture-item active"><span class="arch-index">02 — AUTORIDAD</span><strong>Dominio RP</strong><small>Autentica · Autoriza · Valida · Registra</small></div>
+<div class="arch-arrow" aria-hidden="true">→</div>
+<div class="architecture-item"><span class="arch-index">03 — ESTADO</span><strong>Persistencia</strong><small>Transacciones y auditoría — planificada</small></div>
+</div>
+<div class="note"><strong>Límite de integración.</strong> Un proyecto de descompilación, un visor de RPF9 o una recompilación experimental no proporcionan por sí mismos autorización, API de scripting o red multijugador de GTA VI. <a href="https://github.com/smouj/gta6-rp-platform/blob/main/docs/server/RUNTIME_REQUIREMENTS.md" target="_blank" rel="noopener noreferrer">Ver requisitos pendientes ↗</a></div>
+</div></section>
+<section class="section section-muted" id="modulos"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">02 / SISTEMAS</p><h2>Una plataforma modular. <span>Sin promesas vacías.</span></h2></div><p>Selecciona un módulo para conocer su alcance y el estado real de desarrollo.</p></div>
+<div class="filter-bar" role="group" aria-label="Filtrar módulos"><button class="filter active" data-module-filter="all" aria-pressed="true">Todos</button><button class="filter" data-module-filter="reference" aria-pressed="false">Referencia implementada</button><button class="filter" data-module-filter="planned" aria-pressed="false">Planificados</button></div>
+<div class="module-grid" id="module-grid">
+<article class="module-card" data-module-status="reference"><span class="module-symbol">01</span><span class="state state-ready">REFERENCIA</span><h3>Personajes</h3><p>Identidad aislada por cuenta; registro validado y detección de duplicados.</p><span class="module-meta">packages/core</span></article>
+<article class="module-card" data-module-status="reference"><span class="module-symbol">02</span><span class="state state-ready">REFERENCIA</span><h3>Economía</h3><p>Saldo en unidades enteras, transferencias, permisos, libro de movimientos y protección contra repetición.</p><span class="module-meta">packages/core</span></article>
+<article class="module-card" data-module-status="planned"><span class="module-symbol">03</span><span class="state">PLANIFICADO</span><h3>Inventario</h3><p>Objetos, contenedores, capacidad, durabilidad y transferencias auditables.</p><span class="module-meta">Futuro módulo</span></article>
+<article class="module-card" data-module-status="planned"><span class="module-symbol">04</span><span class="state">PLANIFICADO</span><h3>Trabajos y facciones</h3><p>Grados, nóminas, puestos de trabajo, autorizaciones y estructuras organizativas.</p><span class="module-meta">Futuro módulo</span></article>
+<article class="module-card" data-module-status="planned"><span class="module-symbol">05</span><span class="state">PLANIFICADO</span><h3>Propiedades y vehículos</h3><p>Propiedad, llaves, garajes y representación desacoplada de entidades del juego.</p><span class="module-meta">Futuro módulo</span></article>
+<article class="module-card" data-module-status="planned"><span class="module-symbol">06</span><span class="state">PLANIFICADO</span><h3>Seguridad y administración</h3><p>Roles del personal, sanciones, trazabilidad y herramientas internas.</p><span class="module-meta">Futuro módulo</span></article>
+</div></div></section>
+<section class="section" id="simulador"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">03 / LABORATORIO</p><h2>Experimenta con <span>una economía RP.</span></h2></div><p>Demostración interactiva local e independiente. No se conecta a un juego, una API ni una base de datos; no representa un servidor real.</p></div>
+<div class="demo-layout">
+<div class="demo-panel">
+<div class="panel-header"><strong>Estado simulado</strong><span class="state state-ready">SOLO NAVEGADOR</span></div>
+<div class="wallets">
+<div class="wallet"><span>Alex Rivera</span><strong id="balance-alex" aria-live="polite">50,00</strong><small>Saldo · unidades ficticias</small></div>
+<div class="wallet"><span>Morgan Cruz</span><strong id="balance-morgan" aria-live="polite">0,00</strong><small>Saldo · unidades ficticias</small></div></div>
+<form id="transfer-form" novalidate>
+<label for="transfer-amount">Transferir de Alex a Morgan</label>
+<div class="input-group"><input id="transfer-amount" name="amount" type="number" min="0.01" step="0.01" max="50" inputmode="decimal" value="12.50" required><span>unidades</span></div>
+<button class="button button-primary demo-submit" type="submit">Ejecutar transferencia →</button></form>
+<div class="demo-toolbar"><button id="demo-replay" type="button" class="small-button" disabled>Reintentar solicitud</button><button id="demo-reset" type="button" class="small-button">Reiniciar</button></div>
+<p id="demo-message" class="demo-message" role="status" aria-live="polite">Prueba una transferencia y repítela para comprobar la protección frente a solicitudes duplicadas.</p>
+</div>
+<div class="demo-ledger"><div class="panel-header"><strong>Libro de movimientos</strong><span id="ledger-count">1 movimiento</span></div><ol id="ledger-list" aria-label="Movimientos simulados"></ol><div class="ledger-foot">Sin servidor · Sin almacenamiento · Datos ficticios</div></div>
+</div>
+<div class="disclosure-box">La demostración de esta página reproduce de forma ilustrativa algunos invariantes del núcleo, pero está implementada en JavaScript para el navegador y <strong>no ejecuta directamente el paquete TypeScript del servidor</strong>. Comprueba la implementación y sus pruebas en <a href="https://github.com/smouj/gta6-rp-platform/tree/main/packages/core" target="_blank" rel="noopener noreferrer">packages/core ↗</a>.</div>
+</div></section>
+<section class="section section-muted" id="investigacion"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">04 / EVIDENCIA</p><h2>Investigar sin <span>confundir avances con hechos.</span></h2></div><p>Registro de fuentes públicas. Las afirmaciones de herramientas externas son de sus autores hasta que se reproduzcan de forma independiente.</p></div>
+<div class="research-grid">
+<a class="research-card" href="https://github.com/ItsNotRexed/Leonida" target="_blank" rel="noopener noreferrer"><span class="tag">RECOMPILACIÓN EXPERIMENTAL</span><strong>Leonida ↗</strong><p>Investigación de traducción de shaders y ejecución Xbox → Windows. No acredita una API RP.</p></a>
+<a class="research-card" href="https://github.com/R0Y00/Xbox2Windows" target="_blank" rel="noopener noreferrer"><span class="tag">CAPA DE COMPATIBILIDAD</span><strong>Xbox2Windows ↗</strong><p>Pruebas de ejecución y gráficos independientes; inicio completo de GTA VI no verificado.</p></a>
+<a class="research-card" href="https://github.com/holdmysocks/SixNG" target="_blank" rel="noopener noreferrer"><span class="tag">FORMATOS Y RECURSOS</span><strong>SixNG ↗</strong><p>Investigación de RPF9 y otros recursos de RAGE. Sin archivos del juego en nuestro repositorio.</p></a>
+<a class="research-card" href="https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering" target="_blank" rel="noopener noreferrer"><span class="tag">ÍNDICE COMUNITARIO</span><strong>Bibliografía técnica ↗</strong><p>Catálogo de proyectos. Una inclusión en el índice no confirma sus resultados.</p></a>
+</div>
+<div class="research-bottom"><strong>¿Qué ocurrió con la supuesta filtración?</strong><p>Desde el 19 de noviembre de 2026 se informa de un archivo de aproximadamente 209 GB atribuido a una versión de Xbox de GTA VI. Su autenticidad completa, derechos de redistribución y capacidades aprovechables no han sido verificados por este proyecto. No hospedamos ni enlazamos archivos filtrados, ejecutables, claves o volcados.</p><a href="https://github.com/smouj/gta6-rp-platform/tree/main/docs/research" target="_blank" rel="noopener noreferrer">Consultar la documentación de investigación ↗</a></div>
+</div></section>
+<section class="section" id="hoja-de-ruta"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">05 / DIRECCIÓN</p><h2>Avanzamos con <span>hitos verificables.</span></h2></div><p>La hoja de ruta refleja objetivos, no fechas de entrega ni compatibilidad garantizada.</p></div>
+<div class="timeline">
+<div class="timeline-item"><span class="timeline-number">P0</span><div><strong>Base comunitaria</strong><p>Documentación, revisiones, CI y publicación segura.</p></div><span class="state state-progress">EN CURSO</span></div>
+<div class="timeline-item"><span class="timeline-number">P1</span><div><strong>Contratos y diseño de rol</strong><p>Invariantes del dominio y ejemplos reproducibles.</p></div><span class="state state-progress">EN CURSO</span></div>
+<div class="timeline-item"><span class="timeline-number">P2</span><div><strong>Sistemas portátiles</strong><p>Personajes, economía, inventario y simulación con persistencia.</p></div><span class="state state-progress">EN CURSO</span></div>
+<div class="timeline-item"><span class="timeline-number">P3</span><div><strong>Herramientas para desarrolladores</strong><p>Conformidad, administración, API y documentación.</p></div><span class="state">PLANIFICADO</span></div>
+<div class="timeline-item"><span class="timeline-number">P4</span><div><strong>Investigación del ecosistema</strong><p>Fuentes públicas, interfaces y restricciones de licencias.</p></div><span class="state state-progress">EN CURSO</span></div>
+<div class="timeline-item"><span class="timeline-number">P5</span><div><strong>Integración autorizada GTA VI</strong><p>Solo con soporte y permisos comprobables.</p></div><span class="state state-blocked">BLOQUEADO</span></div>
+</div>
+<p class="roadmap-link"><a href="https://github.com/smouj/gta6-rp-platform/blob/main/docs/roadmap/ROADMAP.md" target="_blank" rel="noopener noreferrer">Hoja de ruta completa y criterios de salida ↗</a></p>
+</div></section>
+<section class="section contribute"><div class="wrap contribute-grid"><div><p class="eyebrow">06 / COMUNIDAD</p><h2>Una base abierta se construye <em>entre todos.</em></h2><p>Ayuda a desarrollar pruebas, dominio, documentación, seguridad o herramientas, incluso sin tener GTA VI.</p><div class="button-row"><a class="button button-primary" href="https://github.com/smouj/gta6-rp-platform/issues" target="_blank" rel="noopener noreferrer">Ver tareas abiertas ↗</a><a class="button button-ghost" href="https://github.com/smouj/gta6-rp-platform/blob/main/CONTRIBUTING.es.md" target="_blank" rel="noopener noreferrer">Guía de contribución</a></div></div>
+<div class="clone-box"><span>EMPEZAR A CONTRIBUIR</span><code id="clone-command">git clone https://github.com/smouj/gta6-rp-platform.git</code><button type="button" id="copy-clone" aria-label="Copiar comando de clonación">Copiar comando</button><p>El repositorio debe ser público o necesitas acceso para clonarlo.</p></div></div></section>
+</main>
+<footer><div class="wrap footer-inner"><div><strong>GTA VI RP Platform</strong><p>Open-source roleplay foundations · Proyecto independiente.</p></div><div class="footer-links"><a href="https://github.com/smouj/gta6-rp-platform/blob/main/LICENSE">Licencia</a><a href="https://github.com/smouj/gta6-rp-platform/blob/main/SECURITY.md">Seguridad</a><a href="https://github.com/smouj/gta6-rp-platform/blob/main/TRADEMARKS.md">Marcas</a><a href="https://github.com/smouj/gta6-rp-platform/blob/main/README.es.md">Documentación</a></div></div>
+<div class="wrap footer-bottom">Grand Theft Auto VI y sus marcas pertenecen a sus titulares, incluidos Rockstar Games y Take-Two Interactive. Proyecto no afiliado, patrocinado ni autorizado por estas compañías. Esta web no distribuye software ni recursos propietarios.</div></footer>
+</body></html>
