@@ -1,6 +1,6 @@
 param([switch]$Apply)
 $ErrorActionPreference = 'Stop'
-$repo = 'smouj/gta6-rp-platform'
+$repo = 'smouj/calm-rp-framework'
 
 function GitHub([string[]]$Arguments) {
     $result = & gh @Arguments

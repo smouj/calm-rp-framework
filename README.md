@@ -4,9 +4,9 @@
 
 **An independent, modular, open-source roleplay foundation.**
 
-CALM is the framework's selected working name. The historic repository name `gta6-rp-platform` describes its research focus; it is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
+CALM is the framework's selected working name. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. It is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
 
-[![CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml)
+[![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-275D88.svg)](./LICENSE)
 [![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-326E74.svg)](./CONTRIBUTING.md)
@@ -55,7 +55,7 @@ The development branch also contains an **in-memory inventory reference** with o
 
 Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-**Hosted CI status:** recent runs on `main` failed before GitHub assigned a runner and executed no steps. Local development checks passed during this launch audit; see the [CI workflow runs](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml) for the live status.
+**Hosted CI status:** recent runs on `main` failed before GitHub assigned a runner and executed no steps. Local development checks passed during this launch audit; see the [CI workflow runs](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) for the live status.
 
 See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
 
@@ -102,8 +102,8 @@ You do **not** need GTA VI or any game files.
 **Prerequisites:** Node.js 22+, pnpm 10.34.5 and, optionally, Docker for the local database.
 
 ```bash
-git clone https://github.com/smouj/gta6-rp-platform.git
-cd gta6-rp-platform
+git clone https://github.com/smouj/calm-rp-framework.git
+cd calm-rp-framework
 corepack enable
 corepack prepare pnpm@10.34.5 --activate
 pnpm install --frozen-lockfile
@@ -125,8 +125,8 @@ The original static information website lives in [`site/`](./site/README.md), in
 ## Get involved
 
 - Read [CONTRIBUTING.md](./CONTRIBUTING.md) ([español](./CONTRIBUTING.es.md)), [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) and [GOVERNANCE.md](./GOVERNANCE.md).
-- Browse [issues](https://github.com/smouj/gta6-rp-platform/issues), including [good first issues](https://github.com/smouj/gta6-rp-platform/labels/good%20first%20issue) and [help wanted](https://github.com/smouj/gta6-rp-platform/labels/help%20wanted).
-- Propose one scoped change, create a fork and open a [pull request](https://github.com/smouj/gta6-rp-platform/pulls).
+- Browse [issues](https://github.com/smouj/calm-rp-framework/issues), including [good first issues](https://github.com/smouj/calm-rp-framework/labels/good%20first%20issue) and [help wanted](https://github.com/smouj/calm-rp-framework/labels/help%20wanted).
+- Propose one scoped change, create a fork and open a [pull request](https://github.com/smouj/calm-rp-framework/pulls).
 - Prefer reproducible tests, safe mock data and documentation with public sources. No secrets, leaks or proprietary game files.
 
 Contributions are welcome; merging requires review and passing checks. Check the [FAQ](./docs/community/FAQ.md) and [SUPPORT.md](./SUPPORT.md) for help and [SECURITY.md](./SECURITY.md) for private vulnerability reports.

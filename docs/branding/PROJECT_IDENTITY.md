@@ -5,7 +5,7 @@
 
 ## Positioning
 
-**CALM — Roleplay Framework** is the user-selected **working name** of this independent technical project. The repository's historic title `gta6-rp-platform` describes a research aspiration rather than an officially licensed Rockstar product. CALM is **not yet trademark-cleared**: the FINOS CALM architecture standard and existing CALM software-related trademarks require review before commercial/official brand registration.
+**CALM — Roleplay Framework** is the user-selected **working name** of this independent technical project. The repository is named `calm-rp-framework` so the project title itself carries no third-party trademark. CALM is **not yet trademark-cleared**: the FINOS CALM architecture standard and existing CALM software-related trademarks require review before commercial/official brand registration.
 
 Our own branding must be recognizable, honest and distinguishable from Rockstar Games, Take-Two, Cfx.re and FiveM. A visual resemblance or a prominent disclaimer **does not confer trademark permission**.
 

@@ -4,9 +4,9 @@
 
 **Un framework de rol independiente, modular y de código abierto.**
 
-CALM es el nombre de trabajo elegido. El repositorio conserva por ahora la dirección histórica `gta6-rp-platform`, sin afirmar compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
+CALM es el nombre de trabajo elegido. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
 
-[![CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml)
+[![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-275D88.svg)](./LICENSE)
 [![Fase del proyecto](https://img.shields.io/badge/fase-investigacion_y_prototipos-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
 [![Contribuciones abiertas](https://img.shields.io/badge/contribuciones-bienvenidas-326E74.svg)](./CONTRIBUTING.es.md)
@@ -52,7 +52,7 @@ La rama de desarrollo incluye una **referencia de inventario en memoria** con co
 
 Rockstar anunció el lanzamiento del juego en consolas el **19 de noviembre de 2026**, pero eso **no confirma** soporte para servidores comunitarios. [Fuente oficial](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
-**Estado de CI alojado:** las ejecuciones recientes de `main` fallaron antes de que GitHub asignara un runner y no ejecutaron ningún paso. Las comprobaciones locales pasaron durante esta auditoría de lanzamiento; consulta las [ejecuciones del flujo de CI](https://github.com/smouj/gta6-rp-platform/actions/workflows/ci.yml) para ver el estado actual.
+**Estado de CI alojado:** las ejecuciones recientes de `main` fallaron antes de que GitHub asignara un runner y no ejecutaron ningún paso. Las comprobaciones locales pasaron durante esta auditoría de lanzamiento; consulta las [ejecuciones del flujo de CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) para ver el estado actual.
 
 La estructura conocida de algunos archivos del juego puede inspirar decisiones de diseño, pero no confirma una interfaz de desarrollo ni autorización para distribuir modificaciones.
 
@@ -65,8 +65,8 @@ El simulador incluye un [catálogo espacial](./docs/server/WORLD_SPATIAL_READINE
 Necesitas Node.js 22+ y pnpm 10.34.5. No necesitas GTA VI.
 
 ```bash
-git clone https://github.com/smouj/gta6-rp-platform.git
-cd gta6-rp-platform
+git clone https://github.com/smouj/calm-rp-framework.git
+cd calm-rp-framework
 corepack enable
 corepack prepare pnpm@10.34.5 --activate
 pnpm install --frozen-lockfile
@@ -88,8 +88,8 @@ El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal a
 ## Participar
 
 1. Lee [la guía para contribuir en español](./CONTRIBUTING.es.md), el [código de conducta](./CODE_OF_CONDUCT.md) y la [gobernanza](./GOVERNANCE.md).
-2. Consulta las [incidencias](https://github.com/smouj/gta6-rp-platform/issues) y las propuestas abiertas.
-3. Crea una bifurcación del repositorio, implementa un cambio acotado con pruebas y envía una [solicitud de integración](https://github.com/smouj/gta6-rp-platform/pulls).
+2. Consulta las [incidencias](https://github.com/smouj/calm-rp-framework/issues) y las propuestas abiertas.
+3. Crea una bifurcación del repositorio, implementa un cambio acotado con pruebas y envía una [solicitud de integración](https://github.com/smouj/calm-rp-framework/pulls).
 4. Nunca incluyas archivos propietarios del juego, filtraciones, contraseñas o datos personales.
 
 ## Documentación

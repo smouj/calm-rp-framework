@@ -1,7 +1,7 @@
 # GitHub Pages release and verification
 
 **Status at 24 November 2026: LIVE.**
-The site is published at **https://smouj.github.io/gta6-rp-platform/** and every page and asset was
+The site is published at **https://smouj.github.io/calm-rp-framework/** and every page and asset was
 verified returning HTTP 200:
 `/`, `/legal.html`, `/assets/styles.css`, `/assets/app.js`.
 
@@ -39,7 +39,7 @@ fixed it; the next run completed with `success`.
 
 ```bash
 bash scripts/check-site-integrity.sh                  # static checks, offline
-curl -sS -o /dev/null -w '%{http_code}\n' https://smouj.github.io/gta6-rp-platform/legal.html
+curl -sS -o /dev/null -w '%{http_code}\n' https://smouj.github.io/calm-rp-framework/legal.html
 ```
 
 A deployed site is not a legal opinion. The non-affiliation notices must stay on the page; the site

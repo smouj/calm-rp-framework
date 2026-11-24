@@ -6,7 +6,7 @@ This is the maintainer's release gate for opening an existing private repository
 
 ## Suggested GitHub profile
 
-**Repository name:** `gta6-rp-platform` (retain the existing URL)
+**Repository name:** `calm-rp-framework` (renamed so the project title contains no third-party trademark)
 
 **Short description** (set on GitHub About):
 
@@ -42,7 +42,7 @@ The following local/API checks were completed, but **do not amount to public-rel
 
 - Fetched all **18 current remote branches** and scanned all reachable Git history: **193 commits, 878 objects and 228 file blobs**. No private-key, AWS/GitHub/Slack token patterns were found. The only credential-pattern matches were the known local placeholders in `.env.example` and `infrastructure/docker/compose.yml`; commit author identities use GitHub's `users.noreply.github.com` address format. No tags were present.
 - Reviewed the bodies and file patches for all **25 pull requests**, the discussion timelines, and the five standalone issues. No user-uploaded attachments or proprietary game-file paths were found. The only broad-pattern matches were `.env.example` and `infrastructure/docker/compose.yml`; their values are local-development placeholders, not credentials.
-- The CI workflow uses read-only repository permissions, pinned checkout/setup actions and does not reference repository secrets. The Actions snapshot reviewed after run #123 contained **155 runs** and **154 jobs**. All **135 available job logs** were scanned; **19 jobs** had no steps or logs; none of those 155 runs had artifacts. No credential, non-GitHub email or proprietary game-file patterns were found in the available logs. Recent `main` runs including [#123](https://github.com/smouj/gta6-rp-platform/actions/runs/45240220076) failed before runner assignment, with no steps, log or artifacts; its log endpoint returned `404 BlobNotFound`. Local checks passed during the launch audit, but hosted CI remains unavailable.
+- The CI workflow uses read-only repository permissions, pinned checkout/setup actions and does not reference repository secrets. The Actions snapshot reviewed after run #123 contained **155 runs** and **154 jobs**. All **135 available job logs** were scanned; **19 jobs** had no steps or logs; none of those 155 runs had artifacts. No credential, non-GitHub email or proprietary game-file patterns were found in the available logs. Recent `main` runs including [#123](https://github.com/smouj/calm-rp-framework/actions/runs/45240220076) failed before runner assignment, with no steps, log or artifacts; its log endpoint returned `404 BlobNotFound`. Local checks passed during the launch audit, but hosted CI remains unavailable.
 - The GitHub Security page reports **zero open Dependabot vulnerability alerts** and **zero open malware alerts** after the dependency scan on 2026-11-23. The dependency graph, Dependabot alerts, malware alerts and security updates are enabled.
 - GitHub code scanning is disabled for this private personal repository; the Security page says Advanced Security is only available for organizations. Secret scanning, push protection and private vulnerability reporting do not appear in the available settings. Check what becomes available after public visibility and enable it where offered.
 - Actions are enabled. The repository requires actions to be pinned to full-length commit SHAs, and the default `GITHUB_TOKEN` has read-only contents/packages permissions. Fork-PR workflows are not enabled for this private repository; public fork PRs use GitHub's restricted token and first-time runs require approval.
@@ -53,7 +53,7 @@ Before public visibility, the historical Git/PR/Actions review is complete, no c
 ## Merge and validation gates
 
 - [x] Review and squash-merge the open-source scope/license/documentation PR #30 into `main` (`88e5091`).
-- [x] Review [PR #25](https://github.com/smouj/gta6-rp-platform/pull/25) and [PR #26](https://github.com/smouj/gta6-rp-platform/pull/26); keep both as drafts for separate research/architecture review, and do not mix their feature work into the community-foundation merge.
+- [x] Review [PR #25](https://github.com/smouj/calm-rp-framework/pull/25) and [PR #26](https://github.com/smouj/calm-rp-framework/pull/26); keep both as drafts for separate research/architecture review, and do not mix their feature work into the community-foundation merge.
 - [x] Run `pnpm check` on the merged `main` tree (lint, typecheck, 11 tests and Prettier all pass).
 - [ ] Resolve GitHub Actions jobs that fail **before starting any steps**; runner failures cannot be counted as a passing build.
 - [x] Verify the MIT license applies only to original project code and documentation; game IP and third-party material remain excluded.
@@ -79,15 +79,15 @@ GitHub explicitly warns that a private-to-public change exposes repository sourc
 Run locally **only after** you have authenticated `gh` with permission to administer the repository, completed the safety review and merged the documentation change.
 
 ```bash
-gh repo edit smouj/gta6-rp-platform --description "Unofficial open-source GTA VI RP platform project. Community-built roleplay foundations, simulator and research; GTA VI multiplayer integration not available."
-gh repo edit smouj/gta6-rp-platform --add-topic gta6,grand-theft-auto-vi,roleplay,multiplayer,open-source,community-driven,typescript,game-development,game-server,server-authoritative,rp-framework,simulation
-gh repo edit smouj/gta6-rp-platform --enable-discussions --enable-issues --enable-wiki=false --enable-squash-merge --delete-branch-on-merge
+gh repo edit smouj/calm-rp-framework --description "Unofficial open-source GTA VI RP platform project. Community-built roleplay foundations, simulator and research; GTA VI multiplayer integration not available."
+gh repo edit smouj/calm-rp-framework --add-topic gta6,grand-theft-auto-vi,roleplay,multiplayer,open-source,community-driven,typescript,game-development,game-server,server-authoritative,rp-framework,simulation
+gh repo edit smouj/calm-rp-framework --enable-discussions --enable-issues --enable-wiki=false --enable-squash-merge --delete-branch-on-merge
 ```
 
 Visibility is intentionally **not** changed by this checklist. If approved after the audit, use the GitHub UI steps above or explicitly acknowledge the consequences with GitHub CLI:
 
 ```bash
-gh repo edit smouj/gta6-rp-platform --visibility public --accept-visibility-change-consequences
+gh repo edit smouj/calm-rp-framework --visibility public --accept-visibility-change-consequences
 ```
 
 Do not run the visibility command as an unattended automation. GitHub repository settings require owner access; source changes alone cannot update them.

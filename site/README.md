@@ -19,7 +19,7 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 2. Comprobar condiciones del plan GitHub: con GitHub Free, Pages requiere repositorio público; con GitHub Pro puede usarse uno privado, pero el sitio publicado sigue siendo público.
 3. En `Settings > Pages > Build and deployment`, seleccionar **GitHub Actions**.
 4. Ejecutar manualmente `Deploy community site` o realizar un cambio en `site/**` sobre `main`.
-5. Comprobar la dirección que muestre GitHub; para el repositorio público debería ser `https://smouj.github.io/gta6-rp-platform/`.
+5. Comprobar la dirección que muestre GitHub; para el repositorio público debería ser `https://smouj.github.io/calm-rp-framework/`.
 6. Comprobar contraste, responsive, teclado, navegación, CSP, y que no se publican archivos o datos de terceros.
 
 El flujo usa acciones fijadas a SHA, solo lectura de contenidos y permisos mínimos de `pages` e `id-token` en el trabajo de despliegue.
