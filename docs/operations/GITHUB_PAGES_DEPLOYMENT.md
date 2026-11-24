@@ -1,23 +1,52 @@
 # GitHub Pages release and verification
 
-**Status at 24 Nov 2026:** site source exists on `main`, deployment **not confirmed**. GitHub Actions workflows on recent `main` heads failed before any runner job step ran. The repo is **private**. Do not publish a made-up URL or mark the site as live.
+**Status at 24 November 2026: LIVE.**
+The site is published at **https://smouj.github.io/gta6-rp-platform/** and every page and asset was
+verified returning HTTP 200:
+`/`, `/legal.html`, `/assets/styles.css`, `/assets/app.js`.
 
-## What is already committed
+The repository was made **public** by the owner's decision (the project is non-commercial), which is
+what unlocked Pages: GitHub does not offer Pages for a private repository on the free plan.
 
-- `site/index.html`, `site/assets/` with original HTML/CSS/JS, a local-only economy demo and no Rockstar assets.
-- `site/legal.html` independent notice: non-affiliation, MIT/original code, no game server, official source links, local-only theme setting and third-party hosting caveat.
-- `.github/workflows/pages.yml` static publishing of `site/` with minimal permissions and SHA-pinned GitHub Actions.
+## What is published
 
-## Required owner-side actions
+- `site/index.html` and `site/legal.html`, with original HTML/CSS/JS under `site/assets/`.
+- A local-only economy demo. No Rockstar assets, no external scripts, no fonts, no analytics.
+- The legal notice covers non-affiliation, MIT scope, no game server, official source links,
+  the local-only theme setting and third-party hosting.
 
-1. Check your GitHub account plan and whether Pages is available for this **private** repository. If Pages on private repos is not available, choose an appropriate eligible plan, or explicitly approve a separate, audited public static-site repository. Do **not** change this repository's visibility automatically.
-2. Open **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Under Actions, run `Deploy community site` manually, or commit a reviewed change to `site/`.
-4. Resolve [CI execution blocker #33](https://github.com/smouj/gta6-rp-platform/issues/33) if the Pages job also fails before runner allocation. Diagnose from GitHub's actual annotations, settings and quota; do not assume a workflow code defect.
-5. Confirm `deploy` completed with a real runner, artifact upload and successful `actions/deploy-pages` step.
-6. Only after step 5, visit the URL shown on GitHub Pages; test legal links, mobile/desktop layout, keyboard access, HTTP status, theme persistence and browser demo.
-7. Only after successful deployment, populate the repository's **About → Website** field with that verified URL.
+## How deployment works
 
-Pages may be a public website even when the repository is private: do not place secrets or non-public code in `site/`. Site source itself should be reviewed as an intentionally published artifact. A notice does not itself grant permissions to use Rockstar rights.
+`.github/workflows/pages.yml` publishes `site/` on every push to `main` that touches `site/`, and on
+manual dispatch. It:
 
-This is a deployment guide, not evidence that the published URL exists today.
+1. Detects whether Pages is enabled for the repository and **skips cleanly** if not, instead of
+   failing on every push.
+2. Validates the static site with `scripts/check-site-integrity.sh` (the same check the local gate
+   runs).
+3. Configures Pages, uploads the artifact and deploys.
+
+All actions are pinned to full commit SHAs, as this repository requires.
+
+### Version note (resolved)
+
+The first deployment failed with _"No artifacts named github-pages were found"_ even though the
+artifact uploaded successfully. That is an incompatibility in the v4 Pages action stack. Bumping
+`configure-pages` to v6.0.0, `upload-pages-artifact` to v5.0.0 and `deploy-pages` to v5.0.1 (PR #35)
+fixed it; the next run completed with `success`.
+
+## Re-verifying after a change
+
+```bash
+bash scripts/check-site-integrity.sh                  # static checks, offline
+curl -sS -o /dev/null -w '%{http_code}\n' https://smouj.github.io/gta6-rp-platform/legal.html
+```
+
+A deployed site is not a legal opinion. The non-affiliation notices must stay on the page; the site
+integrity check fails the build if they are removed.
+
+## Why Actions is not the verification gate
+
+The account's Actions quota was exhausted, and jobs failed before a runner was assigned. The
+authoritative gate is `bash scripts/verify-local.sh`; Pages deployment is a publishing step, not
+proof that the code is correct. See `LOCAL_VERIFICATION.md`.
