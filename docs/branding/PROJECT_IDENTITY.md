@@ -13,13 +13,14 @@ Our own branding must be recognizable, honest and distinguishable from Rockstar 
 
 Use a clean, technical, restrained identity suitable for documentation, repository badges, eventual tools and contributor guides.
 
-Suggested **original** palette for project-owned UI and graphics:
+Applied **original** palette (derived from the owner's banner, in use on the community site and README badges):
 
-- Night blue `#10283B`: navigation, structure and dark backgrounds.
-- Ocean blue `#275D88`: normal links and primary information.
-- Warm coral `#D98B5F`: limited highlights and research-stage markers.
-- Deep teal `#326E74`: collaboration and active actions.
-- Warm off-white `#F5F4EF`: clean surfaces and text contrast.
+- Night indigo `#1B1C3A`: navigation, structure and dark backgrounds.
+- Panel indigo `#24254A` (line `#3A3B68`): supporting surfaces and borders.
+- Warm salmon `#F4705A`: limited highlights, active actions and the star accent.
+- Deep coral `#E04A32`: light-theme accent equivalent.
+- Warm cream `#FFF3E2`: text on dark surfaces and clean light backgrounds.
+- Blush `#8CB9AD`: secondary supporting tone.
 
 These colors are not copied from an official Rockstar brand system. Use sufficient contrast and avoid decorative elements that impair readability. Default to typography, spacing and strong information hierarchy before creating large promotional graphics.
 
@@ -47,7 +48,9 @@ Badge colors should follow the restrained original palette. Badges are informati
 
 ## Organization
 
-If project-owned graphics are created later, preserve editable source files and only necessary public exports:
+The owner-designed banner wordmark is versioned with the code in `site/assets/`: `banner-calm-white.png` is the transparent source (for dark backgrounds) and `banner-calm-indigo.png` is the composited export used where a background must be self-contained (README, light surfaces). The simplified `logo.svg` and `favicon.svg` follow the same palette.
+
+If further project-owned graphics are created, preserve editable source files and only necessary public exports:
 
 ```text
 assets/

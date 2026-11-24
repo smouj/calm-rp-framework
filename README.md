@@ -13,9 +13,9 @@
 CALM is the framework's selected working name. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. It is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
-[![MIT License](https://img.shields.io/badge/license-MIT-275D88.svg)](./LICENSE)
-[![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-D98B5F.svg)](./docs/roadmap/ROADMAP.md)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-326E74.svg)](./CONTRIBUTING.md)
+[![MIT License](https://img.shields.io/badge/license-MIT-1B1C3A.svg)](./LICENSE)
+[![Project stage](https://img.shields.io/badge/stage-research_%26_prototype-E04A32.svg)](./docs/roadmap/ROADMAP.md)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-F4705A.svg)](./CONTRIBUTING.md)
 [![Discord community](https://img.shields.io/badge/Discord-community-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![GTA VI runtime](https://img.shields.io/badge/GTA_VI_runtime-unavailable-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
