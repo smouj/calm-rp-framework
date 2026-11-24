@@ -4,6 +4,9 @@ Significant changes will be recorded here after review and merge. Releases will 
 
 ## Unreleased
 
+- Docs: a verified improvement-goals register (`GOALS.md` / `GOALS.es.md`) records the audited baseline of the repository and the published site plus goals G1–G6 with checkable success criteria; both READMEs link it.
+- Brand: the favicon set is derived from the official banner instead of a hand-approximated mark: the banner star (tilted five-point, white on night indigo) is traced from the source pixels into `favicon.svg`, `favicon.ico`, `favicon-32.png` and `apple-touch-icon.png` (trace IoU 0.96), so every surface shows the same star as the README banner.
+- Site: `index.html` ships the complete icon links plus Open Graph and Twitter card metas backed by a new `og-image.png` composed from the full official banner on indigo; `site/README.md` now records the verified published state of Pages (HTTP 200) instead of the pre-publication note.
 - Site: the browser-only economy calculator demo is retired; the page keeps its informational role and every interactive limit without the toy transfer form.
 - Site: the former demo section becomes an engineering overview of the actual monorepo layout, the eleven Vitest suites and the local verification gates, all content verifiable against the repository.
 - Docs: legal pages and operations notes no longer describe the removed interactive demo; the static, no-data-collection statement now matches the published site exactly.

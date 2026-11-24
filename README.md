@@ -19,7 +19,7 @@ CALM is the framework's selected working name. The repository is named `calm-rp-
 [![Discord community](https://img.shields.io/badge/Discord-community-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/BVWXWY5eUT)
 [![GTA VI runtime](https://img.shields.io/badge/GTA_VI_runtime-unavailable-555555.svg)](./docs/server/RUNTIME_REQUIREMENTS.md)
 
-**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Code of Conduct](./CODE_OF_CONDUCT.md) · [Support](./SUPPORT.md) · [Roadmap](./docs/roadmap/ROADMAP.md) · [Discord community](https://discord.com/invite/BVWXWY5eUT)**
+**[English](./README.md) · [Español](./README.es.md) · [Contributing](./CONTRIBUTING.md) · [Code of Conduct](./CODE_OF_CONDUCT.md) · [Support](./SUPPORT.md) · [Roadmap](./docs/roadmap/ROADMAP.md) · [Goals](./GOALS.md) · [Discord community](https://discord.com/invite/BVWXWY5eUT)**
 
 </div>
 
