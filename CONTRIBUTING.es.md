@@ -7,7 +7,7 @@ Este proyecto es una iniciativa comunitaria de código abierto que busca constru
 ## Primeros pasos
 
 1. Lee el [README en español](./README.es.md), el [código de conducta en español](./CODE_OF_CONDUCT.es.md) y el [alcance](./docs/PROJECT_SCOPE.md).
-2. Busca una [incidencia](https://github.com/smouj/gta6-rp-platform/issues) pequeña que puedas solucionar o propón una tarea concreta.
+2. Busca una [incidencia](https://github.com/smouj/calm-rp-framework/issues) pequeña que puedas solucionar o propón una tarea concreta.
 3. Crea una bifurcación (fork) y una rama con un nombre como `docs/traduccion-readme` o `test/simulador-personajes`.
 4. Añade pruebas si cambias el comportamiento del código, y explica lo que has comprobado.
 5. Ejecuta `pnpm check`, abre una solicitud de integración y atiende la revisión.
@@ -17,8 +17,8 @@ Este proyecto es una iniciativa comunitaria de código abierto que busca constru
 Se necesita Node.js 22+ y pnpm 10.34.5. **No necesitas comprar, instalar ni extraer GTA VI.**
 
 ```bash
-git clone https://github.com/TU_USUARIO/gta6-rp-platform.git
-cd gta6-rp-platform
+git clone https://github.com/TU_USUARIO/calm-rp-framework.git
+cd calm-rp-framework
 corepack enable
 corepack prepare pnpm@10.34.5 --activate
 pnpm install --frozen-lockfile

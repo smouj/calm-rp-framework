@@ -12,15 +12,15 @@ Read our [Code of Conduct](./CODE_OF_CONDUCT.md), [scope](./docs/PROJECT_SCOPE.m
 - **Platform research:** cite primary Rockstar/Cfx sources, date them, record remaining unknowns and classify evidence.
 - **Security:** never report vulnerabilities publicly; use [SECURITY.md](./SECURITY.md).
 
-Browse [good first issues](https://github.com/smouj/gta6-rp-platform/labels/good%20first%20issue) or [help wanted](https://github.com/smouj/gta6-rp-platform/labels/help%20wanted). If those lists are empty, propose a bounded improvement.
+Browse [good first issues](https://github.com/smouj/calm-rp-framework/labels/good%20first%20issue) or [help wanted](https://github.com/smouj/calm-rp-framework/labels/help%20wanted). If those lists are empty, propose a bounded improvement.
 
 ## Set up your environment
 
 You need Node.js 22+ and pnpm 10.34.5. **No GTA VI game files or tools are required.**
 
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/gta6-rp-platform.git
-cd gta6-rp-platform
+git clone https://github.com/<YOUR_USERNAME>/calm-rp-framework.git
+cd calm-rp-framework
 corepack enable
 corepack prepare pnpm@10.34.5 --activate
 pnpm install --frozen-lockfile

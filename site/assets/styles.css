@@ -1,27 +1,27 @@
 :root {
   font-family: 'DM Sans', system-ui, sans-serif;
-  --bg: #0c1924;
-  --panel: #102535;
-  --muted-bg: #10212f;
-  --line: #284050;
-  --text: #f1f5f3;
-  --muted: #a3b5bd;
-  --accent: #e7a777;
-  --accent-text: #22180f;
-  --teal: #8cb9ad;
+  --bg: #1b1c3a;
+  --panel: #24254a;
+  --muted-bg: #202142;
+  --line: #3a3b68;
+  --text: #fff3e2;
+  --muted: #a8a9cc;
+  --accent: #f4705a;
+  --accent-text: #1b1c3a;
+  --teal: #ffb3a3;
   --shadow: rgba(0, 0, 0, 0.19);
   scroll-behavior: smooth;
 }
 html[data-theme='light'] {
-  --bg: #f5f4ee;
-  --panel: #fffefa;
-  --muted-bg: #e9eeec;
-  --line: #cbd4d2;
-  --text: #17303c;
-  --muted: #566976;
-  --accent: #ad562d;
-  --accent-text: #fff;
-  --teal: #266e69;
+  --bg: #fff3e2;
+  --panel: #fffaf2;
+  --muted-bg: #f7e8d6;
+  --line: #e6cdb4;
+  --text: #1b1c3a;
+  --muted: #5c5d80;
+  --accent: #e04a32;
+  --accent-text: #fffaf2;
+  --teal: #b83a26;
   --shadow: rgba(14, 36, 48, 0.06);
 }
 * {

@@ -10,7 +10,7 @@ CALM was chosen deliberately as a contrast in _tone and naming_ with RAGE, Rocks
 - Descriptive line: **Independent Open-Source Roleplay Framework**
 - Short tagline: **Build the roleplay. Keep the core independent.**
 - Website wordmark: **CALM / RP FRAMEWORK**, in original typography and colors
-- GitHub repository and existing TypeScript workspace names: **unchanged for compatibility** (`smouj/gta6-rp-platform`, `@gta6-rp/*`)
+- GitHub repository and existing TypeScript workspace names: **unchanged for compatibility** (`@gta6-rp/*`; the GitHub repository itself is `smouj/calm-rp-framework`)
 - Technical API naming: **unchanged** until a versioned deprecation/migration plan
 - No official Rockstar game media, logos, RAGE mark or derivative brand assets in CALM's logo
 
