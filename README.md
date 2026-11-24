@@ -1,5 +1,7 @@
 <div align="center">
 
+<img width="2172" height="724" alt="banner, 14_44_17" src="https://github.com/user-attachments/assets/17812a46-cdc3-4be4-b3cd-7796a98cc114" />
+
 # CALM — Roleplay Framework
 
 **An independent, modular, open-source roleplay foundation.**
