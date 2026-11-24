@@ -1,7 +1,7 @@
 # Project Identity and Asset Policy
 
 **State:** ACTIVE — unofficial fan/community project  
-**Updated:** 2026-11-24
+**Updated:** 2026-11-25
 
 ## Positioning
 
@@ -17,7 +17,7 @@ Applied **original** palette (derived from the owner's banner, in use on the com
 
 - Night indigo `#1B1C3A`: navigation, structure and dark backgrounds.
 - Panel indigo `#24254A` (line `#3A3B68`): supporting surfaces and borders.
-- Warm salmon `#F4705A`: limited highlights, active actions and the star accent.
+- Warm salmon `#F4705A`: limited highlights and active actions.
 - Deep coral `#E04A32`: light-theme accent equivalent.
 - Warm cream `#FFF3E2`: text on dark surfaces and clean light backgrounds.
 - Blush `#8CB9AD`: secondary supporting tone.
@@ -48,7 +48,9 @@ Badge colors should follow the restrained original palette. Badges are informati
 
 ## Organization
 
-The owner-designed banner wordmark is versioned with the code in `site/assets/`: `banner-calm-white.png` is the transparent source (for dark backgrounds) and `banner-calm-indigo.png` is the composited export used where a background must be self-contained (README, light surfaces). The simplified `logo.svg` and `favicon.svg` follow the same palette.
+The owner-designed banner wordmark is versioned with the code in `site/assets/`: `banner-calm-white.png` is the transparent source (for dark backgrounds) and `banner-calm-indigo.png` is the composited export used where a background must be self-contained (README, light surfaces).
+
+The icon set is **derived from the banner, not redrawn by hand**. The banner star is a tilted five-point star (long point to the right, "shooting star" style) rendered as a white outline; `favicon.svg`, `favicon.ico`, `favicon-32.png` and `apple-touch-icon.png` carry that star traced from the source pixels (IoU 0.96 against the banner core), filled white on night indigo for legibility at small sizes. `og-image.png` keeps the full official banner mark on indigo for social previews, and `logo.svg` is the simplified horizontal lockup: traced star plus generic italic sans wordmark.
 
 If further project-owned graphics are created, preserve editable source files and only necessary public exports:
 
