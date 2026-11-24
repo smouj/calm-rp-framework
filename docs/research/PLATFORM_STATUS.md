@@ -179,6 +179,36 @@ Official source:
 
 **Affected references:** `RT-005` (GTA VI authentication/stable player identifiers) remains `UNKNOWN`; `RT-001` and other GTA VI runtime requirements remain `UNKNOWN`. **P5** stays blocked. **ADR-0001** (game-agnostic core) and **ADR-0004** (PostgreSQL authoritative state) remain unchanged. No GTA VI adapter or production security behavior should be implemented from this evidence. Because the finding concerns identity/security interpretation, this research change requires **human review and must not be auto-merged**, even if CI becomes green.
 
+### Cfx Portal becomes the management surface for public server metadata
+
+**Classification:** `CONFIRMED` for the current **FiveM/RedM server-list ecosystem**. This is **not** a GTA VI runtime confirmation.
+
+On **October 14, 2026**, Cfx.re announced that public server metadata previously configured locally in server configuration files — including server name, description, tags, language and imagery — was moving to management through the **Cfx Portal**. On **October 21, 2026**, Cfx.re updated the same first-party announcement to confirm that the server-metadata changes had rolled out across FiveM and RedM: names, descriptions, tags, language settings, imagery and the associated Discord link are now managed through Cfx Portal. Servers without required Portal metadata are shown as missing server data in the server list. The update also limits public server tags to five and publishes updated banner/profile-image requirements.
+
+**Exact claim supported:**
+
+- Cfx Portal is becoming the authoritative management surface for key public FiveM/RedM server-list metadata;
+- deployment/runtime configuration and public discovery metadata are no longer fully co-located in local server configuration;
+- current Cfx operations therefore require a separate Portal-managed publishing/discovery surface in addition to FXServer configuration.
+
+**Publisher:** Cfx.re / Cfx Forum (system, Announcements)
+
+**Published:** 2026-10-14
+
+**Verified:** 2026-10-26
+
+**Evidence classification:** `CONFIRMED` for current FiveM/RedM operations.
+
+**Limitations:** this announcement applies to the current FiveM/RedM ecosystem. It does not establish a GTA VI community-server runtime, GTA VI Cfx product, GTA VI server-list contract, GTA VI Portal metadata schema, GTA VI hosting model, GTA VI PC release, or portability of these operational requirements to GTA VI.
+
+**Project impact:** preserve a clean boundary between runtime/server configuration and externally managed discovery/publishing metadata. Future deployment tooling should treat creator-portal/server-list metadata as an adapter-owned operational concern rather than hard-coding current FiveM/RedM fields into the game-agnostic domain. No GTA VI implementation should be added from this evidence.
+
+**Affected project references:** `server/RUNTIME_REQUIREMENTS.md` remains unchanged and all GTA VI `RT-*` requirements remain `UNKNOWN`. Existing adapter-boundary and external-platform dependency ADRs remain valid; no GTA VI roadmap gate advances. The finding should inform future deployment/operations planning only.
+
+Official source:
+
+- Cfx.re — _Portal Update: Server Metadata Management_, published 2026-10-14; rollout confirmation added 2026-10-21; verified 2026-10-26: https://forum.cfx.re/t/portal-update-server-metadata-management/5431315
+
 ## Confirmed technology signals outside a GTA VI contract
 
 Public first-party material establishes a useful **current Rockstar/Cfx engineering baseline** without establishing GTA VI-specific implementation details:
