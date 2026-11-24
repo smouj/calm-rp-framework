@@ -19,8 +19,8 @@ describe('community site source checks', () => {
   });
 
   it('has no duplicate IDs or broken internal navigation anchors', () => {
-    const ids = [...html.matchAll(/\\bid="([^"]+)"/g)].map((match) => match[1]);
-    const anchors = [...html.matchAll(/\\bhref="#([^"]+)"/g)].map((match) => match[1]);
+    const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
+    const anchors = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
     expect(new Set(ids).size).toBe(ids.length);
     for (const anchor of anchors) {
       expect(ids).toContain(anchor);
@@ -37,6 +37,6 @@ describe('community site source checks', () => {
     const css = read('assets/styles.css');
     expect(css).not.toContain('fonts.googleapis.com');
     expect(css).not.toContain('fonts.gstatic.com');
-    expect(html).not.toMatch(/(?:src|href)=["'][^"']+\\.(?:rpf|rpf9|xvc|xex)/i);
+    expect(html).not.toMatch(/(?:src|href)=["'][^"']+\.(?:rpf|rpf9|xvc|xex)/i);
   });
 });
