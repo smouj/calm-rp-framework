@@ -35,6 +35,17 @@ artifact uploaded successfully. That is an incompatibility in the v4 Pages actio
 `configure-pages` to v6.0.0, `upload-pages-artifact` to v5.0.0 and `deploy-pages` to v5.0.1 (PR #35)
 fixed it; the next run completed with `success`.
 
+### Transient deploy failures (observed 2026-11-24)
+
+A push can still fail at the `Deploy to GitHub Pages` step with the same _"No artifacts named
+github-pages were found"_ message even when the artifact uploaded successfully moments earlier in
+the same run ([run 45498265539](https://github.com/smouj/calm-rp-framework/actions/runs/45498265539):
+artifact 14970456041 uploaded and finalized, then `Found 0 artifact(s)` on the fetch). This is a
+transient GitHub API inconsistency, not a site or workflow defect: the action's own guidance is to
+check githubstatus.com and re-run the deployment, or simply let the next `site/**` push deploy —
+the two immediately following runs completed with `success`. The site-integrity gate still runs
+before upload, so this failure mode says nothing about the published content.
+
 ## Re-verifying after a change
 
 ```bash
