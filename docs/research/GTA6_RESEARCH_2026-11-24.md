@@ -7,14 +7,22 @@
 CyberLeek has claimed distribution of approximately 209 GB of Xbox GTA VI game-build data and, later, an executable. Neither authenticity, integrity, redistribution rights nor the claimed completeness are independently confirmed by this project. Public GitHub repositories inspected by the community principally host research code, format notes, and tools; do not claim GitHub hosts the full 209 GB build. Hashes alone cannot establish publisher authenticity. A decompiler/recompiler project is not equivalent to the original Rockstar source code.
 
 Selected public documentation/tool repositories (not vetted, no endorsement):
-- https://github.com/ItsNotRexed/Leonida — recompilation and format research.
-- https://github.com/holdmysocks/SixNG — game asset format/tooling observations.
+- https://github.com/ItsNotRexed/Leonida — historical recompilation/format research; **original repository returned 404 on 24 November 2026**. Do not rely on this as an available code source.
+- https://github.com/Ahmet-Dedeler/rage9-re — from-scratch Rust/Python readers describing `PSIN` script-data containers and animation structure; **not a public scripting API**.
+- https://github.com/holdmysocks/SixNG — RPF9/model/texture/world format/tooling observations; GPL-3.0.
 - https://github.com/breadbbbb/rpf9-explorer — RPF9 research tools.
 - https://github.com/nullbrik/RageForge — RAGE archive and world research.
-- https://github.com/R0Y00/Xbox2Windows — console compatibility experimentation.
+- https://github.com/R0Y00/Xbox2Windows — console compatibility experimentation; reported partial diagnostic boot with full game not verified.
+- https://github.com/Marvisak/VIctory — developer-reported offline menus and incomplete world rendering; **not playable and no networking**.
 - https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering — curated community index.
 
 **These sources make claims about their own implementations.** No compatibility or legal authorization should be inferred from their existence. Do not copy GPL/copyleft sources into the MIT project without compatibility and licensing review.
+
+## API reality check
+
+**No independently reproducible, authorized GTA VI scripting function list or RPC/network contract was found in the inspected public research**. In particular, `PSIN`, `LSCH` and related `script.rpf` entries exposed by third-party tooling are serialized data-format markers, **not functions we can call from a GTA VI server**.
+
+Existing FiveM/Cfx event functions and Qbox/QBCore exports are real and documented **only for their own supported runtime**. Our verified correspondence matrix and original portable contract are in [FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md](./FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md). The legal assessment is [INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md](../legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md).
 
 ## Implications for the independent RP core
 
