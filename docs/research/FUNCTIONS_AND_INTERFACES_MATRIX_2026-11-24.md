@@ -14,9 +14,11 @@ These names refer to **FiveM/Qbox for supported existing GTA V ecosystems only**
 | `TriggerClientEvent` | FiveM/Cfx | Send server result/projection to a client | **UNKNOWN** |
 | `exports.qbx_core:GetPlayer(source)` | Qbox | Look up player session object | **UNKNOWN** |
 | `QBCore.Functions.GetPlayer(source)` | QBCore | Lookup in the QBCore public abstraction | **UNKNOWN** |
-| `exports.qbx_core:AddMoney(source,type,amount,reason)` | Qbox | Authoritative credit workflow with auditable reason | **UNKNOWN** |
-| `exports.qbx_core:RemoveMoney(source,type,amount,reason)` | Qbox | Authoritative debit workflow | **UNKNOWN** |
+| `exports.qbx_core:AddMoney(identifier,moneyType,amount,reason)` | Qbox | Authoritative credit workflow with auditable reason | **UNKNOWN** |
+| `exports.qbx_core:RemoveMoney(identifier,moneyType,amount,reason)` | Qbox | Authoritative debit workflow | **UNKNOWN** |
 | `exports.ox_inventory:GetItemCount(source,item)` | ox_inventory/Qbox docs | Query inventory; not proof of GTA VI inventory native | **UNKNOWN** |
+
+Qbox's documented `identifier` parameter accepts a player `source` or `citizenid`; `moneyType` is one of `cash`, `bank`, or `crypto`; `amount` is a number, and `reason` is optional. These exact parameter names and types are **Qbox-specific**, not GTA VI API signatures. See the current official Qbox server exports reference.
 
 Primary public documentation:
 - https://docs.fivem.net/docs/developers/server-security/
