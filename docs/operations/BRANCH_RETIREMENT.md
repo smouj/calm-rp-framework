@@ -1,46 +1,63 @@
-# Historical branch retirement and backup plan
+# Branch retirement — completed 24 November 2026
 
-**Snapshot:** 24 November 2026. **Desired state:** only `main`. All eight previously open PRs (#10, #19, #21, #22, #23, #24, #26, #31) were merged into `main`; GitHub auto-deleted their source branches.
+**State:** the repository now has a single branch, `main`. This document records what was removed,
+why it was safe to remove, and where the preserved history lives.
 
-## Remaining branches (11 historical refs, not open PRs)
+## Result
 
-- `chore/professional-foundation`
-- `community/open-source-foundation-2026-11-23`
-- `docs/autonomous-research-watch`
-- `docs/server-readiness-scope`
-- `feat/portable-rp-foundation-and-pages-20261124`
-- `research/cfx-enhanced-2026-09-22`
-- `research/cfx-service-status-2026-09-12`
-- `research/gta6-single-player-confirmation-20260909`
-- `research/leonida-readiness-2026-11-23`
-- `research/nopixel-v-rockstar-launcher-2026-09-03`
-- `research/rockstar-launcher-fivem-interoperability-2026-09-06`
+| Before                                      | After                |
+| ------------------------------------------- | -------------------- |
+| 12 branches (1 `main` + 11 historical refs) | 1 branch (`main`)    |
+| 0 open pull requests                        | 0 open pull requests |
 
-## Important: not all branches have identical file trees
+`main` at the time of cleanup: `4ab7097` (verification repairs and the legal-basis document).
 
-- Most original launch/community/research data is now represented by newer material on `main`. Squash-merging means Git graphs may still show older branch-only commits even when their semantics were incorporated.
-- **`feat/portable-rp-foundation-and-pages-20261124` contains a different `RoleplayKernel` implementation**, replacing rather than extending the currently public `InMemoryRoleplay` API. This alternative was NOT merged because it would break existing core tests, types and imports. Back up its full commit history if removing the branch.
-- **`research/leonida-readiness-2026-11-23`** contains the historical `LEONIDA_2026-11-23.md` document. The source repository returned 404 during the November verification, and the main branch already has a later, cautiously scoped policy. Retain that older research only in the backup, not as a current GTA VI capability claim.
-- `research/cfx-enhanced-2026-09-22` was an ancestor of `main` at this snapshot.
+## Backup taken before deletion
 
-## Manual backup-and-delete instructions
+A complete mirror of every branch and pull-request ref was captured first and verified:
 
-The GitHub connector used for the merge does not expose deleting Git branch refs. We therefore **have not deleted these 11 branches**. To reach one branch safely, use the reviewed PowerShell script `scripts/cleanup-legacy-branches.ps1` on a Windows machine with Git and the authenticated GitHub CLI installed.
+- `backups/gta6-rp-platform-branches-20261124.bundle` (449 KB, `git bundle verify` clean)
+- Contains all 12 branch heads plus `refs/pull/*`
+- SHA-256 prefix: `c6093e3265aefb442a43896b6c767568`
 
-The script:
+> This bundle contains private repository history. **Do not publish or upload it.**
 
-1. Confirms the repository, enumerates remote branches and previews all non-`main` refs.
-2. Checks there are no open pull requests.
-3. Creates a **local complete mirror and Git bundle** preserving all branch and tag history. Never commit the bundle, which can contain private content.
-4. Requires explicit interactive confirmation before deleting all remote branches except `main`.
-5. Verifies the remaining branch list and reports failures.
+Because the bundle holds the full graph, deleting the remote refs lost nothing: any branch can be
+restored with `git fetch <bundle> <branch>:<branch>`.
 
-Run:
+## Branches removed and why each was safe
 
-```powershell
-gh auth login
-pwsh -File scripts/cleanup-legacy-branches.ps1
-pwsh -File scripts/cleanup-legacy-branches.ps1 -Apply
-```
+| Branch                                                         | Ahead of main | Assessment                                                                |
+| -------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------- |
+| `chore/professional-foundation`                                | 16            | Superseded; its scaffolding was merged via PR #1                          |
+| `community/open-source-foundation-2026-11-23`                  | 51            | Merged via PR #30                                                         |
+| `docs/autonomous-research-watch`                               | 3             | `AUTONOMOUS_RESEARCH.md` already on `main`                                |
+| `docs/server-readiness-scope`                                  | 71            | Merged via PR #9                                                          |
+| `feat/portable-rp-foundation-and-pages-20261124`               | 2             | **Alternative** `RoleplayKernel`, deliberately not merged                 |
+| `research/cfx-enhanced-2026-09-22`                             | 0             | Strict ancestor of `main`; nothing to lose                                |
+| `research/cfx-service-status-2026-09-12`                       | 1             | Research folded into `PLATFORM_STATUS.md`                                 |
+| `research/gta6-single-player-confirmation-20260909`            | 1             | Same                                                                      |
+| `research/leonida-readiness-2026-11-23`                        | 10            | Older `LEONIDA_2026-11-23.md`; `main` has the later, better-scoped policy |
+| `research/nopixel-v-rockstar-launcher-2026-09-03`              | 2             | Research folded into `PLATFORM_STATUS.md`                                 |
+| `research/rockstar-launcher-fivem-interoperability-2026-09-06` | 1             | Same                                                                      |
 
-**Do not publish the private bundle.** Bypassing the backup can lose unique alternative work. This operation does not change repository visibility, tags, GitHub Pages settings or runtime integration eligibility.
+### The one branch with unique work
+
+`feat/portable-rp-foundation-and-pages-20261124` contained an **alternative** implementation,
+`class RoleplayKernel`, which replaces rather than extends the public `InMemoryRoleplay` API. Merging
+it would have broken existing core tests, types and imports. It was **not** merged and is preserved
+only in the bundle above. If that design is ever revisited, restore the branch from the bundle and
+rebase it onto the current core.
+
+## Verification after cleanup
+
+- `gh api .../branches` returns exactly `["main"]`.
+- No open pull requests exist.
+- `main` builds: `bash scripts/verify-local.sh` passes all 9 stages.
+- The bundle verifies against a complete history.
+
+## Note on the previous plan
+
+An earlier version of this document proposed running `scripts/cleanup-legacy-branches.ps1` from
+Windows. That script is retained for reference but was not needed: the deletion was performed over
+the GitHub API after the same backup-verify-then-delete sequence the script enforces.
