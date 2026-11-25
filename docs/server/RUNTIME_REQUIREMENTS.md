@@ -42,6 +42,12 @@ A requirement cannot move to `VALIDATED` before it is `CONFIRMED`.
 | RT-021 | Hosting/policy/monetization constraints      | `UNKNOWN`     | Ensures server operation remains within authorized policy              |
 | RT-022 | Development/test workflow                    | `UNKNOWN`     | Needed for repeatable local/staging integration and conformance tests  |
 
+## Executable research is not an integration contract
+
+The source-level [Leonida/VIctory compatibility review](../research/GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md) distinguishes offline console-runtime emulation, local storage, rendering and shader translation from GTA VI community-server scripting, identity, transport and entity synchronization. None of those observations promotes any RT requirement or unlocks `adapters/gta6`.
+
+A [structural research evidence check](../../packages/contracts/src/runtime-evidence.ts) now reports which minimum requirements lack a reviewed first-party contract or a conformance test. Its result is only eligible for **human review**, never automatic permission or runtime validation.
+
 ## Technology evidence does not unlock the scripting requirements
 
 Current public Rockstar engineering material confirms substantial use of **C++**, an internal **game script** concept, C++/C# tooling and C#/.NET/web technologies around online services. Current FiveM documentation separately confirms **Lua, JavaScript and C#** scripting runtimes.

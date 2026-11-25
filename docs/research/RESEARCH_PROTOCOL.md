@@ -134,6 +134,10 @@ Those observations belong in the Cfx research boundary and remain `PUBLIC_OBSERV
 
 Current Rockstar/Cfx technology evidence that informs language strategy without proving a GTA VI runtime belongs in `ROCKSTAR_TECHNOLOGY_BASELINE.md`.
 
+## Execution research must remain separate from runtime capability claims
+
+Experimental PC execution and Xbox compatibility layers may reveal architectural dependencies, but they do not supply an authorized GTA VI community-server API. The [2026-11-26 evidence-to-contract mapping](./GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md) records these distinctions and the exact public repository commits examined. Do not promote an `RT-*` requirement merely because an offline executable reaches a world scene.
+
 ## Review cadence
 
 `PLATFORM_STATUS.md` and material technology evidence should be reviewed whenever any of these occur:
