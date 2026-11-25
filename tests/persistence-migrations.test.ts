@@ -76,7 +76,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
     const mutations: readonly [string, readonly string[]][] = [
       ['UPDATE ledger_entries SET amount_minor = 30 WHERE id = $1::uuid', [entryId]],
       ['DELETE FROM ledger_entries WHERE id = $1::uuid', [entryId]],
-      ['UPDATE ledger_transactions SET reference = \'changed\' WHERE id = $1::uuid', [transactionId]],
+      ['UPDATE ledger_transactions SET reference = NULL WHERE id = $1::uuid', [transactionId]],
       ['DELETE FROM ledger_transactions WHERE id = $1::uuid', [transactionId]],
     ];
     for (const [sql, params] of mutations) {
