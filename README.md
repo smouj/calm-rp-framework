@@ -8,9 +8,9 @@
 
 # CALM — Roleplay Framework
 
-**An independent, modular, open-source roleplay foundation.**
+**CALM Essentials** — an independent, modular, open-source **roleplay framework**.
 
-CALM is the framework's selected working name. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. It is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
+CALM Essentials is the working product name: the base systems a roleplay server needs — characters, economy, inventory, jobs, organizations, properties, vehicles, permissions and extensions — designed in the product class of ESX Legacy and QBCore, developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. This is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-101020.svg)](./LICENSE)
@@ -28,15 +28,22 @@ CALM is the framework's selected working name. The repository is named `calm-rp-
 
 ## Our vision
 
-Build an openly developed roleplay platform **inspired by the possibilities of FiveM**, with GTA VI as the long-term aspiration. Contributors can create reusable gameplay logic, test it without the game, improve tools and documentation, and explore integration **only when permission and technical support are verifiable**.
+Build **CALM Essentials**: an openly developed roleplay framework that supplies the systems an RP server needs. The goal is **not** a FiveM-style platform — there is no hosting, server browser, multiplayer network runtime or marketplace here. Contributors create reusable, server-authoritative roleplay systems, test them against the deterministic simulator, improve tooling and documentation, and prepare for integration **only when permission and technical support are verifiable**.
 
-Developers, artists, testers, documentation writers, security specialists and fans are welcome. This project is not a fork of FiveM and does not currently implement a GTA VI modification or multiplayer network.
+We take ESX's simplicity, QBCore's modular organization and Qbox's explicit exported services as **design references** — concepts only, since their cores are GPL-licensed and this project is MIT. No GTA VI APIs, native names, addresses or signatures are invented. Developers, artists, testers, documentation writers, security specialists and fans are welcome. This project is not a fork of FiveM, ESX, QBCore or Qbox, and does not currently implement a GTA VI modification or multiplayer network.
+
+- [ADR-0007 — the CALM Essentials scope decision](./docs/adr/0007-calm-essentials-framework-scope.md)
+- [Verified audit of the current code: present vs. missing](./docs/PROJECT_SCOPE.md)
+- [Proposed service contracts and the ESX/QBCore/Qbox mapping](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
 
 ## Public interfaces, legal boundaries and reverse-engineering research (24 November 2026)
 
 The independent core now has original, fail-closed runtime capability contracts on the development PR. **Documented FiveM/Cfx/Qbox commands are not GTA VI commands.** RAGE 9 data-structure findings do not establish multiplayer or a supported scripting API.
 
 - [Documented functions and original interface mapping](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
+- [GTA VI capability matrix — verified RAGE 9 research catalog](./docs/research/GTA6_CAPABILITY_MATRIX_2026-11-25.md)
+- [GTA VI PC execution progress — VIctory, XCL, the Leonida DMCA, and why it is not an interface](./docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md)
+- [GTA VI RP mechanics observed by the press and our design consequences](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)
 - [Spain/EU interoperability and intellectual-property review](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [Legal basis: the specific articles that make this project lawful](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md)
 - [Local verification: the authoritative gate, independent of hosted CI](./docs/operations/LOCAL_VERIFICATION.md)
@@ -49,15 +56,16 @@ Source links are research references; they are not game downloads or permission 
 
 The development branch also contains an **in-memory inventory reference** with ownership, capacity, transfer and idempotency tests. It is not persistent or connected to GTA VI. See [inventory reference](./docs/server/INVENTORY_REFERENCE.md) and [first-party evidence register](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
 
-| Area                                                        | Actual state                                              |
-| ----------------------------------------------------------- | --------------------------------------------------------- |
-| TypeScript workspace, domain primitives and typed contracts | Initial code                                              |
-| Game-independent simulator                                  | Basic player-directory prototype                          |
-| API and local PostgreSQL infrastructure                     | Scaffolding and initial migration                         |
-| Security, research and automated checks                     | Foundation                                                |
-| Public Cfx/FiveM ecosystem research                         | Research only, not GTA VI compatibility                   |
-| GTA VI game/runtime adapter                                 | **BLOCKED** — authorization and runtime contracts unknown |
-| GTA VI client, multiplayer server or downloadable release   | **NOT IMPLEMENTED**                                       |
+| Area                                                      | Actual state                                                         |
+| --------------------------------------------------------- | -------------------------------------------------------------------- |
+| Characters, economy and inventory rules (in-memory)       | Reference implementations with tests                                 |
+| Persistent sessions, durable transactions, containers     | **Missing — Phase F1/F2** (see the [audit](./docs/PROJECT_SCOPE.md)) |
+| Game-independent simulator                                | Deterministic two-character prototype; fuller RP cycle pending       |
+| API and local PostgreSQL infrastructure                   | Scaffolding and initial migration                                    |
+| Security, research and automated checks                   | Foundation                                                           |
+| Public Cfx/FiveM ecosystem research                       | Research only, not GTA VI compatibility                              |
+| GTA VI game/runtime adapter                               | **BLOCKED** — authorization and runtime contracts unknown            |
+| GTA VI client, multiplayer server or downloadable release | **NOT IMPLEMENTED**                                                  |
 
 Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 
@@ -126,7 +134,7 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 ## Website and independent framework name
 
-The original static information website lives in [`site/`](./site/README.md), including a [self-contained legal notice](./site/legal.html). GitHub Pages deployment requires the repository owner's Pages settings and a successful build; do not advertise a live URL until verified. **CALM** is the framework's chosen working name (a deliberate contrast in tone with RAGE), but it is **not a cleared or exclusive trademark**. FINOS already uses CALM for a software architecture specification, and Calm.com uses CALM for software products. See the [brand decision and conflict notes](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No API or package namespace was renamed.
+The original static information website lives in [`site/`](./site/README.md), including a [self-contained legal notice](./site/legal.html). GitHub Pages deployment requires the repository owner's Pages settings and a successful build; do not advertise a live URL until verified. **CALM** is the framework's chosen working name (a deliberate contrast in tone with RAGE) and **CALM Essentials** is the product-level working name; neither is a cleared or exclusive trademark. FINOS already uses CALM for a software architecture specification, and Calm.com uses CALM for software products. See the [brand decision and conflict notes](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No API or package namespace was renamed.
 
 ## Get involved
 
@@ -139,11 +147,14 @@ Contributions are welcome; merging requires review and passing checks. Check the
 
 ## Roadmap
 
-1. **Public foundation:** license, contribution rules, security, project identity and reproducible CI.
-2. **Portable RP systems:** server-authoritative characters, economy, inventory, jobs, property, moderation and simulator workflows.
-3. **Developer experience:** conformance tests, example scenarios and reviewed extension contracts.
-4. **GTA VI research:** continuously distinguish confirmed public facts from claims and assumptions.
-5. **GTA VI integration:** **blocked** until legitimate authorization and implementable runtime documentation exist.
+0. **Project reformulation** — ✅ completed 2026-11-25: CALM Essentials scope, documentation and site now describe the framework.
+1. **Persistence and characters** — PostgreSQL-backed accounts, characters and sessions that survive restarts; balanced-ledger invariant; unified identifiers.
+2. **Economy and inventory** — durable, idempotent transactions; containers (vehicle, warehouse, property) with location-independent ownership.
+3. **Jobs and organizations** — grades, duty, salaries and a full payroll cycle linked to financial accounts.
+4. **Independent resources** — versioned module contracts, manifests and permissions; two modules communicating through public services before formalizing extensions.
+5. **Game adaptation** — **blocked** until a public, authorized GTA VI integration path exists.
+
+First tangible goal: two simulated characters hold jobs, get paid, buy, store and trade items, and keep every byte of their data after a restart.
 
 [Full roadmap](./docs/roadmap/ROADMAP.md) · [Architecture](./ARCHITECTURE.md) · [Scope](./docs/PROJECT_SCOPE.md) · [Research protocol](./docs/research/RESEARCH_PROTOCOL.md)
 

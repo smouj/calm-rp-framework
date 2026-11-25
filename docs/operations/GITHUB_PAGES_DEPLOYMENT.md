@@ -1,9 +1,12 @@
 # GitHub Pages release and verification
 
-**Status at 24 November 2026: LIVE.**
-The site is published at **https://smouj.github.io/calm-rp-framework/** and every page and asset was
-verified returning HTTP 200:
-`/`, `/legal.html`, `/assets/styles.css`, `/assets/app.js`.
+**Status at 25 November 2026 (post-reformulation): LIVE.**
+The site is published at **https://smouj.github.io/calm-rp-framework/** and every page and asset
+was verified returning HTTP 200 on 2026-11-25: `/`, `/legal.html`,
+`/assets/styles.css`, `/assets/app.js`, `/assets/favicon.svg`,
+`/assets/banner-calm-social.png` and `/assets/og-image.png` (the official social banner and its
+card-ratio export). The banner-brand batch merged in #45 deployed successfully; the CALM
+Essentials content batch redeploys through the same `site/**` trigger.
 
 The repository was made **public** by the owner's decision (the project is non-commercial), which is
 what unlocked Pages: GitHub does not offer Pages for a private repository on the free plan.
@@ -11,6 +14,9 @@ what unlocked Pages: GitHub does not offer Pages for a private repository on the
 ## What is published
 
 - `site/index.html` and `site/legal.html`, with original HTML/CSS/JS under `site/assets/`.
+- The CALM Essentials framing: a modular systems map (characters, economy, inventory, jobs,
+  organizations, vehicles and properties, police, permissions and extensions), the F0–F5
+  roadmap and the verified research sections.
 - An engineering overview of the real monorepo, its quality gates and the local verification
   scripts. No Rockstar assets, no external scripts, no fonts, no analytics.
 - The legal notice covers non-affiliation, MIT scope, no game server, official source links,

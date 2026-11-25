@@ -60,7 +60,7 @@
           Menú <span aria-hidden="true">☰</span>
         </button>
         <nav id="main-nav" class="nav" aria-label="Principal">
-          <a href="#plataforma">Plataforma</a><a href="#modulos">Módulos</a
+          <a href="#plataforma">Framework</a><a href="#modulos">Módulos</a
           ><a href="#ingenieria">Ingeniería</a><a href="#investigacion">Investigación</a
           ><a href="#hoja-de-ruta">Hoja de ruta</a>
         </nav>
@@ -106,14 +106,15 @@
             <div class="eyebrow">
               <span class="signal"></span>CALM / OPEN SOURCE / INVESTIGACIÓN + PROTOTIPO
             </div>
-            <h1>El rol del futuro necesita <em>una base sólida.</em></h1>
+            <h1>CALM Essentials: <em>la base del rol.</em></h1>
             <p class="hero-lead">
-              Diseñamos los sistemas de un servidor de rol desde su núcleo: personajes, economía,
-              permisos y herramientas que pueden desarrollarse sin GTA VI. La integración con el
-              juego sigue condicionada a una vía técnica y legal autorizada.
+              CALM Essentials es el framework de rol de código abierto en la línea de ESX y QBCore:
+              personajes, economía, inventario, empleos, vehículos, permisos y extensiones,
+              desarrollados y probados sin GTA VI. La integración con el juego sigue condicionada a
+              una vía técnica y legal autorizada.
             </p>
             <div class="button-row">
-              <a href="#plataforma" class="button button-primary">Conocer la plataforma →</a
+              <a href="#plataforma" class="button button-primary">Conocer el framework →</a
               ><a
                 href="https://github.com/smouj/calm-rp-framework"
                 class="button button-ghost"
@@ -175,7 +176,7 @@
       <div class="status-strip">
         <div class="wrap strip-inner">
           <div><strong>01</strong><span>Núcleo independiente</span></div>
-          <div><strong>02</strong><span>Personajes de demostración</span></div>
+          <div><strong>02</strong><span>Sistemas de rol de referencia</span></div>
           <div><strong>00</strong><span>Adaptadores GTA VI funcionales</span></div>
           <div><strong>MIT</strong><span>Licencia del código propio</span></div>
         </div>
@@ -188,8 +189,9 @@
               <h2>La lógica primero. <span>El juego después.</span></h2>
             </div>
             <p>
-              El motor es solo una integración futura. Las reglas duraderas viven en un servidor
-              autoritativo y no dependen de archivos propietarios.
+              CALM Essentials es un framework, no una plataforma: los sistemas de rol viven en un
+              servidor autoritativo independiente del motor. El motor es solo una integración
+              futura, condicionada a interfaces legítimas y verificadas.
             </p>
           </div>
           <div class="architecture" aria-label="Diagrama de arquitectura">
@@ -226,7 +228,7 @@
           <div class="section-head">
             <div>
               <p class="eyebrow">02 / SISTEMAS</p>
-              <h2>Una plataforma modular. <span>Sin promesas vacías.</span></h2>
+              <h2>Una base modular. <span>Sin promesas vacías.</span></h2>
             </div>
             <p>Selecciona un módulo para conocer su alcance y el estado real de desarrollo.</p>
           </div>
@@ -242,46 +244,72 @@
             <article class="module-card" data-module-status="reference">
               <span class="module-symbol">01</span><span class="state state-ready">REFERENCIA</span>
               <h3>Personajes</h3>
-              <p>Identidad aislada por cuenta; registro validado y detección de duplicados.</p>
-              <span class="module-meta">packages/core</span>
+              <p>
+                Identidad aislada por cuenta; registro validado y detección de duplicados. Sesiones
+                y persistencia, pendientes.
+              </p>
+              <span class="module-meta">packages/core · en memoria</span>
             </article>
             <article class="module-card" data-module-status="reference">
               <span class="module-symbol">02</span><span class="state state-ready">REFERENCIA</span>
               <h3>Economía</h3>
               <p>
-                Saldo en unidades enteras, transferencias, permisos, libro de movimientos y
-                protección contra repetición.
+                Saldo en unidades enteras, transferencias idempotentes, libro de movimientos y
+                propiedad comprobada. Persistencia durable, pendiente.
               </p>
-              <span class="module-meta">packages/core</span>
+              <span class="module-meta">packages/core · en memoria</span>
             </article>
             <article class="module-card" data-module-status="reference">
               <span class="module-symbol">03</span><span class="state state-ready">REFERENCIA</span>
               <h3>Inventario</h3>
               <p>
-                Catálogo de objetos, peso, límite por pila, propiedad, consumo, transferencia e
-                idempotencia; solo en memoria. Contenedores y durabilidad, pendientes.
+                Catálogo, capacidad, propiedad y consumo. El diseño previsto separa objetos
+                transportados, equipamiento y contenedores, con propiedad independiente de la
+                ubicación.
               </p>
               <span class="module-meta">packages/core · no persistente</span>
             </article>
             <article class="module-card" data-module-status="planned">
               <span class="module-symbol">04</span><span class="state">PLANIFICADO</span>
-              <h3>Trabajos y facciones</h3>
+              <h3>Empleos y organizaciones</h3>
               <p>
-                Grados, nóminas, puestos de trabajo, autorizaciones y estructuras organizativas.
+                Grados, servicio, nóminas vinculadas a cuentas financieras y estructuras
+                organizativas.
               </p>
-              <span class="module-meta">Futuro módulo</span>
+              <span class="module-meta">Fase F3</span>
             </article>
             <article class="module-card" data-module-status="planned">
               <span class="module-symbol">05</span><span class="state">PLANIFICADO</span>
-              <h3>Propiedades y vehículos</h3>
-              <p>Propiedad, llaves, garajes y representación desacoplada de entidades del juego.</p>
-              <span class="module-meta">Futuro módulo</span>
+              <h3>Vehículos y propiedades</h3>
+              <p>
+                Entidades persistentes con propietario, permisos de acceso, estado y contenedores —
+                independientes de su representación temporal en el juego.
+              </p>
+              <span class="module-meta">Fases F2–F3</span>
             </article>
             <article class="module-card" data-module-status="planned">
               <span class="module-symbol">06</span><span class="state">PLANIFICADO</span>
+              <h3>Policía y emergencias</h3>
+              <p>
+                Expedientes e incidentes con participantes, pruebas y vehículos relacionados; la
+                identificación automática sería una integración opcional.
+              </p>
+              <span class="module-meta">Módulo futuro</span>
+            </article>
+            <article class="module-card" data-module-status="planned">
+              <span class="module-symbol">07</span><span class="state">PLANIFICADO</span>
+              <h3>Permisos y extensiones</h3>
+              <p>
+                Contratos de servicios públicos y manifiestos de módulos con dependencias y permisos
+                declarados.
+              </p>
+              <span class="module-meta">Fase F4</span>
+            </article>
+            <article class="module-card" data-module-status="planned">
+              <span class="module-symbol">08</span><span class="state">PLANIFICADO</span>
               <h3>Seguridad y administración</h3>
               <p>Roles del personal, sanciones, trazabilidad y herramientas internas.</p>
-              <span class="module-meta">Futuro módulo</span>
+              <span class="module-meta">Módulo futuro</span>
             </article>
           </div>
         </div>
@@ -419,24 +447,24 @@
             >
             <a
               class="research-card"
-              href="https://github.com/R0Y00/Xbox2Windows"
+              href="https://github.com/Marvisak/VIctory"
               target="_blank"
               rel="noopener noreferrer"
-              ><span class="tag">CAPA DE COMPATIBILIDAD</span><strong>Xbox2Windows ↗</strong>
+              ><span class="tag">EJECUCIÓN EN PC</span><strong>VIctory ↗</strong>
               <p>
-                Pruebas de ejecución y gráficos independientes; inicio completo de GTA VI no
-                verificado.
+                Carga el mundo con limitaciones graves y es «offline by design»: su progreso no
+                proporciona red, scripts ni autorización.
               </p></a
             >
             <a
               class="research-card"
-              href="https://github.com/holdmysocks/SixNG"
+              href="https://github.com/xcl-dev/xcl"
               target="_blank"
               rel="noopener noreferrer"
-              ><span class="tag">FORMATOS Y RECURSOS</span><strong>SixNG ↗</strong>
+              ><span class="tag">CAPA DE COMPATIBILIDAD</span><strong>XCL ↗</strong>
               <p>
-                Investigación de RPF9 y otros recursos de RAGE. Sin archivos del juego en nuestro
-                repositorio.
+                Capa Xbox Series para Windows con shaders y servicios del sistema. No es una
+                interfaz de rol ni un entorno multijugador.
               </p></a
             >
             <a
@@ -456,8 +484,19 @@
               Desde el 19 de noviembre de 2026 se informa de un archivo de aproximadamente 209 GB
               atribuido a una versión de Xbox de GTA VI. Su autenticidad completa, derechos de
               redistribución y capacidades aprovechables no han sido verificados por este proyecto.
-              No hospedamos ni enlazamos archivos filtrados, ejecutables, claves o volcados.
+              El 24 de noviembre, Take-Two presentó una reclamación DMCA publicada por GitHub contra
+              el proyecto de recompilación Leonida y su red de 3.007 repositorios; es una
+              reclamación del titular de derechos, no una sentencia, y no la utilizamos como fuente
+              de material. No hospedamos ni enlazamos archivos filtrados, ejecutables, claves o
+              volcados.
             </p>
+            <a
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Avances de ejecución en PC y lo que no son ↗</a
+            >
+            ·
             <a
               href="https://github.com/smouj/calm-rp-framework/tree/main/docs/research"
               target="_blank"
@@ -482,57 +521,64 @@
               <h2>Avanzamos con <span>hitos verificables.</span></h2>
             </div>
             <p>
-              La hoja de ruta refleja objetivos, no fechas de entrega ni compatibilidad garantizada.
+              La hoja de ruta refleja objetivos verificables, no fechas de entrega ni compatibilidad
+              garantizada. El primer objetivo tangible: dos personajes simulados con empleo,
+              salario, compras e intercambios que conservan todos sus datos tras un reinicio.
             </p>
           </div>
           <div class="timeline">
             <div class="timeline-item">
-              <span class="timeline-number">P0</span>
+              <span class="timeline-number">F0</span>
               <div>
-                <strong>Base comunitaria</strong>
-                <p>Documentación, revisiones, CI y publicación segura.</p>
+                <strong>Reformulación del proyecto</strong>
+                <p>CALM Essentials: alcance, arquitectura, READMEs y sitio actualizados.</p>
               </div>
-              <span class="state state-progress">EN CURSO</span>
+              <span class="state state-ready">COMPLETADA</span>
             </div>
             <div class="timeline-item">
-              <span class="timeline-number">P1</span>
+              <span class="timeline-number">F1</span>
               <div>
-                <strong>Contratos y diseño de rol</strong>
-                <p>Invariantes del dominio y ejemplos reproducibles.</p>
+                <strong>Persistencia y personajes</strong>
+                <p>
+                  PostgreSQL, sesiones reales y personajes que sobreviven a los reinicios; libro
+                  mayor equilibrado.
+                </p>
               </div>
-              <span class="state state-progress">EN CURSO</span>
+              <span class="state state-progress">SIGUIENTE</span>
             </div>
             <div class="timeline-item">
-              <span class="timeline-number">P2</span>
+              <span class="timeline-number">F2</span>
               <div>
-                <strong>Sistemas portátiles</strong>
-                <p>Personajes, economía, inventario y simulación con persistencia.</p>
+                <strong>Economía e inventario</strong>
+                <p>
+                  Transacciones durables, contenedores y propiedad independiente de la ubicación.
+                </p>
               </div>
-              <span class="state state-progress">EN CURSO</span>
+              <span class="state">PLANIFICADA</span>
             </div>
             <div class="timeline-item">
-              <span class="timeline-number">P3</span>
+              <span class="timeline-number">F3</span>
               <div>
-                <strong>Herramientas para desarrolladores</strong>
-                <p>Conformidad, administración, API y documentación.</p>
+                <strong>Empleos y organizaciones</strong>
+                <p>Grados, turnos y nóminas completas vinculadas a cuentas financieras.</p>
               </div>
-              <span class="state">PLANIFICADO</span>
+              <span class="state">PLANIFICADA</span>
             </div>
             <div class="timeline-item">
-              <span class="timeline-number">P4</span>
+              <span class="timeline-number">F4</span>
               <div>
-                <strong>Investigación del ecosistema</strong>
-                <p>Fuentes públicas, interfaces y restricciones de licencias.</p>
+                <strong>Recursos independientes</strong>
+                <p>Contratos versionados, permisos y manifiestos de módulos.</p>
               </div>
-              <span class="state state-progress">EN CURSO</span>
+              <span class="state">PLANIFICADA</span>
             </div>
             <div class="timeline-item">
-              <span class="timeline-number">P5</span>
+              <span class="timeline-number">F5</span>
               <div>
                 <strong>Integración autorizada GTA VI</strong>
                 <p>Solo con soporte y permisos comprobables.</p>
               </div>
-              <span class="state state-blocked">BLOQUEADO</span>
+              <span class="state state-blocked">BLOQUEADA</span>
             </div>
           </div>
           <p class="roadmap-link">

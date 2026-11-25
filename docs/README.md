@@ -1,8 +1,8 @@
 # Documentation Map
 
-This directory is the maintained knowledge base for the future GTA VI RP community platform project.
+This directory is the maintained knowledge base for **CALM Essentials**, the open-source roleplay framework developed in this repository.
 
-The repository is intentionally split between **decisions we control now** and **runtime facts that must be verified later**. Documentation should make that boundary obvious at all times.
+The repository is intentionally split between **decisions we control now** and **runtime facts that must be verified later**. Documentation should make that boundary obvious at all times. The scope decision is [ADR-0007](./adr/0007-calm-essentials-framework-scope.md).
 
 ## Start here
 
@@ -33,6 +33,14 @@ The repository is intentionally split between **decisions we control now** and *
 - [`research/UNCERTAINTY_REGISTER_2026-11-25.md`](./research/UNCERTAINTY_REGISTER_2026-11-25.md) — what is not legitimately known, why it matters, and the trigger that would resolve each item.
 - [`research/ARCHITECTURE_COMPARISON_2026-11-25.md`](./research/ARCHITECTURE_COMPARISON_2026-11-25.md) — pattern-by-pattern verdict of CALM versus FiveM/RedM, QBCore/Mantle, Qbox and ESX, plus the Phase-5 audit conclusion.
 - [`roadmap/ROADMAP_REVISION_2026-11-25.md`](./roadmap/ROADMAP_REVISION_2026-11-25.md) — evidence-based reorganization proposal and concrete edits proposed for `ROADMAP.md` (requires human review).
+
+## CALM Essentials reformulation (25 November 2026)
+
+- [`adr/0007-calm-essentials-framework-scope.md`](./adr/0007-calm-essentials-framework-scope.md) — accepted scope decision: an ESX/QBCore-class roleplay framework named CALM Essentials; supersedes the platform ambition of ADR-0006.
+- [`research/GTA6_EXECUTION_PROGRESS_2026-11-25.md`](./research/GTA6_EXECUTION_PROGRESS_2026-11-25.md) — verified PC-execution findings (VIctory, XCL, the fxceless fork, the Leonida DMCA) and why none of them is a resource-execution interface.
+- [`research/GTA6_RP_MECHANICS_2026-11-25.md`](./research/GTA6_RP_MECHANICS_2026-11-25.md) — press-observed GTA VI mechanics and the CALM design consequences (containers, persistent vehicles, incident-based police).
+- [`architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md`](./architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md) — proposed service contracts mapped against documented ESX/QBCore/Qbox interfaces, plus the module-manifest proposal.
+- [`roadmap/ROADMAP.md`](./roadmap/ROADMAP.md) — phases F0–F5 with acceptance criteria; F0 completed 2026-11-25.
 
 - [`server/INVENTORY_REFERENCE.md`](./server/INVENTORY_REFERENCE.md) — tested in-memory item, inventory and ownership semantics; not a production persistence layer.
 - [`research/FIRST_PARTY_EVIDENCE_2026-11-24.md`](./research/FIRST_PARTY_EVIDENCE_2026-11-24.md) — first-party sources, scope limits and unconfirmed GTA VI runtime capabilities.
@@ -67,6 +75,7 @@ Architecture Decision Records live in [`adr/`](./adr/).
 - [`0004-authoritative-postgresql-ephemeral-redis.md`](./adr/0004-authoritative-postgresql-ephemeral-redis.md) — durable RP state has one authoritative store; Redis remains reconstructable.
 
 - [`0006-community-open-platform.md`](./adr/0006-community-open-platform.md) — accepted open-source, community-contributed RP platform scope.
+- [`0007-calm-essentials-framework-scope.md`](./adr/0007-calm-essentials-framework-scope.md) — accepted CALM Essentials framework scope (ESX/QBCore product class); refines ADR-0006's ambition.
 
 New ADRs are required when a change introduces a durable architectural constraint, changes a cross-module contract, adopts a new authoritative data store, or binds the project to a verified GTA VI runtime capability.
 
