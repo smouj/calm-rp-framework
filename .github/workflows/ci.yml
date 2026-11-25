@@ -50,11 +50,6 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Show research Markdown formatting diff (temporary diagnostic)
-        run: |
-          pnpm exec prettier docs/research/GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md > /tmp/calm-prettier.md
-          diff -u docs/research/GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md /tmp/calm-prettier.md || true
-
       - name: Validate (including live PostgreSQL tests)
         env:
           DATABASE_URL: postgresql://calm_ci:local-ci-only@127.0.0.1:5432/calm_ci
