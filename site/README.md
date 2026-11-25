@@ -6,8 +6,9 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 
 - Identidad visual propia: el banner social oficial de CALM (navy + rosa Miami) en la portada de los README, con la variante blanca del wordmark para el tema oscuro y navy para el claro.
 - Conjunto de iconos derivado del banner oficial: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` usan la estrella del banner trazada desde los píxeles fuente sobre el navy `#101020` del propio banner; `og-image.png` es el banner social completo (1280×640) para vistas previas sociales.
-- Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones, con el enfoque CALM Essentials: mapa de sistemas de rol (personajes y economía con persistencia PostgreSQL entregada en F1), fases F0–F5 y tarjetas de investigación actualizadas (VIctory, XCL).
+- Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones, con el enfoque CALM Essentials: mapa de sistemas de rol (personajes y economía con persistencia PostgreSQL entregada en F1), modelo de integración en tres niveles (motor / adaptador / framework), fases F0–F5 con F1 completada y tarjetas de investigación actualizadas (VIctory, XCL y síntesis de estrategia).
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
+- Efectos y animaciones sobre la paleta oficial (navy + rosa Miami): fondo global unificado con brillos fijos y retícula, orbes animados en la portada, animaciones de entrada, aparición progresiva al hacer scroll (IntersectionObserver con retardo escalonado), subrayado de navegación activa y cursores animados; todo se desactiva con `prefers-reduced-motion` y el contenido permanece visible sin JavaScript.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
 - Filtro interactivo de módulos.
 - Sección de ingeniería con la estructura real del monorepo, las puertas de calidad y las verificaciones de higiene que revisan cada cambio.
