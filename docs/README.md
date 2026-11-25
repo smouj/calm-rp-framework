@@ -39,6 +39,7 @@ The repository is intentionally split between **decisions we control now** and *
 - [`adr/0007-calm-essentials-framework-scope.md`](./adr/0007-calm-essentials-framework-scope.md) — accepted scope decision: an ESX/QBCore-class roleplay framework named CALM Essentials; supersedes the platform ambition of ADR-0006.
 - [`research/GTA6_EXECUTION_PROGRESS_2026-11-25.md`](./research/GTA6_EXECUTION_PROGRESS_2026-11-25.md) — verified PC-execution findings (VIctory, XCL, the fxceless fork, the Leonida DMCA) and why none of them is a resource-execution interface.
 - [`research/GTA6_RP_MECHANICS_2026-11-25.md`](./research/GTA6_RP_MECHANICS_2026-11-25.md) — press-observed GTA VI mechanics and the CALM design consequences (containers, persistent vehicles, incident-based police).
+- [`research/GTA6_RP_STRATEGY_2026-11-25.md`](./research/GTA6_RP_STRATEGY_2026-11-25.md) — strategy synthesis: three-environment boundary, integration scenarios, three-layer model with a per-capability adapter registry, Leonida region mapping and the build-now versus needs-GTA-VI split.
 - [`architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md`](./architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md) — proposed service contracts mapped against documented ESX/QBCore/Qbox interfaces, plus the module-manifest proposal.
 - [`roadmap/ROADMAP.md`](./roadmap/ROADMAP.md) — phases F0–F5 with acceptance criteria; F0 completed 2026-11-25.
 

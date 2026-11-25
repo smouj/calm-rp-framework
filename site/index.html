@@ -104,14 +104,15 @@
               aria-hidden="true"
             />
             <div class="eyebrow">
-              <span class="signal"></span>CALM / OPEN SOURCE / INVESTIGACIÓN + PROTOTIPO
+              <span class="signal"></span>CALM / OPEN SOURCE / NÚCLEO PERSISTENTE
             </div>
             <h1>CALM Essentials: <em>la base del rol.</em></h1>
             <p class="hero-lead">
               CALM Essentials es el framework de rol de código abierto en la línea de ESX y QBCore:
               personajes, economía, inventario, empleos, vehículos, permisos y extensiones,
-              desarrollados y probados sin GTA VI. La integración con el juego sigue condicionada a
-              una vía técnica y legal autorizada.
+              desarrollados y probados sin GTA VI — y su núcleo persistente ya funciona: cuentas,
+              sesiones, personajes y economía de doble entrada que sobreviven a los reinicios. La
+              integración con el juego sigue condicionada a una vía técnica y legal autorizada.
             </p>
             <div class="button-row">
               <a href="#plataforma" class="button button-primary">Conocer el framework →</a
@@ -151,7 +152,7 @@
               </p>
               <p>
                 <span class="key">database</span
-                ><span class="value pending">◐ esquema inicial</span>
+                ><span class="value ready">● PostgreSQL real (F1)</span>
               </p>
               <p>
                 <span class="key">gta6.adapter</span
@@ -173,17 +174,17 @@
           </aside>
         </div>
       </section>
-      <div class="status-strip">
+      <div class="status-strip reveal">
         <div class="wrap strip-inner">
-          <div><strong>01</strong><span>Núcleo independiente</span></div>
-          <div><strong>02</strong><span>Sistemas de rol de referencia</span></div>
-          <div><strong>00</strong><span>Adaptadores GTA VI funcionales</span></div>
-          <div><strong>MIT</strong><span>Licencia del código propio</span></div>
+          <div class="reveal"><strong>01</strong><span>Núcleo independiente</span></div>
+          <div class="reveal"><strong>02</strong><span>Sistemas persistentes entregados</span></div>
+          <div class="reveal"><strong>00</strong><span>Adaptadores GTA VI funcionales</span></div>
+          <div class="reveal"><strong>MIT</strong><span>Licencia del código propio</span></div>
         </div>
       </div>
       <section class="section" id="plataforma">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head reveal">
             <div>
               <p class="eyebrow">01 / ARQUITECTURA</p>
               <h2>La lógica primero. <span>El juego después.</span></h2>
@@ -194,23 +195,58 @@
               futura, condicionada a interfaces legítimas y verificadas.
             </p>
           </div>
-          <div class="architecture" aria-label="Diagrama de arquitectura">
-            <div class="architecture-item">
+          <div class="architecture" data-stagger aria-label="Diagrama de arquitectura">
+            <div class="architecture-item reveal">
               <span class="arch-index">01 — ENTRADA</span><strong>Jugador / panel</strong
               ><small>Solo solicita acciones. Nunca decide saldos ni propiedad.</small>
             </div>
             <div class="arch-arrow" aria-hidden="true">→</div>
-            <div class="architecture-item active">
+            <div class="architecture-item active reveal">
               <span class="arch-index">02 — AUTORIDAD</span><strong>Dominio RP</strong
               ><small>Autentica · Autoriza · Valida · Registra</small>
             </div>
             <div class="arch-arrow" aria-hidden="true">→</div>
-            <div class="architecture-item">
+            <div class="architecture-item reveal">
               <span class="arch-index">03 — ESTADO</span><strong>Persistencia</strong
-              ><small>Transacciones y auditoría — planificada</small>
+              ><small>PostgreSQL — entregado en F1</small>
             </div>
           </div>
-          <div class="note">
+          <div class="integration" data-stagger aria-label="Modelo de integración en tres niveles">
+            <div class="integration-item reveal">
+              <span class="int-index">NIVEL 1 — MOTOR</span><strong>GTA VI</strong
+              ><small
+                >Mundo, físicas y mecánicas del juego; solo mediante interfaces verificadas.</small
+              >
+            </div>
+            <div class="int-flow" aria-hidden="true"><span></span></div>
+            <div class="integration-item adapter reveal">
+              <span class="int-index">NIVEL 2 — ADAPTADOR</span><strong>Runtime Adapter</strong
+              ><small
+                >Traduce capacidades disponibles a contratos propios; cada capacidad empieza
+                desactivada hasta verificarse.</small
+              >
+            </div>
+            <div class="int-flow" aria-hidden="true"><span></span></div>
+            <div class="integration-item core reveal">
+              <span class="int-index">NIVEL 3 — FRAMEWORK</span><strong>CALM Essentials</strong
+              ><small
+                >Personajes, economía, inventario, empleos, permisos: persistente y verificable sin
+                GTA VI.</small
+              >
+            </div>
+          </div>
+          <p class="integration-note reveal">
+            <strong>Postura de integración.</strong> CALM prepara el escenario B —una plataforma
+            oficial de creadores compatible— sin darlo por confirmado; los escenarios «solo
+            multijugador oficial» y «acuerdos concretos» no cambian el núcleo portable.
+            <a
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_RP_STRATEGY_2026-11-25.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Síntesis de estrategia GTA VI ↗</a
+            >
+          </p>
+          <div class="note reveal">
             <strong>Límite de integración.</strong> Un proyecto de descompilación, un visor de RPF9
             o una recompilación experimental no proporcionan por sí mismos autorización, API de
             scripting o red multijugador de GTA VI.
@@ -225,14 +261,14 @@
       </section>
       <section class="section section-muted" id="modulos">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head reveal">
             <div>
               <p class="eyebrow">02 / SISTEMAS</p>
               <h2>Una base modular. <span>Sin promesas vacías.</span></h2>
             </div>
             <p>Selecciona un módulo para conocer su alcance y el estado real de desarrollo.</p>
           </div>
-          <div class="filter-bar" role="group" aria-label="Filtrar módulos">
+          <div class="filter-bar reveal" role="group" aria-label="Filtrar módulos">
             <button class="filter active" data-module-filter="all" aria-pressed="true">Todos</button
             ><button class="filter" data-module-filter="reference" aria-pressed="false">
               Referencia implementada</button
@@ -240,8 +276,8 @@
               Planificados
             </button>
           </div>
-          <div class="module-grid" id="module-grid">
-            <article class="module-card" data-module-status="reference">
+          <div class="module-grid" id="module-grid" data-stagger>
+            <article class="module-card reveal" data-module-status="reference">
               <span class="module-symbol">01</span><span class="state state-ready">REFERENCIA</span>
               <h3>Personajes</h3>
               <p>
@@ -250,7 +286,7 @@
               </p>
               <span class="module-meta">packages/core + persistence · F1</span>
             </article>
-            <article class="module-card" data-module-status="reference">
+            <article class="module-card reveal" data-module-status="reference">
               <span class="module-symbol">02</span><span class="state state-ready">REFERENCIA</span>
               <h3>Economía</h3>
               <p>
@@ -260,7 +296,7 @@
               </p>
               <span class="module-meta">packages/core + persistence · F1</span>
             </article>
-            <article class="module-card" data-module-status="reference">
+            <article class="module-card reveal" data-module-status="reference">
               <span class="module-symbol">03</span><span class="state state-ready">REFERENCIA</span>
               <h3>Inventario</h3>
               <p>
@@ -270,7 +306,7 @@
               </p>
               <span class="module-meta">packages/core · no persistente</span>
             </article>
-            <article class="module-card" data-module-status="planned">
+            <article class="module-card reveal" data-module-status="planned">
               <span class="module-symbol">04</span><span class="state">PLANIFICADO</span>
               <h3>Empleos y organizaciones</h3>
               <p>
@@ -279,7 +315,7 @@
               </p>
               <span class="module-meta">Fase F3</span>
             </article>
-            <article class="module-card" data-module-status="planned">
+            <article class="module-card reveal" data-module-status="planned">
               <span class="module-symbol">05</span><span class="state">PLANIFICADO</span>
               <h3>Vehículos y propiedades</h3>
               <p>
@@ -288,7 +324,7 @@
               </p>
               <span class="module-meta">Fases F2–F3</span>
             </article>
-            <article class="module-card" data-module-status="planned">
+            <article class="module-card reveal" data-module-status="planned">
               <span class="module-symbol">06</span><span class="state">PLANIFICADO</span>
               <h3>Policía y emergencias</h3>
               <p>
@@ -297,7 +333,7 @@
               </p>
               <span class="module-meta">Módulo futuro</span>
             </article>
-            <article class="module-card" data-module-status="planned">
+            <article class="module-card reveal" data-module-status="planned">
               <span class="module-symbol">07</span><span class="state">PLANIFICADO</span>
               <h3>Permisos y extensiones</h3>
               <p>
@@ -306,7 +342,7 @@
               </p>
               <span class="module-meta">Fase F4</span>
             </article>
-            <article class="module-card" data-module-status="planned">
+            <article class="module-card reveal" data-module-status="planned">
               <span class="module-symbol">08</span><span class="state">PLANIFICADO</span>
               <h3>Seguridad y administración</h3>
               <p>Roles del personal, sanciones, trazabilidad y herramientas internas.</p>
@@ -317,7 +353,7 @@
       </section>
       <section class="section" id="ingenieria">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head reveal">
             <div>
               <p class="eyebrow">03 / INGENIERÍA</p>
               <h2>Un repositorio que se <span>verifica a sí mismo.</span></h2>
@@ -327,8 +363,8 @@
               automáticas y barreras de higiene revisan cada cambio antes de publicarse.
             </p>
           </div>
-          <div class="engineering-grid">
-            <div class="repo-panel" aria-label="Estructura del monorepo">
+          <div class="engineering-grid" data-stagger>
+            <div class="repo-panel reveal" aria-label="Estructura del monorepo">
               <div class="repo-head">
                 <span class="dots"><i></i><i></i><i></i></span><span>calm-rp-framework/</span
                 ><span class="repo-badge">MONOREPO · PNPM</span>
@@ -375,15 +411,15 @@
               </ul>
               <div class="repo-foot">TYPE-SAFE / SERVER AUTHORITY / MIT</div>
             </div>
-            <div class="gates">
-              <div class="gate">
+            <div class="gates" data-stagger>
+              <div class="gate reveal">
                 <span class="gate-index">G1</span>
                 <div>
                   <strong>Calidad estática</strong>
                   <p>ESLint y Prettier sobre todo el workspace, con TypeScript estricto.</p>
                 </div>
               </div>
-              <div class="gate">
+              <div class="gate reveal">
                 <span class="gate-index">G2</span>
                 <div>
                   <strong>Pruebas de dominio</strong>
@@ -395,7 +431,7 @@
                   </p>
                 </div>
               </div>
-              <div class="gate">
+              <div class="gate reveal">
                 <span class="gate-index">G3</span>
                 <div>
                   <strong>Barreras de contenido</strong>
@@ -405,7 +441,7 @@
                   </p>
                 </div>
               </div>
-              <div class="gate">
+              <div class="gate reveal">
                 <span class="gate-index">G4</span>
                 <div>
                   <strong>Verificación local</strong>
@@ -417,7 +453,7 @@
               </div>
             </div>
           </div>
-          <div class="disclosure-box">
+          <div class="disclosure-box reveal">
             Esta página es informativa y
             <strong>no ejecuta directamente el paquete TypeScript del servidor</strong> ni sistema
             en red alguno. La implementación verificable y sus pruebas están en
@@ -432,7 +468,7 @@
       </section>
       <section class="section section-muted" id="investigacion">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head reveal">
             <div>
               <p class="eyebrow">04 / EVIDENCIA</p>
               <h2>Investigar sin <span>confundir avances con hechos.</span></h2>
@@ -442,9 +478,9 @@
               autores hasta que se reproduzcan de forma independiente.
             </p>
           </div>
-          <div class="research-grid">
+          <div class="research-grid" data-stagger>
             <a
-              class="research-card"
+              class="research-card reveal"
               href="https://github.com/Ahmet-Dedeler/rage9-re"
               target="_blank"
               rel="noopener noreferrer"
@@ -455,7 +491,7 @@
               </p></a
             >
             <a
-              class="research-card"
+              class="research-card reveal"
               href="https://github.com/Marvisak/VIctory"
               target="_blank"
               rel="noopener noreferrer"
@@ -466,7 +502,7 @@
               </p></a
             >
             <a
-              class="research-card"
+              class="research-card reveal"
               href="https://github.com/xcl-dev/xcl"
               target="_blank"
               rel="noopener noreferrer"
@@ -477,7 +513,7 @@
               </p></a
             >
             <a
-              class="research-card"
+              class="research-card reveal"
               href="https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering"
               target="_blank"
               rel="noopener noreferrer"
@@ -487,7 +523,7 @@
               </p></a
             >
           </div>
-          <div class="research-bottom">
+          <div class="research-bottom reveal">
             <strong>¿Qué ocurrió con la supuesta filtración?</strong>
             <p>
               Desde el 19 de noviembre de 2026 se informa de un archivo de aproximadamente 209 GB
@@ -499,6 +535,13 @@
               de material. No hospedamos ni enlazamos archivos filtrados, ejecutables, claves o
               volcados.
             </p>
+            <a
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_RP_STRATEGY_2026-11-25.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Síntesis de estrategia RP para GTA VI ↗</a
+            >
+            ·
             <a
               href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md"
               target="_blank"
@@ -524,19 +567,20 @@
       </section>
       <section class="section" id="hoja-de-ruta">
         <div class="wrap">
-          <div class="section-head">
+          <div class="section-head reveal">
             <div>
               <p class="eyebrow">05 / DIRECCIÓN</p>
               <h2>Avanzamos con <span>hitos verificables.</span></h2>
             </div>
             <p>
               La hoja de ruta refleja objetivos verificables, no fechas de entrega ni compatibilidad
-              garantizada. El primer objetivo tangible: dos personajes simulados con empleo,
-              salario, compras e intercambios que conservan todos sus datos tras un reinicio.
+              garantizada. El siguiente objetivo tangible: dos personajes con empleo, salario,
+              compras e intercambios que conserven sus datos tras reinicios — sobre la identidad y
+              la economía persistentes ya entregadas en F1.
             </p>
           </div>
-          <div class="timeline">
-            <div class="timeline-item">
+          <div class="timeline" data-stagger>
+            <div class="timeline-item reveal">
               <span class="timeline-number">F0</span>
               <div>
                 <strong>Reformulación del proyecto</strong>
@@ -544,18 +588,18 @@
               </div>
               <span class="state state-ready">COMPLETADA</span>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <span class="timeline-number">F1</span>
               <div>
                 <strong>Persistencia y personajes</strong>
                 <p>
-                  PostgreSQL, sesiones reales y personajes que sobreviven a los reinicios; libro
-                  mayor equilibrado.
+                  PostgreSQL, sesiones autenticadas, personajes que sobreviven a los reinicios y
+                  libro mayor de doble entrada equilibrado.
                 </p>
               </div>
-              <span class="state state-progress">SIGUIENTE</span>
+              <span class="state state-ready">COMPLETADA</span>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <span class="timeline-number">F2</span>
               <div>
                 <strong>Economía e inventario</strong>
@@ -563,9 +607,9 @@
                   Transacciones durables, contenedores y propiedad independiente de la ubicación.
                 </p>
               </div>
-              <span class="state">PLANIFICADA</span>
+              <span class="state state-progress">SIGUIENTE</span>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <span class="timeline-number">F3</span>
               <div>
                 <strong>Empleos y organizaciones</strong>
@@ -573,7 +617,7 @@
               </div>
               <span class="state">PLANIFICADA</span>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <span class="timeline-number">F4</span>
               <div>
                 <strong>Recursos independientes</strong>
@@ -581,7 +625,7 @@
               </div>
               <span class="state">PLANIFICADA</span>
             </div>
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <span class="timeline-number">F5</span>
               <div>
                 <strong>Integración autorizada GTA VI</strong>
@@ -590,7 +634,7 @@
               <span class="state state-blocked">BLOQUEADA</span>
             </div>
           </div>
-          <p class="roadmap-link">
+          <p class="roadmap-link reveal">
             <a
               href="https://github.com/smouj/calm-rp-framework/blob/main/docs/roadmap/ROADMAP.md"
               target="_blank"
@@ -601,8 +645,8 @@
         </div>
       </section>
       <section class="section contribute">
-        <div class="wrap contribute-grid">
-          <div>
+        <div class="wrap contribute-grid" data-stagger>
+          <div class="reveal">
             <p class="eyebrow">06 / COMUNIDAD</p>
             <h2>Una base abierta se construye <em>entre todos.</em></h2>
             <p>
@@ -625,7 +669,7 @@
               >
             </div>
           </div>
-          <div class="clone-box">
+          <div class="clone-box reveal">
             <span>EMPEZAR A CONTRIBUIR</span
             ><code id="clone-command">git clone https://github.com/smouj/calm-rp-framework.git</code
             ><button type="button" id="copy-clone" aria-label="Copiar comando de clonación">
