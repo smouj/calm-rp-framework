@@ -41,20 +41,22 @@ No GTA VI names, memory addresses, identifiers or function signatures are invent
 
 Game-facing scripts, GTA VI client/server synchronization, entity APIs, voice, asset streaming, world integration, hosting, multiplayer downloads, resource marketplaces and server discovery are **not available**. Implementing them requires legitimate authorization, compatible published interfaces, risk review, architecture decisions and conformance tests. The GTA VI adapter stays **BLOCKED**.
 
-## Verified audit of the current code (2026-11-25)
+## Verified audit of the current code (2026-11-25, updated after Phase F1)
 
-| Component  | Already present                                                 | Still missing                                              |
-| ---------- | --------------------------------------------------------------- | ---------------------------------------------------------- |
-| Characters | Records associated with accounts, validated registration        | Real sessions, persistent creation and loading             |
-| Economy    | Balances, transfers, ownership checks, idempotency              | PostgreSQL repository and durable transactions             |
-| Inventory  | Definitions, capacity, quantities, transfers, consumption       | Persistence, general containers, metadata, concurrency     |
-| Database   | Initial tables for accounts, characters and financial movements | Service integration, further migrations, transaction tests |
-| Simulator  | Deterministic two-character scenario with transfers             | Sessions, jobs and a fuller RP cycle                       |
-| API        | Basic status endpoint                                           | Services, authentication and public operations             |
-| Adapters   | Capability and session contracts                                | Full implementations and capability tests                  |
-| GTA VI     | Reserved adapter boundary                                       | Every integration interface (blocked)                      |
+| Component   | Already present                                                                                                | Still missing                                                                 |
+| ----------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Identifiers | One canonical UUID form validated at every persistent boundary                                                 | — (resolved in F1)                                                            |
+| Sessions    | Server-issued tokens, hash-only storage, expiry/revocation, impersonation-proof resolution over PostgreSQL     | API wiring of the session middleware (F2+)                                    |
+| Characters  | Persistent creation, recovery and ownership control over PostgreSQL; validated registration                    | Full character lifecycle beyond creation/retirement; multi-character policies |
+| Economy     | Double-entry ledger over PostgreSQL: atomic, balanced, idempotent posting, reserved treasury, concurrency-safe | Inventory-linked economy, salaries and payroll (F3)                           |
+| Inventory   | Definitions, capacity, quantities, transfers, consumption                                                      | Persistence, general containers, metadata, concurrency                        |
+| Database    | Two additive migrations, runner, embedded-PostgreSQL verification engine                                       | Inventory tables (F2), jobs tables (F3)                                       |
+| Simulator   | Deterministic two-character scenario with transfers                                                            | Jobs and a fuller RP cycle on the persistent stack                            |
+| API         | Basic status endpoint                                                                                          | Services, HTTP authentication and public operations                           |
+| Adapters    | Capability and session contracts                                                                               | Full implementations and capability tests                                     |
+| GTA VI      | Reserved adapter boundary                                                                                      | Every integration interface (blocked)                                         |
 
-Two technical debts to resolve before the systems grow: the ledger service must **guarantee balanced transactions** (the bootstrap migration alone does not), and the **string-versus-UUID identifier** mismatch between in-memory models and PostgreSQL must be unified. Both are Phase F1 acceptance criteria in the [roadmap](./roadmap/ROADMAP.md).
+The two technical debts recorded before F1 are **resolved**: the ledger service now guarantees balanced transactions (domain validation, an in-transaction balance re-derivation, and a deferred constraint trigger that rejects unbalanced rows written even by direct SQL), and the string-versus-UUID identifier mismatch is unified on the canonical UUID form across domain types and database columns.
 
 ## Explicit exclusions
 
@@ -80,6 +82,6 @@ Two technical debts to resolve before the systems grow: the ledger service must 
 
 **Immediate (Phase F0 — completed with this change):** CALM Essentials framing across scope, architecture, roadmap, READMEs and site.
 
-**Next (Phases F1–F2):** persistent characters and sessions; durable economy and inventory transactions.
+**Next (Phases F1–F2):** persistent characters and sessions; durable economy and inventory transactions — **F1 is delivered** (characters, sessions and the double-entry ledger over PostgreSQL, verified with restart and concurrency suites); F2 adds inventory and container durability.
 
 **Conditional future (Phase F5):** evaluate public, legitimate GTA VI integration capabilities using the runtime requirement register, ADRs and conformance tests.

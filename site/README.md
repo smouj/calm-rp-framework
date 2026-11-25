@@ -6,7 +6,7 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 
 - Identidad visual propia: el banner social oficial de CALM (navy + rosa Miami) en la portada de los README, con la variante blanca del wordmark para el tema oscuro y navy para el claro.
 - Conjunto de iconos derivado del banner oficial: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` usan la estrella del banner trazada desde los píxeles fuente sobre el navy `#101020` del propio banner; `og-image.png` es el banner social completo (1280×640) para vistas previas sociales.
-- Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones, con el enfoque CALM Essentials: mapa de sistemas de rol, fases F0–F5 y tarjetas de investigación actualizadas (VIctory, XCL).
+- Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones, con el enfoque CALM Essentials: mapa de sistemas de rol (personajes y economía con persistencia PostgreSQL entregada en F1), fases F0–F5 y tarjetas de investigación actualizadas (VIctory, XCL).
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
 - Filtro interactivo de módulos.

@@ -39,6 +39,27 @@ bash scripts/verify-local.sh --fast   # omite typecheck y build (iteración ráp
 Las tres comprobaciones de higiene usan solo `bash`, `git` y `grep`, así que funcionan **aunque la
 instalación de dependencias falle**. Son la red de seguridad de propiedad intelectual y secretos.
 
+## Las pruebas de persistencia (desde F1)
+
+- **Sin servidor ni Docker:** las suites de persistencia, personajes, sesiones, libro mayor y
+  concurrencia ejecutan contra un motor **PostgreSQL embebido** (PostgreSQL real compilado a WASM,
+  con clústeres temporales en disco). El gate local no necesita red, contenedores ni servicio
+  externo. Los clústeres temporales se borran tras cada ejecución; si una corrida se interrumpe a
+  la fuerza, conviene limpiar `/tmp/calm-*`.
+- **Servidor real (opcional, multi-conexión):** con `DATABASE_URL` apuntando a una URL
+  `postgres://`, la suite `tests/postgres-live.test.ts` ejecuta la misma aceptación contra un
+  PostgreSQL real con conexiones concurrentes genuinas del pool `pg`:
+
+  ```bash
+  docker compose -f infrastructure/docker/compose.yml up -d
+  DATABASE_URL=postgresql://gta6_rp:change-me-local-only@localhost:5432/gta6_rp pnpm vitest run tests/postgres-live.test.ts
+  ```
+
+  Sin esa variable (o si contiene otra cosa, p. ej. una ruta de archivo) la suite se omite
+  limpiamente. El commit de seguimiento `ci(f1)` —preparado y pendiente de un credencial con
+  permiso de workflows— provisiona el servicio `postgres:17` para que el runner alojado ejecute
+  esta suite; hasta entonces, la puerta local cubre la aceptación completa.
+
 ## Por qué esto protege el tema legal
 
 - `check-no-proprietary-artifacts.sh` **falla el build** si aparece un `.rpf`, `.rpf9`, `.exe`, un
