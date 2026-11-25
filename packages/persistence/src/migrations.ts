@@ -48,20 +48,16 @@ export class MigrationRunner {
       ),
     );
 
-    const files = (await readdir(directory))
-      .filter((file) => file.endsWith('.sql'))
-      .sort();
+    const files = (await readdir(directory)).filter((file) => file.endsWith('.sql')).sort();
 
     const appliedNow: AppliedMigration[] = [];
     for (const file of files) {
       if (already.has(file)) continue;
       const script = await readFile(join(directory, file), 'utf8');
-      await this.#session.withTransaction(
-        async (executor: SqlExecutor & SqlScriptRunner) => {
-          await executor.executeScript(script);
-          await executor.query('INSERT INTO schema_migrations (name) VALUES ($1)', [file]);
-        },
-      );
+      await this.#session.withTransaction(async (executor: SqlExecutor & SqlScriptRunner) => {
+        await executor.executeScript(script);
+        await executor.query('INSERT INTO schema_migrations (name) VALUES ($1)', [file]);
+      });
       appliedNow.push({ name: file, appliedAt: new Date() });
     }
     return appliedNow;

@@ -1,6 +1,13 @@
 import type { PGlite } from '@electric-sql/pglite';
 
-import type { SqlExecutor, SqlParam, SqlResult, SqlRow, SqlScriptRunner, SqlSession } from './sql.js';
+import type {
+  SqlExecutor,
+  SqlParam,
+  SqlResult,
+  SqlRow,
+  SqlScriptRunner,
+  SqlSession,
+} from './sql.js';
 
 /**
  * Session over the embedded PostgreSQL engine (real PostgreSQL compiled to

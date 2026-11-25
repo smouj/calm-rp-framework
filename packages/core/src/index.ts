@@ -26,11 +26,7 @@ export type {
 } from './sessions.js';
 
 export { CharacterService, InMemoryCharacterStore } from './characters.js';
-export type {
-  CharacterStore,
-  CreateCharacterCommand,
-  PersistentCharacter,
-} from './characters.js';
+export type { CharacterStore, CreateCharacterCommand, PersistentCharacter } from './characters.js';
 
 export { InMemoryFinancialAccountStore, InMemoryLedgerStore, LedgerService } from './ledger.js';
 export type {

@@ -1,11 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { newUuid } from '@gta6-rp/core';
-import {
-  CharacterService,
-  LedgerService,
-  SessionService,
-} from '@gta6-rp/core';
+import { CharacterService, LedgerService, SessionService } from '@gta6-rp/core';
 import type { CharacterOwnershipDirectory, SessionPrincipal, Uuid } from '@gta6-rp/core';
 import {
   MigrationRunner,

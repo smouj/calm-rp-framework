@@ -28,7 +28,9 @@ export class PgAccountRepository {
   }
 
   public async listAccounts(): Promise<readonly AccountRow[]> {
-    const result = await this.#sql.query(`SELECT id, created_at FROM accounts ORDER BY created_at, id`);
+    const result = await this.#sql.query(
+      `SELECT id, created_at FROM accounts ORDER BY created_at, id`,
+    );
     return result.rows.map((row) => ({
       id: String(row['id']) as Uuid,
       createdAt: readTimestamp(row, 'created_at'),

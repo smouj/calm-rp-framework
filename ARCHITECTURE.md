@@ -37,6 +37,8 @@ apps -> packages/contracts -> packages/core + packages/modules/*
   |            ^                        ^
   v            |                        |
 adapters ------+------------------------+
+
+infrastructure/persistence -> domain ports declared by packages/core
 ```
 
 `packages/*` must not import runtime globals, GTA natives, Cfx natives, adapter implementations or proprietary asset formats.
@@ -73,17 +75,18 @@ calm-rp-framework/
 
 Empty folders are not created ahead of code. Each module lands as a complete unit. The proposed public service surface (session/character/economy/inventory/jobs/permissions/hooks, mapped against documented ESX/QBCore/Qbox equivalents) is specified in the [service-contracts proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md).
 
-## Current implementation (audited 2026-11-25)
+## Current implementation (audited 2026-11-25, updated after Phase F1)
 
-- `packages/core`: base types, domain errors, money primitives, characters, ledger, inventory rules (in-memory).
+- `packages/core`: base types, domain errors, money primitives, canonical UUID identifiers, authenticated-session service, persistent character service, double-entry ledger service, inventory rules (in-memory reference stores included for each).
 - `packages/contracts`: typed envelopes, domain events, runtime capability and session contracts.
+- `packages/persistence`: driver-neutral SQL session (production `pg` pool + embedded-PostgreSQL verification engine), additive migration runner, PostgreSQL repositories for accounts, sessions, characters, financial accounts and the ledger.
 - `adapters/simulator`: deterministic two-character scenario with transfers; a fuller RP cycle is pending.
 - `apps/api`: health-status scaffold.
-- `infrastructure/database`: initial SQL migration (accounts, characters, financial movements); the balanced-ledger invariant is not yet enforced by a transactional service.
+- `infrastructure/database`: two additive migrations (bootstrap; sessions, ledger guards, treasury seed, deferred balanced-transaction trigger).
 - `adapters/cfx`: FiveM/RedM ecosystem research only, **not** GTA VI integration.
 - `adapters/gta6`: intentionally reserved and **not implemented**.
 
-Known technical debts to resolve in Phase F1: enforce balanced financial transactions at the service layer; unify the string-versus-UUID identifier representation between in-memory models and PostgreSQL.
+Both technical debts recorded for Phase F1 are resolved: balanced financial transactions are enforced by the ledger service (domain validation, in-transaction balance re-derivation and the deferred constraint trigger), and identifiers are unified on the canonical UUID form across domain types and database columns.
 
 ## Persistence and security
 

@@ -5,10 +5,7 @@ import type { Clock, Capability } from './index.js';
 import type { Uuid } from './index.js';
 
 /** Capabilities a server may grant to a session. Extend per domain module. */
-export const SESSION_CAPABILITIES: readonly Capability[] = [
-  'economy.grant',
-  'inventory.mint',
-];
+export const SESSION_CAPABILITIES: readonly Capability[] = ['economy.grant', 'inventory.mint'];
 
 /**
  * Trusted principal resolved from a server-issued session. Clients present an

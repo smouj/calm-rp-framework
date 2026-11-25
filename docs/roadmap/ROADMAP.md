@@ -18,7 +18,7 @@ The first tangible goal: **two simulated characters hold jobs, get paid, buy, st
 
 **Scope note (2026-11-25):** F0 was a documentation, research and framing batch — it did not refactor the code. The runtime core remains the experimental in-memory reference without integrated persistence; that work is exactly what F1 delivers (see the present-vs-missing audit in [PROJECT_SCOPE.md](../PROJECT_SCOPE.md)).
 
-## F1 — Persistence and characters
+## F1 — Persistence and characters ✅ (completed 2026-11-25)
 
 **Goal:** connect accounts, characters and sessions to PostgreSQL and survive restarts.
 
@@ -27,7 +27,7 @@ The first tangible goal: **two simulated characters hold jobs, get paid, buy, st
 - the ledger service **enforces balanced transactions** (double-entry invariant) with concurrency and recovery tests — the bootstrap migration alone does not guarantee it;
 - session authentication feeding a trusted context (no client-supplied identity).
 
-**Acceptance:** a character created in one run is recovered intact in the next; concurrent financial writes are serialized and provably balanced.
+**Acceptance met:** a character created in one run is recovered intact in the next (restart suites: `tests/characters-persistent.test.ts`, `tests/session-authentication.test.ts`, `tests/ledger-double-entry.test.ts`), and concurrent financial writes are serialized and provably balanced (`tests/ledger-concurrency.test.ts` over the embedded PostgreSQL engine; `tests/postgres-live.test.ts` against a real server — gated on a `postgres://` `DATABASE_URL`; the prepared `ci(f1)` follow-up commit provisions the hosted `postgres:17` service). Delivery: canonical UUID identifiers (`packages/core/src/ids.ts`), the `@gta6-rp/persistence` package (migration runner, `pg` pool, embedded verification engine), additive migration `0002`, authenticated sessions, persistent characters and the double-entry ledger with idempotency, ownership and the reserved treasury. The existing eleven suites were kept green throughout; the workspace now runs eighteen suites.
 
 ## F2 — Economy and inventory
 

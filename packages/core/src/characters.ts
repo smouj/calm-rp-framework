@@ -95,10 +95,7 @@ export class CharacterService {
   }
 
   /** Load a character and enforce that the session's account owns it. */
-  public async requireOwn(
-    principal: SessionPrincipal,
-    id: Uuid,
-  ): Promise<PersistentCharacter> {
+  public async requireOwn(principal: SessionPrincipal, id: Uuid): Promise<PersistentCharacter> {
     const characterId = requireUuid(id, 'character ID');
     const character = await this.#store.findById(characterId);
     if (character === null) {

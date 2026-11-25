@@ -246,18 +246,19 @@
               <h3>Personajes</h3>
               <p>
                 Identidad aislada por cuenta; registro validado y detección de duplicados. Sesiones
-                y persistencia, pendientes.
+                autenticadas y persistencia PostgreSQL entregadas en F1.
               </p>
-              <span class="module-meta">packages/core · en memoria</span>
+              <span class="module-meta">packages/core + persistence · F1</span>
             </article>
             <article class="module-card" data-module-status="reference">
               <span class="module-symbol">02</span><span class="state state-ready">REFERENCIA</span>
               <h3>Economía</h3>
               <p>
                 Saldo en unidades enteras, transferencias idempotentes, libro de movimientos y
-                propiedad comprobada. Persistencia durable, pendiente.
+                propiedad comprobada. Contabilidad de doble entrada persistente y prueba de
+                concurrencia entregadas en F1.
               </p>
-              <span class="module-meta">packages/core · en memoria</span>
+              <span class="module-meta">packages/core + persistence · F1</span>
             </article>
             <article class="module-card" data-module-status="reference">
               <span class="module-symbol">03</span><span class="state state-ready">REFERENCIA</span>
@@ -342,6 +343,12 @@
                   ><span class="desc">Contratos de dominio y puerto de runtime</span>
                 </li>
                 <li>
+                  <span class="path">packages/persistence</span
+                  ><span class="desc"
+                    >Repositorios PostgreSQL, migraciones y motor de verificación</span
+                  >
+                </li>
+                <li>
                   <span class="path">apps/api</span
                   ><span class="desc">Endpoint de estado, fase pre-plataforma</span>
                 </li>
@@ -363,7 +370,7 @@
                 </li>
                 <li>
                   <span class="path">tests/</span
-                  ><span class="desc">Once suites ejecutadas en cada cambio</span>
+                  ><span class="desc">Dieciocho suites ejecutadas en cada cambio</span>
                 </li>
               </ul>
               <div class="repo-foot">TYPE-SAFE / SERVER AUTHORITY / MIT</div>
@@ -381,8 +388,10 @@
                 <div>
                   <strong>Pruebas de dominio</strong>
                   <p>
-                    Once suites Vitest cubren arquitectura, personajes, inventario, simulador y la
-                    higiene del propio repositorio.
+                    Dieciocho suites Vitest cubren arquitectura, identificadores UUID, sesiones
+                    autenticadas, personajes persistentes, contabilidad de doble entrada,
+                    concurrencia, migraciones, inventario, simulador y la higiene del propio
+                    repositorio.
                   </p>
                 </div>
               </div>

@@ -24,7 +24,10 @@ async function newScratchDirectory(): Promise<string> {
 afterAll(async () => {
   await Promise.all(
     opened.map(({ sql, directory }) =>
-      sql.close().catch(() => undefined).then(() => rm(directory, { recursive: true, force: true })),
+      sql
+        .close()
+        .catch(() => undefined)
+        .then(() => rm(directory, { recursive: true, force: true })),
     ),
   );
 });

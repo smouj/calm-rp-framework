@@ -1,5 +1,10 @@
 import { DomainError, newUuid } from '@gta6-rp/core';
-import type { FinancialAccount, FinancialAccountKind, FinancialAccountStore, Uuid } from '@gta6-rp/core';
+import type {
+  FinancialAccount,
+  FinancialAccountKind,
+  FinancialAccountStore,
+  Uuid,
+} from '@gta6-rp/core';
 
 import { isForeignKeyViolation } from './sql.js';
 import { type SqlSession } from './sql.js';

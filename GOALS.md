@@ -13,7 +13,7 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 - **Palette coherence holds**: every color token in `site/assets/styles.css` equals the documented palette in `docs/branding/PROJECT_IDENTITY.md`; the palette is re-derived by pixel sampling from the owner's official social banner, and the banner band navy is pixel-verified `#101020`.
 - **The banner star is white, tilted and five-pointed** (long point to the right): verified by pixel analysis and by an independent vision-model description of the banner.
 - **The icon set diverged from the banner before this batch**: `favicon.svg` and `logo.svg` used a filled salmon star and Georgia serif text instead of the banner star.
-- **The site claims are true**: the 11 Vitest suites exist and the monorepo tree shown matches the actual `packages/`, `apps/`, `adapters/`, `infrastructure/` and `tests/` directories.
+- **The site claims are true**: the 18 Vitest suites exist and the monorepo tree shown matches the actual `packages/`, `apps/`, `adapters/`, `infrastructure/` and `tests/` directories.
 - **The deploy workflow is valid**: `.github/workflows/pages.yml` parses correctly and triggers on `site/**` changes to `main`.
 
 ## Goals

@@ -127,9 +127,7 @@ for (const [label, createWorld] of worldFactories) {
       await failsWith('INVALID_NAME', () =>
         service.create(principalOne, { firstName: 'Bad\u0000', lastName: 'Rivera' }),
       );
-      await failsWith('INVALID_IDENTIFIER', () =>
-        service.get('not-a-uuid' as Uuid),
-      );
+      await failsWith('INVALID_IDENTIFIER', () => service.get('not-a-uuid' as Uuid));
       await failsWith('CHARACTER_NOT_FOUND', () =>
         service.requireOwn(principalOne, newUuid() as Uuid),
       );

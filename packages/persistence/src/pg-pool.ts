@@ -1,6 +1,13 @@
 import { Pool, type PoolClient, type PoolConfig } from 'pg';
 
-import type { SqlExecutor, SqlParam, SqlResult, SqlRow, SqlScriptRunner, SqlSession } from './sql.js';
+import type {
+  SqlExecutor,
+  SqlParam,
+  SqlResult,
+  SqlRow,
+  SqlScriptRunner,
+  SqlSession,
+} from './sql.js';
 
 /**
  * Production session over a `pg` connection pool. Every transaction checks

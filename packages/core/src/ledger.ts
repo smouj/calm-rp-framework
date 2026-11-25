@@ -66,10 +66,7 @@ export interface LedgerStore {
   /** Balance of one account, derived from the sum of its entries. */
   getBalance(financialAccountId: Uuid): Promise<bigint>;
   /** Newest-first entries of one account. */
-  listAccountEntries(
-    financialAccountId: Uuid,
-    limit: number,
-  ): Promise<readonly LedgerEntryLine[]>;
+  listAccountEntries(financialAccountId: Uuid, limit: number): Promise<readonly LedgerEntryLine[]>;
 }
 
 /** Minimal ownership lookup the ledger needs from the character module. */
@@ -174,7 +171,10 @@ export class LedgerService {
     this.#characters = characters;
   }
 
-  public async grant(principal: SessionPrincipal, command: GrantMoneyCommand): Promise<TransferReceipt> {
+  public async grant(
+    principal: SessionPrincipal,
+    command: GrantMoneyCommand,
+  ): Promise<TransferReceipt> {
     requireCapability(principal, 'economy.grant');
     assertRequestId(command.requestId);
     const toCharacterId = requireUuid(command.toCharacterId, 'destination character ID');
@@ -193,7 +193,11 @@ export class LedgerService {
         { financialAccountId: destination.id, amountMinor: command.amountMinor },
       ],
     });
-    return { transactionId: posted.transactionId, requestId: command.requestId, posted: posted.posted };
+    return {
+      transactionId: posted.transactionId,
+      requestId: command.requestId,
+      posted: posted.posted,
+    };
   }
 
   public async transfer(
@@ -235,7 +239,11 @@ export class LedgerService {
         { financialAccountId: recipient.id, amountMinor: command.amountMinor },
       ],
     });
-    return { transactionId: posted.transactionId, requestId: command.requestId, posted: posted.posted };
+    return {
+      transactionId: posted.transactionId,
+      requestId: command.requestId,
+      posted: posted.posted,
+    };
   }
 
   /** The character's cash balance, in minor units. */

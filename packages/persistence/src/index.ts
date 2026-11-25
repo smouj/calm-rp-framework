@@ -1,6 +1,4 @@
-export type {
-  AppliedMigration,
-} from './migrations.js';
+export type { AppliedMigration } from './migrations.js';
 export { MigrationRunner } from './migrations.js';
 
 export type {

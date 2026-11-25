@@ -8,7 +8,13 @@ import type {
   Uuid,
 } from '@gta6-rp/core';
 
-import { isUniqueViolation, readBigInt, readTimestamp, type SqlExecutor, type SqlSession } from './sql.js';
+import {
+  isUniqueViolation,
+  readBigInt,
+  readTimestamp,
+  type SqlExecutor,
+  type SqlSession,
+} from './sql.js';
 
 const SELECT_TRANSACTION = `
   SELECT t.id, t.idempotency_key, t.command_fingerprint, t.created_at
@@ -24,10 +30,9 @@ async function loadExisting(
   executor: SqlExecutor,
   idempotencyKey: string,
 ): Promise<{ transactionId: Uuid; fingerprint: string | null } | null> {
-  const result = await executor.query(
-    `${SELECT_TRANSACTION} WHERE idempotency_key = $1`,
-    [idempotencyKey],
-  );
+  const result = await executor.query(`${SELECT_TRANSACTION} WHERE idempotency_key = $1`, [
+    idempotencyKey,
+  ]);
   const row = result.rows[0];
   if (row === undefined) return null;
   return {
@@ -84,12 +89,7 @@ export class PgLedgerRepository implements LedgerStore {
         const result = await executor.query(
           `INSERT INTO ledger_transactions (id, idempotency_key, command_fingerprint, reference)
              VALUES ($1::uuid, $2, $3, $4) RETURNING id, created_at`,
-          [
-            transactionId,
-            command.idempotencyKey,
-            command.fingerprint,
-            command.reference,
-          ],
+          [transactionId, command.idempotencyKey, command.fingerprint, command.reference],
         );
         inserted = result.rows.length > 0;
       } catch (error) {
@@ -126,9 +126,7 @@ export class PgLedgerRepository implements LedgerStore {
       command.legs.forEach((leg) => {
         const base = params.length;
         // (entry id, transaction id, financial account id, signed amount)
-        values.push(
-          `($${base + 1}::uuid, $1::uuid, $${base + 2}::uuid, $${base + 3}::bigint)`,
-        );
+        values.push(`($${base + 1}::uuid, $1::uuid, $${base + 2}::uuid, $${base + 3}::bigint)`);
         params.push(newUuid(), leg.financialAccountId, leg.amountMinor.toString());
       });
       const entries = await executor.query(

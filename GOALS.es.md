@@ -13,7 +13,7 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 - **La coherencia de paleta se mantiene**: cada token de color de `site/assets/styles.css` coincide con la paleta documentada en `docs/branding/PROJECT_IDENTITY.md`; la paleta se re-deriva por muestreo de píxeles del banner social oficial del propietario, y el navy de la banda del banner está verificado por píxel como `#101020`.
 - **La estrella del banner es blanca, inclinada y de cinco puntas** (punta larga hacia la derecha): verificado por análisis de píxeles y por una descripción independiente con modelo de visión.
 - **El set de iconos divergía del banner antes de este lote**: `favicon.svg` y `logo.svg` usaban una estrella salmón rellena y texto Georgia, no la estrella del banner.
-- **Las afirmaciones del sitio son ciertas**: existen 11 suites Vitest y el árbol del monorepo mostrado coincide con los directorios reales `packages/`, `apps/`, `adapters/`, `infrastructure/` y `tests/`.
+- **Las afirmaciones del sitio son ciertas**: existen 18 suites Vitest y el árbol del monorepo mostrado coincide con los directorios reales `packages/`, `apps/`, `adapters/`, `infrastructure/` y `tests/`.
 - **El flujo de despliegue es válido**: `.github/workflows/pages.yml` parsea correctamente y se dispara con cambios en `site/**` sobre `main`.
 
 ## Metas

@@ -380,14 +380,21 @@ describe('double-entry ledger — restart survival (PostgreSQL)', () => {
 
     const alex = await characters.create(playerOne, { firstName: 'Alex', lastName: 'Rivera' });
     const morgan = await characters.create(playerTwo, { firstName: 'Morgan', lastName: 'Cruz' });
-    await ledger.grant(admin, { requestId: 'run1-grant', toCharacterId: alex.id, amountMinor: 900n });
+    await ledger.grant(admin, {
+      requestId: 'run1-grant',
+      toCharacterId: alex.id,
+      amountMinor: 900n,
+    });
     await ledger.transfer(playerOne, {
       requestId: 'run1-transfer',
       fromCharacterId: alex.id,
       toCharacterId: morgan.id,
       amountMinor: 350n,
     });
-    const beforeBalances = [await ledger.getCharacterBalance(alex.id), await ledger.getCharacterBalance(morgan.id)];
+    const beforeBalances = [
+      await ledger.getCharacterBalance(alex.id),
+      await ledger.getCharacterBalance(morgan.id),
+    ];
     await first.close();
 
     const reopened = await reopenDatabase(first.directory);
@@ -414,7 +421,11 @@ describe('double-entry ledger — restart survival (PostgreSQL)', () => {
     expect(await ledger2.getCharacterBalance(alex.id)).toBe(beforeBalances[0]);
 
     // A new command after the restart continues the ledger where it left off.
-    await ledger2.grant(admin, { requestId: 'run2-grant', toCharacterId: morgan.id, amountMinor: 50n });
+    await ledger2.grant(admin, {
+      requestId: 'run2-grant',
+      toCharacterId: morgan.id,
+      amountMinor: 50n,
+    });
     expect(await ledger2.getCharacterBalance(morgan.id)).toBe(beforeBalances[1]! + 50n);
     await reopened.dispose();
   });
