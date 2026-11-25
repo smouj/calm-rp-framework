@@ -1,7 +1,7 @@
 # GTA VI executable research vs. CALM RP integration contracts
 
 **Observed:** 2026-11-26. **State:** PUBLIC TECHNICAL RESEARCH, NOT RUNTIME AUTHORIZATION.  
-**Purpose:** prepare a GTA VI-specific interoperability design *from verifiable evidence*, rather than assuming that GTA V natives, Cfx APIs or single-player mechanics are multiplayer APIs.
+**Purpose:** prepare a GTA VI-specific interoperability design _from verifiable evidence_, rather than assuming that GTA V natives, Cfx APIs or single-player mechanics are multiplayer APIs.
 
 ## Sources and reproducibility
 
@@ -22,7 +22,7 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 **Verified scope:** Experimental **game execution**
 
-**CALM consequence:** Define a *versioned compatibility profile* only when legitimate platform interfaces exist; not a server API
+**CALM consequence:** Define a _versioned compatibility profile_ only when legitimate platform interfaces exist; not a server API
 
 **Observation: Platform APIs are supplied by console-service implementations**
 
@@ -54,7 +54,7 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 **Verified scope:** Experimental graphics compatibility, not gameplay scripting
 
-**CALM consequence:** Do **not** include graphics conversions or extracted format data in CALM server packages
+**CALM consequence:** Do *_not_* include graphics conversions or extracted format data in CALM server packages
 
 **Observation: Title-specific build mapping is separated from platform code**
 
@@ -72,7 +72,7 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 **CALM consequence:** No evidence of spawning controlled multiplayer entities or running server-side resources
 
-**Technical distinction:** a title calling an Xbox SDK API is **not** the same thing as a community server being allowed or able to call a GTA VI gameplay API. Even a flawless, network-capable PC execution layer would not automatically provide player synchronization, script execution, entity ownership or server hosting.
+**Technical distinction:** a title calling an Xbox SDK API is *_not_* the same thing as a community server being allowed or able to call a GTA VI gameplay API. Even a flawless, network-capable PC execution layer would not automatically provide player synchronization, script execution, entity ownership or server hosting.
 
 ## 2. What must be demonstrated before CALM binds to GTA VI
 
@@ -130,7 +130,7 @@ No source above establishes a Rockstar-approved way for third parties to run GTA
 
 ## 3. Architecture that follows from this evidence
 
-This is *not* an invention of GTA VI natives. It is a set of **CALM-owned, engine-independent invariants** justified by the gaps above.
+This is _not_ an invention of GTA VI natives. It is a set of **CALM-owned, engine-independent invariants** justified by the gaps above.
 
 - **Durable vs. transient identity:** character, vehicle and container UUIDs remain stable through process restarts. An adapter maps them to ephemeral game entity handles only when a real, documented runtime exists.
 - **Authority:** a server-created session resolves an account; clients submit intents, never an authoritative balance, rank, owner, evidence result or identifier.
@@ -178,7 +178,7 @@ This is *not* an invention of GTA VI natives. It is a set of **CALM-owned, engin
 
 `@gta6-rp/contracts` provides `inspectGta6RuntimeEvidence` and the minimum RT list. Its input is **maintainer-curated metadata**, never a remote-client payload. It distinguishes official GTA VI runtime claims from gameplay observations, simulator tests and execution research. It reports missing first-party contracts and missing conformance tests.
 
-**Crucially:** the function does *not* authenticate URLs, verify licenses, issue permission or enable an adapter. Even a structurally complete test fixture is only **eligible for human review**. `GTA6_UNVERIFIED_CAPABILITIES` remains empty. Actual promotion requires Rockstar/Cfx first-party evidence, explicit authorization/legal review, approved ADR and successful runtime-specific conformance tests.
+**Crucially:** the function does _not_ authenticate URLs, verify licenses, issue permission or enable an adapter. Even a structurally complete test fixture is only **eligible for human review**. `GTA6_UNVERIFIED_CAPABILITIES` remains empty. Actual promotion requires Rockstar/Cfx first-party evidence, explicit authorization/legal review, approved ADR and successful runtime-specific conformance tests.
 
 ## 6. Next changes justified now
 
@@ -188,4 +188,4 @@ This is *not* an invention of GTA VI natives. It is a set of **CALM-owned, engin
 4. **F4:** publish a versioned capability/contract manifest with a simulator consumer and a second independently authored module.
 5. **F5:** only upon first-party support, implement an actual narrow GTA VI adapter for one end-to-end interaction, with on-platform tests and rollback/version compatibility.
 
-**Rule:** learn the title's real *constraints* from legal, reproducible public research. Do not claim to know a future multiplayer programming contract from the fact that a leaked single-player executable can run.
+**Rule:** learn the title's real _constraints_ from legal, reproducible public research. Do not claim to know a future multiplayer programming contract from the fact that a leaked single-player executable can run.
