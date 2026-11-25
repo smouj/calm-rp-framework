@@ -44,15 +44,13 @@ Watch-set additions, 2026-11-25 (research-repository layer, for discovery and ch
 
 Additional directly relevant public implementation sources (source-owner claims only; `PUBLIC_OBSERVED` or lower):
 
-| Watch source | Focus | Source boundary |
-| --- | --- | --- |
-| [Marvisak/VIctory](https://github.com/Marvisak/VIctory) | Console compatibility architecture, documented interfaces, release and license changes | Offline compatibility layer, **not** a GTA VI RP SDK |
-| [fxceless/victory-fork](https://github.com/fxceless/victory-fork) | Public fixes and independently documented technical changes | Rendering progress does not imply game scripting |
-| [myokex/victory-amd](https://github.com/myokex/victory-amd/tree/victory-amd) | AMD/texture/memory/graphics corrections on `victory-amd`; baseline [`070df424b096`](https://github.com/myokex/victory-amd/commit/070df424b0967dca422478a1f12afaaf6736ebdd) (reviewed 2026-11-25) | One-machine developer tests; offline by design; GPL-3.0-or-later |
-| [xcl-dev/xcl](https://github.com/xcl-dev/xcl) | Platform compatibility and public runtime behavior | No GTA VI resource or server API established |
-| [holdmysocks/SixNG](https://github.com/holdmysocks/SixNG) | Resource format research and source provenance | Offline tooling, no project dependence on game files |
-| [Ahmet-Dedeler/rage9-re](https://github.com/Ahmet-Dedeler/rage9-re) | Public format/animation/script-data parsers | Data formats are not callable native APIs |
-| ESX Legacy / QBCore / Qbox official upstreams and docs | Public RP contracts, API deprecations and modular design practices | GTA V ecosystem only; inspect license before reuse |
+- **[Marvisak/VIctory](https://github.com/Marvisak/VIctory):** console compatibility architecture, public interfaces, releases and licensing; offline compatibility layer, not a GTA VI RP SDK.
+- **[fxceless/victory-fork](https://github.com/fxceless/victory-fork):** public technical fixes and documentation; rendering progress does not imply game scripting.
+- **[myokex/victory-amd](https://github.com/myokex/victory-amd/tree/victory-amd):** AMD graphics, texture and memory fixes on branch `victory-amd`; baseline [`070df424b096`](https://github.com/myokex/victory-amd/commit/070df424b0967dca422478a1f12afaaf6736ebdd), reviewed 2026-11-25. Developer-reported one-machine results; offline by design; GPL-3.0-or-later.
+- **[xcl-dev/xcl](https://github.com/xcl-dev/xcl):** platform compatibility and runtime behavior; no GTA VI resource or server API established.
+- **[holdmysocks/SixNG](https://github.com/holdmysocks/SixNG):** resource format research and provenance; offline tooling only.
+- **[Ahmet-Dedeler/rage9-re](https://github.com/Ahmet-Dedeler/rage9-re):** public data-format readers; serialized data is not a native API.
+- **ESX Legacy, QBCore and Qbox official code and docs:** publicly documented RP contract changes, deprecations and modular patterns; GTA V ecosystem only; inspect license before reuse.
 
 Watch higher-impact changes before performance claims: GTA VI-specific *authorized* runtime/creator announcements, published client-server API contracts, resource packaging, entity ownership, security policy, platform version requirements, licensing, or evidence that changes CALM's documented assumptions. Plain FPS gains, stars, tracker rankings, routine refactors or unreproducible leaks are **not** sufficient for a repository change.
 
