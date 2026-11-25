@@ -8,12 +8,7 @@ import type {
   Uuid,
 } from '@gta6-rp/core';
 
-import {
-  readBigInt,
-  readTimestamp,
-  type SqlExecutor,
-  type SqlSession,
-} from './sql.js';
+import { readBigInt, readTimestamp, type SqlExecutor, type SqlSession } from './sql.js';
 
 const SELECT_TRANSACTION = `
   SELECT t.id, t.idempotency_key, t.command_fingerprint, t.created_at
