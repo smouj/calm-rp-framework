@@ -8,14 +8,15 @@ CyberLeek has claimed distribution of approximately 209 GB of Xbox GTA VI game-b
 
 Selected public documentation/tool repositories (not vetted, no endorsement):
 
-- https://github.com/ItsNotRexed/Leonida — historical recompilation/format research; **original repository returned 404 on 24 November 2026**. Do not rely on this as an available code source.
+- https://github.com/ItsNotRexed/Leonida — historical recompilation/format research; **original repository returned 404 on 24 November 2026**. Verified 25 November 2026 as a Take-Two DMCA takedown processed by GitHub on 2026-11-24 covering the repository and its 3,007-fork network; community reference copies and continuations exist but can vanish the same way. Do not rely on this as an available code source.
 - https://github.com/Ahmet-Dedeler/rage9-re — from-scratch Rust/Python readers describing `PSIN` script-data containers and animation structure; **not a public scripting API**.
 - https://github.com/holdmysocks/SixNG — RPF9/model/texture/world format/tooling observations; GPL-3.0.
+- https://github.com/TrinitronClient/GTA6-Asset-Info — 19-part asset-format specification maintained by the SixNG team; GPL-3.0; explicitly documentation-only (no game files, no keys); see [GTA6_CAPABILITY_MATRIX_2026-11-25.md](./GTA6_CAPABILITY_MATRIX_2026-11-25.md).
 - https://github.com/breadbbbb/rpf9-explorer — RPF9 research tools.
 - https://github.com/nullbrik/RageForge — RAGE archive and world research.
 - https://github.com/R0Y00/Xbox2Windows — console compatibility experimentation; reported partial diagnostic boot with full game not verified.
 - https://github.com/Marvisak/VIctory — developer-reported offline menus and incomplete world rendering; **not playable and no networking**.
-- https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering — curated community index.
+- https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering — curated community index; used as the discovery layer for the capability matrix.
 
 **These sources make claims about their own implementations.** No compatibility or legal authorization should be inferred from their existence. Do not copy GPL/copyleft sources into the MIT project without compatibility and licensing review.
 
@@ -54,3 +55,5 @@ See [research protocol](./RESEARCH_PROTOCOL.md), [platform status](./PLATFORM_ST
 ## Revision pinning
 
 The [24 November 2026 upstream tool snapshot](./THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md) records exact GitHub commits for four live research tools and their stated limitations. In particular, SixNG's current README claims BCPack decoding support where earlier summaries described more substantial gaps. This is an upstream observation, not proof of runtime access or legal permission.
+
+**Addendum, 25 November 2026:** the canonical engine-knowledge catalog is now [GTA6_CAPABILITY_MATRIX_2026-11-25.md](./GTA6_CAPABILITY_MATRIX_2026-11-25.md) with an [uncertainty register](./UNCERTAINTY_REGISTER_2026-11-25.md); see also the 25-Nov tool-snapshot addendum below for the TOC-decryptor tool class and the Leonida takedown cause.

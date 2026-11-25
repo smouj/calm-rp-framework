@@ -35,6 +35,13 @@ Priority sources include:
 3. Take-Two first-party publications when directly relevant to GTA VI platform/runtime planning;
 4. first-party platform-holder documentation when it materially affects supported platforms or integration constraints.
 
+Watch-set additions, 2026-11-25 (research-repository layer, for discovery and change detection only — their content stays `PUBLIC_OBSERVED` or below):
+
+- `TrinitronClient/GTA6-Asset-Info` (SixNG-team format spec; pin the reviewed revision when citing);
+- `Ahmet-Dedeler/awesome-gta6-reverse-engineering` (ecosystem index; recheck before citing any project it lists);
+- enforcement watch: new Take-Two DMCA takedowns or legal statements affecting reverse-engineering projects (record; assess citing-risk of affected repositories);
+- the capability matrix [`GTA6_CAPABILITY_MATRIX_2026-11-25.md`](./GTA6_CAPABILITY_MATRIX_2026-11-25.md) is the canonical destination for engine-knowledge findings; the [uncertainty register](./UNCERTAINTY_REGISTER_2026-11-25.md) tracks what remains unknown.
+
 High-quality secondary reporting may be used to locate a primary source, but it must not independently promote a GTA VI runtime claim to `CONFIRMED` when first-party evidence should exist.
 
 Rumors, leaks, stolen/private material, unverifiable screenshots and speculative social posts are not implementation evidence.
