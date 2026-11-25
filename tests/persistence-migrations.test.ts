@@ -33,6 +33,32 @@ afterAll(async () => {
 });
 
 describe('migration runner (embedded PostgreSQL)', () => {
+  it('rolls back the schema when migration bookkeeping fails', async () => {
+    const session = await freshDatabase(await newScratchDirectory());
+    const runner = new MigrationRunner(session);
+    await runner.applied();
+    await session.executeScript(`
+      CREATE FUNCTION reject_migration_bookkeeping() RETURNS trigger AS $
+      BEGIN
+        RAISE EXCEPTION 'simulated bookkeeping failure';
+      END;
+      $ LANGUAGE plpgsql;
+      CREATE TRIGGER reject_migration_bookkeeping
+        BEFORE INSERT ON schema_migrations
+        FOR EACH ROW EXECUTE FUNCTION reject_migration_bookkeeping();
+    `);
+
+    await expect(runner.applyDirectory(MIGRATIONS_DIR)).rejects.toThrow(
+      'simulated bookkeeping failure',
+    );
+    const tables = await session.query(
+      `SELECT table_name FROM information_schema.tables
+         WHERE table_schema = 'public' AND table_name = 'accounts'`,
+    );
+    expect(tables.rows).toEqual([]);
+    expect(await runner.applied()).toEqual([]);
+  });
+
   it('applies every pending migration in file order, exactly once', async () => {
     const session = await freshDatabase(await newScratchDirectory());
     const runner = new MigrationRunner(session);
