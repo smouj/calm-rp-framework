@@ -5,6 +5,9 @@ export type CharacterId = Brand<string, 'CharacterId'>;
 export type PlayerId = Brand<string, 'PlayerId'>;
 export type RequestId = Brand<string, 'RequestId'>;
 
+export type { Uuid } from './ids.js';
+export { isUuid, newUuid, requireUuid } from './ids.js';
+
 export interface Clock {
   now(): Date;
 }
