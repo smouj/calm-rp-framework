@@ -16,15 +16,15 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 ## 1. What the public code demonstrates
 
-| Observation | Public evidence | Verified scope | CALM consequence |
-| --- | --- | --- | --- |
-| The Xbox title's x86-64 image is loaded in a Windows host process | Leonida `leonida-loader`; VIctory README | Experimental **game execution** | Define a *versioned compatibility profile* only when legitimate platform interfaces exist; not a server API |
-| Platform APIs are supplied by console-service implementations | Leonida `xgameruntime.rs`: interface/provider lookup and offline service substitutes | **Emulated console environment**, not engine script exports | Keep CALM domains independent of console service IDs and method tables |
-| File and package operations are virtualized into host storage | Leonida `docs/architecture.md` and `leonida-hle` | Offline loading/saves/streaming | Durable CALM state belongs in PostgreSQL, not a title save directory |
-| Networking is intentionally offline | Leonida `xnetworking.rs`: offline connectivity; `net.rs`: loopback-only policy; VIctory README: title cannot reach network | **No demonstrated multiplayer transport** | RT-001, RT-005, RT-006, RT-007, RT-009 and RT-010 remain UNKNOWN |
-| GPU programs and textures require host adaptation | Leonida `leonida-gpu`, `leonida-shader`, `leonida-formats` | Experimental graphics compatibility, not gameplay scripting | Do **not** include graphics conversions or extracted format data in CALM server packages |
-| Title-specific build mapping is separated from platform code | Leonida `leonida-game/src/lib.rs` contains `KNOWN_BUILDS: &[]` in the reviewed commit | Design boundary exists; **no supported build declared in that array** | Version each future authorized adapter explicitly; do not guess offsets or rely on binary hooks |
-| World/intro rendering has been reported | Leonida and VIctory READMEs | Self-reported incomplete single-player rendering | No evidence of spawning controlled multiplayer entities or running server-side resources |
+| Observation                                                       | Public evidence                                                                                                            | Verified scope                                                        | CALM consequence                                                                                            |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| The Xbox title's x86-64 image is loaded in a Windows host process | Leonida `leonida-loader`; VIctory README                                                                                   | Experimental **game execution**                                       | Define a *versioned compatibility profile* only when legitimate platform interfaces exist; not a server API |
+| Platform APIs are supplied by console-service implementations     | Leonida `xgameruntime.rs`: interface/provider lookup and offline service substitutes                                       | **Emulated console environment**, not engine script exports           | Keep CALM domains independent of console service IDs and method tables                                      |
+| File and package operations are virtualized into host storage     | Leonida `docs/architecture.md` and `leonida-hle`                                                                           | Offline loading/saves/streaming                                       | Durable CALM state belongs in PostgreSQL, not a title save directory                                        |
+| Networking is intentionally offline                               | Leonida `xnetworking.rs`: offline connectivity; `net.rs`: loopback-only policy; VIctory README: title cannot reach network | **No demonstrated multiplayer transport**                             | RT-001, RT-005, RT-006, RT-007, RT-009 and RT-010 remain UNKNOWN                                            |
+| GPU programs and textures require host adaptation                 | Leonida `leonida-gpu`, `leonida-shader`, `leonida-formats`                                                                 | Experimental graphics compatibility, not gameplay scripting           | Do **not** include graphics conversions or extracted format data in CALM server packages                    |
+| Title-specific build mapping is separated from platform code      | Leonida `leonida-game/src/lib.rs` contains `KNOWN_BUILDS: &[]` in the reviewed commit                                      | Design boundary exists; **no supported build declared in that array** | Version each future authorized adapter explicitly; do not guess offsets or rely on binary hooks             |
+| World/intro rendering has been reported                           | Leonida and VIctory READMEs                                                                                                | Self-reported incomplete single-player rendering                      | No evidence of spawning controlled multiplayer entities or running server-side resources                    |
 
 **Technical distinction:** a title calling an Xbox SDK API is **not** the same thing as a community server being allowed or able to call a GTA VI gameplay API. Even a flawless, network-capable PC execution layer would not automatically provide player synchronization, script execution, entity ownership or server hosting.
 
@@ -32,16 +32,16 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 The minimum gate from `docs/server/RUNTIME_REQUIREMENTS.md` is:
 
-| Gate | External GTA VI contract needed | Is it established by Leonida/VIctory? |
-| --- | --- | --- |
-| RT-001 | Authorized community-server or creator runtime | **No** |
-| RT-003 | Documented scripting / execution model | **No** |
-| RT-005 | Trusted player/account identifiers and authentication | **No** |
-| RT-006 | Client-to-server events/RPC and trust boundaries | **No** |
-| RT-007 | Server-to-client state/event delivery | **No** |
-| RT-010 | Player connection/disconnection lifecycle | **No** |
-| RT-008 / RT-009 | Entity creation, ownership and replication for actual gameplay | **No** |
-| RT-015 / RT-016 / RT-017 | UI, voice and resource packaging for those features | **No** |
+| Gate                     | External GTA VI contract needed                                | Is it established by Leonida/VIctory? |
+| ------------------------ | -------------------------------------------------------------- | ------------------------------------- |
+| RT-001                   | Authorized community-server or creator runtime                 | **No**                                |
+| RT-003                   | Documented scripting / execution model                         | **No**                                |
+| RT-005                   | Trusted player/account identifiers and authentication          | **No**                                |
+| RT-006                   | Client-to-server events/RPC and trust boundaries               | **No**                                |
+| RT-007                   | Server-to-client state/event delivery                          | **No**                                |
+| RT-010                   | Player connection/disconnection lifecycle                      | **No**                                |
+| RT-008 / RT-009          | Entity creation, ownership and replication for actual gameplay | **No**                                |
+| RT-015 / RT-016 / RT-017 | UI, voice and resource packaging for those features            | **No**                                |
 
 No source above establishes a Rockstar-approved way for third parties to run GTA VI roleplay servers. The official GTA V/Cfx model cannot be carried across as a confirmed GTA VI contract.
 
@@ -59,13 +59,13 @@ This is *not* an invention of GTA VI natives. It is a set of **CALM-owned, engin
 
 ## 4. Research-to-code decision table
 
-| Finding | Action now | Deferred until an authorized API exists |
-| --- | --- | --- |
-| Standalone console services, loader and save systems | Preserve a separate `adapters/gta6` boundary and test version/capability failures | Any GTA VI-specific loader/hooking and actual game process communication |
-| Offline networking in Leonida/VIctory | Implement session provenance, command authorization and event schemas in CALM's simulator | Network/replication adapter against a defined public server protocol |
-| Complex game asset streaming | Keep synthetic item/model descriptors, not game assets | Translate documented entity/resource identifiers only through licensed APIs |
-| Persisted RP ownership, independent of game process | Complete F2 inventory, vehicles-as-data and restart tests | Actual vehicle spawn, interior use, doors, props and visual attachments |
-| Shared gameplay with future online players | Test parallel commands, reconciliation and anti-duplication against real PostgreSQL | Real player connection/disconnection, authority transfer, interpolation and streaming |
+| Finding                                              | Action now                                                                                | Deferred until an authorized API exists                                               |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Standalone console services, loader and save systems | Preserve a separate `adapters/gta6` boundary and test version/capability failures         | Any GTA VI-specific loader/hooking and actual game process communication              |
+| Offline networking in Leonida/VIctory                | Implement session provenance, command authorization and event schemas in CALM's simulator | Network/replication adapter against a defined public server protocol                  |
+| Complex game asset streaming                         | Keep synthetic item/model descriptors, not game assets                                    | Translate documented entity/resource identifiers only through licensed APIs           |
+| Persisted RP ownership, independent of game process  | Complete F2 inventory, vehicles-as-data and restart tests                                 | Actual vehicle spawn, interior use, doors, props and visual attachments               |
+| Shared gameplay with future online players           | Test parallel commands, reconciliation and anti-duplication against real PostgreSQL       | Real player connection/disconnection, authority transfer, interpolation and streaming |
 
 **Prohibited shortcuts:** importing GPL code into the MIT core without license review, adding content from a leaked title build, treating undocumented game offsets as a server API, fabricating native function names, or changing an RT state to CONFIRMED based on a compatibility layer.
 
