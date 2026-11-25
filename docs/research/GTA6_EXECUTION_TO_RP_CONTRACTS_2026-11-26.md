@@ -72,7 +72,6 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 **CALM consequence:** No evidence of spawning controlled multiplayer entities or running server-side resources
 
-
 **Technical distinction:** a title calling an Xbox SDK API is **not** the same thing as a community server being allowed or able to call a GTA VI gameplay API. Even a flawless, network-capable PC execution layer would not automatically provide player synchronization, script execution, entity ownership or server hosting.
 
 ## 2. What must be demonstrated before CALM binds to GTA VI
@@ -127,7 +126,6 @@ The minimum gate from `docs/server/RUNTIME_REQUIREMENTS.md` is:
 
 **Is it established by Leonida/VIctory?:** **No**
 
-
 No source above establishes a Rockstar-approved way for third parties to run GTA VI roleplay servers. The official GTA V/Cfx model cannot be carried across as a confirmed GTA VI contract.
 
 ## 3. Architecture that follows from this evidence
@@ -173,7 +171,6 @@ This is *not* an invention of GTA VI natives. It is a set of **CALM-owned, engin
 **Action now:** Test parallel commands, reconciliation and anti-duplication against real PostgreSQL
 
 **Deferred until an authorized API exists:** Real player connection/disconnection, authority transfer, interpolation and streaming
-
 
 **Prohibited shortcuts:** importing GPL code into the MIT core without license review, adding content from a leaked title build, treating undocumented game offsets as a server API, fabricating native function names, or changing an RT state to CONFIRMED based on a compatibility layer.
 
