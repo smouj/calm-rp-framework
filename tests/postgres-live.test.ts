@@ -180,6 +180,37 @@ maybeLive('live PostgreSQL — persistence, concurrency and recovery', () => {
     expect(await ledger.getCharacterBalance(alex.id)).toBe(250n);
   }, 60_000);
 
+  it('rejects direct SQL edits and deletes of committed financial history', async () => {
+    const characters = new CharacterService(new PgCharacterRepository(sql));
+    const ledger = new LedgerService(
+      new PgFinancialAccountRepository(sql),
+      new PgLedgerRepository(sql),
+      directoryFor(new PgCharacterRepository(sql)),
+    );
+    const alex = await characters.create(playerOne, { firstName: 'Audit', lastName: 'Trail' });
+    const receipt = await ledger.grant(admin, {
+      requestId: requestId('append-only'),
+      toCharacterId: alex.id,
+      amountMinor: 50n,
+    });
+    const rows = await sql.query(
+      'SELECT id FROM ledger_entries WHERE transaction_id = $1::uuid LIMIT 1',
+      [receipt.transactionId],
+    );
+    const entryId = String(rows.rows[0]?.['id']);
+
+    await expect(
+      sql.query('UPDATE ledger_entries SET amount_minor = 999 WHERE id = $1::uuid', [entryId]),
+    ).rejects.toThrow('append-only');
+    await expect(
+      sql.query('DELETE FROM ledger_entries WHERE id = $1::uuid', [entryId]),
+    ).rejects.toThrow('append-only');
+    await expect(
+      sql.query('DELETE FROM ledger_transactions WHERE id = $1::uuid', [receipt.transactionId]),
+    ).rejects.toThrow('append-only');
+    expect(await ledger.getCharacterBalance(alex.id)).toBe(50n);
+  }, 60_000);
+
   it('authenticates server-issued sessions over the live server', async () => {
     const sessions = new SessionService(new PgSessionRepository(sql));
     const issued = await sessions.issue({
