@@ -45,7 +45,7 @@ const worldFactories: readonly [label: string, factory: () => Promise<WorldHandl
       return {
         store,
         service: new CharacterService(store, { clock: new MutableClock(START) }),
-        dispose: database.close,
+        dispose: database.dispose,
       };
     },
   ],
@@ -201,7 +201,7 @@ describe('persistent characters — restart survival (PostgreSQL)', () => {
 
     expect(recovered).toEqual(created);
     expect(listed).toEqual([created]);
-    await reopened.close();
+    await reopened.dispose();
   });
 
   it('keeps retirement durable across restarts', async () => {
@@ -224,6 +224,6 @@ describe('persistent characters — restart survival (PostgreSQL)', () => {
 
     expect((await after.get(created.id))?.retiredAt).not.toBeNull();
     expect(await after.listOwn(principalOne)).toEqual([]);
-    await reopened.close();
+    await reopened.dispose();
   });
 });

@@ -1,4 +1,4 @@
-import { mkdtemp } from 'node:fs/promises';
+import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
@@ -9,22 +9,29 @@ import { MigrationRunner, PgliteSession } from '@gta6-rp/persistence';
 
 const MIGRATIONS_DIR = resolve(process.cwd(), 'infrastructure/database/migrations');
 
-const opened: PgliteSession[] = [];
+const opened: { sql: PgliteSession; directory: string }[] = [];
 
-async function freshDatabase(): Promise<PgliteSession> {
-  const dir = await mkdtemp(join(tmpdir(), 'calm-migrations-'));
-  const session = new PgliteSession(new PGlite(dir));
-  opened.push(session);
-  return session;
+async function freshDatabase(directory: string): Promise<PgliteSession> {
+  const sql = new PgliteSession(new PGlite(directory));
+  opened.push({ sql, directory });
+  return sql;
+}
+
+async function newScratchDirectory(): Promise<string> {
+  return mkdtemp(join(tmpdir(), 'calm-migrations-'));
 }
 
 afterAll(async () => {
-  await Promise.all(opened.map((session) => session.close().catch(() => undefined)));
+  await Promise.all(
+    opened.map(({ sql, directory }) =>
+      sql.close().catch(() => undefined).then(() => rm(directory, { recursive: true, force: true })),
+    ),
+  );
 });
 
 describe('migration runner (embedded PostgreSQL)', () => {
   it('applies every pending migration in file order, exactly once', async () => {
-    const session = await freshDatabase();
+    const session = await freshDatabase(await newScratchDirectory());
     const runner = new MigrationRunner(session);
 
     const applied = await runner.applyDirectory(MIGRATIONS_DIR);
@@ -43,7 +50,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
   });
 
   it('is idempotent: a second run applies nothing and lists what is applied', async () => {
-    const session = await freshDatabase();
+    const session = await freshDatabase(await newScratchDirectory());
     const runner = new MigrationRunner(session);
     await runner.applyDirectory(MIGRATIONS_DIR);
 
@@ -55,14 +62,12 @@ describe('migration runner (embedded PostgreSQL)', () => {
   });
 
   it('never reapplies migrations after a full restart of the database engine', async () => {
-    const dir = await mkdtemp(join(tmpdir(), 'calm-restart-'));
-    const first = new PgliteSession(new PGlite(dir));
+    const directory = await newScratchDirectory();
+    const first = await freshDatabase(directory);
     await new MigrationRunner(first).applyDirectory(MIGRATIONS_DIR);
     await first.close();
 
-    const reopened = new PGlite(dir);
-    const second = new PgliteSession(reopened);
-    opened.push(second);
+    const second = await freshDatabase(directory);
     const applied = await new MigrationRunner(second).applyDirectory(MIGRATIONS_DIR);
 
     expect(applied).toEqual([]);
@@ -73,13 +78,12 @@ describe('migration runner (embedded PostgreSQL)', () => {
   });
 
   it('seeds the reserved treasury account exactly once across restarts', async () => {
-    const dir = await mkdtemp(join(tmpdir(), 'calm-treasury-'));
-    const first = new PgliteSession(new PGlite(dir));
+    const directory = await newScratchDirectory();
+    const first = await freshDatabase(directory);
     await new MigrationRunner(first).applyDirectory(MIGRATIONS_DIR);
     await first.close();
 
-    const reopened = new PgliteSession(new PGlite(dir));
-    opened.push(reopened);
+    const reopened = await freshDatabase(directory);
     const accounts = await reopened.query('SELECT count(*)::int AS n FROM financial_accounts');
 
     expect(accounts.rows[0]).toEqual({ n: 1 });

@@ -33,7 +33,7 @@ const storeFactories: readonly [label: string, factory: () => Promise<StoreHandl
       const accounts = new PgAccountRepository(database.sql);
       await accounts.ensureAccount(accountOne);
       await accounts.ensureAccount(accountTwo);
-      return { store: new PgSessionRepository(database.sql), dispose: database.close };
+      return { store: new PgSessionRepository(database.sql), dispose: database.dispose };
     },
   ],
 ];
@@ -201,7 +201,7 @@ describe('authenticated sessions — restart survival (PostgreSQL)', () => {
 
     expect(resolved).toMatchObject({ accountId: accountOne, capabilities: ['economy.grant'] });
     expect(resolved?.sessionId).toBe(issued.session.sessionId);
-    await reopened.close();
+    await reopened.dispose();
   });
 
   it('keeps revocation durable across a restart', async () => {
@@ -224,6 +224,6 @@ describe('authenticated sessions — restart survival (PostgreSQL)', () => {
     });
 
     await expect(afterRestart.authenticate(issued.token)).resolves.toBeNull();
-    await reopened.close();
+    await reopened.dispose();
   });
 });

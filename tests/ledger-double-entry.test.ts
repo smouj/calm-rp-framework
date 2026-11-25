@@ -87,7 +87,7 @@ const worldFactories: readonly [label: string, factory: () => Promise<MoneyWorld
         accountStore,
         ledgerStore,
         clock,
-        dispose: database.close,
+        dispose: database.dispose,
       };
     },
   ],
@@ -416,6 +416,6 @@ describe('double-entry ledger — restart survival (PostgreSQL)', () => {
     // A new command after the restart continues the ledger where it left off.
     await ledger2.grant(admin, { requestId: 'run2-grant', toCharacterId: morgan.id, amountMinor: 50n });
     expect(await ledger2.getCharacterBalance(morgan.id)).toBe(beforeBalances[1]! + 50n);
-    await reopened.close();
+    await reopened.dispose();
   });
 });
