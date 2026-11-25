@@ -26,3 +26,5 @@ export { PgAccountRepository } from './accounts.js';
 export type { AccountRow } from './accounts.js';
 export { PgSessionRepository } from './sessions.js';
 export { PgCharacterRepository } from './characters.js';
+export { PgFinancialAccountRepository } from './financial-accounts.js';
+export { PgLedgerRepository } from './ledger.js';

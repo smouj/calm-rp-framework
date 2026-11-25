@@ -23,6 +23,11 @@ CREATE UNIQUE INDEX sessions_token_hash_idx ON sessions(token_hash);
 -- arguments can be rejected as a conflict instead of silently deduplicated.
 ALTER TABLE ledger_transactions ADD COLUMN command_fingerprint TEXT;
 
+-- One financial account of each kind per owner: the lazy account
+-- provisioning in the repositories relies on this unique arbiter.
+CREATE UNIQUE INDEX financial_accounts_owner_kind_idx
+  ON financial_accounts(owner_character_id, kind);
+
 -- Reserved system rows for double-entry minting: every grant debits the
 -- treasury, so no balance is ever created outside a balanced transaction.
 INSERT INTO accounts (id) VALUES ('00000000-0000-4000-8000-0000000000f1')

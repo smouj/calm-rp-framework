@@ -32,6 +32,22 @@ export type {
   PersistentCharacter,
 } from './characters.js';
 
+export { InMemoryFinancialAccountStore, InMemoryLedgerStore, LedgerService } from './ledger.js';
+export type {
+  CharacterOwnershipDirectory,
+  FinancialAccount,
+  FinancialAccountKind,
+  FinancialAccountStore,
+  GrantMoneyCommand,
+  LedgerEntryLine,
+  LedgerLeg,
+  LedgerStore,
+  PostTransactionCommand,
+  PostedTransaction,
+  TransferMoneyCommand,
+  TransferReceipt,
+} from './ledger.js';
+
 export interface Clock {
   now(): Date;
 }
