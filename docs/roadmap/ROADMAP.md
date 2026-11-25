@@ -16,6 +16,8 @@ The first tangible goal: **two simulated characters hold jobs, get paid, buy, st
 
 **Acceptance met:** this documentation batch, recorded in [ADR-0007](../adr/0007-calm-essentials-framework-scope.md).
 
+**Scope note (2026-11-25):** F0 was a documentation, research and framing batch — it did not refactor the code. The runtime core remains the experimental in-memory reference without integrated persistence; that work is exactly what F1 delivers (see the present-vs-missing audit in [PROJECT_SCOPE.md](../PROJECT_SCOPE.md)).
+
 ## F1 — Persistence and characters
 
 **Goal:** connect accounts, characters and sessions to PostgreSQL and survive restarts.

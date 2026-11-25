@@ -9,7 +9,7 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 ## Línea base verificada (25/11/2026)
 
 - **Pages está publicado y sirviendo**: `https://smouj.github.io/calm-rp-framework/`, `/legal.html` y los recursos referenciados respondieron HTTP 200 (comprobación directa en vivo).
-- **El sitio en vivo sirve el contenido anterior**: aún muestra la demo «Laboratorio» retirada, porque el commit local que la sustituye por la panorámica de ingeniería verificada aún no se ha fusionado ni publicado.
+- **El sitio en vivo sirve el contenido actual de CALM Essentials** (re-verificado el 25/11/2026 mediante una fetch directa de `/index.html` con rompe-cache): la página publicada muestra la sección `03 / INGENIERÍA` con el encuadre del framework y ya no queda sección «Laboratorio». Una primera fetch sin rompe-cache devolvió aún la demo retirada desde una caché intermedia; método de verificación ante futuras dudas de despliegue: repetir la fetch con rompe-cache antes de declarar fallido un despliegue.
 - **La coherencia de paleta se mantiene**: cada token de color de `site/assets/styles.css` coincide con la paleta documentada en `docs/branding/PROJECT_IDENTITY.md`; la paleta se re-deriva por muestreo de píxeles del banner social oficial del propietario, y el navy de la banda del banner está verificado por píxel como `#101020`.
 - **La estrella del banner es blanca, inclinada y de cinco puntas** (punta larga hacia la derecha): verificado por análisis de píxeles y por una descripción independiente con modelo de visión.
 - **El set de iconos divergía del banner antes de este lote**: `favicon.svg` y `logo.svg` usaban una estrella salmón rellena y texto Georgia, no la estrella del banner.

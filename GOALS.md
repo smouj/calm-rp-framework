@@ -9,7 +9,7 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 ## Verified baseline (2026-11-25)
 
 - **Pages is published and serving**: `https://smouj.github.io/calm-rp-framework/`, `/legal.html` and the referenced assets returned HTTP 200 (direct live checks).
-- **The live site serves the previous content**: it still shows the retired "Laboratorio" demo because the local commit replacing it with the verified engineering overview has not been merged or published yet.
+- **The live site serves the current CALM Essentials content** (re-verified 2026-11-25 by a direct, cache-busted fetch of `/index.html`): the published page shows the `03 / INGENIERÍA` section and the framework framing, and no `Laboratorio` section remains. A first, un-busted fetch still returned the retired demo from an intermediate cache, so verification method for future deploy doubts: re-fetch with a cache-buster before declaring a deployment failed.
 - **Palette coherence holds**: every color token in `site/assets/styles.css` equals the documented palette in `docs/branding/PROJECT_IDENTITY.md`; the palette is re-derived by pixel sampling from the owner's official social banner, and the banner band navy is pixel-verified `#101020`.
 - **The banner star is white, tilted and five-pointed** (long point to the right): verified by pixel analysis and by an independent vision-model description of the banner.
 - **The icon set diverged from the banner before this batch**: `favicon.svg` and `logo.svg` used a filled salmon star and Georgia serif text instead of the banner star.
