@@ -42,7 +42,7 @@ artifact uploaded successfully. That is an incompatibility in the v4 Pages actio
 `configure-pages` to v6.0.0, `upload-pages-artifact` to v5.0.0 and `deploy-pages` to v5.0.1 (PR #35)
 fixed it; the next run completed with `success`.
 
-### Transient deploy failures (observed 2026-11-24)
+### Transient deploy failures (observed 2026-11-24 and 2026-11-25)
 
 A push can still fail at the `Deploy to GitHub Pages` step with the same _"No artifacts named
 github-pages were found"_ message even when the artifact uploaded successfully moments earlier in
@@ -52,6 +52,14 @@ transient GitHub API inconsistency, not a site or workflow defect: the action's 
 check githubstatus.com and re-run the deployment, or simply let the next `site/**` push deploy —
 the two immediately following runs completed with `success`. The site-integrity gate still runs
 before upload, so this failure mode says nothing about the published content.
+
+The same mode recurred on 2026-11-25 after the CALM Essentials merge: [run 45516406374](https://github.com/smouj/calm-rp-framework/actions/runs/45516406374)
+uploaded and finalized the artifact (`Upload site` → success; `Validate static site files` →
+success) and then failed at `Deploy to GitHub Pages`. Re-running through the API was not
+possible with the maintenance token (fine-grained PAT without `actions:write`), so the
+documented remediation applies: the next `site/**` push to `main` redeploys — this very
+update is that push, and its run is expected to complete the publication of the CALM
+Essentials content batch.
 
 ## Re-verifying after a change
 

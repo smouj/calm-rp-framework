@@ -42,7 +42,7 @@ Visitar `http://localhost:8080`. Revisar manualmente los enlaces y acciones en e
 
 [site/legal.html](./legal.html) se publica como parte de la web. Permite consultar no afiliación, marcas, política de GTA VI, límites de interoperabilidad y funcionamiento básico de la web, incluso si el repositorio de código permanece privado.
 
-**Estado verificado 25/11/2026:** el sitio está publicado en `https://smouj.github.io/calm-rp-framework/` (HTTP 200 comprobado en `/`, `/legal.html` y los recursos de `assets/`). El lote de marca oficial (banner, iconos, paleta) se fusionó en #45 y se desplegó con éxito. La actualización de contenido de CALM Essentials (mapa de módulos, hoja de ruta F0–F5, nuevas tarjetas de investigación) se publica por el mismo disparador `site/**` sobre `main`.
+**Estado verificado 25/11/2026:** el sitio está publicado en `https://smouj.github.io/calm-rp-framework/` (HTTP 200 comprobado en `/`, `/legal.html` y los recursos de `assets/`). El lote de marca oficial (banner, iconos, paleta) se fusionó en #45 y se desplegó con éxito. La actualización de contenido de CALM Essentials (mapa de módulos, hoja de ruta F0–F5, nuevas tarjetas de investigación) sufrió el modo de fallo transitorio documentado en `docs/operations/GITHUB_PAGES_DEPLOYMENT.md` (artefacto subido, paso de despliegue fallido) y se publica con el siguiente `site/**` sobre `main`.
 
 ## Identidad
 
