@@ -61,13 +61,7 @@ export function inspectGta6RuntimeEvidence(
     if (candidates.length === 0) {
       withoutFirstPartyContract.push(requirement);
       withoutConformanceTest.push(requirement);
-    } else if (
-      !candidates.some(
-        (entry) =>
-          typeof entry.conformanceTestId === 'string' &&
-          entry.conformanceTestId.trim().length > 0,
-      )
-    ) {
+    } else if (!candidates.some((entry) => entry.conformanceTestId?.trim())) {
       withoutConformanceTest.push(requirement);
     }
   }
