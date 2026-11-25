@@ -37,19 +37,12 @@ describe('migration runner (embedded PostgreSQL)', () => {
     const session = await freshDatabase(await newScratchDirectory());
     const runner = new MigrationRunner(session);
     await runner.applied();
-    await session.executeScript(`
-      CREATE FUNCTION reject_migration_bookkeeping() RETURNS trigger AS $
-      BEGIN
-        RAISE EXCEPTION 'simulated bookkeeping failure';
-      END;
-      $ LANGUAGE plpgsql;
-      CREATE TRIGGER reject_migration_bookkeeping
-        BEFORE INSERT ON schema_migrations
-        FOR EACH ROW EXECUTE FUNCTION reject_migration_bookkeeping();
-    `);
+    await session.query(
+      'ALTER TABLE schema_migrations ADD CONSTRAINT reject_migration_bookkeeping CHECK (false)',
+    );
 
     await expect(runner.applyDirectory(MIGRATIONS_DIR)).rejects.toThrow(
-      'simulated bookkeeping failure',
+      'reject_migration_bookkeeping',
     );
     const tables = await session.query(
       `SELECT table_name FROM information_schema.tables
