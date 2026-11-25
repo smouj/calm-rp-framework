@@ -35,7 +35,10 @@ export type {
   ServerProjection,
 } from './runtime-port.js';
 
-export { GTA6_MINIMUM_RUNTIME_REQUIREMENTS, inspectGta6RuntimeEvidence } from './runtime-evidence.js';
+export {
+  GTA6_MINIMUM_RUNTIME_REQUIREMENTS,
+  inspectGta6RuntimeEvidence,
+} from './runtime-evidence.js';
 export type {
   Gta6EvidenceAssessment,
   Gta6EvidenceOrigin,
