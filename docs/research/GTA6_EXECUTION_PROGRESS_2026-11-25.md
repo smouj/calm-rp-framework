@@ -18,6 +18,16 @@ There is real technical progress in executing GTA VI on PC. For CALM Essentials 
 
 The tracker's earlier omonkey/Hyphen figures could not be re-verified directly and must not be used as an architectural input, exactly like the capability matrix's rules for unverified claims.
 
+## Additional reviewed fork: myokex/victory-amd (2026-11-25)
+
+**Source:** [`myokex/victory-amd`, branch `victory-amd`](https://github.com/myokex/victory-amd/tree/victory-amd), pinned at [`070df424b0967dca422478a1f12afaaf6736ebdd`](https://github.com/myokex/victory-amd/commit/070df424b0967dca422478a1f12afaaf6736ebdd) on 2026-11-25. **Classification:** `PUBLIC_OBSERVED` — code inspected and README claims reviewed, but measurements were **not** independently reproduced by CALM.
+
+- This is an AMD-oriented fork of `fxceless/victory-fork` (itself a VIctory fork), licensed GPL-3.0-or-later. The author reports booting the prologue and moving a character at **2–3 FPS** on a single Windows 11 machine with a Radeon RX 7800 XT; intermittent missing walls, white frames and a `DXGI_ERROR_DEVICE_HUNG` remain. These are developer-reported, single-machine measurements, **not** a general compatibility claim.
+- The current fork adds [cross-view physical-page write tracking](https://github.com/myokex/victory-amd/commit/c6dc4d8c9fc80e8d2090f94287827cd3ffc0ac95) and [post-upload texture rechecks](https://github.com/myokex/victory-amd/commit/1daf3fd1ff5ff7a838b42c6287b3df331164cf02). Both address texture/memory correctness, not a scripting or server contract.
+- The checked source under `crates/victory-hle/src/modules/net.rs` and `xnetworking.rs` deliberately restricts external network access; `victory-game/src/lib.rs` has an empty `KNOWN_BUILDS` catalog, not an RP function registry. Neither file provides GTA VI player/entity APIs or a resource execution interface.
+- `docs/fork-ray-tracing.md` reports shader translation progress and explicitly says end-to-end ray-traced lighting is **not running**; the work does not enable any GTA VI `RT-*` requirement.
+- **CALM impact:** add the fork to the external research watch for interface/format findings and license changes only. No GPL code, proprietary data, leaked game files or runtime assumptions enter this MIT repository; F5 remains blocked.
+
 ## What this changes for CALM Essentials
 
 The obstacle for CALM Essentials is not only running GTA VI on PC — it is obtaining a **resource-execution interface that can be used legally and kept stable**. Concretely:
