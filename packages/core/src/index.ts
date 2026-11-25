@@ -25,6 +25,13 @@ export type {
   SessionStore,
 } from './sessions.js';
 
+export { CharacterService, InMemoryCharacterStore } from './characters.js';
+export type {
+  CharacterStore,
+  CreateCharacterCommand,
+  PersistentCharacter,
+} from './characters.js';
+
 export interface Clock {
   now(): Date;
 }

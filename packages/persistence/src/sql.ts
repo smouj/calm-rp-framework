@@ -42,6 +42,7 @@ export interface SqlSession extends SqlExecutor, SqlScriptRunner {
 }
 
 const UNIQUE_VIOLATION = '23505';
+const FOREIGN_KEY_VIOLATION = '23503';
 
 /** Detect a PostgreSQL unique-constraint violation across driver wrappers. */
 export function isUniqueViolation(error: unknown): boolean {
@@ -51,6 +52,16 @@ export function isUniqueViolation(error: unknown): boolean {
   }
   const message = error instanceof Error ? error.message : String(error);
   return /duplicate key value/i.test(message);
+}
+
+/** Detect a PostgreSQL foreign-key violation across driver wrappers. */
+export function isForeignKeyViolation(error: unknown): boolean {
+  if (typeof error === 'object' && error !== null) {
+    const code = (error as { code?: unknown }).code;
+    if (code === FOREIGN_KEY_VIOLATION) return true;
+  }
+  const message = error instanceof Error ? error.message : String(error);
+  return /violates foreign key constraint/i.test(message);
 }
 
 /** Read one driver-scalar as a BigInt (`bigint` columns come back as text). */

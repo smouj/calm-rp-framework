@@ -12,6 +12,7 @@ export type {
   SqlSession,
 } from './sql.js';
 export {
+  isForeignKeyViolation,
   isUniqueViolation,
   readBigInt,
   readTextOrNull,
@@ -24,3 +25,4 @@ export { PgliteSession } from './pglite.js';
 export { PgAccountRepository } from './accounts.js';
 export type { AccountRow } from './accounts.js';
 export { PgSessionRepository } from './sessions.js';
+export { PgCharacterRepository } from './characters.js';
