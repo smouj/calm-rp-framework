@@ -4,6 +4,7 @@ Significant changes will be recorded here after review and merge. Releases will 
 
 ## Unreleased
 
+- Research: the 25-Nov research pass is published — a GTA VI capability matrix (20 verified RAGE 9 format/engine findings with confidence, method, limits and CALM consequence, plus an 8-row platform-event matrix), an uncertainty register (16 open unknowns with closing triggers), a pattern-by-pattern architecture comparison against FiveM/RedM, QBCore/Mantle, Qbox and ESX, and an evidence-based roadmap revision proposal; the Leonida takedown is verified as a Take-Two DMCA claim against a 3,007-repository network and the watch set gains GTA6-Asset-Info and enforcement actions.
 - Brand: the owner's official 1280×640 social banner is now the README hero in both languages (`site/assets/banner-calm-social.png`) and the Open Graph/Twitter preview (`og-image.png` is that same banner, already the exact social-card ratio).
 - Brand: every surface is re-derived from the social banner palette by pixel sampling — banner navy `#101020`, Miami pink `#F86080` (bright sky tone, AA on navy), deep rose `#B8476A` light accent, banner white `#F8F8F8` — replacing the earlier indigo/salmon set in `styles.css`, `theme-color` metas, README badges and `PROJECT_IDENTITY.md`.
 - Site: both page headers show the official traced star beside an italic `CALM` wordmark instead of the abstract four-bar mark; the star is the same traced geometry as the favicon set.
