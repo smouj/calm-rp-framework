@@ -52,7 +52,7 @@ Additional directly relevant public implementation sources (source-owner claims 
 - **[Ahmet-Dedeler/rage9-re](https://github.com/Ahmet-Dedeler/rage9-re):** public data-format readers; serialized data is not a native API.
 - **ESX Legacy, QBCore and Qbox official code and docs:** publicly documented RP contract changes, deprecations and modular patterns; GTA V ecosystem only; inspect license before reuse.
 
-Watch higher-impact changes before performance claims: GTA VI-specific *authorized* runtime/creator announcements, published client-server API contracts, resource packaging, entity ownership, security policy, platform version requirements, licensing, or evidence that changes CALM's documented assumptions. Plain FPS gains, stars, tracker rankings, routine refactors or unreproducible leaks are **not** sufficient for a repository change.
+Watch higher-impact changes before performance claims: GTA VI-specific _authorized_ runtime/creator announcements, published client-server API contracts, resource packaging, entity ownership, security policy, platform version requirements, licensing, or evidence that changes CALM's documented assumptions. Plain FPS gains, stars, tracker rankings, routine refactors or unreproducible leaks are **not** sufficient for a repository change.
 
 High-quality secondary reporting may be used to locate a primary source, but it must not independently promote a GTA VI runtime claim to `CONFIRMED` when first-party evidence should exist.
 
