@@ -82,7 +82,7 @@ Empty folders are not created ahead of code. Each module lands as a complete uni
 - `packages/persistence`: driver-neutral SQL session (production `pg` pool + embedded-PostgreSQL verification engine), additive migration runner, PostgreSQL repositories for accounts, sessions, characters, financial accounts and the ledger.
 - `adapters/simulator`: deterministic two-character scenario with transfers; a fuller RP cycle is pending.
 - `apps/api`: health-status scaffold.
-- `infrastructure/database`: two additive migrations (bootstrap; sessions, ledger guards, treasury seed, deferred balanced-transaction trigger).
+- `infrastructure/database`: three additive migrations (bootstrap; sessions and ledger guards; append-only ledger history).
 - `adapters/cfx`: FiveM/RedM ecosystem research only, **not** GTA VI integration.
 - `adapters/gta6`: intentionally reserved and **not implemented**.
 

@@ -52,6 +52,43 @@ describe('migration runner (embedded PostgreSQL)', () => {
     expect(await runner.applied()).toEqual([]);
   });
 
+  it('rejects direct edits and deletions of committed ledger history', async () => {
+    const session = await freshDatabase(await newScratchDirectory());
+    await new MigrationRunner(session).applyDirectory(MIGRATIONS_DIR);
+    const transactionId = '00000000-0000-4000-8000-0000000000a1';
+    const entryId = '00000000-0000-4000-8000-0000000000a2';
+    const treasuryId = '00000000-0000-4000-8000-0000000000f3';
+
+    await session.withTransaction(async (executor) => {
+      await executor.query(
+        `INSERT INTO ledger_transactions (id, idempotency_key, command_fingerprint)
+         VALUES ($1::uuid, 'append-test', 'append-test')`,
+        [transactionId],
+      );
+      await executor.query(
+        `INSERT INTO ledger_entries (id, transaction_id, financial_account_id, amount_minor)
+         VALUES ($1::uuid, $2::uuid, $3::uuid, 20),
+                ('00000000-0000-4000-8000-0000000000a3'::uuid, $2::uuid, $3::uuid, -20)`,
+        [entryId, transactionId, treasuryId],
+      );
+    });
+
+    const mutations: readonly [string, readonly string[]][] = [
+      ['UPDATE ledger_entries SET amount_minor = 30 WHERE id = $1::uuid', [entryId]],
+      ['DELETE FROM ledger_entries WHERE id = $1::uuid', [entryId]],
+      ['UPDATE ledger_transactions SET reference = NULL WHERE id = $1::uuid', [transactionId]],
+      ['DELETE FROM ledger_transactions WHERE id = $1::uuid', [transactionId]],
+    ];
+    for (const [sql, params] of mutations) {
+      await expect(session.query(sql, params)).rejects.toThrow('append-only');
+    }
+    const entries = await session.query(
+      'SELECT count(*)::int AS n FROM ledger_entries WHERE transaction_id = $1::uuid',
+      [transactionId],
+    );
+    expect(entries.rows[0]).toEqual({ n: 2 });
+  });
+
   it('applies every pending migration in file order, exactly once', async () => {
     const session = await freshDatabase(await newScratchDirectory());
     const runner = new MigrationRunner(session);
@@ -61,6 +98,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
     expect(applied.map((migration) => migration.name)).toEqual([
       '0001_bootstrap.sql',
       '0002_sessions_ledger_guards.sql',
+      '0003_ledger_append_only.sql',
     ]);
 
     const tables = await session.query(
@@ -80,7 +118,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
 
     expect(second).toEqual([]);
     const recorded = await runner.applied();
-    expect(recorded.map((migration) => migration.name)).toHaveLength(2);
+    expect(recorded.map((migration) => migration.name)).toHaveLength(3);
   });
 
   it('never reapplies migrations after a full restart of the database engine', async () => {

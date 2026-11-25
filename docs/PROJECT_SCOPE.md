@@ -50,7 +50,7 @@ Game-facing scripts, GTA VI client/server synchronization, entity APIs, voice, a
 | Characters  | Persistent creation, recovery and ownership control over PostgreSQL; validated registration                    | Full character lifecycle beyond creation/retirement; multi-character policies |
 | Economy     | Double-entry ledger over PostgreSQL: atomic, balanced, idempotent posting, reserved treasury, concurrency-safe | Inventory-linked economy, salaries and payroll (F3)                           |
 | Inventory   | Definitions, capacity, quantities, transfers, consumption                                                      | Persistence, general containers, metadata, concurrency                        |
-| Database    | Two additive migrations, runner, embedded-PostgreSQL verification engine                                       | Inventory tables (F2), jobs tables (F3)                                       |
+| Database    | Three additive migrations, runner, embedded-PostgreSQL verification engine                                     | Inventory tables (F2), jobs tables (F3)                                       |
 | Simulator   | Deterministic two-character scenario with transfers                                                            | Jobs and a fuller RP cycle on the persistent stack                            |
 | API         | Basic status endpoint                                                                                          | Services, HTTP authentication and public operations                           |
 | Adapters    | Capability and session contracts                                                                               | Full implementations and capability tests                                     |
