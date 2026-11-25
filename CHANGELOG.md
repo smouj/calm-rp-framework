@@ -4,6 +4,8 @@ Significant changes will be recorded here after review and merge. Releases will 
 
 ## Unreleased
 
+- Ops: the CALM Essentials merge hit the documented transient Pages failure (artifact uploaded, `Deploy to GitHub Pages` failed; run 45516406374); the second occurrence is recorded in the deployment doc with the remediation — this `site/**` push republishes the content batch, since the maintenance token cannot re-run workflows.
+
 - Scope: the project is reformulated as **CALM Essentials** (ADR-0007) — an ESX/QBCore-class roleplay framework instead of a FiveM-like platform ambition; `PROJECT_SCOPE.md`, `ARCHITECTURE.md`, the F0–F5 roadmap, both READMEs, both GOALS registers, the docs map and the community site now carry the framework framing, the verified present-vs-missing code audit and the two technical debts for Phase F1 (balanced-ledger invariant, identifier unification).
 - Research: verified PC-execution findings are published — VIctory (world loads, dark world rendering, 0.5–1.8 s/frame, offline by design, GPL-3.0), the fxceless fork (≈2.5–4 fps on an RTX 4070, shadow rendering black), XCL (26,698 shader programs, `kernelx`, `XGameRuntime`'s 396 GDK functions, GPL-2.0-only) and the Take-Two DMCA against the Leonida network (3,007 repositories); none of them is a resource-execution interface and no `RT-*` requirement changes.
 - Research: press-observed GTA VI mechanics (weapon carry limits, trunks, appearance-based identification, fuel, phone/banking, fishing/hunting, nitrous, open activities) are recorded with their evidence class and the CALM design consequences: containers with location-independent ownership, vehicles as persistent entities and incident-based police records.
