@@ -381,11 +381,13 @@ export class InMemoryLedgerStore implements LedgerStore {
     }));
 
     for (const entry of entries) {
-      if (
-        entry.financialAccountId !== TREASURY_ACCOUNT_ID &&
-        this.#sumBalance(entry.financialAccountId) + entry.amountMinor < 0n
-      ) {
+      if (entry.financialAccountId === TREASURY_ACCOUNT_ID) continue;
+      const nextBalance = this.#sumBalance(entry.financialAccountId) + entry.amountMinor;
+      if (nextBalance < 0n) {
         throw new DomainError('INSUFFICIENT_FUNDS', 'Insufficient funds.');
+      }
+      if (nextBalance > MAX_BALANCE) {
+        throw new DomainError('BALANCE_LIMIT', 'Balance exceeds the allowed limit.');
       }
     }
 

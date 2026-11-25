@@ -33,6 +33,25 @@ afterAll(async () => {
 });
 
 describe('migration runner (embedded PostgreSQL)', () => {
+  it('rolls back the schema when migration bookkeeping fails', async () => {
+    const session = await freshDatabase(await newScratchDirectory());
+    const runner = new MigrationRunner(session);
+    await runner.applied();
+    await session.query(
+      'ALTER TABLE schema_migrations ADD CONSTRAINT reject_migration_bookkeeping CHECK (false)',
+    );
+
+    await expect(runner.applyDirectory(MIGRATIONS_DIR)).rejects.toThrow(
+      'reject_migration_bookkeeping',
+    );
+    const tables = await session.query(
+      `SELECT table_name FROM information_schema.tables
+         WHERE table_schema = 'public' AND table_name = 'accounts'`,
+    );
+    expect(tables.rows).toEqual([]);
+    expect(await runner.applied()).toEqual([]);
+  });
+
   it('applies every pending migration in file order, exactly once', async () => {
     const session = await freshDatabase(await newScratchDirectory());
     const runner = new MigrationRunner(session);

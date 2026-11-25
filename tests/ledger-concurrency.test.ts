@@ -208,6 +208,47 @@ for (const [label, createWorld] of worldFactories) {
       await world.dispose();
     });
 
+    it('enforces the balance ceiling for simultaneous incoming credits', async () => {
+      const world = await createWorld();
+      const { alex } = await seededCharacters(world);
+      const treasury = await world.accountStore.treasuryAccount();
+      const destination = await world.accountStore.ensureAccount(alex.id, 'cash');
+      const ceiling = 10_000_000_000_000n;
+      await world.ledgerStore.post({
+        idempotencyKey: 'ceiling:seed',
+        fingerprint: 'ceiling:seed',
+        reference: null,
+        legs: [
+          { financialAccountId: treasury.id, amountMinor: -(ceiling - 100n) },
+          { financialAccountId: destination.id, amountMinor: ceiling - 100n },
+        ],
+      });
+
+      const outcomes = await Promise.allSettled(
+        Array.from({ length: 2 }, (_, index) =>
+          world.ledgerStore.post({
+            idempotencyKey: `ceiling:${index}`,
+            fingerprint: `ceiling:${index}`,
+            reference: null,
+            legs: [
+              { financialAccountId: treasury.id, amountMinor: -75n },
+              { financialAccountId: destination.id, amountMinor: 75n },
+            ],
+          }),
+        ),
+      );
+
+      expect(outcomes.filter((outcome) => outcome.status === 'fulfilled')).toHaveLength(1);
+      for (const outcome of outcomes) {
+        if (outcome.status === 'rejected') {
+          expect(outcome.reason).toBeInstanceOf(DomainError);
+          expect((outcome.reason as DomainError).code).toBe('BALANCE_LIMIT');
+        }
+      }
+      expect(await world.ledgerStore.getBalance(destination.id)).toBe(ceiling - 25n);
+      await world.dispose();
+    });
+
     it('keeps the never-negative invariant under a concurrent overdraft race', async () => {
       const world = await createWorld();
       const { alex, morgan } = await seededCharacters(world);

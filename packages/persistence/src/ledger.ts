@@ -8,19 +8,14 @@ import type {
   Uuid,
 } from '@gta6-rp/core';
 
-import {
-  isUniqueViolation,
-  readBigInt,
-  readTimestamp,
-  type SqlExecutor,
-  type SqlSession,
-} from './sql.js';
+import { readBigInt, readTimestamp, type SqlExecutor, type SqlSession } from './sql.js';
 
 const SELECT_TRANSACTION = `
   SELECT t.id, t.idempotency_key, t.command_fingerprint, t.created_at
     FROM ledger_transactions t`;
 
 const TREASURY_ACCOUNT_ID = '00000000-0000-4000-8000-0000000000f3';
+const MAX_ACCOUNT_BALANCE = 10_000_000_000_000n;
 
 function uuidList(start: number, count: number): string {
   return Array.from({ length: count }, (_, index) => `$${start + index}::uuid`).join(', ');
@@ -84,26 +79,21 @@ export class PgLedgerRepository implements LedgerStore {
       }
 
       const transactionId = newUuid();
-      let inserted: boolean;
-      try {
-        const result = await executor.query(
-          `INSERT INTO ledger_transactions (id, idempotency_key, command_fingerprint, reference)
-             VALUES ($1::uuid, $2, $3, $4) RETURNING id, created_at`,
-          [transactionId, command.idempotencyKey, command.fingerprint, command.reference],
-        );
-        inserted = result.rows.length > 0;
-      } catch (error) {
-        if (isUniqueViolation(error)) {
-          // A concurrent writer posted this idempotency key first.
-          const winner = await loadExisting(executor, command.idempotencyKey);
-          if (winner !== null) {
-            return this.#replayOf(executor, winner, command.fingerprint);
-          }
+      // ON CONFLICT keeps the transaction usable after concurrent identical keys.
+      // Under READ COMMITTED the subsequent SELECT sees the committed winner.
+      const inserted = await executor.query(
+        `INSERT INTO ledger_transactions (id, idempotency_key, command_fingerprint, reference)
+           VALUES ($1::uuid, $2, $3, $4)
+           ON CONFLICT (idempotency_key) DO NOTHING
+           RETURNING id, created_at`,
+        [transactionId, command.idempotencyKey, command.fingerprint, command.reference],
+      );
+      if (inserted.rows.length === 0) {
+        const winner = await loadExisting(executor, command.idempotencyKey);
+        if (winner === null) {
+          throw new DomainError('LEDGER_CONFLICT', 'Concurrent transaction is not visible.');
         }
-        throw error;
-      }
-      if (!inserted) {
-        throw new DomainError('LEDGER_CONFLICT', 'Transaction insert unexpectedly did not run.');
+        return this.#replayOf(executor, winner, command.fingerprint);
       }
 
       const accountIds = [...new Set(command.legs.map((leg) => leg.financialAccountId))].sort();
@@ -141,15 +131,20 @@ export class PgLedgerRepository implements LedgerStore {
       const checkedAccounts = accountIds.filter((id) => id !== TREASURY_ACCOUNT_ID);
       if (checkedAccounts.length > 0) {
         const balances = await executor.query(
-          `SELECT e.financial_account_id AS account_id
+          `SELECT e.financial_account_id AS account_id, SUM(e.amount_minor) AS balance
              FROM ledger_entries e
             WHERE e.financial_account_id IN (${uuidList(1, checkedAccounts.length)})
-            GROUP BY e.financial_account_id
-            HAVING SUM(e.amount_minor) < 0`,
+            GROUP BY e.financial_account_id`,
           checkedAccounts,
         );
-        if (balances.rows.length > 0) {
-          throw new DomainError('INSUFFICIENT_FUNDS', 'Insufficient funds.');
+        for (const row of balances.rows) {
+          const balance = readBigInt(row, 'balance');
+          if (balance < 0n) {
+            throw new DomainError('INSUFFICIENT_FUNDS', 'Insufficient funds.');
+          }
+          if (balance > MAX_ACCOUNT_BALANCE) {
+            throw new DomainError('BALANCE_LIMIT', 'Balance exceeds the allowed limit.');
+          }
         }
       }
       const total = await executor.query(
