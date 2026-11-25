@@ -54,7 +54,7 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 **Verified scope:** Experimental graphics compatibility, not gameplay scripting
 
-**CALM consequence:** Do *_not_* include graphics conversions or extracted format data in CALM server packages
+**CALM consequence:** Do **not** include graphics conversions or extracted format data in CALM server packages
 
 **Observation: Title-specific build mapping is separated from platform code**
 
@@ -72,7 +72,7 @@ These repositories are rapidly changing; the **commit**, not the current default
 
 **CALM consequence:** No evidence of spawning controlled multiplayer entities or running server-side resources
 
-**Technical distinction:** a title calling an Xbox SDK API is *_not_* the same thing as a community server being allowed or able to call a GTA VI gameplay API. Even a flawless, network-capable PC execution layer would not automatically provide player synchronization, script execution, entity ownership or server hosting.
+**Technical distinction:** a title calling an Xbox SDK API is **not** the same thing as a community server being allowed or able to call a GTA VI gameplay API. Even a flawless, network-capable PC execution layer would not automatically provide player synchronization, script execution, entity ownership or server hosting.
 
 ## 2. What must be demonstrated before CALM binds to GTA VI
 
