@@ -8,9 +8,9 @@
 
 # CALM — Roleplay Framework
 
-**Un framework de rol independiente, modular y de código abierto.**
+**CALM Essentials** — un **framework de roleplay** independiente, modular y de código abierto.
 
-CALM es el nombre de trabajo elegido. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
+CALM Essentials es el nombre de trabajo del producto: los sistemas base que un servidor de rol necesita — personajes, economía, inventario, empleos, organizaciones, propiedades, vehículos, permisos y extensiones — en la clase de producto de ESX Legacy y QBCore, desarrollados y probados **sin** el juego y preparados para una **posible futura** integración **autorizada** de GTA VI. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-101020.svg)](./LICENSE)
@@ -31,6 +31,9 @@ CALM es el nombre de trabajo elegido. El repositorio se llama `calm-rp-framework
 El proyecto distingue las funciones oficiales **FiveM/Qbox** de las interfaces aún desconocidas de **GTA VI**. El núcleo de rol incorpora contratos originales y capacidades explícitas del adaptador; las capacidades reales de GTA VI siguen sin verificar.
 
 - [Matriz de funciones, eventos y conceptos técnicos](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
+- [Matriz de capacidades de GTA VI — catálogo verificado de investigación de RAGE 9](./docs/research/GTA6_CAPABILITY_MATRIX_2026-11-25.md)
+- [Avances de ejecución de GTA VI en PC — VIctory, XCL, el DMCA de Leonida y por qué no son una interfaz](./docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md)
+- [Mecánicas de GTA VI observadas por la prensa y consecuencias de diseño](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)
 - [Análisis preliminar de interoperabilidad, licencias y propiedad intelectual](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [Base jurídica: artículos concretos que hacen legal este proyecto](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md)
 - [Verificación local: el gate autoritativo, sin depender del CI alojado](./docs/operations/LOCAL_VERIFICATION.md)
@@ -41,17 +44,22 @@ El proyecto distingue las funciones oficiales **FiveM/Qbox** de las interfaces a
 
 ## Nuestro objetivo
 
-Crear entre todos una **plataforma abierta de roleplay inspirada en las posibilidades de FiveM**, con GTA VI como aspiración a largo plazo.
+Construir **CALM Essentials**: un framework de roleplay de desarrollo abierto que aporta los sistemas que un servidor de rol necesita. El objetivo **ya no es** una plataforma tipo FiveM: aquí no hay hospedaje, buscador de servidores, entorno de multijugador ni mercado de extensiones. Ya podemos construir lógica de personajes, economía, inventarios, empleos, organizaciones, propiedades, vehículos y permisos sin depender de archivos del juego, y probarla contra el simulador determinista. La integración real con GTA VI solo podrá abordarse si existe una vía técnica y jurídica verificable.
 
-Podemos construir ya lógica de personajes, economía, inventarios, propiedades, empleos, administración, simulación, herramientas y pruebas sin depender de archivos del juego. La integración real con GTA VI solo podrá abordarse si existe una vía técnica y jurídica verificable.
+Tomamos la simplicidad de ESX, la organización modular de QBCore y los servicios exportados explícitos de Qbox como **referencias de diseño** — solo conceptos, porque sus núcleos tienen licencia GPL y este proyecto es MIT. No se inventan API, nombres nativos, direcciones ni firmas de GTA VI.
 
 **Cualquier persona puede contribuir:** programación, pruebas, seguridad, documentación, diseño, accesibilidad e investigación con fuentes públicas. Las aportaciones se revisan mediante solicitudes de integración.
+
+- [ADR-0007 — la decisión de alcance de CALM Essentials](./docs/adr/0007-calm-essentials-framework-scope.md)
+- [Auditoría verificada del código actual: existente y pendiente](./docs/PROJECT_SCOPE.md)
+- [Propuesta de contratos de servicios y correspondencia con ESX/QBCore/Qbox](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
 
 ## Estado del proyecto
 
 La rama de desarrollo incluye una **referencia de inventario en memoria** con comprobaciones de propiedad, capacidad, transferencias e idempotencia. No tiene persistencia ni conexión con GTA VI. Consulta la [referencia de inventario](./docs/server/INVENTORY_REFERENCE.md) y el [registro de fuentes oficiales](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
 
-- **Implementado parcialmente:** monorrepositorio TypeScript, contratos, tipos de dominio y simulador básico.
+- **Implementado parcialmente:** reglas de personajes, economía e inventario en memoria (con pruebas), contratos, tipos de dominio y simulador determinista básico.
+- **Pendiente (F1/F2):** sesiones persistentes, transacciones durables y contenedores — consulte la [auditoría verificada](./docs/PROJECT_SCOPE.md).
 - **Preparado como estructura:** API, PostgreSQL, infraestructura local y pruebas automatizadas.
 - **Investigación:** arquitectura y conceptos públicos de FiveM/Cfx, sin asumir compatibilidad con GTA VI.
 - **Bloqueado:** adaptador real de GTA VI, cliente multijugador y servidor jugable.
@@ -89,7 +97,7 @@ docker compose -f infrastructure/docker/compose.yml up -d
 
 ## Página web y nombre del framework
 
-El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal autónomo](./site/legal.html) que no requiere acceder al código privado. La publicación en GitHub Pages está pendiente de activación en los ajustes y de un despliegue exitoso. El nombre de trabajo elegido es **CALM** (en contraste conceptual con RAGE). **No está acreditado que sea una marca exclusiva o libre de conflictos**: FINOS emplea CALM para una especificación de software y Calm.com para servicios y productos informáticos. Consulta la [decisión y las comprobaciones pendientes](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No se han renombrado aún los paquetes ni las APIs.
+El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal autónomo](./site/legal.html) que no requiere acceder al código privado. La publicación en GitHub Pages está pendiente de activación en los ajustes y de un despliegue exitoso. Los nombres de trabajo son **CALM** (contraste conceptual con RAGE) y **CALM Essentials** a nivel de producto. **No está acreditado que sean marcas exclusivas o libres de conflictos**: FINOS emplea CALM para una especificación de software y Calm.com para servicios y productos informáticos. Consulta la [decisión y las comprobaciones pendientes](./docs/branding/FRAMEWORK_NAMING_OPTIONS.md). No se han renombrado aún los paquetes ni las APIs.
 
 ## Participar
 

@@ -35,7 +35,7 @@ describe('community site source checks', () => {
 
   it('describes inventory only as an in-memory reference and names its limitations', () => {
     expect(html).toContain('Inventario</h3>');
-    expect(html).toContain('Contenedores y durabilidad, pendientes.');
+    expect(html).toContain('equipamiento y contenedores');
     expect(html).toContain('packages/core · no persistente');
     expect(html).toContain('Sin afiliación ni autorización de Rockstar Games');
   });

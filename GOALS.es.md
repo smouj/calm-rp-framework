@@ -1,6 +1,6 @@
 # Metas de mejora — Repositorio y sitio comunitario
 
-**Estado:** registro de mejora ACTIVO
+**Estado:** registro de mejora ACTIVO (G1, G4 y G6 completadas el 25/11/2026; alcance reformulado a CALM Essentials ese mismo día — consulta el [ADR-0007](./docs/adr/0007-calm-essentials-framework-scope.md))
 **Creado:** 2026-11-25
 **Compañero de:** [ROADMAP.md](./docs/roadmap/ROADMAP.md) (dirección del producto). Este archivo fija metas de calidad del repositorio y del sitio de GitHub Pages, cada una con línea base verificada y criterio de éxito comprobable.
 
@@ -20,9 +20,10 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 
 ### G1 — Publicar el trabajo pendiente del sitio
 
+**Estado: HECHA (25/11/2026, #45).** La panorámica de ingeniería verificada y el lote de iconos derivado del banner están fusionados y desplegados; la portada publicada muestra la sección «Ingeniería» y los recursos nuevos responden HTTP 200.
+
 **Objetivo:** fusionar y desplegar la panorámica de ingeniería verificada y el lote de iconos derivado del banner oficial.
 **Hecho cuando:** la portada publicada muestre la sección «Ingeniería», los recursos nuevos respondan HTTP 200 y el flujo `Deploy community site` haya terminado con éxito una vez tras la fusión.
-**Responsable:** el propietario del repositorio (acceso de escritura); el lote está en la rama local `feat/site-engineering-section`, listo para revisión.
 
 ### G2 — Una sola marca en todas las superficies
 
@@ -38,9 +39,10 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 
 ### G4 — Higiene de ramas según BRANCH_RETIREMENT.md
 
+**Estado: HECHA (25/11/2026).** Todas las ramas nombradas se verificaron contenidas en `main` y se borraron (locales y remotas); solo queda `main`, en local y en remoto.
+
 **Objetivo:** volver al modelo de rama única `main` documentado en `docs/operations/BRANCH_RETIREMENT.md`.
-**Bloqueado por:** acceso de escritura (las ramas rancias locales y sus remotas no se pueden borrar sin él).
-**Hecho cuando:** `brand/palette-coherence`, `docs/*`, `feat/site-logo`, `test/simulator-player-directory` y `smouj-patch-1` se borren tras confirmar que su contenido está fusionado u obsoleto, y solo quede `main`.
+**Hecho cuando:** no queden ramas rancias y solo exista `main`.
 
 ### G5 — Triage de Issues y PRs abiertos
 
@@ -49,6 +51,8 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 **Hecho cuando:** se registre una nota de triage con fecha (el patrón del repositorio para esto es `docs/operations/PR24_CI_TRIAGE.md`).
 
 ### G6 — Reverificar tras la publicación
+
+**Estado: HECHA (25/11/2026).** `docs/operations/GITHUB_PAGES_DEPLOYMENT.md` registra ahora la lista de recursos desplegados con comprobaciones HTTP 200 recientes (`/`, `/legal.html`, `styles.css`, `app.js`, `favicon.svg`, `banner-calm-social.png`, `og-image.png`).
 
 **Objetivo:** tras el despliegue de G1, actualizar `docs/operations/GITHUB_PAGES_DEPLOYMENT.md` con la lista nueva de recursos y las comprobaciones HTTP 200.
 **Hecho cuando:** ese documento registre la fecha del despliegue y cada recurso nuevo respondiendo 200.

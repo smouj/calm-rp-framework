@@ -1,45 +1,68 @@
-# Project Scope — Open Community RP Platform
+# Project Scope — CALM Essentials
 
 **State:** Active community-led project scope
-
-**Updated:** 2026-11-23
+**Working product name:** **CALM Essentials** — the roleplay framework developed in this repository
+**Updated:** 2026-11-25 · Scope decision recorded in [ADR-0007](./adr/0007-calm-essentials-framework-scope.md)
 
 ## Product definition
 
-GTA VI RP Platform is an independent, fan-led **open-source** project aiming to develop a reusable roleplay platform inspired by the possibilities of FiveM, with GTA VI as a **conditional long-term target**.
+CALM Essentials is an independent, fan-led, open-source **roleplay framework** in the product class of ESX Legacy and QBCore: the base systems a roleplay server needs — characters, economy, inventory, jobs, organizations, properties, vehicles, permissions and extensions — developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration.
 
-Today it is **not a playable mod, GTA VI client, custom game server, or supported multiplayer framework**. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
+Today it is **not a playable mod, GTA VI client, custom game server, or supported multiplayer framework**. It is also **not** a FiveM-style platform: hosting, server browsing, a multiplayer network runtime and a plugin marketplace are out of scope. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
 
-This replaces the previous _single private server only_ goal recorded in [ADR-0002](./adr/0002-single-server-not-framework.md). The accepted scope change is recorded in [ADR-0006](./adr/0006-community-open-platform.md); the modular-monolith architecture decision remains in effect.
+The repository is named `calm-rp-framework`; the product working name CALM Essentials carries no Rockstar trademark, and brand and trademark clearance remain pending.
+
+## Two registers, kept separate
+
+| Register           | Content                                                                                                 | Availability                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| **RP functions**   | Characters, sessions, economy, inventory, jobs, organizations, properties, vehicles, permissions, audit | Implementable and testable **now**        |
+| **Game functions** | Client/server entity control, scripting, events, synchronization, asset streaming for GTA VI            | Only with verified, authorized interfaces |
+
+No GTA VI names, memory addresses, identifiers or function signatures are invented. Knowing how a game mechanic behaves is not knowing the engine interface that runs it.
 
 ## Intended contributors and users
 
-- Community developers building portable, server-authoritative RP logic.
+- Community developers building portable, server-authoritative RP logic and modules.
 - Testers and designers improving deterministic simulation and developer tooling.
-- Writers and researchers documenting architecture, verified source material and risks.
-- Future communities that may reuse tested modules, without a current GTA VI compatibility promise.
+- Writers and researchers documenting architecture, verified sources and risks.
+- Future server authors who may reuse tested systems, without a GTA VI compatibility promise.
 
 ## In scope now
 
-- Core RP concepts: accounts, sessions, characters, economy, ledger, inventory, jobs, factions, property, vehicles, emergency services, administration, moderation, permissions and audit.
-- Game-independent simulators, synthetic fixtures, automated tests and reproducible development infrastructure.
-- Clear internal contracts and **reviewed** extensibility only when a concrete use case justifies it.
-- PostgreSQL-first durable state; secure operations, observability, migrations and recovery.
-- Public contribution guidelines, governance, translated onboarding, community issue management and original branding.
-- Research into Rockstar/Cfx first-party announcements and clearly scoped third-party technology observations.
+- RP domain systems: accounts, characters, sessions, economy, ledger, inventory, jobs, organizations, property, vehicles, police records, permissions and audit — as progressive modules with code, contracts, tests and documentation.
+- Game-independent simulators, synthetic fixtures, automated tests and reproducible infrastructure.
+- Public service contracts (proposal stage): session, character, economy, inventory, jobs, permissions and hooks interfaces mapped against documented ESX/QBCore/Qbox equivalents.
+- PostgreSQL-first durable state; transactional integrity, idempotency and recovery.
+- Community contribution guidelines, governance, bilingual onboarding and original branding.
+- Research into Rockstar/Cfx first-party announcements and clearly scoped third-party observations, with evidence grading.
 
 ## Conditional, not implemented
 
-Game-facing scripts, GTA VI client/server synchronization, game entity APIs, voice, asset streaming, world integration, hosting, multiplayer downloads, resource marketplaces and server discovery are **not available**. Implementing them requires legitimate authorization, compatible published interfaces, risk review, architecture decisions and conformance tests.
+Game-facing scripts, GTA VI client/server synchronization, entity APIs, voice, asset streaming, world integration, hosting, multiplayer downloads, resource marketplaces and server discovery are **not available**. Implementing them requires legitimate authorization, compatible published interfaces, risk review, architecture decisions and conformance tests. The GTA VI adapter stays **BLOCKED**.
 
-A FiveM-like ecosystem is the **aspiration**, not the current feature set or a scheduled release.
+## Verified audit of the current code (2026-11-25)
+
+| Component  | Already present                                                 | Still missing                                              |
+| ---------- | --------------------------------------------------------------- | ---------------------------------------------------------- |
+| Characters | Records associated with accounts, validated registration        | Real sessions, persistent creation and loading             |
+| Economy    | Balances, transfers, ownership checks, idempotency              | PostgreSQL repository and durable transactions             |
+| Inventory  | Definitions, capacity, quantities, transfers, consumption       | Persistence, general containers, metadata, concurrency     |
+| Database   | Initial tables for accounts, characters and financial movements | Service integration, further migrations, transaction tests |
+| Simulator  | Deterministic two-character scenario with transfers             | Sessions, jobs and a fuller RP cycle                       |
+| API        | Basic status endpoint                                           | Services, authentication and public operations             |
+| Adapters   | Capability and session contracts                                | Full implementations and capability tests                  |
+| GTA VI     | Reserved adapter boundary                                       | Every integration interface (blocked)                      |
+
+Two technical debts to resolve before the systems grow: the ledger service must **guarantee balanced transactions** (the bootstrap migration alone does not), and the **string-versus-UUID identifier** mismatch between in-memory models and PostgreSQL must be unified. Both are Phase F1 acceptance criteria in the [roadmap](./roadmap/ROADMAP.md).
 
 ## Explicit exclusions
 
-- Impersonating or implying endorsement by Rockstar Games, Take-Two, FiveM or Cfx.re.
+- Impersonating or implying endorsement by Rockstar Games, Take-Two, ESX, QBCore, Qbox, FiveM or Cfx.re.
+- Copying GPL framework code (ESX Legacy, `qbx_core`) into this MIT repository; concepts are studied, implementations are original.
 - Redistributing proprietary GTA VI assets, archives, executables, keys, protected resources or leaks.
 - Accessing private Rockstar services or treating non-public interfaces as dependencies.
-- Claiming GTA VI server support based solely on technical file research.
+- Claiming GTA VI server support based on technical file research.
 - Promising an executable, release date, plugin ABI or supported platform that is not verified.
 - Building a commercial hosting or marketplace offering before need, licensing and policy are reviewed.
 
@@ -55,8 +78,8 @@ A FiveM-like ecosystem is the **aspiration**, not the current feature set or a s
 
 ## Readiness goals
 
-**Immediate:** publicly understandable source, safe contributor onboarding and passing tests.
+**Immediate (Phase F0 — completed with this change):** CALM Essentials framing across scope, architecture, roadmap, READMEs and site.
 
-**Next:** reusable RP domain modules and simulator workflows with documented contracts.
+**Next (Phases F1–F2):** persistent characters and sessions; durable economy and inventory transactions.
 
-**Conditional future:** evaluate public, legitimate GTA VI integration capabilities using the runtime requirement register, ADRs and conformance tests. The GTA VI adapter remains **BLOCKED** until then.
+**Conditional future (Phase F5):** evaluate public, legitimate GTA VI integration capabilities using the runtime requirement register, ADRs and conformance tests.

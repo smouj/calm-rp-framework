@@ -1,105 +1,81 @@
-# Community Platform Roadmap
+# CALM Essentials Roadmap
 
-**State:** ACTIVE planning reference  
-**Reviewed:** 2026-11-23
+**State:** ACTIVE planning reference
+**Revised:** 2026-11-25 · Scope: [CALM Essentials framework (ADR-0007)](../adr/0007-calm-essentials-framework-scope.md)
+**Method:** phases define **verifiable milestones**, not a schedule, and no GTA VI compatibility guarantee. This revision applies the evidence-based reorganization proposed in [ROADMAP_REVISION_2026-11-25.md](./ROADMAP_REVISION_2026-11-25.md) (owner-reviewed 2026-11-25).
 
-Our goal is to build an independent community-led RP foundation **before** any GTA VI-specific integration becomes possible. The stages describe verifiable milestones, not a schedule or a guarantee of compatibility.
+The first tangible goal: **two simulated characters hold jobs, get paid, buy, store and trade items, and keep every byte of their data after the service restarts.** That is a functional roleplay base — even before any game integration exists.
 
-## P0 — Open-source project readiness
+## F0 — Project reformulation ✅ (completed 2026-11-25)
 
-**Goal:** make the repository genuinely accessible, safe, understandable and legally clear.
+**Goal:** adopt CALM Essentials as the working product name and reframe the project as an ESX/QBCore-class roleplay framework.
 
-- license original code under MIT; distinguish Rockstar intellectual property;
-- English and Spanish onboarding, contribution rules, code of conduct and governance;
-- badges, truthful status, public roadmap, bug/research templates and clear ownership;
-- repository-history and Actions-log security audit before making an existing private repo public;
-- CI that actually executes lint, type checks, tests and formatting on the final head;
-- description, topics, Discussions, branch protection, dependency updates and security settings.
+- scope, architecture, roadmap, READMEs and the community site present the framework framing;
+- history and valid code are preserved — no rewrite, no gratuitous breakage;
+- the audit of the current code (present vs. missing) is published in [PROJECT_SCOPE.md](../PROJECT_SCOPE.md).
 
-**Exit:** an unauthenticated visitor can clone a safe public repo, run checks and submit a documented PR. Follow the [public release checklist](../community/PUBLIC_LAUNCH_CHECKLIST.md).
+**Acceptance met:** this documentation batch, recorded in [ADR-0007](../adr/0007-calm-essentials-framework-scope.md).
 
-## P1 — Shared RP system specification
+## F1 — Persistence and characters
 
-**Goal:** define reusable game-independent requirements without overengineering a plugin framework.
+**Goal:** connect accounts, characters and sessions to PostgreSQL and survive restarts.
 
-- accounts and stable character identity;
-- server-authoritative money, inventory, ownership, employment and permissions;
-- example-server policies clearly separated from core rules;
-- component naming, contract versioning, security invariants and example API scenarios;
-- operational constraints and documented abuse cases.
+- unified identifier representation and validation (resolve the string-vs-UUID mismatch);
+- character creation, disconnect and recovery over durable storage;
+- the ledger service **enforces balanced transactions** (double-entry invariant) with concurrency and recovery tests — the bootstrap migration alone does not guarantee it;
+- session authentication feeding a trusted context (no client-supplied identity).
 
-**Exit:** individual contributions map to a reviewed domain/API use case and to explicit tests.
+**Acceptance:** a character created in one run is recovered intact in the next; concurrent financial writes are serialized and provably balanced.
 
-## P2 — Portable vertical slices
+## F2 — Economy and inventory
 
-**Goal:** ship real, tested RP behavior in the simulator.
+**Goal:** durable transactions, duplication prevention, containers and item movement.
 
-1. account and session lifecycle;
-2. character creation and identity boundaries;
-3. ledger-based wallet/bank operations with idempotent commands;
-4. inventory, container and ownership transactions;
-5. permission checks and attributable audit records;
-6. deterministic two-player simulator workflows;
-7. original synthetic world/location planning where it benefits tests; see [the in-memory planning catalog](../server/WORLD_SPATIAL_READINESS.md) (not persisted, not a game map).
+- idempotent credit/debit/transfer across restarts;
+- general containers (vehicle storage, warehouses, properties) with ownership **independent of physical location** (a weapon can belong to a character while stored in a vehicle);
+- configurable capacity limits (observed game limits are defaults, never hard requirements);
+- concurrent-request and restart tests.
 
-**Exit:** multiple simulated players exercise a representative, secure RP flow with durable state. A diagram or stub is not a completed slice.
+**Acceptance:** simulated concurrent transfers and item movements never duplicate value; all state survives restart.
 
-## P3 — Developer experience and reference integrations
+## F3 — Jobs and organizations
 
-**Goal:** make the verified systems easy for contributors and future server authors to use.
+**Goal:** jobs, grades, duty state, salaries and organizations.
 
-- API examples, complete fixtures, error contracts and conformance tests;
-- admin/moderation samples and safe configuration;
-- reproducible local services and migration tests;
-- documented, minimal extension points driven by actual use cases;
-- accessible UI prototypes, localization and developer documentation.
+- `jobs.assign` / `jobs.setDuty`-class operations with permission checks;
+- a full payroll cycle linked to a financial account (salary accrual → ledger credit);
+- organizations as first-class owners (factions, businesses).
 
-**Exit:** an external developer can understand, test and extend a supported component without GTA VI files.
+**Acceptance:** the first tangible goal above passes end-to-end in the simulator with persistent data.
 
-## P4 — Public Cfx/engine research boundary
+## F4 — Independent resources (module system)
 
-**Goal:** compare verified existing ecosystems without claiming GTA VI compatibility.
+**Goal:** versioned module contracts, permissions and dependency resolution.
 
-- documented FiveM/RedM/Cfx concepts, state/event and resource patterns;
-- public Leonida technical findings about world/asset structure as research only;
-- provenance, security, license and data-handling boundaries;
-- explicit hypotheses and failure modes for future platform transitions.
+- two independently developed modules communicate through **public services only** (no reaching into another module's data);
+- a CALM module manifest (name, version, dependencies, permissions, target) is proven before the extension system is formalized — see the [service-contracts proposal](../architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md);
+- an external developer can add a resource without modifying the core.
 
-**Exit:** useful research is documented with precise evidence classifications and no hidden integration assumptions.
+**Acceptance:** a sample third-party-style module installs, resolves dependencies and persists its data against a published contract.
 
-## P5 — Authorized GTA VI runtime integration
+## F5 — Game adaptation
 
-**State:** **BLOCKED** pending public first-party documentation and an implementable, legitimate integration path.
+**State:** **BLOCKED** pending a public, authorized GTA VI integration path.
 
 Before any real GTA VI adapter/client/server code:
 
 1. verify allowed runtime/creator-platform scope and platform terms;
-2. update [platform status](../research/PLATFORM_STATUS.md) and relevant [RT requirements](../server/RUNTIME_REQUIREMENTS.md);
+2. update [platform status](../research/PLATFORM_STATUS.md) and the relevant [RT requirements](../server/RUNTIME_REQUIREMENTS.md);
 3. define a reviewed adapter contract, security model and ADR;
 4. add conformance tests against a documented runtime;
 5. implement a minimal reproducible proof of concept only after authorization.
 
-**Exit:** only a separately verified implementation may claim GTA VI compatibility. P5 currently has **no release date**.
+PC-execution research (VIctory, XCL and forks) does not unlock this phase: executing the game offline is not a scripting, multiplayer or resource-execution interface. See [GTA6_EXECUTION_PROGRESS_2026-11-25.md](../research/GTA6_EXECUTION_PROGRESS_2026-11-25.md).
 
-## P6 — Optional multiplayer prototype
+## Continuous practices (all phases)
 
-**State:** Conditional on P5.
-
-Only after authorized runtime support, evaluate real players, game-state sync, operations, security, voice, resources, client distribution and load. No prototype is currently playable or available to download.
-
-## P7 — Public releases and community ecosystem
-
-**State:** Conditional on working, documented and supportable functionality.
-
-- release notes and security advisories;
-- versioned APIs, compatibility matrices and deprecation policy;
-- contributor governance and maintenance succession;
-- optional plugins, server tooling and broader community services only if tested and justified;
-- ongoing policy/license review before any game-facing release.
-
-## Project rules
-
-- **Implementation before claims:** a README or design document is not a functioning runtime.
-- **Evidence before coupling:** FiveM patterns and third-party file research do not unlock GTA VI.
-- **No game assets:** no proprietary files, leaked material, keys or unauthorized services.
-- **Community with review:** contributions are open, merges remain gated on verification and human decisions for high-risk changes.
+- Maintain the [GTA VI capability matrix](../research/GTA6_CAPABILITY_MATRIX_2026-11-25.md) and [uncertainty register](../research/UNCERTAINTY_REGISTER_2026-11-25.md) per the [research protocol](../research/RESEARCH_PROTOCOL.md); watch GTA6-Asset-Info, the awesome index and enforcement actions.
+- Watch, do not depend: monitor new verified APIs, technical documentation and license changes — not just FPS or stars — per the monitoring triggers in the roadmap revision.
+- Simulator first: every domain rule is proven in the deterministic simulator before it becomes a published contract.
+- Vehicle handling and world data stay project-owned synthetic data (design informed by public research metadata, never copied assets).
+- Local verification (`bash scripts/verify-local.sh`) remains the authoritative gate for every phase.

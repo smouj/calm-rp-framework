@@ -1,6 +1,6 @@
 # Improvement Goals — Repository and Community Site
 
-**State:** ACTIVE improvement register
+**State:** ACTIVE improvement register (G1, G4 and G6 completed 2026-11-25; scope reformulated to CALM Essentials the same day — see [ADR-0007](./docs/adr/0007-calm-essentials-framework-scope.md))
 **Created:** 2026-11-25
 **Companion to:** [ROADMAP.md](./docs/roadmap/ROADMAP.md) (product direction). This file fixes quality goals for the repository and the GitHub Pages site, each with a verified baseline and a checkable success criterion.
 
@@ -20,9 +20,12 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 
 ### G1 — Publish the pending site work
 
+**Status: DONE (2026-11-25, #45).** The verified engineering overview and the banner-derived
+icon batch are merged and deployed; the published homepage shows the "Ingeniería" section and
+the new assets return HTTP 200.
+
 **Goal:** merge and deploy the verified engineering overview and the banner-derived icon batch.
 **Done when:** the published homepage shows the "Ingeniería" section, the new assets return HTTP 200, and the `Deploy community site` workflow has succeeded once after the merge.
-**Owner:** the repository owner (write access); the batch sits on the local branch `feat/site-engineering-section`, ready for review.
 
 ### G2 — One brand across every surface
 
@@ -38,9 +41,11 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 
 ### G4 — Branch hygiene per BRANCH_RETIREMENT.md
 
+**Status: DONE (2026-11-25).** All named branches were verified as contained in `main` and
+deleted (local and remote); only `main` remains, locally and on the remote.
+
 **Goal:** return to the single-`main` model documented in `docs/operations/BRANCH_RETIREMENT.md`.
-**Blocked by:** write access (stale local branches and their remote counterparts cannot be deleted without it).
-**Done when:** `brand/palette-coherence`, `docs/*`, `feat/site-logo`, `test/simulator-player-directory` and `smouj-patch-1` are deleted after confirming their content is merged or obsolete, and only `main` remains.
+**Done when:** no stale branches remain and only `main` exists.
 
 ### G5 — Open Issues and PRs triage
 
@@ -49,6 +54,10 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 **Done when:** a dated triage note is recorded (the repository pattern for this is `docs/operations/PR24_CI_TRIAGE.md`).
 
 ### G6 — Re-verify after publication
+
+**Status: DONE (2026-11-25).** `docs/operations/GITHUB_PAGES_DEPLOYMENT.md` now records the
+deployed asset list with fresh HTTP 200 checks (`/`, `/legal.html`, `styles.css`, `app.js`,
+`favicon.svg`, `banner-calm-social.png`, `og-image.png`).
 
 **Goal:** after G1 deploys, update `docs/operations/GITHUB_PAGES_DEPLOYMENT.md` with the new asset list and fresh HTTP 200 checks.
 **Done when:** that document records the deploy date and every new asset returning 200.
