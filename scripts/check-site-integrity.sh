@@ -10,8 +10,7 @@ say() { printf '\033[31m  %s\033[0m\n' "$1"; fail=1; }
 
 for f in site/index.html site/legal.html site/assets/styles.css site/assets/app.js \
   site/assets/favicon.svg site/assets/favicon.ico site/assets/favicon-32.png \
-  site/assets/apple-touch-icon.png site/assets/og-image.png \
-  site/assets/gta6-xbox-to-pc-architecture.svg; do
+  site/assets/apple-touch-icon.png site/assets/og-image.png; do
   [ -s "$f" ] || say "missing or empty: $f"
 done
 

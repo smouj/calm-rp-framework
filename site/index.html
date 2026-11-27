@@ -478,91 +478,68 @@
         <div class="wrap">
           <div class="section-head reveal">
             <div>
-              <p class="eyebrow">04 / EVIDENCIA</p>
-              <h2>Investigar sin <span>confundir avances con hechos.</span></h2>
+              <p class="eyebrow">04 / DISEÑO CON EVIDENCIA</p>
+              <h2>Sistemas de rol <span>pensados para GTA VI.</span></h2>
             </div>
             <p>
-              Registro de fuentes públicas. Las afirmaciones de herramientas externas son de sus
-              autores hasta que se reproduzcan de forma independiente.
+              La investigación de esta sección informa necesidades de roleplay a partir de fuentes
+              oficiales y observaciones públicas del juego.
             </p>
           </div>
           <div class="research-grid" data-stagger>
             <a
               class="research-card reveal"
-              href="https://github.com/Ahmet-Dedeler/rage9-re"
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_RP_MECHANICS_2026-11-25.md"
               target="_blank"
               rel="noopener noreferrer"
-              ><span class="tag">ESTRUCTURAS RAGE 9</span><strong>rage9-re ↗</strong>
+              ><span class="tag">EVIDENCIA DE GAMEPLAY</span><strong>Mecánicas RP ↗</strong>
               <p>
-                Investigación pública de contenedores PSIN y animaciones. No demuestra una API de
-                ejecución ni multijugador.
+                Observaciones públicas y su traducción a requisitos propios de identidad,
+                progresión, inventario y vehículos.
               </p></a
             >
             <a
               class="research-card reveal"
-              href="https://github.com/Marvisak/VIctory"
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md"
               target="_blank"
               rel="noopener noreferrer"
-              ><span class="tag">EJECUCIÓN EN PC</span><strong>VIctory ↗</strong>
+              ><span class="tag">DECLARACIONES PÚBLICAS</span><strong>Sistemas del juego ↗</strong>
               <p>
-                Carga el mundo con limitaciones graves y es «offline by design»: su progreso y la
-                ejecución en PC no proporcionan por sí mismos autorización, red ni scripts RP.
+                Pistas de diseño sobre misiones, policía, vehículos y mundo; separadas de APIs y
+                código propietario.
               </p></a
             >
             <a
               class="research-card reveal"
-              href="https://github.com/xcl-dev/xcl"
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/PLATFORM_STATUS.md"
               target="_blank"
               rel="noopener noreferrer"
-              ><span class="tag">CAPA DE COMPATIBILIDAD</span><strong>XCL ↗</strong>
+              ><span class="tag">ESTADO DE INTEGRACIÓN</span><strong>Runtime GTA VI ↗</strong>
               <p>
-                Capa Xbox Series para Windows con shaders y servicios del sistema. No es una
-                interfaz de rol ni un entorno multijugador.
+                Fuentes oficiales, capacidades confirmadas y límites actuales para cualquier
+                integración comunitaria.
               </p></a
             >
             <a
               class="research-card reveal"
-              href="https://github.com/Ahmet-Dedeler/awesome-gta6-reverse-engineering"
+              href="https://support.rockstargames.com/articles/4jUHNdP22SmaKSF8DWqhXC/how-to-change-grand-theft-auto-vi-settings"
               target="_blank"
               rel="noopener noreferrer"
-              ><span class="tag">ÍNDICE COMUNITARIO</span><strong>Bibliografía técnica ↗</strong>
+              ><span class="tag">FUENTE OFICIAL</span><strong>Opciones y estados ↗</strong>
               <p>
-                Catálogo de proyectos. Una inclusión en el índice no confirma sus resultados.
+                Rockstar documenta categorías de ajustes y estados del jugador, no fórmulas internas
+                ni un contrato de servidor.
               </p></a
             >
           </div>
-          <figure class="research-figure reveal">
-            <object
-              class="research-graphic"
-              data="./assets/gta6-xbox-to-pc-architecture.svg"
-              type="image/svg+xml"
-              aria-label="Infografía animada: capas públicas de ejecución Xbox a Windows y límites de la investigación"
-              tabindex="0"
-            >
-              <p>
-                Este navegador no puede mostrar el SVG incrustado.
-                <a href="./assets/gta6-xbox-to-pc-architecture.svg">Abrir la infografía vectorial</a
-                >.
-              </p>
-            </object>
-            <figcaption>
-              Diagrama vectorial original basado en documentación pública de VIctory, su fork y
-              Project ReCity. El rendimiento mostrado es un autoinforme de un solo PC; no demuestra
-              un port oficial ni una vía de integración para roleplay.
-              <a href="./assets/gta6-xbox-to-pc-architecture.svg"
-                >Abrir el SVG con sus fuentes enlazadas ↗</a
-              >
-            </figcaption>
-          </figure>
           <div class="research-bottom reveal">
-            <strong>Investigación técnica y límites de integración</strong>
+            <strong>CALM es el framework; la investigación de compatibilidad es externa</strong>
             <p>
-              Los proyectos públicos de ejecución de Xbox en PC describen capas de compatibilidad
-              para código, servicios y gráficos, pero no crean un runtime RP autorizado. Take-Two
-              presentó una reclamación DMCA contra Leonida y GitHub procesó la retirada de la red
-              asociada; la reclamación no es una sentencia judicial. CALM no obtiene ni procesa
-              archivos del juego. No hospedamos ni enlazamos archivos filtrados, ejecutables, claves
-              o volcados.
+              CALM define sus propios dominios y contratos RP. Los informes sobre ports de PC,
+              emuladores, formatos y repositorios de terceros se mantienen en un archivo documental
+              independiente; no forman parte de la arquitectura, dependencias ni implementación de
+              CALM. El adaptador GTA VI sigue bloqueado hasta que exista una vía oficial y
+              autorizada.
             </p>
             <a
               href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_RP_STRATEGY_2026-11-25.md"
@@ -572,10 +549,10 @@
             >
             ·
             <a
-              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md"
+              href="https://github.com/smouj/calm-rp-framework/blob/main/docs/server/RUNTIME_REQUIREMENTS.md"
               target="_blank"
               rel="noopener noreferrer"
-              >Avances de ejecución en PC y lo que no son ↗</a
+              >Requisitos de runtime pendientes ↗</a
             >
             ·
             <a

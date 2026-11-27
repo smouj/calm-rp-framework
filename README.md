@@ -34,27 +34,22 @@ CALM does not use ESX/QBCore/Qbox or FiveM as its product blueprint or compatibi
 
 - [ADR-0009 — GTA VI-first product scope and evidence limits](./docs/adr/0009-gta-vi-first-product-scope.md)
 - [Verified audit of the current code: present vs. missing](./docs/PROJECT_SCOPE.md)
-- [CALM service-contract proposal and external framework comparison](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [CALM's original service-contract proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
 - [Character progression design boundary](./docs/server/CHARACTER_PROGRESSION.md)
 
-## Public interfaces, evidence and third-party research (27 November 2026)
+## CALM product evidence and integration boundary
 
-The repository separates CALM's GTA VI RP design from unknown runtime capabilities. Its runtime-readiness contracts fail closed; they do not invent GTA VI commands. **Documented FiveM/Cfx/Qbox commands are not GTA VI commands.** Public RAGE 9 findings do not establish multiplayer or a supported scripting API.
+This repository contains CALM's own RP requirements, simulator and product-focused evidence from official statements and publicly described gameplay. Its runtime-readiness contracts fail closed; they do not invent GTA VI commands. Research on unofficial PC execution projects, reverse-engineering tools and external framework internals is maintained separately as documentation and does not define CALM's architecture, dependencies or APIs.
 
-- [Documented functions and original interface mapping](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
-- [GTA VI capability matrix — verified RAGE 9 research catalog](./docs/research/GTA6_CAPABILITY_MATRIX_2026-11-25.md)
-- [GTA VI PC execution progress — VIctory, XCL, the Leonida DMCA, and why it is not an interface](./docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md)
-- [Draft X thread explaining Xbox-to-PC execution work](./docs/research/X_THREAD_GTA6_PORT_2026-11-27.md) — public repository claims, attributed self-reported performance and limitations; not a CALM integration guide.
-- [VIctory source audit — compatibility layer, offline network boundary, and CALM implications](./docs/research/VICTORY_SOURCE_AUDIT_2026-11-26.md)
 - [GTA VI RP mechanics observed by the press and our design consequences](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)
 - [GTA VI campaign systems and public implementation observations](./docs/research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md)
+- [Current GTA VI platform and runtime status](./docs/research/PLATFORM_STATUS.md)
+- [CALM first-party evidence register](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md)
 - [Spain/EU interoperability and intellectual-property review](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [EU and Spanish provisions relevant to interoperability and copyright](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md) — research references, not a legal opinion.
 - [Local verification: the authoritative gate, independent of hosted CI](./docs/operations/LOCAL_VERIFICATION.md)
-- [Third-party RAGE 9 research status](./docs/research/GTA6_RESEARCH_2026-11-24.md)
-- [Revision-pinned third-party tools](./docs/research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md)
 
-Source links are research references; they are not game downloads or permission to run an unauthorized multiplayer service. This is a preliminary technical/legal assessment, not a legal opinion.
+CALM's technical scope is its RP framework. External compatibility studies are documentary context only; they do not establish a supported game interface or permission to run a multiplayer service.
 
 ## Project status
 

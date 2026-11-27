@@ -75,12 +75,12 @@ Before any real GTA VI adapter/client/server code:
 4. add conformance tests against a documented runtime;
 5. implement a minimal reproducible proof of concept only after authorization.
 
-PC-execution research (VIctory, XCL and forks) does not unlock this phase: executing the game offline is not a scripting, multiplayer or resource-execution interface. See [GTA6_EXECUTION_PROGRESS_2026-11-25.md](../research/GTA6_EXECUTION_PROGRESS_2026-11-25.md).
+Unofficial PC execution and compatibility experiments do not unlock this phase: executing a title locally is not a scripting, multiplayer or resource-execution interface. Detailed project-by-project research is maintained outside CALM; the framework waits for a public, authorized GTA VI contract.
 
 ## Continuous practices (all phases)
 
-- Maintain the [GTA VI capability matrix](../research/GTA6_CAPABILITY_MATRIX_2026-11-25.md) and [uncertainty register](../research/UNCERTAINTY_REGISTER_2026-11-25.md) per the [research protocol](../research/RESEARCH_PROTOCOL.md); watch GTA6-Asset-Info, the awesome index and enforcement actions.
-- Watch, do not depend: monitor new verified APIs, technical documentation and license changes — not just FPS or stars — per the monitoring triggers in the roadmap revision.
+- Maintain the [CALM uncertainty register](../research/UNCERTAINTY_REGISTER_2026-11-27.md) per the [research protocol](../research/RESEARCH_PROTOCOL.md), using official platform/runtime sources and documented gameplay evidence.
+- Keep external port, reverse-engineering and framework-comparison research in its separate documentary repository; never turn performance claims or file-format findings into CALM runtime contracts.
 - Simulator first: every domain rule is proven in the deterministic simulator before it becomes a published contract.
 - Vehicle handling and world data stay project-owned synthetic data (design informed by public research metadata, never copied assets).
 - Local verification (`bash scripts/verify-local.sh`) remains the authoritative gate for every phase.

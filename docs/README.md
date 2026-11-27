@@ -18,11 +18,9 @@ The repository is intentionally split between **CALM's GTA VI RP design** and **
 | [`security/THREAT_MODEL.md`](./security/THREAT_MODEL.md)                   | Assets, trust boundaries, threats and controls                | Security baseline               |
 | [`operations/OPERATIONS_BASELINE.md`](./operations/OPERATIONS_BASELINE.md) | Operational requirements before production hosting            | Operations baseline             |
 
-## Verified functions and legal research (24 November 2026)
+## Legal and repository-boundary policy
 
 - [`legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md`](./legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md) — EU/Spanish interoperability limits, Rockstar/Cfx permissions, code and asset provenance controls (preliminary, not legal advice).
-- [`research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md`](./research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md) — real documented FiveM/Qbox symbols versus unavailable GTA VI equivalents, plus evidence-neutral runtime port contracts.
-- [`research/GTA6_RESEARCH_2026-11-24.md`](./research/GTA6_RESEARCH_2026-11-24.md) — third-party reverse-engineering claims, limitations, and safe project implications.
 - [`operations/THIRD_PARTY_ARTIFACT_POLICY.md`](./operations/THIRD_PARTY_ARTIFACT_POLICY.md) — third-party artifacts, protected file formats and research provenance safeguards.
 - [`operations/RELEASE_READINESS_2026-11-24.md`](./operations/RELEASE_READINESS_2026-11-24.md) — historical release-readiness snapshot, superseded by the current review.
 - [`operations/RELEASE_READINESS_2026-11-27.md`](./operations/RELEASE_READINESS_2026-11-27.md) — current CALM scope, local/hosted verification status, and remaining publication gates.
@@ -30,23 +28,20 @@ The repository is intentionally split between **CALM's GTA VI RP design** and **
 
 ## Research pass (25 November 2026)
 
-- [`research/GTA6_CAPABILITY_MATRIX_2026-11-25.md`](./research/GTA6_CAPABILITY_MATRIX_2026-11-25.md) — canonical engine-knowledge catalog: verified format/engine findings, confidence levels, CALM utility and architecture consequence per row.
-- [`research/UNCERTAINTY_REGISTER_2026-11-25.md`](./research/UNCERTAINTY_REGISTER_2026-11-25.md) — what is not legitimately known, why it matters, and the trigger that would resolve each item.
-- [`research/ARCHITECTURE_COMPARISON_2026-11-25.md`](./research/ARCHITECTURE_COMPARISON_2026-11-25.md) — pattern-by-pattern verdict of CALM versus FiveM/RedM, QBCore/Mantle, Qbox and ESX, plus the Phase-5 audit conclusion.
-- [`roadmap/ROADMAP_REVISION_2026-11-25.md`](./roadmap/ROADMAP_REVISION_2026-11-25.md) — evidence-based reorganization proposal and concrete edits proposed for `ROADMAP.md` (requires human review).
+- [`research/UNCERTAINTY_REGISTER_2026-11-27.md`](./research/UNCERTAINTY_REGISTER_2026-11-27.md) — CALM's unresolved product/runtime requirements and the evidence that would change them.
+- [`research/PLATFORM_STATUS.md`](./research/PLATFORM_STATUS.md) — current first-party platform and authorized-runtime status for CALM.
+- [`research/FIRST_PARTY_EVIDENCE_2026-11-24.md`](./research/FIRST_PARTY_EVIDENCE_2026-11-24.md) — official source register and confirmed/unknown GTA VI capabilities.
+
+Detailed investigation of unofficial PC execution projects, reverse-engineering tools, file formats, leaked-build claims and external framework internals is maintained separately in the documentary repository `gta6-pc-port-watch`. It is not a CALM module, architecture source or implementation dependency. CALM keeps only product requirements and evidence directly relevant to its own RP systems.
 
 ## CALM Essentials scope and research follow-up (25–27 November 2026)
 
 - [`adr/0007-calm-essentials-framework-scope.md`](./adr/0007-calm-essentials-framework-scope.md) — accepted scope decision: CALM's original roleplay framework domains and contracts; external frameworks are references only.
-- [`research/VICTORY_SOURCE_AUDIT_2026-11-26.md`](./research/VICTORY_SOURCE_AUDIT_2026-11-26.md) — pinned static review of VIctory and the November Xbox-build/EXE claims, GitHub takedown, malware lures, and what none of them establishes for GTA VI RP.
-- [`research/GTA6_EXECUTION_PROGRESS_2026-11-25.md`](./research/GTA6_EXECUTION_PROGRESS_2026-11-25.md) — verified PC-execution findings (VIctory, XCL, the fxceless fork, the Leonida DMCA) and why none of them is a resource-execution interface.
-- [`research/X_THREAD_GTA6_PORT_2026-11-27.md`](./research/X_THREAD_GTA6_PORT_2026-11-27.md) — draft short-form summary of public Xbox-to-PC execution research, with self-reported claims attributed and no download instructions.
-- [`research/GTA6_PC_EXECUTION_GRAPHIC.md`](./research/GTA6_PC_EXECUTION_GRAPHIC.md) — source notes and editing guide for the animated vector graphic in `site/assets/`; contains no game imagery or files.
 - [`research/GTA6_RP_MECHANICS_2026-11-25.md`](./research/GTA6_RP_MECHANICS_2026-11-25.md) — observed mechanics, official status/health/activity evidence, unknown character-stat schema, and the CALM progression boundary.
 - [`research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md`](./research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md) — developer-reported campaign systems, composition/reuse clues, and what they do and do not reveal about Rockstar's code.
 - [`server/CHARACTER_PROGRESSION.md`](./server/CHARACTER_PROGRESSION.md) — configurable CALM progression model, server-authoritative change rules, and evidence gaps for GTA VI stats.
 - [`research/GTA6_RP_STRATEGY_2026-11-25.md`](./research/GTA6_RP_STRATEGY_2026-11-25.md) — strategy synthesis: three-environment boundary, integration scenarios, three-layer model with a per-capability adapter registry, Leonida region mapping and the build-now versus needs-GTA-VI split.
-- [`architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md`](./architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md) — original proposed CALM service contracts, with an external-framework comparison for context only.
+- [`architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md`](./architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md) — original CALM-owned domain and application-service contracts.
 - [`roadmap/ROADMAP.md`](./roadmap/ROADMAP.md) — phases F0–F5 with acceptance criteria; F0 completed 2026-11-25.
 
 ## Contributor examples
@@ -56,8 +51,6 @@ The repository is intentionally split between **CALM's GTA VI RP design** and **
 
 - [`server/INVENTORY_REFERENCE.md`](./server/INVENTORY_REFERENCE.md) — CALM item, inventory and ownership semantics, including the F2 PostgreSQL candidate; its live PostgreSQL 17 acceptance gate remains open.
 - [`research/FIRST_PARTY_EVIDENCE_2026-11-24.md`](./research/FIRST_PARTY_EVIDENCE_2026-11-24.md) — first-party sources, scope limits and unconfirmed GTA VI runtime capabilities.
-
-- [`research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md`](./research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md) — commit-pinned external tools, exact upstream claims and integration limits.
 
 - [`branding/FRAMEWORK_NAMING_OPTIONS.md`](./branding/FRAMEWORK_NAMING_OPTIONS.md) — CALM working product name, trademark conflicts and migration gates.
 

@@ -104,7 +104,7 @@ Reference implementations and sample scenarios are **examples**, not proof of GT
 
 The GTA VI adapter is blocked until an implementable and authorized first-party path establishes the relevant capabilities, including authentication, lifecycle, scripting, client/server events, entities and policy. Before integration, update platform research, `RT-*` requirement states, ADRs and conformance tests.
 
-PC-execution research (VIctory, XCL, forks) demonstrates rendering experiments, not multiplayer or scripting interfaces; VIctory is offline by design. Cfx/FiveM concepts and RAGE 9 file-format observations may inspire design but may never be silently promoted to GTA VI guarantees. No proprietary game data belongs in this repository.
+Detailed reports about unofficial PC execution, reverse-engineering tools and external framework internals are maintained in a separate documentary repository. They are not CALM architecture inputs or dependencies. CALM's GTA VI adapter remains blocked until a public, authorized runtime contract is documented; no proprietary or leaked game data belongs in this repository.
 
 ## Project evolution
 

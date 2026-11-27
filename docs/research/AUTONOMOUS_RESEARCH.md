@@ -35,24 +35,9 @@ Priority sources include:
 3. Take-Two first-party publications when directly relevant to GTA VI platform/runtime planning;
 4. first-party platform-holder documentation when it materially affects supported platforms or integration constraints.
 
-Watch-set additions, 2026-11-25 (research-repository layer, for discovery and change detection only — their content stays `PUBLIC_OBSERVED` or below):
+Detailed tracking of unofficial PC runners, reverse-engineering tools, file formats and external RP frameworks lives in the separate documentary repository `gta6-pc-port-watch`. CALM's autonomous research watch remains focused on official platform/runtime statements, official developer material and public gameplay evidence that can inform CALM-owned RP requirements. External project claims are not automatically imported into the framework.
 
-- `TrinitronClient/GTA6-Asset-Info` (SixNG-team format spec; pin the reviewed revision when citing);
-- `Ahmet-Dedeler/awesome-gta6-reverse-engineering` (ecosystem index; recheck before citing any project it lists);
-- enforcement watch: new Take-Two DMCA takedowns or legal statements affecting reverse-engineering projects (record; assess citing-risk of affected repositories);
-- the capability matrix [`GTA6_CAPABILITY_MATRIX_2026-11-25.md`](./GTA6_CAPABILITY_MATRIX_2026-11-25.md) is the canonical destination for engine-knowledge findings; the [uncertainty register](./UNCERTAINTY_REGISTER_2026-11-25.md) tracks what remains unknown.
-
-Additional directly relevant public implementation sources (source-owner claims only; `PUBLIC_OBSERVED` or lower):
-
-- **[Marvisak/VIctory](https://github.com/Marvisak/VIctory):** console compatibility architecture, public interfaces, releases and licensing; offline compatibility layer, not a GTA VI RP SDK.
-- **[fxceless/victory-fork](https://github.com/fxceless/victory-fork):** public technical fixes and documentation; rendering progress does not imply game scripting.
-- **[myokex/victory-amd](https://github.com/myokex/victory-amd/tree/victory-amd):** AMD graphics, texture and memory fixes on branch `victory-amd`; baseline [`070df424b096`](https://github.com/myokex/victory-amd/commit/070df424b0967dca422478a1f12afaaf6736ebdd), reviewed 2026-11-25. Developer-reported one-machine results; offline by design; GPL-3.0-or-later.
-- **[xcl-dev/xcl](https://github.com/xcl-dev/xcl):** platform compatibility and runtime behavior; no GTA VI resource or server API established.
-- **[holdmysocks/SixNG](https://github.com/holdmysocks/SixNG):** resource format research and provenance; offline tooling only.
-- **[Ahmet-Dedeler/rage9-re](https://github.com/Ahmet-Dedeler/rage9-re):** public data-format readers; serialized data is not a native API.
-- **ESX Legacy, QBCore and Qbox official code and docs:** publicly documented RP contract changes, deprecations and modular patterns; GTA V ecosystem only; inspect license before reuse.
-
-Watch higher-impact changes before performance claims: GTA VI-specific _authorized_ runtime/creator announcements, published client-server API contracts, resource packaging, entity ownership, security policy, platform version requirements, licensing, or evidence that changes CALM's documented assumptions. Plain FPS gains, stars, tracker rankings, routine refactors or unreproducible leaks are **not** sufficient for a repository change.
+Watch high-impact changes that directly affect CALM: GTA VI-specific _authorized_ runtime/creator announcements, published client-server API contracts, resource packaging, entity ownership, security policy, platform requirements, licensing, or evidence that changes CALM's documented assumptions. Unofficial PC-runner progress is outside this watch and belongs in the separate documentary repository; it does not trigger CALM architecture or implementation changes.
 
 High-quality secondary reporting may be used to locate a primary source, but it must not independently promote a GTA VI runtime claim to `CONFIRMED` when first-party evidence should exist.
 

@@ -118,25 +118,15 @@ Public discussion of leaked material may identify a research question, but the p
 
 Public reverse engineering of our own abstract interfaces or simulator behavior is unrelated; the restriction concerns non-public game/platform contracts that would create unsupported coupling or legal/security risk.
 
-## Current-ecosystem research
+## External ecosystems and implementation research
 
-FiveM/RedM can be studied for architectural patterns such as:
+GTA V/FiveM, RedM, ESX, QBCore and Qbox documentation is not evidence of GTA VI behavior or a CALM compatibility target. Detailed comparisons of their APIs, runtime models or implementation patterns belong in the independent documentary repository. CALM defines its RP domains from CALM's own product goals; a third-party framework or PC compatibility project does not set its architecture, service contracts or runtime APIs.
 
-- server authority;
-- event validation;
-- entity ownership concerns;
-- scripting/resource boundaries;
-- operational practices;
-- permission models;
-- common exploit classes.
+First-party Rockstar/Cfx technology statements may be recorded for the narrow claim they directly support, but do not confirm a GTA VI runtime unless the source explicitly says so.
 
-Those observations belong in the Cfx research boundary and remain `PUBLIC_OBSERVED` unless GTA VI-specific documentation independently confirms them.
+## External compatibility research stays outside CALM
 
-Current Rockstar/Cfx technology evidence that informs language strategy without proving a GTA VI runtime belongs in `ROCKSTAR_TECHNOLOGY_BASELINE.md`.
-
-## Execution research must remain separate from runtime capability claims
-
-Experimental PC execution and Xbox compatibility layers may reveal architectural dependencies, but they do not supply an authorized GTA VI community-server API. The [2026-11-26 evidence-to-contract mapping](./GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md) records these distinctions and the exact public repository commits examined. Do not promote an `RT-*` requirement merely because an offline executable reaches a world scene.
+Detailed monitoring of unofficial PC runners, reverse-engineering tools, file formats and external RP frameworks belongs in the separate documentary research repository, not in CALM's product specification. CALM may record the requirement-level conclusion that no authorized GTA VI community-server contract is established; third-party execution results never promote an `RT-*` requirement.
 
 ## Review cadence
 

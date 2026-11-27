@@ -41,7 +41,7 @@ test/build gates pass without executing the script. Revisit this decision if the
 platforms change or the locked package stops supplying the required binary; approve only the
 specific dependency after reviewing its script and provenance.
 
-For current public research classifications, see [the GTA VI research snapshot](../research/GTA6_RESEARCH_2026-11-24.md) and [functions and interfaces matrix](../research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md).
+Detailed inventories of external tools and compatibility projects are maintained in a separate documentary repository. This policy is CALM's rule for repository inputs: no game files, leaked artifacts, executable samples or third-party implementation code are accepted as product dependencies.
 
 ## Automated guard and limitations
 

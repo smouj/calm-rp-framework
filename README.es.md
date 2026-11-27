@@ -26,24 +26,19 @@ CALM se diseña específicamente para el roleplay alrededor de las mecánicas ob
 > [!IMPORTANT]
 > **No es jugable ni está conectado a GTA VI.** Este repositorio no ofrece un cliente o servidor multijugador, instalador ni modificación funcional. Desarrolla los sistemas de roleplay propios de CALM para GTA VI. La integración real queda bloqueada hasta que exista un runtime de GTA VI documentado y autorizado. No es FiveM para GTA VI ni un producto oficial de Rockstar.
 
-## Interfaces públicas, evidencia e investigación externa (27 de noviembre de 2026)
+## Evidencia del producto CALM y límites de integración
 
-El núcleo de CALM se define con dominios y contratos propios. La documentación de FiveM/Qbox solo sirve como referencia externa para comparar conceptos; no demuestra compatibilidad ni describe las interfaces desconocidas de GTA VI.
+Este repositorio contiene los requisitos RP propios de CALM, su simulador y evidencia de producto basada en declaraciones oficiales y mecánicas públicas. Los contratos de preparación del runtime fallan de forma segura: no inventan comandos de GTA VI. La investigación de ports no oficiales para PC, herramientas de ingeniería inversa y detalles de frameworks externos se mantiene en documentación independiente; no define la arquitectura, dependencias ni APIs de CALM.
 
-- [Matriz de funciones, eventos y conceptos técnicos](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
-- [Matriz de capacidades de GTA VI — catálogo verificado de investigación de RAGE 9](./docs/research/GTA6_CAPABILITY_MATRIX_2026-11-25.md)
-- [Avances de ejecución de GTA VI en PC — VIctory, XCL, el DMCA de Leonida y por qué no son una interfaz](./docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md)
-- [Borrador de hilo sobre la ejecución de Xbox en PC](./docs/research/X_THREAD_GTA6_PORT_2026-11-27.md) — resume afirmaciones públicas y limita las conclusiones; no es una guía de integración de CALM.
-- [Auditoría de código de VIctory — capa de compatibilidad, red sin conexión e implicaciones para CALM](./docs/research/VICTORY_SOURCE_AUDIT_2026-11-26.md)
 - [Mecánicas de GTA VI observadas por la prensa y consecuencias de diseño](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)
 - [Sistemas de la campaña de GTA VI y observaciones públicas sobre su implementación](./docs/research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md)
+- [Estado actual de plataformas y runtime de GTA VI](./docs/research/PLATFORM_STATUS.md)
+- [Registro de evidencia oficial para CALM](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md)
 - [Análisis preliminar de interoperabilidad, licencias y propiedad intelectual](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [Normativa europea y española relevante para interoperabilidad y copyright](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md) — referencias de investigación, no un dictamen jurídico.
 - [Verificación local: el gate autoritativo, sin depender del CI alojado](./docs/operations/LOCAL_VERIFICATION.md)
-- [Referencias de investigación técnica de RAGE 9](./docs/research/GTA6_RESEARCH_2026-11-24.md)
-- [Versiones comprobadas de herramientas de terceros](./docs/research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md)
 
-**Importante:** estudiar documentación de ingeniería inversa no concede permiso para publicar archivos filtrados, reutilizar código protegido ni poner en marcha servidores GTA VI no autorizados. No hay integración jugable.
+El alcance técnico de CALM es su framework RP. Los estudios externos de compatibilidad son contexto documental; no demuestran una interfaz de juego compatible ni autorización para operar un servidor multijugador.
 
 ## Nuestro objetivo
 
@@ -55,7 +50,7 @@ CALM no usa ESX/QBCore/Qbox ni FiveM como modelo de producto, plano de arquitect
 
 - [ADR-0009 — objetivo GTA VI y límites de evidencia](./docs/adr/0009-gta-vi-first-product-scope.md)
 - [Auditoría verificada del código actual: existente y pendiente](./docs/PROJECT_SCOPE.md)
-- [Propuesta de contratos de CALM y comparación con frameworks externos](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [Propuesta original de contratos de CALM](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
 - [Límite de diseño para la progresión de personajes](./docs/server/CHARACTER_PROGRESSION.md)
 - [Guía en español de arquitectura y simulador](./docs/community/SIMULATOR_GUIDE.es.md)
 

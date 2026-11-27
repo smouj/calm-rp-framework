@@ -18,13 +18,12 @@ describe('community site source checks', () => {
     expect(html).not.toMatch(/<link[^>]+href=["']https?:/i);
   });
 
-  it('embeds the documented animated SVG as a self-contained research source', () => {
-    const graphic = read('assets/gta6-xbox-to-pc-architecture.svg');
-    expect(html).toContain('data="./assets/gta6-xbox-to-pc-architecture.svg"');
-    expect(graphic).toContain('aria-labelledby="graphic-title graphic-description"');
-    expect(graphic).toContain('prefers-reduced-motion: reduce');
-    expect(graphic).toContain('fxceless/victory-fork');
-    expect(graphic).not.toMatch(/<script\b|<foreignObject\b|<image\b/i);
+  it('keeps third-party PC execution research outside the CALM product site', () => {
+    expect(html).toContain('CALM es el framework; la investigación de compatibilidad es externa');
+    expect(html).toContain('docs/server/RUNTIME_REQUIREMENTS.md');
+    expect(html).not.toMatch(
+      /VIctory|XSEmu|Project ReCity|gta6-xbox-to-pc-architecture|xcl-dev\/xcl/i,
+    );
   });
 
   it('has no duplicate IDs or broken internal navigation anchors', () => {
@@ -38,8 +37,8 @@ describe('community site source checks', () => {
 
   it('clearly identifies the limits of the game integration and simulator', () => {
     expect(html).toContain('no ejecuta directamente el paquete TypeScript');
-    expect(html).toContain('no proporcionan por sí mismos autorización');
-    expect(html).toContain('No hospedamos ni enlazamos archivos filtrados');
+    expect(html).toContain('no crean una interfaz RP autorizada');
+    expect(html).toMatch(/CALM no obtiene ni procesa archivos\s+del juego/);
   });
 
   it('presents CALM as GTA VI-first and describes the F2 inventory boundary', () => {

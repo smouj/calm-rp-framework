@@ -32,8 +32,8 @@ CALM should therefore continue to build its own:
 - audit and idempotency around durable outcomes;
 - presentation-independent contracts, leaving animations, physics and UI to a future authorized adapter.
 
-## What code study can safely establish
+## What these observations can and cannot establish
 
-Public developer statements plus observed retail behavior can support **system maps and behavior hypotheses**. They do not let us reconstruct GTA VI's source code. Open-source projects such as VIctory can be studied for their own emulator/compatibility-layer design, but that is not Rockstar gameplay code and does not explain the internals of the campaign systems above.
+Public developer statements plus observed retail behavior can support **system maps and behavior hypotheses**. They do not let us reconstruct GTA VI's source code. This CALM note covers game-design observations only; PC execution, compatibility layers, file formats and reverse-engineering projects are documented separately and do not inform CALM's product architecture.
 
-If Rockstar later publishes SDKs, source excerpts, technical documentation, or authorized modding interfaces, evaluate those materials directly and add provenance, version, license, and scope before changing CALM. Until then, keep the distinction explicit: **observed game behavior → CALM design inspiration; guessed engine implementation → unknown**.
+If Rockstar later publishes SDKs, source excerpts, technical documentation, or authorized modding interfaces, evaluate those materials directly and add provenance, version, license, and scope before changing CALM. Until then, keep the distinction explicit: **observed game behavior may inform a CALM RP requirement; guessed engine implementation and third-party PC compatibility results do not**.
