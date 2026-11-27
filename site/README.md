@@ -9,7 +9,9 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 - Secciones de arquitectura, sistemas, ingeniería, investigación, hoja de ruta y contribuciones. La página presenta el objetivo GTA VI-first, los dominios propios de CALM, la simulación con datos sintéticos y el runtime autorizado como bloqueado.
 - Sección de evidencia centrada en mecánicas públicas de GTA VI y en los requisitos propios de CALM; los estudios de compatibilidad de PC se mantienen fuera del framework.
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
-- Efectos y animaciones sobre la paleta oficial (navy + rosa Miami): fondo global unificado con brillos fijos y retícula, orbes animados en la portada, animaciones de entrada, aparición progresiva al hacer scroll (IntersectionObserver con retardo escalonado), subrayado de navegación activa y cursores animados; todo se desactiva con `prefers-reduced-motion` y el contenido permanece visible sin JavaScript.
+- Ambientación visual original de costa nocturna para Leonida, en SVG vectorial propio: horizonte, skyline, palmeras, luces de ciudad y reflejos lentos. Mantiene el navy y rosa de CALM con acentos aqua/sunset; no usa arte ni recursos gráficos del juego.
+- Efectos y animaciones: fondo global con brillos y retícula, orbes de portada, reflejos SVG animados, entradas, aparición progresiva al hacer scroll, navegación activa y estados interactivos. Se respetan `prefers-reduced-motion` y el contenido sigue visible sin JavaScript.
+- La portada refleja el estado publicado de F2: inventario y almacenamiento persistentes completados; la integración de juego permanece bloqueada. Un diagrama diferencia el núcleo CALM de los IDs ilustrativos de módulos `smj_*`.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
 - Filtro interactivo de módulos.
 - Sección de ingeniería con la estructura real del monorepo, las puertas de calidad y las verificaciones de higiene que revisan cada cambio.

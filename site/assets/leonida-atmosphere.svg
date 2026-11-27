@@ -1,0 +1,198 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1600 900"
+  fill="none"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Ilustración ambiental original para CALM</title>
+  <desc id="desc">
+    Horizonte costero nocturno con edificios, palmeras, luces y reflejos geométricos, creado para
+    esta web.
+  </desc>
+  <defs>
+    <radialGradient
+      id="horizonGlow"
+      cx="0"
+      cy="0"
+      r="1"
+      gradientTransform="matrix(0 440 -690 0 1160 470)"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#FF7898" stop-opacity=".42" />
+      <stop offset=".42" stop-color="#895D9D" stop-opacity=".2" />
+      <stop offset="1" stop-color="#101020" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="water" x1="1120" x2="1120" y1="598" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#37304E" stop-opacity=".7" />
+      <stop offset="1" stop-color="#101020" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient
+      id="edgeFade"
+      x1="500"
+      x2="1100"
+      y1="450"
+      y2="450"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="white" stop-opacity="0" />
+      <stop offset=".44" stop-color="white" stop-opacity=".7" />
+      <stop offset="1" stop-color="white" />
+    </linearGradient>
+    <mask id="sceneFade">
+      <rect width="1600" height="900" fill="url(#edgeFade)" />
+    </mask>
+    <filter
+      id="softGlow"
+      x="-60%"
+      y="-60%"
+      width="220%"
+      height="220%"
+      color-interpolation-filters="sRGB"
+    >
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+    <style>
+      .horizon-glow {
+        animation: horizon-breathe 18s ease-in-out infinite alternate;
+        transform-origin: 1160px 470px;
+      }
+      .water-lines {
+        animation: water-drift 34s linear infinite;
+      }
+      .traffic-lights {
+        animation: lights-glide 19s ease-in-out infinite alternate;
+      }
+      .window-glow {
+        animation: window-pulse 7s ease-in-out infinite alternate;
+      }
+      @keyframes horizon-breathe {
+        to {
+          opacity: 0.72;
+          transform: scale(1.05);
+        }
+      }
+      @keyframes water-drift {
+        to {
+          transform: translateX(-72px);
+        }
+      }
+      @keyframes lights-glide {
+        to {
+          transform: translateX(44px);
+        }
+      }
+      @keyframes window-pulse {
+        50% {
+          opacity: 0.54;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+        }
+      }
+    </style>
+  </defs>
+
+  <g mask="url(#sceneFade)">
+    <ellipse class="horizon-glow" cx="1160" cy="470" fill="url(#horizonGlow)" rx="690" ry="440" />
+    <circle cx="1160" cy="474" r="126" fill="#FFAB8B" fill-opacity=".12" filter="url(#softGlow)" />
+    <path d="M1065 478a95 95 0 1 1 190 0" stroke="#FFC4A7" stroke-opacity=".36" stroke-width="2" />
+    <path d="M1078 480h164" stroke="#FFD0AE" stroke-opacity=".6" />
+
+    <path d="M590 674V542h68v-46h41v-30h72v208H590Z" fill="#15172C" />
+    <path d="M704 674V464h34v-54h31v42h28v-72h44v22h33v272H704Z" fill="#1B1D36" />
+    <path d="M868 674V492h58v-82h14v-42h11v42h15v82h57v182H868Z" fill="#171A32" />
+    <path d="M1038 674V466h50v-66h18v66h58v208h-126Z" fill="#1A1C35" />
+    <path
+      d="M1164 674V522h55v-32h24v-66h68v-36h25v44h42v-65h23v65h31v-44h39v76h48v210h-355Z"
+      fill="#17192F"
+    />
+    <path
+      d="M608 544h48M724 465h118M882 494h150M1046 468h111M1180 525h381"
+      stroke="#69718A"
+      stroke-opacity=".18"
+    />
+    <path
+      d="M1106 401h18v-30h-18M1336 424h16v-29h-16M1475 438h18v-31h-18"
+      stroke="#FF9BB2"
+      stroke-opacity=".45"
+    />
+
+    <g class="window-glow" fill="#FFB6A0" fill-opacity=".54">
+      <path
+        d="M722 489h6v9h-6zm18 0h6v9h-6zm18 0h6v9h-6zm18 0h6v9h-6zm18 0h6v9h-6zm18 0h6v9h-6zM722 517h6v9h-6zm18 0h6v9h-6zm36 0h6v9h-6zm18 0h6v9h-6zm18 0h6v9h-6z"
+      />
+      <path
+        d="M882 515h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zM882 545h7v10h-7zm44 0h7v10h-7zm22 0h7v10h-7zm44 0h7v10h-7z"
+      />
+      <path
+        d="M1060 487h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zm22 0h7v10h-7zM1060 516h7v10h-7zm44 0h7v10h-7zm22 0h7v10h-7zm44 0h7v10h-7z"
+      />
+      <path
+        d="M1202 550h7v10h-7zm23 0h7v10h-7zm46-54h7v10h-7zm23 0h7v10h-7zm23 0h7v10h-7zm46 47h7v10h-7zm23 0h7v10h-7zm46-35h7v10h-7zm23 0h7v10h-7zm23 48h7v10h-7zm23 0h7v10h-7z"
+      />
+    </g>
+
+    <g opacity=".75" stroke-linecap="round">
+      <path d="M1378 650c-9-70 10-147 53-207" stroke="#69718A" stroke-width="8" />
+      <path
+        d="M1428 444c-37-6-68-21-88-47 41-1 72 9 95 31-12-34-13-63-2-86 22 24 32 53 30 86 15-32 37-54 67-64-8 34-26 60-57 77 38-7 72-1 99 20-36 14-70 15-103 2 25 20 40 45 44 75-31-16-53-39-67-70-3 37-17 68-42 92-5-38 0-71 15-99-27 25-56 37-88 35 24-29 54-47 82-52Z"
+        fill="#20233D"
+        stroke="#FF9BB2"
+        stroke-opacity=".35"
+        stroke-width="2"
+      />
+    </g>
+    <g opacity=".55" stroke-linecap="round">
+      <path d="M1530 678c-7-47 4-100 30-143" stroke="#717B94" stroke-width="6" />
+      <path
+        d="M1558 535c-27-4-48-14-63-33 29-1 52 7 70 23-9-24-9-45-1-61 16 17 23 38 21 61 11-23 27-39 48-46-6 24-19 43-41 55 27-5 51 0 70 15-26 10-50 11-73 1 18 14 29 32 32 53-22-11-38-28-48-50-2 26-12 49-30 66-4-27 0-50 10-70-19 18-40 27-63 25 17-21 38-34 58-39Z"
+        fill="#242641"
+        stroke="#66DCD0"
+        stroke-opacity=".3"
+        stroke-width="2"
+      />
+    </g>
+
+    <path d="M570 675c180-22 375-24 592-1 174 18 306 19 438-1v227H570V675Z" fill="url(#water)" />
+    <path
+      d="M590 687c206-17 400-14 575 4 145 15 265 13 403-5"
+      stroke="#FF9FB3"
+      stroke-opacity=".4"
+    />
+    <path
+      d="M754 710c165-8 258 0 382 15M1116 740c104 4 182 2 319-11M884 775c151-12 248-8 372 8M1207 820c91 0 172-5 255-16"
+      stroke="#6CDDD2"
+      stroke-opacity=".38"
+      stroke-width="2"
+    />
+    <path
+      d="M1012 706h46m22 0h26m-272 28h62m23 0h20m226 27h78m19 0h32m-364 35h49m20 0h68m259 38h75m18 0h25"
+      stroke="#F9A4AC"
+      stroke-opacity=".32"
+      stroke-width="3"
+    />
+    <g class="water-lines" stroke-linecap="round" stroke-width="2">
+      <path
+        d="M766 734h92m-174 48h106m270-34h114m-385 82h144m-16-126h63m230 86h107"
+        stroke="#FF9FB3"
+        stroke-opacity=".24"
+      />
+      <path
+        d="M974 756h78m-327 50h82m472-81h95m-249 142h104"
+        stroke="#68DCD0"
+        stroke-opacity=".22"
+      />
+    </g>
+    <g class="traffic-lights">
+      <path d="M762 667h442" stroke="#7583A0" stroke-opacity=".28" stroke-width="2" />
+      <circle cx="843" cy="664" r="3" fill="#FF7C9F" />
+      <circle cx="1092" cy="668" r="3" fill="#68DCD0" />
+      <circle cx="1178" cy="666" r="2" fill="#FFC68F" />
+    </g>
+  </g>
+</svg>
