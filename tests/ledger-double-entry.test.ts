@@ -130,6 +130,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'pay-001',
         toCharacterId: alex.id,
         amountMinor: 250_000n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
       expect(grant.posted).toBe(true);
 
@@ -151,6 +153,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'seed',
         toCharacterId: alex.id,
         amountMinor: 500n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
 
       const receipt = await world.ledger.transfer(playerOne, {
@@ -192,6 +196,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'mint-attempt',
           toCharacterId: alex.id,
           amountMinor: 1n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
       await world.dispose();
@@ -210,6 +216,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'seed',
         toCharacterId: alex.id,
         amountMinor: 500n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
 
       const first = await world.ledger.transfer(playerOne, command);
@@ -224,9 +232,65 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'seed',
         toCharacterId: alex.id,
         amountMinor: 500n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
       expect(grant.posted).toBe(false);
       expect(await world.ledger.getCharacterBalance(alex.id)).toBe(400n);
+      await world.dispose();
+    });
+
+    it('replays original grants and transfers after later balances cross their old prechecks', async () => {
+      const world = await createWorld();
+      const { alex, morgan } = await seeded(world);
+
+      await world.ledger.grant(admin, {
+        requestId: 'replay-seed',
+        toCharacterId: morgan.id,
+        amountMinor: 200n,
+        reason: 'Idempotency regression fixture',
+        correlationId: 'ledger-replay-test',
+      });
+      const firstTransfer = {
+        requestId: 'replay-transfer-first',
+        fromCharacterId: morgan.id,
+        toCharacterId: alex.id,
+        amountMinor: 100n,
+      } as const;
+      const firstReceipt = await world.ledger.transfer(playerTwo, firstTransfer);
+      await world.ledger.transfer(playerTwo, {
+        requestId: 'replay-transfer-second',
+        fromCharacterId: morgan.id,
+        toCharacterId: alex.id,
+        amountMinor: 60n,
+      });
+      const transferReplay = await world.ledger.transfer(playerTwo, firstTransfer);
+      expect(transferReplay.transactionId).toBe(firstReceipt.transactionId);
+      expect(transferReplay.posted).toBe(false);
+      expect(await world.ledger.getCharacterBalance(morgan.id)).toBe(40n);
+
+      const cappedCharacter = await world.characters.create(playerOne, {
+        firstName: 'Cap',
+        lastName: 'Replay',
+      });
+      for (let index = 0; index < 10; index += 1) {
+        await world.ledger.grant(admin, {
+          requestId: `cap-grant-${index}`,
+          toCharacterId: cappedCharacter.id,
+          amountMinor: 1_000_000_000_000n,
+          reason: 'Idempotency regression fixture',
+          correlationId: 'ledger-replay-test',
+        });
+      }
+      const cappedReplay = await world.ledger.grant(admin, {
+        requestId: 'cap-grant-0',
+        toCharacterId: cappedCharacter.id,
+        amountMinor: 1_000_000_000_000n,
+        reason: 'Idempotency regression fixture',
+        correlationId: 'ledger-replay-retry',
+      });
+      expect(cappedReplay.posted).toBe(false);
+      expect(await world.ledger.getCharacterBalance(cappedCharacter.id)).toBe(10_000_000_000_000n);
       await world.dispose();
     });
 
@@ -237,6 +301,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'reused',
         toCharacterId: alex.id,
         amountMinor: 100n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
 
       await failsWith('IDEMPOTENCY_CONFLICT', () =>
@@ -244,6 +310,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'reused',
           toCharacterId: alex.id,
           amountMinor: 200n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
       expect(await world.ledger.getCharacterBalance(alex.id)).toBe(100n);
@@ -255,13 +323,21 @@ for (const [label, createWorld] of worldFactories) {
       const { alex, morgan } = await seeded(world);
 
       await failsWith('INVALID_AMOUNT', () =>
-        world.ledger.grant(admin, { requestId: 'a1', toCharacterId: alex.id, amountMinor: 0n }),
+        world.ledger.grant(admin, {
+          requestId: 'a1',
+          toCharacterId: alex.id,
+          amountMinor: 0n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
+        }),
       );
       await failsWith('INVALID_AMOUNT', () =>
         world.ledger.grant(admin, {
           requestId: 'a2',
           toCharacterId: alex.id,
           amountMinor: 1_000_000_000_001n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
       await failsWith('INVALID_IDENTIFIER', () =>
@@ -269,6 +345,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'bad key with spaces!',
           toCharacterId: alex.id,
           amountMinor: 1n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
       await failsWith('INVALID_IDENTIFIER', () =>
@@ -276,6 +354,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'a3',
           toCharacterId: 'not-a-uuid' as Uuid,
           amountMinor: 1n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
       await failsWith('CHARACTER_NOT_FOUND', () =>
@@ -283,6 +363,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'a4',
           toCharacterId: newUuid(),
           amountMinor: 1n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
 
@@ -292,6 +374,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: `fill-${index}`,
           toCharacterId: alex.id,
           amountMinor: 1_000_000_000_000n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         });
       }
       expect(await world.ledger.getCharacterBalance(alex.id)).toBe(10_000_000_000_000n);
@@ -300,6 +384,8 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'over-limit',
           toCharacterId: alex.id,
           amountMinor: 1n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       );
       // Morgan is unaffected by the failed attempts.
@@ -314,6 +400,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'g1',
         toCharacterId: alex.id,
         amountMinor: 500n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
       await world.ledger.transfer(playerOne, {
         requestId: 't1',
@@ -336,6 +424,17 @@ for (const [label, createWorld] of worldFactories) {
       const cash = await world.accountStore.ensureAccount(alex.id, 'cash');
 
       const treasury = await world.accountStore.treasuryAccount();
+      await failsWith('AUDIT_REQUIRED', () =>
+        world.ledgerStore.post({
+          idempotencyKey: 'unaudited-treasury-grant',
+          fingerprint: 'unaudited-treasury-grant',
+          reference: null,
+          legs: [
+            { financialAccountId: treasury.id, amountMinor: -5n },
+            { financialAccountId: cash.id, amountMinor: 5n },
+          ],
+        }),
+      );
       await failsWith('UNBALANCED_TRANSACTION', () =>
         world.ledgerStore.post({
           idempotencyKey: 'u1',
@@ -384,6 +483,8 @@ describe('double-entry ledger — restart survival (PostgreSQL)', () => {
       requestId: 'run1-grant',
       toCharacterId: alex.id,
       amountMinor: 900n,
+      reason: 'Test fixture grant',
+      correlationId: 'test-grant',
     });
     await ledger.transfer(playerOne, {
       requestId: 'run1-transfer',
@@ -416,6 +517,8 @@ describe('double-entry ledger — restart survival (PostgreSQL)', () => {
       requestId: 'run1-grant',
       toCharacterId: alex.id,
       amountMinor: 900n,
+      reason: 'Test fixture grant',
+      correlationId: 'test-grant',
     });
     expect(replayedGrant.posted).toBe(false);
     expect(await ledger2.getCharacterBalance(alex.id)).toBe(beforeBalances[0]);
@@ -425,6 +528,8 @@ describe('double-entry ledger — restart survival (PostgreSQL)', () => {
       requestId: 'run2-grant',
       toCharacterId: morgan.id,
       amountMinor: 50n,
+      reason: 'Test fixture grant',
+      correlationId: 'test-grant',
     });
     expect(await ledger2.getCharacterBalance(morgan.id)).toBe(beforeBalances[1]! + 50n);
     await reopened.dispose();

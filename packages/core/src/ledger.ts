@@ -22,6 +22,15 @@ export interface PostTransactionCommand {
   readonly fingerprint: string;
   readonly reference: string | null;
   readonly legs: readonly LedgerLeg[];
+  /** Durable audit metadata for a privileged transaction, written atomically with its ledger legs. */
+  readonly privilegedAudit?: PrivilegedActionAudit;
+}
+
+export interface PrivilegedActionAudit {
+  readonly action: 'economy.grant';
+  readonly actorAccountId: Uuid;
+  readonly reason: string;
+  readonly correlationId: string;
 }
 
 export interface PostedTransaction {
@@ -78,6 +87,8 @@ export interface GrantMoneyCommand {
   readonly requestId: string;
   readonly toCharacterId: Uuid;
   readonly amountMinor: bigint;
+  readonly reason: string;
+  readonly correlationId: string;
 }
 
 export interface TransferMoneyCommand {
@@ -96,6 +107,8 @@ export interface TransferReceipt {
 const MAX_AMOUNT = 1_000_000_000_000n;
 const MAX_BALANCE = 10_000_000_000_000n;
 const requestIdPattern = /^[a-zA-Z0-9:_-]{1,64}$/;
+const auditTextPattern = /^[^\u0000-\u001f\u007f]{1,256}$/;
+const correlationIdPattern = /^[a-zA-Z0-9:_-]{1,64}$/;
 
 function assertRequestId(requestId: string): void {
   if (typeof requestId !== 'string' || !requestIdPattern.test(requestId)) {
@@ -110,6 +123,39 @@ function assertAmount(amountMinor: bigint): void {
       'Amount must be a bounded positive integer in minor units.',
     );
   }
+}
+
+function requireGrantReason(reason: string): string {
+  if (typeof reason !== 'string') {
+    throw new DomainError('INVALID_AUDIT_REASON', 'A reason is required for a privileged grant.');
+  }
+  const normalized = reason.trim();
+  if (!auditTextPattern.test(normalized)) {
+    throw new DomainError(
+      'INVALID_AUDIT_REASON',
+      'The audit reason must contain 1 to 256 printable characters.',
+    );
+  }
+  return normalized;
+}
+
+function requireCorrelationId(correlationId: string): string {
+  if (typeof correlationId !== 'string' || !correlationIdPattern.test(correlationId)) {
+    throw new DomainError('INVALID_CORRELATION_ID', 'Invalid correlation ID.');
+  }
+  return correlationId;
+}
+
+function validatePrivilegedAudit(audit: PrivilegedActionAudit): PrivilegedActionAudit {
+  if (audit === null || typeof audit !== 'object' || audit.action !== 'economy.grant') {
+    throw new DomainError('INVALID_AUDIT_ACTION', 'Unknown privileged action audit type.');
+  }
+  return {
+    action: 'economy.grant',
+    actorAccountId: requireUuid(audit.actorAccountId, 'audit actor account ID'),
+    reason: requireGrantReason(audit.reason),
+    correlationId: requireCorrelationId(audit.correlationId),
+  };
 }
 
 function requireCapability(principal: SessionPrincipal, capability: 'economy.grant'): void {
@@ -176,22 +222,36 @@ export class LedgerService {
     command: GrantMoneyCommand,
   ): Promise<TransferReceipt> {
     requireCapability(principal, 'economy.grant');
+    const actorAccountId = requireUuid(principal.accountId, 'principal account ID');
     assertRequestId(command.requestId);
     const toCharacterId = requireUuid(command.toCharacterId, 'destination character ID');
     assertAmount(command.amountMinor);
+    const reason = requireGrantReason(command.reason);
+    const correlationId = requireCorrelationId(command.correlationId);
 
     const destination = await this.#requireCashAccount(toCharacterId);
     const treasury = await this.#accounts.treasuryAccount();
-    await this.#ensureWithinLimit(destination.id, command.amountMinor);
 
     const posted = await this.#ledger.post({
       idempotencyKey: command.requestId,
-      fingerprint: `grant|to:${toCharacterId}|amount:${command.amountMinor}`,
-      reference: null,
+      fingerprint: JSON.stringify([
+        'economy.grant',
+        actorAccountId,
+        toCharacterId,
+        command.amountMinor.toString(),
+        reason,
+      ]),
+      reference: command.requestId,
       legs: [
         { financialAccountId: treasury.id, amountMinor: -command.amountMinor },
         { financialAccountId: destination.id, amountMinor: command.amountMinor },
       ],
+      privilegedAudit: {
+        action: 'economy.grant',
+        actorAccountId,
+        reason,
+        correlationId,
+      },
     });
     return {
       transactionId: posted.transactionId,
@@ -225,11 +285,6 @@ export class LedgerService {
         'The sending character does not belong to the authenticated account.',
       );
     }
-    if ((await this.#ledger.getBalance(sender.id)) < command.amountMinor) {
-      throw new DomainError('INSUFFICIENT_FUNDS', 'Insufficient funds.');
-    }
-    await this.#ensureWithinLimit(recipient.id, command.amountMinor);
-
     const posted = await this.#ledger.post({
       idempotencyKey: command.requestId,
       fingerprint: `transfer|from:${fromCharacterId}|to:${toCharacterId}|amount:${command.amountMinor}`,
@@ -269,13 +324,6 @@ export class LedgerService {
       throw new DomainError('CHARACTER_NOT_FOUND', 'Unknown character.');
     }
     return this.#accounts.ensureAccount(characterId, 'cash');
-  }
-
-  async #ensureWithinLimit(accountId: Uuid, amountMinor: bigint): Promise<void> {
-    const balance = await this.#ledger.getBalance(accountId);
-    if (balance + amountMinor > MAX_BALANCE) {
-      throw new DomainError('BALANCE_LIMIT', 'Balance exceeds the allowed limit.');
-    }
   }
 }
 
@@ -349,16 +397,31 @@ interface StoredTransaction {
   readonly idempotencyKey: string;
   readonly fingerprint: string;
   readonly entries: readonly StoredEntry[];
+  readonly privilegedAudit: PrivilegedActionAudit | null;
 }
 
 export class InMemoryLedgerStore implements LedgerStore {
   readonly #transactions = new Map<string, StoredTransaction>();
   readonly #byTransactionId = new Map<Uuid, StoredTransaction>();
   readonly #entries: StoredEntry[] = [];
+  readonly #privilegedAudits: (PrivilegedActionAudit & {
+    readonly transactionId: Uuid;
+    readonly createdAt: Date;
+  })[] = [];
 
   public async post(command: PostTransactionCommand): Promise<PostedTransaction> {
     assertRequestId(command.idempotencyKey);
     validateLegs(command.legs);
+    const privilegedAudit =
+      command.privilegedAudit === undefined
+        ? null
+        : validatePrivilegedAudit(command.privilegedAudit);
+    if (
+      command.legs.some((leg) => leg.financialAccountId === TREASURY_ACCOUNT_ID) &&
+      privilegedAudit === null
+    ) {
+      throw new DomainError('AUDIT_REQUIRED', 'Treasury postings require a privileged audit.');
+    }
 
     const previous = this.#transactions.get(command.idempotencyKey);
     if (previous) {
@@ -396,11 +459,32 @@ export class InMemoryLedgerStore implements LedgerStore {
       idempotencyKey: command.idempotencyKey,
       fingerprint: command.fingerprint,
       entries,
+      privilegedAudit: privilegedAudit === null ? null : Object.freeze(privilegedAudit),
     };
     this.#transactions.set(command.idempotencyKey, stored);
     this.#byTransactionId.set(transactionId, stored);
     this.#entries.push(...entries);
+    if (stored.privilegedAudit !== null) {
+      this.#privilegedAudits.push(
+        Object.freeze({
+          ...stored.privilegedAudit,
+          transactionId,
+          createdAt: new Date(createdAt),
+        }),
+      );
+    }
     return this.#receiptOf(stored, true);
+  }
+
+  public listPrivilegedActions(): readonly (PrivilegedActionAudit & {
+    readonly transactionId: Uuid;
+    readonly createdAt: Date;
+  })[] {
+    return Object.freeze(
+      this.#privilegedAudits.map((entry) =>
+        Object.freeze({ ...entry, createdAt: new Date(entry.createdAt) }),
+      ),
+    );
   }
 
   public async getBalance(financialAccountId: Uuid): Promise<bigint> {

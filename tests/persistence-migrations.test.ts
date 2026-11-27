@@ -58,6 +58,8 @@ describe('migration runner (embedded PostgreSQL)', () => {
     const transactionId = '00000000-0000-4000-8000-0000000000a1';
     const entryId = '00000000-0000-4000-8000-0000000000a2';
     const treasuryId = '00000000-0000-4000-8000-0000000000f3';
+    const actorAccountId = '00000000-0000-4000-8000-0000000000a6';
+    await session.query('INSERT INTO accounts (id) VALUES ($1::uuid)', [actorAccountId]);
 
     await session.withTransaction(async (executor) => {
       await executor.query(
@@ -74,6 +76,12 @@ describe('migration runner (embedded PostgreSQL)', () => {
       await executor.query(
         `INSERT INTO ledger_transaction_finalizations (transaction_id) VALUES ($1::uuid)`,
         [transactionId],
+      );
+      await executor.query(
+        `INSERT INTO privileged_action_audits
+           (transaction_id, action, actor_account_id, reason, correlation_id)
+         VALUES ($1::uuid, 'economy.grant', $2::uuid, 'Append-only migration test', 'append-test')`,
+        [transactionId, actorAccountId],
       );
     });
 
@@ -137,6 +145,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
       '0003_ledger_append_only.sql',
       '0004_ledger_transaction_finalization.sql',
       '0005_persistent_inventory.sql',
+      '0006_privileged_action_audit.sql',
     ]);
 
     const tables = await session.query(
@@ -146,6 +155,9 @@ describe('migration runner (embedded PostgreSQL)', () => {
     expect(tables.rows.map((row) => String(row['table_name']))).toContain('ledger_entries');
     expect(tables.rows.map((row) => String(row['table_name']))).toContain('sessions');
     expect(tables.rows.map((row) => String(row['table_name']))).toContain('inventory_stacks');
+    expect(tables.rows.map((row) => String(row['table_name']))).toContain(
+      'privileged_action_audits',
+    );
   });
 
   it('is idempotent: a second run applies nothing and lists what is applied', async () => {
@@ -157,7 +169,57 @@ describe('migration runner (embedded PostgreSQL)', () => {
 
     expect(second).toEqual([]);
     const recorded = await runner.applied();
-    expect(recorded.map((migration) => migration.name)).toHaveLength(5);
+    expect(recorded.map((migration) => migration.name)).toHaveLength(6);
+  });
+
+  it('rejects a direct SQL treasury posting that omits its privileged audit row', async () => {
+    const session = await freshDatabase(await newScratchDirectory());
+    await new MigrationRunner(session).applyDirectory(MIGRATIONS_DIR);
+    const accountId = '00000000-0000-4000-8000-0000000006a1';
+    const characterId = '00000000-0000-4000-8000-0000000006a2';
+    const cashAccountId = '00000000-0000-4000-8000-0000000006a3';
+    const transactionId = '00000000-0000-4000-8000-0000000006a4';
+
+    await session.query('INSERT INTO accounts (id) VALUES ($1::uuid)', [accountId]);
+    await session.query(
+      `INSERT INTO characters (id, account_id, first_name, last_name)
+       VALUES ($1::uuid, $2::uuid, 'Audit', 'Guard')`,
+      [characterId, accountId],
+    );
+    await session.query(
+      `INSERT INTO financial_accounts (id, owner_character_id, kind)
+       VALUES ($1::uuid, $2::uuid, 'cash')`,
+      [cashAccountId, characterId],
+    );
+
+    await expect(
+      session.withTransaction(async (executor) => {
+        await executor.query(
+          `INSERT INTO ledger_transactions (id, idempotency_key, command_fingerprint)
+           VALUES ($1::uuid, $2, $3)`,
+          [transactionId, 'direct-unaudited-treasury', 'direct-test-fingerprint'],
+        );
+        await executor.query(
+          `INSERT INTO ledger_entries (id, transaction_id, financial_account_id, amount_minor)
+           VALUES
+             ('00000000-0000-4000-8000-0000000006a5'::uuid, $1::uuid,
+              '00000000-0000-4000-8000-0000000000f3'::uuid, -25),
+             ('00000000-0000-4000-8000-0000000006a6'::uuid, $1::uuid, $2::uuid, 25)`,
+          [transactionId, cashAccountId],
+        );
+        await executor.query(
+          `INSERT INTO ledger_transaction_finalizations (transaction_id)
+           VALUES ($1::uuid)`,
+          [transactionId],
+        );
+      }),
+    ).rejects.toThrow(/privileged action audit/i);
+
+    const rolledBack = await session.query(
+      'SELECT id FROM ledger_transactions WHERE id = $1::uuid',
+      [transactionId],
+    );
+    expect(rolledBack.rows).toHaveLength(0);
   });
 
   it('never reapplies migrations after a full restart of the database engine', async () => {

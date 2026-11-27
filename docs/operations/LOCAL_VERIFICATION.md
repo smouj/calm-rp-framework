@@ -2,11 +2,11 @@
 
 **Revisado:** 27 de noviembre de 2026
 
-GitHub Actions sufrió fallos de asignación de runner durante la revisión anterior. El workflow ya
-ejecuta sus pasos: la ejecución más reciente de `main` comprobada fue
-[#45724097467](https://github.com/smouj/calm-rp-framework/actions/runs/45724097467), con resultado
-correcto sobre `be7b68db4a3421637620ec38b8be36d94beb1b53`. Cada pull request debe esperar el resultado
-de su propio commit antes de fusionarse.
+GitHub Actions sufrió fallos de asignación de runner durante una revisión anterior. La ejecución más
+reciente de `main` comprobada fue
+[#46019821888](https://github.com/smouj/calm-rp-framework/actions/runs/46019821888), correcta sobre
+`99c37ac52a82e836db6e06c81b7504593fe9e197`. La validación del PR #60 y la publicación de Pages
+también pasaron. Cada pull request debe esperar el resultado de su propio commit antes de fusionarse.
 
 ## Regla del proyecto
 
