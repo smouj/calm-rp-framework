@@ -49,6 +49,14 @@ matrix remain independent documentary research; they are not CALM runtime inputs
 contracts. Pages deployment run #20 succeeded on its second attempt; the live page and SVG returned
 HTTP 200 with the updated content.
 
+Atlas edition 1.0 is now archived separately under `docs/research/atlas/` with its 30-page PDF,
+Markdown manuscript and 218-row evidence matrix. Its 24 original diagram pages were visually
+checked; the PDF contains no game screenshots. The manuscript's missing PNG references now link to
+the matching PDF pages. Rockstar's official screenshot gallery lists 138 captures. These checks
+confirm the publication package and its visual labeling, not every gameplay claim or source; owner
+provenance and broader historical/license review remain part of issue #2. No Word file, ZIP or
+generation source was supplied.
+
 ## Remaining publication work
 
 - Complete the repository-owner settings and historical/attachment/log review tracked in
