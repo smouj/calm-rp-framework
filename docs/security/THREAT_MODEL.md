@@ -2,7 +2,7 @@
 
 **State:** ACTIVE
 
-This threat model covers the game-agnostic RP server foundation and the future runtime adapter boundary.
+This threat model covers CALM's GTA VI-targeted RP services, persistence boundary and any future authorized runtime adapter.
 
 It does not claim a GTA VI anti-cheat design before a legitimate runtime exists.
 

@@ -2,15 +2,15 @@
 
 ## Purpose
 
-Develop **CALM Essentials**: reusable, verifiable roleplay systems as an open-source framework — the base a roleplay server needs — with GTA VI integration as a long-term goal contingent on public, legitimate runtime documentation.
+Develop **CALM Essentials**: original roleplay systems designed for GTA VI's publicly observable mechanics and CALM's intended GTA VI RP community. The target is GTA VI; the simulator and domain boundaries let us verify CALM's rules before an authorized game runtime exists.
 
-The architecture is not a functioning FiveM replacement today, and that is deliberate: it must remain useful even if GTA VI never receives an authorized community-server API.
+The project does not implement a GTA VI mod, client, multiplayer server or PC compatibility layer. Rockstar's published game is a single-player experience; GTA VI multiplayer and runtime integration remain unknown. CALM must not claim compatibility until a documented, authorized interface exists.
 
 ## Architectural posture
 
-### Portable, server-authoritative domain
+### GTA VI-targeted, server-authoritative RP domains
 
-The game client is untrusted. Persistent RP state belongs in domain/application services: accounts, characters, economy, inventory, jobs, organizations, property, vehicles, police records and permissions. Clients and adapters communicate _intent_, not authoritative balances or ownership.
+CALM owns the persistent RP state for its target design: accounts, characters, economy, carried and stored items, jobs, organizations, property, vehicles, police records and permissions. The simulator validates these target-specific rules. **The game client is untrusted**: a future client communicates _intent_, not authoritative balances or ownership.
 
 ```text
 client / simulator input
@@ -22,15 +22,15 @@ client / simulator input
     -> audit / project result
 ```
 
-### Two registers: RP functions vs game functions
+### Two registers: GTA VI RP behavior vs runtime capabilities
 
-Original operations we can implement and test now (characters, economy, inventory, jobs, permissions) are kept strictly separate from game integrations that exist only as future authorized interfaces. Design work is informed by verified GTA VI mechanics research ([observations](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)) for data modeling — never for assumed APIs.
+CALM's GTA VI-targeted RP behavior (characters, economy, carried/stored inventory, jobs, permissions) is specified separately from client/server integration. Design work is informed by evidence-graded GTA VI mechanics research ([observations](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)); it does not invent engine APIs or derive implementation contracts from leaked internals.
 
 ### Modular monolith first
 
-A framework does not need a microservice platform. Start with a modular deployable application and stable contracts; introduce extension APIs, brokers, external plugins or multi-region infrastructure only after tested use cases justify their cost.
+CALM does not need a microservice platform. Start with a modular deployable application and stable contracts; introduce extension APIs, brokers, external plugins or multi-region infrastructure only after tested GTA VI RP workflows justify their cost.
 
-### Game-independent ports and adapters
+### Target model, simulator and blocked runtime adapter
 
 ```text
 apps -> packages/contracts -> packages/core + packages/modules/*
@@ -41,15 +41,15 @@ adapters ------+------------------------+
 infrastructure/persistence -> domain ports declared by packages/core
 ```
 
-`packages/*` must not import runtime globals, GTA natives, Cfx natives, adapter implementations or proprietary asset formats.
+`packages/*` must not import runtime globals, GTA natives, Cfx natives, adapter implementations or proprietary asset formats. This boundary enables safe simulation of CALM's GTA VI-targeted rules; it does not make another game a product target.
 
 ## Target module layout (introduced progressively)
 
 ```text
 calm-rp-framework/
 ├── packages/
-│   ├── core/            # shared primitives and rules
-│   ├── contracts/       # public service contracts and events
+│   ├── core/            # CALM GTA VI RP rules and services
+│   ├── contracts/       # CALM service contracts and events
 │   └── modules/          # one folder per RP domain, each arriving
 │       ├── characters/   # with code + contracts + tests + docs
 │       ├── economy/
@@ -73,9 +73,9 @@ calm-rp-framework/
 └── site/
 ```
 
-Empty folders are not created ahead of code. Each module lands as a complete unit. CALM's proposed public service surface (session/character/economy/inventory/jobs/permissions/hooks) is specified in the [service-contracts proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md); its external-framework comparison is contextual research, not a compatibility target.
+Empty folders are not created ahead of code. Each module lands as a complete unit for a concrete CALM GTA VI RP workflow. A general third-party plugin ABI is not a current goal. The [service-contracts proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md) defines CALM-owned boundaries; it does not promise compatibility with external frameworks.
 
-## Current implementation (audited 2026-11-25, updated after Phase F1)
+## Current implementation (audited 2026-11-27, updated during F2)
 
 - `packages/core`: base types, domain errors, money primitives, canonical UUID identifiers, authenticated-session service, persistent character service, double-entry ledger service, inventory rules (in-memory reference stores included for each).
 - `packages/contracts`: typed envelopes, domain events, runtime capability and session contracts.
@@ -96,7 +96,7 @@ Admin operations must pass the same domain invariants with explicit, attributabl
 
 ## Community extension strategy
 
-The framework may evolve toward versioned module contracts and a dependency-aware module manifest — but no public plugin ABI, scripting API, server network protocol or FiveM compatibility is specified today. The extension system will be formalized only after two independent modules are proven to communicate through public services; each module keeps control of its own tables and accesses others through defined interfaces (the Qbox-recommended discipline). Proposals need a real use case, stable naming, migration/compatibility rules, tests and an ADR.
+CALM may add internal module boundaries when a real GTA VI RP workflow needs them. It does not currently promise a public plugin ABI, scripting API, server network protocol or FiveM compatibility. Any externally executable module system requires a concrete authorized GTA VI runtime, a threat model, license review, compatibility rules, tests and an ADR.
 
 Reference implementations and sample scenarios are **examples**, not proof of GTA VI runtime readiness. Documentation labels these maturity levels explicitly.
 
@@ -108,9 +108,9 @@ PC-execution research (VIctory, XCL, forks) demonstrates rendering experiments, 
 
 ## Project evolution
 
-- Preserve the boundary between portable rules and game APIs.
+- Keep CALM's GTA VI RP requirements explicit and isolate them from unknown game APIs.
 - Prefer additive, versioned contracts and explicit migrations.
 - Migrate `@gta6-rp/*` package names to CALM-owned names only in a separately versioned change with deprecation aliases and migration tests.
 - Keep reviews and security gates visible to outside contributors.
 - Avoid runtime claims until public evidence and reproducible integration tests exist.
-- Follow the accepted [ADR-0007](./docs/adr/0007-calm-essentials-framework-scope.md) for the CALM Essentials framework scope.
+- Follow [ADR-0009](./docs/adr/0009-gta-vi-first-product-scope.md) for the current CALM target and evidence limits.

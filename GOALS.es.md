@@ -1,6 +1,6 @@
 # Metas de mejora — Repositorio y sitio comunitario
 
-**Estado:** registro de mejora ACTIVO (G1, G4 y G6 completadas el 25/11/2026; alcance reformulado a CALM Essentials ese mismo día — consulta el [ADR-0007](./docs/adr/0007-calm-essentials-framework-scope.md))
+**Estado:** registro de mejora ACTIVO (alcance corregido a CALM GTA VI-first el 27/11/2026 — consulta el [ADR-0009](./docs/adr/0009-gta-vi-first-product-scope.md); G1, G4 y G6 se completaron el 25/11/2026)
 **Creado:** 2026-11-25
 **Compañero de:** [ROADMAP.md](./docs/roadmap/ROADMAP.md) (dirección del producto). Este archivo fija metas de calidad del repositorio y del sitio de GitHub Pages, cada una con línea base verificada y criterio de éxito comprobable.
 
@@ -13,7 +13,7 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 - **La coherencia de paleta se mantiene**: cada token de color de `site/assets/styles.css` coincide con la paleta documentada en `docs/branding/PROJECT_IDENTITY.md`; la paleta se re-deriva por muestreo de píxeles del banner social oficial del propietario, y el navy de la banda del banner está verificado por píxel como `#101020`.
 - **La estrella del banner es blanca, inclinada y de cinco puntas** (punta larga hacia la derecha): verificado por análisis de píxeles y por una descripción independiente con modelo de visión.
 - **El set de iconos divergía del banner antes de este lote**: `favicon.svg` y `logo.svg` usaban una estrella salmón rellena y texto Georgia, no la estrella del banner.
-- **Las afirmaciones del sitio son ciertas**: existen 18 suites Vitest y el árbol del monorepo mostrado coincide con los directorios reales `packages/`, `apps/`, `adapters/`, `infrastructure/` y `tests/`.
+- **La cifra histórica de pruebas era correcta el 25/11/2026**: en esa línea base existían 18 archivos Vitest. El 27/11/2026 el workspace contiene 20; el resultado exacto de ejecución está en `docs/operations/RELEASE_READINESS_2026-11-27.md`.
 - **El flujo de despliegue es válido**: `.github/workflows/pages.yml` parsea correctamente y se dispara con cambios en `site/**` sobre `main`.
 
 ## Metas
@@ -39,15 +39,19 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 
 ### G4 — Higiene de ramas según BRANCH_RETIREMENT.md
 
-**Estado: HECHA (25/11/2026).** Todas las ramas nombradas se verificaron contenidas en `main` y se borraron (locales y remotas); solo queda `main`, en local y en remoto.
+**Estado: HECHA para la limpieza del 25/11/2026.** Entonces se verificaron y retiraron las ramas históricas nombradas. Este trabajo usa una rama temporal de revisión, que se retirará al fusionar. Cualquier otra rama local solo se eliminará cuando la nota de triage confirme que su contenido ya está representado.
 
-**Objetivo:** volver al modelo de rama única `main` documentado en `docs/operations/BRANCH_RETIREMENT.md`.
-**Hecho cuando:** no queden ramas rancias y solo exista `main`.
+**Objetivo:** mantener `main` como única rama de integración duradera, con ramas de PR breves y revisables.
+**Hecho cuando:** el trabajo fusionado esté en `main`, se retire su rama de revisión y no queden ramas locales sin explicación.
 
 ### G5 — Triage de Issues y PRs abiertos
 
+**Estado: EN CURSO (27/11/2026).** El conector de GitHub está disponible. Las incidencias #2,
+#32 y #54 siguen abiertas y asignadas a `smouj`; cada una tiene criterios pendientes o pasos de
+verificación del mantenedor. El PR candidato se registrará en
+`docs/operations/ISSUE_TRIAGE_2026-11-27.md`.
+
 **Objetivo:** ninguna incidencia o PR rancio; cada elemento abierto con responsable y paso de verificación.
-**Bloqueado por:** acceso a la API del repositorio para listar, comentar y cerrar.
 **Hecho cuando:** se registre una nota de triage con fecha (el patrón del repositorio para esto es `docs/operations/PR24_CI_TRIAGE.md`).
 
 ### G6 — Reverificar tras la publicación

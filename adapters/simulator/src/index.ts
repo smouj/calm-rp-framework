@@ -26,4 +26,10 @@ export class SimulatorPlayerDirectory {
 export { runRoleplayScenario } from './roleplay-scenario.js';
 export type { ScenarioResult } from './roleplay-scenario.js';
 
+export { runPersistentInventoryRoleplayScenario } from './persistent-inventory-scenario.js';
+export type {
+  PersistentInventoryRoleplayScenarioInput,
+  PersistentInventoryRoleplayScenarioResult,
+} from './persistent-inventory-scenario.js';
+
 export { createSampleWorldPlanningCatalog } from './world-planning.js';

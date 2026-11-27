@@ -1,9 +1,19 @@
 # Third-party artifacts and research workspaces
 
 **State:** ACTIVE  
-**Reviewed:** 2026-11-23
+**Reviewed:** 2026-11-27
 
 The project repository stores only our source, synthetic fixtures, approved dependencies and written research. An external tool's ability to extract or translate game files does not confer permission to redistribute those files or integrate them into our RP framework.
+
+## GTA VI game files and leak/torrent material
+
+CALM contributors and automation must not acquire for CALM, request, upload, commit, execute, unpack, decrypt, scan, disassemble, convert or otherwise process leaked or unauthorized GTA VI game files. This includes executables, archives, assets, source, extracted tables, function signatures, offsets, generated code and converted artifacts. Do not use such material to create CALM mods, admin menus or compatibility shims.
+
+Do not link torrent or file-sharing locations in issues, pull requests, documentation or research notes. If a contributor sends game data to the project, do not inspect or redistribute it; isolate the submission from the repository and refer it to the maintainers for appropriate handling.
+
+CALM may document behavior observed in official public materials and lawful play of a retail game at a system-design level. These observations can inform CALM-owned GTA VI RP requirements, but must not be used to claim knowledge of proprietary function names, formats, algorithms or multiplayer interfaces. CALM tooling and CI must not read a local game installation. Use synthetic fixtures to implement and test CALM behavior.
+
+Admin interfaces and moderation tools may be built for CALM's own authenticated services and simulator. Connecting them to GTA VI requires a separately verified, authorized runtime contract.
 
 ## Separation rules
 

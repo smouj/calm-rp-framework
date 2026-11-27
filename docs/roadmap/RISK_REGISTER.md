@@ -14,7 +14,7 @@ The project could not lawfully or practically bind its server domain to GTA VI i
 
 Mitigation:
 
-- keep the domain, simulator, persistence and operations work game-agnostic;
+- keep CALM's target-specific RP requirements documented and validate them in the simulator without pretending it is a game runtime;
 - do not spend heavily on GTA VI-specific infrastructure before RT-001 is confirmed;
 - preserve the option to reuse server-domain work in another authorized environment.
 
@@ -30,7 +30,7 @@ Mitigation:
 
 - isolate Cfx research from GTA VI contracts;
 - require evidence classification before runtime coupling;
-- keep domain contracts neutral;
+- keep CALM contracts aligned with documented GTA VI RP requirements while isolating them from undocumented runtime calls;
 - maintain the explicit runtime requirements register.
 
 Trigger for reassessment: any GTA VI-specific public developer/runtime documentation.

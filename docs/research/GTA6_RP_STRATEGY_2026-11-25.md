@@ -30,27 +30,27 @@ The GTA Online precedent lets a project anticipate _needs_ (shared world, charac
 | Third-party administered servers                   |                Unknown |                    No |
 | Community-programmable resources                   |                Unknown |                    No |
 
-Planning consequence: CALM builds the **engine-independent** half of every row (accounts, ownership, economy, jobs, permissions) now, and leaves the engine-dependent half behind a capability gate.
+Planning consequence: CALM defines GTA VI-targeted RP rules for the parts expressible as CALM-owned state (identity, item custody, economy, jobs, permissions). The simulator verifies those rules; it is not a generic-game product or a substitute for the still-unknown GTA VI runtime.
 
 ## 3. The three integration scenarios and the posture
 
-| Scenario | Description                                                                              | CALM posture                                                        |
-| -------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| **A**    | Rockstar ships official online sessions only; no external scripts                        | CALM remains a standalone framework; no integration path exists     |
-| **B**    | Rockstar or Cfx.re publishes an authorized creator platform for GTA VI resources/scripts | **The scenario CALM prepares for technically** — an adapter study   |
-| **C**    | Rockstar authorizes specific RP projects under individual agreements                     | Integration only with a verifiable license and technical conditions |
+| Scenario | Description                                                                              | CALM posture                                                                        |
+| -------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **A**    | Rockstar ships official online sessions only; no external scripts                        | CALM remains a GTA VI-targeted simulator/design project; no integration path exists |
+| **B**    | Rockstar or Cfx.re publishes an authorized creator platform for GTA VI resources/scripts | **The scenario CALM prepares for technically** — an adapter study                   |
+| **C**    | Rockstar authorizes specific RP projects under individual agreements                     | Integration only with a verifiable license and technical conditions                 |
 
-The project prepares for **B without presuming it**: the adapter boundary, ports and capability registry are designed so that scenario B could be adopted if an authorized runtime is documented, while scenarios A and C change nothing in the portable core. Rockstar's RP policy (updated 15 September 2026) describes RP servers through its Creator Platform, subject to policy; the Creator Platform agreement requires an authorized “Covered Game” and does not itself enumerate GTA VI. Current Cfx FXServer documentation lists only `gta5` and `rdr3` as supported games. These facts do not confirm GTA VI support or an authorized GTA VI server path. [Rockstar RP policy](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers) · [Creator Platform License Agreement](https://fivem.net/terms/) · [Cfx supported games](https://docs.fivem.net/docs/server-manual/server-commands/).
+CALM records the requirements that scenario B would impose without assuming an adapter can be built. If an authorized runtime is documented, CALM must review its actual contracts and adjust the target-specific model where evidence requires it. Rockstar's RP policy describes RP servers through its Creator Platform, subject to policy; the reviewed agreement and Cfx game list do not confirm GTA VI support or an authorized GTA VI server path. [Rockstar RP policy](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers) · [Creator Platform License Agreement](https://fivem.net/terms/) · [Cfx supported games](https://docs.fivem.net/docs/server-manual/server-commands/).
 
 ## 4. Three-layer integration model
 
 The architecture separates what the game owns from what the framework owns:
 
-| Layer                    | Responsibility                                                                                           | CALM rule                                                                   |
-| ------------------------ | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| **GTA VI**               | World, physics, vehicles, animation, characters, game mechanics                                          | Used only through **verified interfaces**; never assumed                    |
-| **CALM Runtime Adapter** | Translates available game capabilities into CALM-owned contracts (spawn/despawn representations, events) | Every capability starts **disabled** until documented, permitted and tested |
-| **CALM Essentials**      | Persistent roleplay rules: identity, money, property, containers, jobs, organizations, permissions       | Engine-independent; developed and verified without GTA VI (delivered F1+)   |
+| Layer                    | Responsibility                                                                                              | CALM rule                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **GTA VI**               | World, physics, vehicles, animation, characters, game mechanics                                             | Used only through **verified interfaces**; never assumed                    |
+| **CALM Runtime Adapter** | Translates available game capabilities into CALM-owned contracts (spawn/despawn representations, events)    | Every capability starts **disabled** until documented, permitted and tested |
+| **CALM Essentials**      | GTA VI-targeted RP rules: identity, money, carried/stored items, property, jobs, organizations, permissions | CALM-owned and simulator-verified; not yet connected to GTA VI              |
 
 Illustrative interface shape for one entity (a design proposal, not game code):
 
@@ -122,17 +122,17 @@ The existing synthetic [spatial catalog](../server/WORLD_SPATIAL_READINESS.md) a
 | Phone RP                | Yes — services and data                | Integrated UI if one is supported         |
 | Weather and physics     | **Not to be reimplemented**            | Use game-provided capabilities if exposed |
 
-The practical conclusion: **most of CALM Essentials does not need to wait for multiplayer.** F1 (identity, money, persistence) is the validated proof; the recommendation stands — build the services any community needs regardless of engine first, add optional contracts for verified game mechanics later.
+The practical conclusion: CALM can specify and test its **GTA VI RP domain behavior** before a multiplayer runtime exists. F1 proves that durable identity and economy services work in CALM; it does not make them a generic framework or establish game integration. Target mechanics research must drive the next domain decisions while runtime bindings remain gated.
 
 ## 7. Research lines from here
 
 1. **Game-system research — primary line** — document campaign behavior and named developers' public explanations of missions, AI, vehicles, animation and world systems. Keep observations separate from assumptions about internal source code; see [`GTA6_RP_MECHANICS_2026-11-25.md`](./GTA6_RP_MECHANICS_2026-11-25.md) and [`GTA6_INTERNAL_SYSTEMS_2026-11-27.md`](./GTA6_INTERNAL_SYSTEMS_2026-11-27.md).
-2. **Integration research — later gate** — monitor Rockstar/Cfx.re announcements of an authorized external-resource environment: permitted languages, player/entity management, event mechanisms and legal conditions. This is necessary before game-facing integration, but it is not required to study the campaign's systems or design CALM's independent roleplay domains.
+2. **Integration research — later gate** — monitor Rockstar announcements of an authorized GTA VI external-resource environment: permitted languages, player/entity management, event mechanisms and legal conditions. This is necessary before game-facing integration, but it does not delay evidence-based design of CALM's GTA VI roleplay systems.
 
 ## 8. Recommendation (project decision)
 
 - Do **not** build a police system that tries to replicate GTA VI's internal AI, or an inventory that assumes knowledge of the game's weapon identifiers.
-- Do **build first** the engine-independent RP services every community needs: identity, money, property, containers, jobs, organizations, permissions — exactly the F1–F4 roadmap.
-- Then add **optional contracts** that exploit verified game mechanics when interfaces permit, gated per-capability.
+- Do **build first** the CALM domains that express the chosen GTA VI RP experience: identity, money, carried/stored items, vehicles, jobs, organizations and permissions, with source-linked requirements and simulator coverage.
+- Keep game-facing contracts and any executable adapter **blocked** until the authorized GTA VI runtime and its documented capabilities are verified.
 
 The near-term research question is **how the released game's observable systems and Rockstar's public developer explanations can inform CALM's original RP domain design without pretending to know the proprietary source code**. Any future online/creator-service announcement will answer a separate integration question: which documented capabilities CALM may use under the applicable authorization.

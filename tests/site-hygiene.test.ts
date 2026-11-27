@@ -18,6 +18,15 @@ describe('community site source checks', () => {
     expect(html).not.toMatch(/<link[^>]+href=["']https?:/i);
   });
 
+  it('embeds the documented animated SVG as a self-contained research source', () => {
+    const graphic = read('assets/gta6-xbox-to-pc-architecture.svg');
+    expect(html).toContain('data="./assets/gta6-xbox-to-pc-architecture.svg"');
+    expect(graphic).toContain('aria-labelledby="graphic-title graphic-description"');
+    expect(graphic).toContain('prefers-reduced-motion: reduce');
+    expect(graphic).toContain('fxceless/victory-fork');
+    expect(graphic).not.toMatch(/<script\b|<foreignObject\b|<image\b/i);
+  });
+
   it('has no duplicate IDs or broken internal navigation anchors', () => {
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
     const anchors = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
@@ -33,10 +42,12 @@ describe('community site source checks', () => {
     expect(html).toContain('No hospedamos ni enlazamos archivos filtrados');
   });
 
-  it('describes inventory only as an in-memory reference and names its limitations', () => {
+  it('presents CALM as GTA VI-first and describes the F2 inventory boundary', () => {
+    expect(html).toContain('proyecto GTA VI-first');
+    expect(html).not.toContain('en la línea de ESX y QBCore');
     expect(html).toContain('Inventario</h3>');
-    expect(html).toContain('equipamiento y contenedores');
-    expect(html).toContain('packages/core · no persistente');
+    expect(html).toContain('equipamiento y loadout');
+    expect(html).toContain('packages/core + persistence · F2');
     expect(html).toContain('Sin afiliación ni autorización de Rockstar Games');
   });
 

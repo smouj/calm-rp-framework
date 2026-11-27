@@ -1,6 +1,6 @@
 # Improvement Goals — Repository and Community Site
 
-**State:** ACTIVE improvement register (G1, G4 and G6 completed 2026-11-25; scope reformulated to CALM Essentials the same day — see [ADR-0007](./docs/adr/0007-calm-essentials-framework-scope.md))
+**State:** ACTIVE improvement register (scope corrected to GTA VI-first CALM on 2026-11-27 — see [ADR-0009](./docs/adr/0009-gta-vi-first-product-scope.md); G1, G4 and G6 were completed on 2026-11-25)
 **Created:** 2026-11-25
 **Companion to:** [ROADMAP.md](./docs/roadmap/ROADMAP.md) (product direction). This file fixes quality goals for the repository and the GitHub Pages site, each with a verified baseline and a checkable success criterion.
 
@@ -13,7 +13,7 @@ Every baseline claim below was checked on 2026-11-25 against the live site and t
 - **Palette coherence holds**: every color token in `site/assets/styles.css` equals the documented palette in `docs/branding/PROJECT_IDENTITY.md`; the palette is re-derived by pixel sampling from the owner's official social banner, and the banner band navy is pixel-verified `#101020`.
 - **The banner star is white, tilted and five-pointed** (long point to the right): verified by pixel analysis and by an independent vision-model description of the banner.
 - **The icon set diverged from the banner before this batch**: `favicon.svg` and `logo.svg` used a filled salmon star and Georgia serif text instead of the banner star.
-- **The site claims are true**: the 18 Vitest suites exist and the monorepo tree shown matches the actual `packages/`, `apps/`, `adapters/`, `infrastructure/` and `tests/` directories.
+- **The historical test-count claim was accurate on 2026-11-25**: 18 Vitest test files existed at that baseline. On 2026-11-27, the workspace contains 20 test files; the exact run outcome is recorded in `docs/operations/RELEASE_READINESS_2026-11-27.md`.
 - **The deploy workflow is valid**: `.github/workflows/pages.yml` parses correctly and triggers on `site/**` changes to `main`.
 
 ## Goals
@@ -41,16 +41,21 @@ the new assets return HTTP 200.
 
 ### G4 — Branch hygiene per BRANCH_RETIREMENT.md
 
-**Status: DONE (2026-11-25).** All named branches were verified as contained in `main` and
-deleted (local and remote); only `main` remains, locally and on the remote.
+**Status: DONE for the 2026-11-25 cleanup.** The named historical branches were verified and
+retired then. This work uses a temporary review branch; it must be removed after merge. Any other
+local-only snapshot branches are listed in the dated triage note until their content is verified
+as represented and they can be safely retired.
 
-**Goal:** return to the single-`main` model documented in `docs/operations/BRANCH_RETIREMENT.md`.
-**Done when:** no stale branches remain and only `main` exists.
+**Goal:** keep `main` as the only lasting integration branch, with short-lived, reviewable PR branches.
+**Done when:** merged work is on `main`, its review branch is retired, and no unexplained local-only branches remain.
 
 ### G5 — Open Issues and PRs triage
 
+**Status: IN PROGRESS (2026-11-27).** The GitHub connector is available. Issues #2, #32 and #54
+are open and assigned to `smouj`; each has explicit remaining acceptance or owner-side verification
+steps. The current candidate PR will be listed in `docs/operations/ISSUE_TRIAGE_2026-11-27.md`.
+
 **Goal:** no stale issues or PRs; every open item carries an owner and a verification step.
-**Blocked by:** repository API access to list, comment and close.
 **Done when:** a dated triage note is recorded (the repository pattern for this is `docs/operations/PR24_CI_TRIAGE.md`).
 
 ### G6 — Re-verify after publication

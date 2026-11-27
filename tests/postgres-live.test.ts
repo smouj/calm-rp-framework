@@ -1,13 +1,19 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import { newUuid } from '@gta6-rp/core';
-import { CharacterService, LedgerService, SessionService } from '@gta6-rp/core';
+import {
+  CharacterService,
+  LedgerService,
+  PersistentInventoryService,
+  SessionService,
+} from '@gta6-rp/core';
 import type { CharacterOwnershipDirectory, SessionPrincipal, Uuid } from '@gta6-rp/core';
 import {
   MigrationRunner,
   PgAccountRepository,
   PgCharacterRepository,
   PgFinancialAccountRepository,
+  PgInventoryRepository,
   PgLedgerRepository,
   PgPoolSession,
   PgSessionRepository,
@@ -36,6 +42,10 @@ const accountTwo = newUuid();
 const runId = newUuid().slice(0, 8);
 
 const admin: SessionPrincipal = { accountId: accountOne, capabilities: ['economy.grant'] };
+const inventoryAdmin: SessionPrincipal = {
+  accountId: accountOne,
+  capabilities: ['inventory.mint'],
+};
 const playerOne: SessionPrincipal = { accountId: accountOne, capabilities: [] };
 const playerTwo: SessionPrincipal = { accountId: accountTwo, capabilities: [] };
 
@@ -223,5 +233,171 @@ maybeLive('live PostgreSQL — persistence, concurrency and recovery', () => {
     expect(resolved?.accountId).toBe(accountOne);
     await sessions.revoke(issued.session.sessionId);
     expect(await sessions.authenticate(issued.token)).toBeNull();
+  }, 60_000);
+
+  it('recovers inventory and the original receipt after a full pool restart', async () => {
+    const characters = new PgCharacterRepository(sql);
+    const character = await new CharacterService(characters).create(playerOne, {
+      firstName: 'Taylor',
+      lastName: 'LiveRestart',
+    });
+    const inventory = new PgInventoryRepository(sql);
+    const itemId = `test:live:${runId}:restart`;
+    await inventory.registerItemDefinition({
+      id: itemId,
+      displayName: 'Live restart parcel',
+      weightGrams: 30,
+      maxStack: 10,
+      tradeable: true,
+    });
+    const container = await inventory.createContainer({
+      id: newUuid(),
+      kind: 'character',
+      locationId: character.id,
+      ownerCharacterId: character.id,
+      slotCapacity: 10,
+      weightCapacityGrams: 1_000,
+    });
+    const command = {
+      requestId: requestId('inventory-live-restart-mint'),
+      toContainerId: container.id,
+      toCharacterId: character.id,
+      itemId,
+      quantity: 4,
+    };
+    const service = new PersistentInventoryService(inventory, directoryFor(characters));
+    const originalReceipt = await service.mint(inventoryAdmin, command);
+
+    await sql.close();
+    sql = new PgPoolSession({ connectionString: process.env.DATABASE_URL, max: 12 });
+
+    const restartedCharacters = new PgCharacterRepository(sql);
+    const restartedInventory = new PgInventoryRepository(sql);
+    const restartedService = new PersistentInventoryService(
+      restartedInventory,
+      directoryFor(restartedCharacters),
+    );
+    const replayedReceipt = await restartedService.mint(inventoryAdmin, command);
+
+    expect(replayedReceipt).toEqual(originalReceipt);
+    expect(await restartedInventory.listContainerStacks(container.id)).toMatchObject([
+      { ownerCharacterId: character.id, itemId, quantity: 4 },
+    ]);
+  }, 60_000);
+
+  it('serializes competing live transfers without duplicating or losing items', async () => {
+    const characters = new PgCharacterRepository(sql);
+    const characterService = new CharacterService(characters);
+    const alex = await characterService.create(playerOne, {
+      firstName: 'Alex',
+      lastName: 'ItemRace',
+    });
+    const morgan = await characterService.create(playerTwo, {
+      firstName: 'Morgan',
+      lastName: 'ItemRace',
+    });
+    const inventory = new PgInventoryRepository(sql);
+    const itemId = `test:live:${runId}:race`;
+    await inventory.registerItemDefinition({
+      id: itemId,
+      displayName: 'Live race parcel',
+      weightGrams: 20,
+      maxStack: 10,
+      tradeable: true,
+    });
+    const source = await inventory.createContainer({
+      id: newUuid(),
+      kind: 'character',
+      locationId: alex.id,
+      ownerCharacterId: alex.id,
+      slotCapacity: 10,
+      weightCapacityGrams: 1_000,
+    });
+    const destination = await inventory.createContainer({
+      id: newUuid(),
+      kind: 'character',
+      locationId: morgan.id,
+      ownerCharacterId: morgan.id,
+      slotCapacity: 10,
+      weightCapacityGrams: 1_000,
+    });
+    const service = new PersistentInventoryService(inventory, directoryFor(characters));
+    await service.mint(inventoryAdmin, {
+      requestId: requestId('inventory-race-seed'),
+      toContainerId: source.id,
+      toCharacterId: alex.id,
+      itemId,
+      quantity: 5,
+    });
+
+    const outcomes = await Promise.allSettled(
+      Array.from({ length: 8 }, (_, index) =>
+        service.transfer(playerOne, {
+          requestId: requestId(`inventory-race-${index}`),
+          actorCharacterId: alex.id,
+          fromContainerId: source.id,
+          toContainerId: destination.id,
+          toCharacterId: morgan.id,
+          itemId,
+          quantity: 1,
+        }),
+      ),
+    );
+    const winners = outcomes.filter((outcome) => outcome.status === 'fulfilled');
+    const losers = outcomes.filter((outcome) => outcome.status === 'rejected');
+
+    expect(winners).toHaveLength(5);
+    expect(losers).toHaveLength(3);
+    for (const outcome of losers) {
+      if (outcome.status === 'rejected') {
+        expect(outcome.reason.code).toBe('INSUFFICIENT_ITEMS');
+      }
+    }
+    expect(await inventory.listContainerStacks(source.id)).toEqual([]);
+    expect(await inventory.listContainerStacks(destination.id)).toMatchObject([
+      { ownerCharacterId: morgan.id, itemId, quantity: 5 },
+    ]);
+  }, 60_000);
+
+  it('deduplicates one inventory mint command across live connections', async () => {
+    const characters = new PgCharacterRepository(sql);
+    const character = await new CharacterService(characters).create(playerOne, {
+      firstName: 'Casey',
+      lastName: 'ItemDedupe',
+    });
+    const inventory = new PgInventoryRepository(sql);
+    const itemId = `test:live:${runId}:dedupe`;
+    await inventory.registerItemDefinition({
+      id: itemId,
+      displayName: 'Live dedupe parcel',
+      weightGrams: 15,
+      maxStack: 10,
+      tradeable: true,
+    });
+    const container = await inventory.createContainer({
+      id: newUuid(),
+      kind: 'character',
+      locationId: character.id,
+      ownerCharacterId: character.id,
+      slotCapacity: 10,
+      weightCapacityGrams: 1_000,
+    });
+    const service = new PersistentInventoryService(inventory, directoryFor(characters));
+    const command = {
+      requestId: requestId('inventory-live-dedupe'),
+      toContainerId: container.id,
+      toCharacterId: character.id,
+      itemId,
+      quantity: 1,
+    };
+
+    const receipts = await Promise.all(
+      Array.from({ length: 6 }, () => service.mint(inventoryAdmin, command)),
+    );
+
+    expect(new Set(receipts.map((receipt) => receipt.operationId)).size).toBe(1);
+    expect(await inventory.listContainerStacks(container.id)).toMatchObject([
+      { ownerCharacterId: character.id, itemId, quantity: 1 },
+    ]);
   }, 60_000);
 });

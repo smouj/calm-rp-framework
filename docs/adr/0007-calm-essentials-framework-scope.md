@@ -1,10 +1,12 @@
 # ADR 0007 — CALM Essentials: roleplay-framework scope
 
-- **Status:** Accepted (directed by the repository owner, 2026-11-25)
+- **Status:** Superseded on product positioning by [ADR-0009](./0009-gta-vi-first-product-scope.md); retained as historical decision record
 - **Date:** 2026-11-25
 - **Clarified:** 2026-11-27 — external RP frameworks are comparative references only, not CALM's product class, blueprint, or compatibility target.
 - **Supersedes:** the FiveM-like _platform_ ambition in [ADR-0006](./0006-community-open-platform.md); retains ADR-0006's open-source, community and governance direction, [ADR-0003](./0003-modular-monolith-first.md)'s modular-monolith architecture, and the blocked GTA VI adapter of [ADR-0001](./0001-game-agnostic-core.md)
 - **Evidence base:** [GTA6_CAPABILITY_MATRIX_2026-11-25.md](../research/GTA6_CAPABILITY_MATRIX_2026-11-25.md), [ARCHITECTURE_COMPARISON_2026-11-25.md](../research/ARCHITECTURE_COMPARISON_2026-11-25.md), [GTA6_EXECUTION_PROGRESS_2026-11-25.md](../research/GTA6_EXECUTION_PROGRESS_2026-11-25.md) and the owner's 25 November 2026 technical research
+
+> **Historical scope note (2026-11-27):** this ADR correctly rejected ESX/QBCore/Qbox as compatibility targets and gated undocumented runtime work, but its engine-independent product framing was superseded by ADR-0009. CALM is now GTA VI-first; simulation remains a development/testing method, and actual GTA VI integration remains blocked until an authorized interface is documented.
 
 ## Context
 

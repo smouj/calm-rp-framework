@@ -4,6 +4,8 @@
 - **Date:** 2026-11-23
 - **Supersedes:** The single-server product scope in ADR-0002 and the audience context in ADR-0003; retains ADR-0003's modular-monolith architecture decision
 
+> **Historical product-scope note (2026-11-27):** the platform and game-independent product positioning below is superseded by [ADR-0009](./0009-gta-vi-first-product-scope.md). The open-source community, governance, modular-monolith and PostgreSQL-first decisions remain in force.
+
 ## Context
 
 The repository was originally a private blueprint for one future RP server. Its maintainer now wants an open-source community-led platform with a long-term ambition similar in _scope_ to FiveM, but with GTA VI as a conditional target.

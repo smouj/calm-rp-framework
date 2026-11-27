@@ -5,7 +5,7 @@
 
 ## Scope note
 
-The original single-server audience in this ADR's context has been superseded by [ADR-0006](./0006-community-open-platform.md). The modular-monolith decision remains in effect for the game-independent platform foundation; it does not limit the project to one server or deployment.
+The original single-server audience in this ADR's context was superseded by [ADR-0006](./0006-community-open-platform.md). The game-independent product framing was later superseded by [ADR-0009](./0009-gta-vi-first-product-scope.md). The modular-monolith decision remains an implementation method for CALM's GTA VI RP domains; it is not a cross-game product commitment.
 
 ## Context
 

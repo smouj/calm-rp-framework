@@ -7,7 +7,7 @@ export interface ScenarioResult {
   readonly replayPrevented: boolean;
 }
 
-/** Deterministic, game-independent RP economy exercise. No actual player connections. */
+/** Deterministic CALM GTA VI RP economy exercise. Uses synthetic data only. */
 export function runRoleplayScenario(): ScenarioResult {
   const world = new InMemoryRoleplay();
   const accountA = 'demo-a' as AccountId;

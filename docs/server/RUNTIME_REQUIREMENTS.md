@@ -61,7 +61,7 @@ They do **not** change `RT-003` or `RT-004` because neither source set publicly 
 - Rockstar's internal `game script` must not be treated as a public server scripting API;
 - C++ usage inside Rockstar game/Cfx platform engineering does not imply C++ will be the resource language for a future GTA VI server;
 - Lua, JavaScript and C# support in current FiveM must not be copied forward as a GTA VI guarantee;
-- TypeScript remains an internal project choice for game-agnostic code, not a prediction about the GTA VI runtime.
+- TypeScript is CALM's current implementation choice for its GTA VI-targeted domains and simulator, not a prediction about the GTA VI runtime.
 
 The adapter language decision therefore remains intentionally deferred until the relevant GTA VI runtime contract is public and implementable.
 

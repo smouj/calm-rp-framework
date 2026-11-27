@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CALM research graphic: Xbox Series → Windows execution layers.
+  Source and editing notes: docs/research/GTA6_PC_EXECUTION_GRAPHIC.md
+  Original vector artwork. No game assets, screenshots, executables, or extracted data.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2140" viewBox="0 0 1080 2140" role="group" aria-labelledby="graphic-title graphic-description">
+  <title id="graphic-title">Del código de Xbox Series a Windows: capas, límites y rendimiento autodeclarado</title>
+  <desc id="graphic-description">Infografía técnica, basada en documentación pública de VIctory, un fork de VIctory y Project ReCity. Explica la ejecución nativa x86-64, la capa de compatibilidad de servicios, la traducción gráfica, el rendimiento comunicado por un autor en un solo PC y por qué estos proyectos no crean un runtime de roleplay ni una integración para CALM.</desc>
+
+  <metadata>
+    {
+      "title": "Del código de Xbox Series a Windows",
+      "creator": "CALM Essentials",
+      "created": "2026-11-27",
+      "language": "es",
+      "format": "self-contained animated SVG",
+      "sources": [
+        "https://github.com/Marvisak/VIctory/blob/main/docs/architecture.md",
+        "https://github.com/fxceless/victory-fork",
+        "https://github.com/pixl27/ProjectReCity"
+      ],
+      "sourceReview": "2026-11-27; fork performance status dated 2026-11-27 06:30 UTC",
+      "limits": "Author-reported performance on one PC; not independently reproduced. No proprietary game materials included."
+    }
+  </metadata>
+
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071321" />
+      <stop offset="0.55" stop-color="#101a32" />
+      <stop offset="1" stop-color="#17102d" />
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" x2="1">
+      <stop offset="0" stop-color="#27e2d0" />
+      <stop offset="1" stop-color="#58b8ff" />
+    </linearGradient>
+    <linearGradient id="orange" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffb347" />
+      <stop offset="1" stop-color="#ff6d6d" />
+    </linearGradient>
+    <linearGradient id="violet" x1="0" x2="1">
+      <stop offset="0" stop-color="#c9a5ff" />
+      <stop offset="1" stop-color="#70a9ff" />
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#93b4d0" stroke-opacity="0.055" stroke-width="1" />
+    </pattern>
+    <filter id="soft-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <style><![CDATA[
+      text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .eyebrow { fill: #91aac8; font-size: 19px; font-weight: 760; letter-spacing: 3px; }
+      .title { fill: #f7f8fc; font-size: 55px; font-weight: 820; letter-spacing: -1.6px; }
+      .subtitle { fill: #b9c8dc; font-size: 25px; font-weight: 470; }
+      .card { fill: #0d1a2c; fill-opacity: .94; stroke: #40516b; stroke-opacity: .68; stroke-width: 2; }
+      .card-heading { fill: #f7f8fc; font-size: 31px; font-weight: 760; }
+      .body { fill: #d9e3ef; font-size: 26px; font-weight: 500; }
+      .small { fill: #aebed1; font-size: 21px; font-weight: 480; }
+      .tiny { fill: #93a7bf; font-size: 18px; font-weight: 520; }
+      .node { fill: #111f34; stroke: #40516b; stroke-width: 2; }
+      .node-label { fill: #f5f8ff; font-size: 23px; font-weight: 700; text-anchor: middle; }
+      .flow { fill: none; stroke: url(#cyan); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 13 15; animation: dash 2.6s linear infinite; }
+      .flow-orange { fill: none; stroke: url(#orange); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 13 15; animation: dash 2.9s linear infinite; }
+      .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 3.2s ease-in-out infinite; }
+      .source-link { fill: #7dded7; font-size: 20px; font-weight: 700; text-decoration: underline; }
+      .divider { stroke: #53657c; stroke-opacity: .55; stroke-width: 1.5; }
+      .metric { fill: #fff7f0; font-size: 62px; font-weight: 850; letter-spacing: -1.5px; }
+      .metric-label { fill: #ffd6a4; font-size: 21px; font-weight: 760; letter-spacing: 1px; }
+      @keyframes dash { to { stroke-dashoffset: -56; } }
+      @keyframes pulse { 0%, 100% { opacity: .56; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
+      @media (prefers-reduced-motion: reduce) {
+        .flow, .flow-orange, .pulse { animation: none !important; }
+        .flow, .flow-orange { stroke-dasharray: none; }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Background and restrained technical grid. -->
+  <rect width="1080" height="2140" rx="34" fill="url(#background)" />
+  <rect width="1080" height="2140" rx="34" fill="url(#grid)" />
+  <circle cx="980" cy="88" r="5" fill="#27e2d0" class="pulse" />
+
+  <!-- Title and editorial framing. -->
+  <g id="intro" aria-label="Título y alcance">
+    <text x="56" y="61" class="eyebrow">CALM RESEARCH / PUBLIC SOURCES / 27 NOV 2026</text>
+    <text x="56" y="132" class="title">DE XBOX SERIES A</text>
+    <text x="56" y="194" class="title">WINDOWS: ¿QUÉ CAMBIA?</text>
+    <text x="58" y="238" class="subtitle">Una capa de compatibilidad reconstruye servicios y gráficos.</text>
+    <rect x="56" y="264" width="968" height="67" rx="18" fill="#37243a" stroke="#f18b8c" stroke-opacity=".8" stroke-width="2" />
+    <circle cx="87" cy="297" r="8" fill="#ff9c86" class="pulse" />
+    <text x="111" y="306" fill="#ffe9df" font-size="23" font-weight="760">NO ES UN PORT DE ROCKSTAR · NO ES UNA API DE ROLEPLAY</text>
+  </g>
+
+  <!-- Layer 1: x86-64 execution and title loader. -->
+  <g id="cpu-layer" aria-label="Capa de CPU x86-64">
+    <rect x="48" y="354" width="984" height="224" rx="24" class="card" />
+    <text x="78" y="396" class="eyebrow" fill="#55ddcf">01 / CPU · MISMA ARQUITECTURA</text>
+    <text x="78" y="438" class="card-heading">El código x86-64 puede ejecutarse de forma nativa</text>
+    <rect x="78" y="464" width="220" height="75" rx="16" class="node" />
+    <text x="188" y="494" class="node-label"><tspan x="188">Xbox Series X|S</tspan><tspan x="188" dy="27">x86-64</tspan></text>
+    <path d="M307 502H352" class="flow" />
+    <circle cx="329" cy="502" r="5" fill="#89fff0" filter="url(#soft-glow)" />
+    <rect x="362" y="464" width="220" height="75" rx="16" class="node" />
+    <text x="472" y="494" class="node-label"><tspan x="472">Loader</tspan><tspan x="472" dy="27">mapea y prepara</tspan></text>
+    <path d="M591 502H636" class="flow" />
+    <circle cx="613" cy="502" r="5" fill="#89fff0" filter="url(#soft-glow)" />
+    <rect x="646" y="464" width="356" height="75" rx="16" class="node" />
+    <text x="824" y="494" class="node-label"><tspan x="824">Título: instrucciones</tspan><tspan x="824" dy="27">x86-64 en CPU de PC</tspan></text>
+    <text x="78" y="561" class="small">Compartir x86-64 evita emular la CPU; no sustituye los servicios de consola.</text>
+  </g>
+
+  <!-- Layer 2: console service compatibility, described at system level. -->
+  <g id="service-layer" aria-label="Capa de compatibilidad de servicios Xbox">
+    <rect x="48" y="600" width="984" height="244" rx="24" class="card" />
+    <text x="78" y="642" class="eyebrow" fill="#75b7ff">02 / SERVICIOS · COMPATIBILIDAD</text>
+    <text x="78" y="684" class="card-heading">Las llamadas de consola necesitan respuestas compatibles</text>
+    <rect x="78" y="711" width="240" height="74" rx="16" class="node" />
+    <text x="198" y="742" class="node-label"><tspan x="198">Imports del título</tspan><tspan x="198" dy="26">servicios Xbox</tspan></text>
+    <path d="M327 748H383" class="flow" />
+    <circle cx="355" cy="748" r="5" fill="#89fff0" filter="url(#soft-glow)" />
+    <rect x="393" y="711" width="250" height="74" rx="16" class="node" />
+    <text x="518" y="742" class="node-label"><tspan x="518">Capa HLE</tspan><tspan x="518" dy="26">y política de host</tspan></text>
+    <path d="M652 748H708" class="flow" />
+    <circle cx="680" cy="748" r="5" fill="#89fff0" filter="url(#soft-glow)" />
+    <rect x="718" y="711" width="284" height="74" rx="16" class="node" />
+    <text x="860" y="742" class="node-label"><tspan x="860">Respuesta que el</tspan><tspan x="860" dy="26">título espera</tspan></text>
+    <text x="78" y="819" class="small">Algunas funciones se implementan; otras pasan al host o quedan sin implementar.</text>
+  </g>
+
+  <!-- Layer 3: graphics compatibility is separate from CPU execution. -->
+  <g id="graphics-layer" aria-label="Traducción gráfica y shaders">
+    <rect x="48" y="866" width="984" height="297" rx="24" class="card" />
+    <text x="78" y="908" class="eyebrow" fill="#ffb36e">03 / GPU · TRADUCCIÓN GRÁFICA</text>
+    <text x="78" y="950" class="card-heading">La GPU requiere adaptar APIs, shaders y formatos</text>
+    <rect x="78" y="977" width="330" height="65" rx="15" class="node" />
+    <text x="243" y="1018" class="node-label">D3D12.X de Xbox</text>
+    <path d="M417 1010H493" class="flow-orange" />
+    <circle cx="456" cy="1010" r="5" fill="#ffd084" filter="url(#soft-glow)" />
+    <rect x="503" y="977" width="499" height="65" rx="15" class="node" />
+    <text x="752" y="1018" class="node-label">backend D3D12 de Windows</text>
+    <rect x="78" y="1057" width="330" height="65" rx="15" class="node" />
+    <text x="243" y="1098" class="node-label">Shaders y layouts Xbox</text>
+    <path d="M417 1090H493" class="flow-orange" />
+    <circle cx="456" cy="1090" r="5" fill="#ffd084" filter="url(#soft-glow)" />
+    <rect x="503" y="1057" width="499" height="65" rx="15" class="node" />
+    <text x="752" y="1098" class="node-label">shaders y recursos del host</text>
+    <text x="78" y="1148" class="small">Memoria · sincronización · formatos de textura · creación de pipelines</text>
+  </g>
+
+  <!-- Performance: exact public self-report, not an independent benchmark. -->
+  <g id="performance" aria-label="Rendimiento que comunica el autor de un fork">
+    <rect x="48" y="1185" width="984" height="355" rx="24" fill="#241d27" stroke="#b66b61" stroke-opacity=".78" stroke-width="2" />
+    <text x="78" y="1228" class="eyebrow" fill="#ffbd87">MEDICIÓN DECLARADA · VICTORY FORK · 27 NOV 2026, 06:30 UTC</text>
+    <text x="78" y="1270" class="card-heading">Una sola máquina. Rendimiento muy variable.</text>
+    <line x1="540" y1="1294" x2="540" y2="1451" class="divider" />
+    <text x="80" y="1355" class="metric">11 → 8,5</text>
+    <text x="83" y="1391" class="metric-label">FPS EN LA MISIÓN INICIAL DEL BARCO</text>
+    <text x="83" y="1424" class="small">11 con 1.500–3.300 draws; ~8,5 a partir de 3.300.</text>
+    <text x="582" y="1355" class="metric" fill="#ff9b8a">0,2–3</text>
+    <text x="586" y="1391" class="metric-label">FPS CON EL BUILDER DE RAY TRACING</text>
+    <text x="586" y="1424" class="small">Caída atribuida a la sincronización de estructuras RT.</text>
+    <rect x="78" y="1460" width="924" height="56" rx="14" fill="#382a31" />
+    <text x="98" y="1495" fill="#ffe9dc" font-size="20" font-weight="650">Windows 11 · i7-14700KF · RTX 4070 12 GB · 32 GB RAM · perfil Series X</text>
+    <text x="78" y="1531" class="tiny">Autoinforme del autor, no reproducido independientemente; no generalizar a otros equipos.</text>
+  </g>
+
+  <!-- The separate ReCity route and its explicitly stated current limitation. -->
+  <g id="recity-route" aria-label="Ruta alternativa de Project ReCity">
+    <rect x="48" y="1562" width="984" height="201" rx="24" class="card" />
+    <text x="78" y="1605" class="eyebrow" fill="#c6a6ff">OTRA RUTA · PROJECT RECITY</text>
+    <text x="78" y="1647" class="card-heading">Recompilación estática + shaders a SPIR-V/Vulkan</text>
+    <text x="78" y="1691" class="body">El propio proyecto dice que el juego todavía no arranca.</text>
+    <text x="78" y="1732" class="small">Estado descrito en su README público, consultado el 27-11-2026.</text>
+  </g>
+
+  <!-- What the research means for CALM; no leaked internals or game integration. -->
+  <g id="calm-takeaway" aria-label="Qué significa esta investigación para CALM">
+    <rect x="48" y="1785" width="984" height="178" rx="24" fill="#102b32" stroke="#39cbb8" stroke-opacity=".82" stroke-width="2" />
+    <text x="78" y="1828" class="eyebrow" fill="#66e0cf">QUÉ LE SIRVE A CALM</text>
+    <text x="78" y="1870" class="card-heading">Una lección de ingeniería; no una base de roleplay.</text>
+    <text x="78" y="1910" class="small">CALM modela sus propias reglas GTA VI RP con mecánicas públicas y datos sintéticos.</text>
+    <text x="78" y="1943" class="small">No toma APIs, código, assets ni interfaces de estos proyectos. El runtime sigue bloqueado.</text>
+  </g>
+
+  <!-- Linked primary sources. These are links to public project documentation only. -->
+  <g id="sources" aria-label="Fuentes públicas">
+    <text x="58" y="2005" class="eyebrow">FUENTES PRIMARIAS · ALCANCE Y ESTADO DECLARADO</text>
+    <a href="https://github.com/Marvisak/VIctory/blob/main/docs/architecture.md" target="_blank" rel="noopener noreferrer">
+      <text x="58" y="2044" class="source-link">VIctory · architecture.md</text>
+    </a>
+    <a href="https://github.com/fxceless/victory-fork" target="_blank" rel="noopener noreferrer">
+      <text x="382" y="2044" class="source-link">VIctory fork · status</text>
+    </a>
+    <a href="https://github.com/pixl27/ProjectReCity" target="_blank" rel="noopener noreferrer">
+      <text x="687" y="2044" class="source-link">Project ReCity · README</text>
+    </a>
+    <text x="58" y="2084" class="tiny">Gráfico vectorial original de CALM · sin capturas ni archivos del juego · animación desactivada con movimiento reducido.</text>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 # ADR-0001: Game-agnostic core with platform adapters
 
-- Status: Accepted
+- Status: Product positioning superseded by [ADR-0009](./0009-gta-vi-first-product-scope.md); testability and separation safeguards retained
 - Date: 2026-08-30
 
 ## Context
@@ -10,6 +10,8 @@ The eventual GTA VI community-server/runtime contract is not public. Building do
 ## Decision
 
 All durable RP business rules live in game-agnostic TypeScript packages. Runtime-specific behavior is implemented behind adapters. Cfx.re experimentation and future GTA VI integration remain separate boundaries.
+
+> **Historical scope note (2026-11-27):** CALM's product target is now GTA VI RP, not a reusable game-agnostic framework. The separation and testability principles in this ADR remain useful implementation techniques; see ADR-0009 for the current target and runtime gate.
 
 ## Consequences
 
