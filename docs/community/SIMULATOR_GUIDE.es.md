@@ -14,8 +14,9 @@ de una repetición. No representa una sesión multijugador real ni una integraci
 
 - **`packages/contracts`** declara las formas TypeScript de comandos, eventos y puertos. Una
   interfaz TypeScript se borra al compilar; por sí sola no valida JSON recibido por una red.
-- **`packages/core`** contiene reglas de dominio y servicios independientes del transporte y del
-  juego. Sus adaptadores en memoria son referencias de desarrollo, no almacenamiento duradero.
+- **`packages/core`** contiene reglas y servicios propios de CALM para su objetivo GTA VI, aislados
+  del transporte y del runtime. Sus adaptadores en memoria son referencias de desarrollo, no
+  almacenamiento duradero.
 - **`packages/persistence`** implementa repositorios PostgreSQL y migraciones para los dominios
   persistentes que ya existen.
 - **`adapters/simulator`** ejecuta escenarios locales con identidades y datos sintéticos; no llama
@@ -31,12 +32,13 @@ que exista un servicio de progresión.
 
 ## Estado que sí está implementado
 
-- **F1:** personajes, sesiones autenticadas y ledger de doble entrada persistidos en PostgreSQL,
-  con transacciones idempotentes y controles de integridad.
-- **F2:** el inventario disponible es una referencia en memoria. Inventarios duraderos,
-  contenedores y transferencias persistentes siguen pendientes; consulta
-  [`INVENTORY_REFERENCE.md`](../server/INVENTORY_REFERENCE.md) y
-  [`PROJECT_SCOPE.md`](../PROJECT_SCOPE.md).
+- **Base F1:** personajes, sesiones autenticadas y ledger de doble entrada persistidos en
+  PostgreSQL, con transacciones idempotentes y controles de integridad. El cierre más amplio de F1
+  continúa en la [incidencia #32](https://github.com/smouj/calm-rp-framework/issues/32).
+- **F2:** el candidato local añade el servicio y repositorio transaccionales, contenedores, reglas
+  de capacidad, recibos idempotentes, rollback, reinicio embebido y un flujo sintético del
+  simulador. La concurrencia en PostgreSQL 17 real aún debe pasar en CI antes de cerrar la
+  [incidencia #54](https://github.com/smouj/calm-rp-framework/issues/54); no hay conexión con GTA VI.
 - **Integración con GTA VI:** bloqueada. No hay cliente, servidor multijugador ni contrato
   autorizado y verificado.
 

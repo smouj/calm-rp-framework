@@ -2,7 +2,7 @@
 
 ## Can I play GTA VI roleplay with this today?
 
-**No.** This repository does not provide a working GTA VI multiplayer client, server or installer. It develops game-independent RP logic and documentation.
+**No.** This repository does not provide a working GTA VI multiplayer client, server, mod or installer. It develops CALM-owned RP rules for a GTA VI target and verifies those rules with synthetic data; no game runtime is connected.
 
 ## Is this an official Rockstar or Cfx.re project?
 
@@ -10,15 +10,15 @@
 
 ## Is this a fork of FiveM?
 
-**No.** We are inspired by the collaborative possibilities of FiveM, but there is no FiveM code, compatible client or confirmed GTA VI runtime integration in this repository.
+**No.** CALM is an original GTA VI-first project. FiveM and other GTA V frameworks are not its codebase, architecture blueprint or compatibility target, and no authorized GTA VI runtime integration is available here.
 
 ## Can the community eventually create a FiveM-like platform for GTA VI?
 
-It is a long-term aspiration. Technical feasibility, supported development interfaces, ownership rights, platform terms, multiplayer security and runtime authorization must be independently established before making that claim.
+CALM's goal is GTA VI roleplay, but the project makes no FiveM-like platform or integration claim. Any future runtime work depends on a documented, authorized GTA VI interface and a separate security, license and compatibility review.
 
 ## Why are you writing TypeScript before knowing GTA VI's scripting runtime?
 
-The game-independent domain, simulator, tests and web tooling can use TypeScript today. A possible future game-facing adapter would use whichever officially supported interface is appropriate, if one becomes available.
+TypeScript is CALM's current implementation language for its GTA VI-targeted RP domains, persistence and simulator. The simulator exercises CALM rules using synthetic data; it does not predict the game's scripting language or establish an integration API.
 
 ## Does Leonida prove GTA VI supports community servers?
 

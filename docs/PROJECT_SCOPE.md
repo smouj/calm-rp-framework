@@ -1,38 +1,38 @@
 # Project Scope — CALM Essentials
 
 **State:** Active community-led project scope
-**Working product name:** **CALM Essentials** — the roleplay framework developed in this repository
-**Updated:** 2026-11-27 · Scope decision and clarification recorded in [ADR-0007](./adr/0007-calm-essentials-framework-scope.md)
+**Working product name:** **CALM Essentials** — the GTA VI-first roleplay product developed in this repository
+**Updated:** 2026-11-27 · Current scope recorded in [ADR-0009](./adr/0009-gta-vi-first-product-scope.md)
 
 ## Product definition
 
-CALM Essentials is an independent, fan-led, open-source **roleplay framework** with CALM-owned domains and contracts: the base systems its intended RP communities need — characters, economy, inventory, jobs, organizations, properties, vehicles, permissions and extensions — developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration. ESX Legacy, QBCore and Qbox are external references only, not CALM's product model or compatibility targets.
+CALM Essentials is an independent, fan-led, open-source **GTA VI-first roleplay project**. Its CALM-owned domains and contracts model the intended RP experience around GTA VI behavior, including characters, economy, carried items, storage, jobs, organizations, vehicles, properties and permissions. The simulator and synthetic data let CALM build and test these target-specific rules before an authorized game runtime exists. ESX Legacy, QBCore, Qbox and FiveM are not CALM's product model, architecture template or compatibility targets.
 
-Today it is **not a playable mod, GTA VI client, custom game server, or supported multiplayer framework**. It is also **not** a FiveM-style platform: hosting, server browsing, a multiplayer network runtime and a plugin marketplace are out of scope. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
+Today it is **not a playable mod, GTA VI client, custom game server, or GTA VI-compatible multiplayer framework**. The released game is a single-player product on PS5 and Xbox Series X|S; this repository has no authorized GTA VI network, scripting or resource runtime. Hosting, server browsing, a generic game platform and a third-party plugin marketplace are out of scope. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
 
 The repository is named `calm-rp-framework`; the product working name CALM Essentials carries no Rockstar trademark, and brand and trademark clearance remain pending.
 
 ## Two registers, kept separate
 
-| Register           | Content                                                                                                 | Availability                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| **RP functions**   | Characters, sessions, economy, inventory, jobs, organizations, properties, vehicles, permissions, audit | Implementable and testable **now**        |
-| **Game functions** | Client/server entity control, scripting, events, synchronization, asset streaming for GTA VI            | Only with verified, authorized interfaces |
+| Register                   | Content                                                                                                                | Availability                                                             |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **CALM GTA VI RP domains** | Characters, sessions, economy, carried/stored inventory, jobs, organizations, properties, vehicles, permissions, audit | Target-specific rules can be modeled and tested in the simulator **now** |
+| **Game functions**         | Client/server entity control, scripting, events, synchronization, asset streaming for GTA VI                           | Only with verified, authorized interfaces                                |
 
 No GTA VI names, memory addresses, identifiers or function signatures are invented. Knowing how a game mechanic behaves is not knowing the engine interface that runs it.
 
 ## Intended contributors and users
 
-- Community developers building portable, server-authoritative RP logic and modules.
+- Community developers building CALM's server-authoritative GTA VI RP systems and simulator.
 - Testers and designers improving deterministic simulation and developer tooling.
 - Writers and researchers documenting architecture, verified sources and risks.
-- Future server authors who may reuse tested systems, without a GTA VI compatibility promise.
+- Future CALM maintainers integrating through documented, authorized GTA VI interfaces.
 
 ## In scope now
 
-- RP domain systems: accounts, characters, sessions, economy, ledger, inventory, jobs, organizations, property, vehicles, police records, permissions and audit — as progressive modules with code, contracts, tests and documentation.
-- Game-independent simulators, synthetic fixtures, automated tests and reproducible infrastructure.
-- Public service contracts (proposal stage): CALM-owned session, character, economy, inventory, jobs, permissions and hooks interfaces. A separate comparative note references public ESX/QBCore/Qbox docs without making them architectural requirements or compatibility targets.
+- GTA VI-targeted RP domain systems: accounts, characters, sessions, economy, ledger, carried/stored inventory, jobs, organizations, property, vehicles, police records, permissions and audit — with code, contracts, tests and documentation.
+- A deterministic simulator, synthetic fixtures, automated tests and reproducible infrastructure for validating CALM behavior; they are not game emulation or generic-platform commitments.
+- CALM-owned service contracts for its GTA VI RP workflows. The project does not copy ESX/QBCore/Qbox code or adopt their APIs as design requirements.
 - PostgreSQL-first durable state; transactional integrity, idempotency and recovery.
 - Community contribution guidelines, governance, bilingual onboarding and original branding.
 - Research into Rockstar/Cfx first-party announcements and clearly scoped third-party observations, with evidence grading.
@@ -41,20 +41,20 @@ No GTA VI names, memory addresses, identifiers or function signatures are invent
 
 Game-facing scripts, GTA VI client/server synchronization, entity APIs, voice, asset streaming, world integration, hosting, multiplayer downloads, resource marketplaces and server discovery are **not available**. Implementing them requires legitimate authorization, compatible published interfaces, risk review, architecture decisions and conformance tests. The GTA VI adapter stays **BLOCKED**.
 
-## Verified audit of the current code (2026-11-25, updated after Phase F1)
+## Verified audit of the current code (2026-11-27, updated during F2)
 
-| Component   | Already present                                                                                                                                                                                  | Still missing                                                                                                    |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| Identifiers | One canonical UUID form validated at every persistent boundary                                                                                                                                   | — (resolved in F1)                                                                                               |
-| Sessions    | Server-issued tokens, hash-only storage, expiry/revocation, impersonation-proof resolution over PostgreSQL                                                                                       | API wiring of the session middleware (F2+)                                                                       |
-| Characters  | Persistent creation, recovery and ownership control over PostgreSQL; validated registration                                                                                                      | Full character lifecycle beyond creation/retirement; multi-character policies                                    |
-| Economy     | Double-entry ledger over PostgreSQL: atomic, balanced, idempotent posting, reserved treasury, concurrency-safe                                                                                   | Inventory-linked economy, salaries and payroll (F3)                                                              |
-| Inventory   | In-memory reference plus additive F2 schema and typed persistence boundary: definitions, containers, ownership/location split, bounded metadata, immutable movement receipts and capacity guards | Transactional repository/service, authenticated access checks, operation semantics and restart/concurrency proof |
-| Database    | Five additive migrations, runner, embedded-PostgreSQL verification engine                                                                                                                        | Jobs tables and service persistence (F3)                                                                         |
-| Simulator   | Deterministic two-character scenario with transfers                                                                                                                                              | Jobs and a fuller RP cycle on the persistent stack                                                               |
-| API         | Basic status endpoint                                                                                                                                                                            | Services, HTTP authentication and public operations                                                              |
-| Adapters    | Capability and session contracts                                                                                                                                                                 | Full implementations and capability tests                                                                        |
-| GTA VI      | Reserved adapter boundary                                                                                                                                                                        | Every integration interface (blocked)                                                                            |
+| Component   | Already present                                                                                                                                                                                                    | Still missing                                                                           |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| Identifiers | One canonical UUID form validated at every persistent boundary                                                                                                                                                     | — (resolved in F1)                                                                      |
+| Sessions    | Server-issued tokens, hash-only storage, expiry/revocation, impersonation-proof resolution over PostgreSQL                                                                                                         | API wiring of the session middleware (F2+)                                              |
+| Characters  | Persistent creation, recovery and ownership control over PostgreSQL; validated registration                                                                                                                        | Full character lifecycle beyond creation/retirement; multi-character policies           |
+| Economy     | Double-entry ledger over PostgreSQL: atomic, balanced, idempotent posting, reserved treasury, concurrency-safe                                                                                                     | Inventory-linked economy, salaries and payroll (F3)                                     |
+| Inventory   | In-memory reference plus additive F2 schema, authenticated transaction service/repository, carried/storage simulator flow, idempotency, immutable receipts, capacity guards and embedded restart/rollback coverage | Live PostgreSQL 17 multi-connection CI gate; F2 acceptance remains open until it passes |
+| Database    | Five additive migrations, runner, embedded-PostgreSQL verification engine                                                                                                                                          | Jobs tables and service persistence (F3)                                                |
+| Simulator   | Deterministic two-character economy and persistent inventory scenario with vehicle storage, retrieval and trade using synthetic data                                                                               | Jobs and a fuller RP cycle on the persistent stack                                      |
+| API         | Basic status endpoint                                                                                                                                                                                              | Services, HTTP authentication and public operations                                     |
+| Adapters    | Capability and session contracts                                                                                                                                                                                   | Full implementations and capability tests                                               |
+| GTA VI      | Reserved adapter boundary                                                                                                                                                                                          | Every integration interface (blocked)                                                   |
 
 The two technical debts recorded before F1 are **resolved**: the ledger service now guarantees balanced transactions (domain validation, an in-transaction balance re-derivation, and a deferred constraint trigger that rejects unbalanced rows written even by direct SQL), and the string-versus-UUID identifier mismatch is unified on the canonical UUID form across domain types and database columns.
 
@@ -82,6 +82,6 @@ The two technical debts recorded before F1 are **resolved**: the ledger service 
 
 **Immediate (Phase F0 — completed with this change):** CALM Essentials framing across scope, architecture, roadmap, READMEs and site.
 
-**Next (Phases F1–F2):** persistent characters and sessions; durable economy and inventory transactions — **F1 is delivered** (characters, sessions and the double-entry ledger over PostgreSQL, verified with restart and concurrency suites). F2 is in progress: the additive inventory schema and typed store contract are in place; transactional domain behavior and required restart/concurrency evidence remain outstanding.
+**Next (Phases F1–F2):** the F1 persistence foundation (characters, sessions and double-entry ledger) is delivered and covered by restart and concurrency suites; broader API/transport, privileged-grant audit, rate limiting and threat-model closeout remain open in [issue #32](https://github.com/smouj/calm-rp-framework/issues/32). F2's CALM GTA VI RP service, repository and synthetic simulator flow are implemented on the current candidate; final acceptance depends on all issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) criteria and the exact-head live PostgreSQL 17 CI suite.
 
 **Conditional future (Phase F5):** evaluate public, legitimate GTA VI integration capabilities using the runtime requirement register, ADRs and conformance tests.

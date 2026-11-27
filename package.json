@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.34.5",
-  "description": "Open-source, community-led roleplay foundations for a possible future authorized GTA VI ecosystem.",
+  "description": "CALM Essentials — original GTA VI-first roleplay systems; no authorized runtime integration.",
   "engines": {
     "node": ">=22",
     "pnpm": ">=10"

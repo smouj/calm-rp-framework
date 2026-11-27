@@ -1,5 +1,5 @@
-name: Platform feature proposal
-description: Propose a testable, game-independent RP feature or public-platform improvement
+name: GTA VI RP feature proposal
+description: Propose a testable CALM roleplay feature for its GTA VI target
 title: "feat: "
 labels: [enhancement]
 body:
@@ -7,7 +7,7 @@ body:
     id: problem
     attributes:
       label: Contributor or user need
-      description: What reusable RP, simulator, security, or developer experience need should this solve?
+      description: What CALM GTA VI roleplay use case should this solve?
     validations:
       required: true
 
@@ -38,7 +38,7 @@ body:
         - Moderation / permissions
         - Simulator
         - Persistence / infrastructure
-        - Cfx research adapter
+        - Public GTA VI mechanics evidence
         - GTA VI future adapter
         - Internal tooling / UI
     validations:
@@ -73,7 +73,9 @@ body:
     attributes:
       label: Scope gate
       options:
-        - label: This change serves a concrete RP platform use case and does not invent a GTA VI integration contract.
+        - label: This change serves a concrete CALM GTA VI roleplay use case and does not invent a GTA VI integration contract.
           required: true
-        - label: Undocumented GTA VI behavior is not treated as confirmed.
+        - label: The proposal cites public evidence or clearly labels its GTA VI behavior assumptions.
+          required: true
+        - label: Leaked binaries, extracted internals and proprietary game assets are not implementation inputs.
           required: true

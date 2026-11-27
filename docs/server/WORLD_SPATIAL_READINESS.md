@@ -1,23 +1,11 @@
-# Spatial readiness: from world-file research to RP planning
+# CALM spatial planning: synthetic world readiness
 
 **State:** DRAFT — independent of GTA VI runtime  
 **Reviewed:** 2026-11-23
 
-## What the external research establishes
+## Product boundary
 
-Historical, third-party Leonida research described categories of data attributed to an Xbox Series GTA VI package: RPF9 containers, world placement metadata, model/drawable resources, navigation-mesh tiles, heightmaps and interior-related data. Its records describe technical investigation of one game version, not a developer API or stable multiplayer integration surface.
-
-Historical links below may return **404** (the original Leonida repository was unavailable when rechecked on 24 November 2026). They are included for provenance only; these third-party claims are **not** independently validated GTA VI runtime evidence. Current, revision-pinned public tools are documented in [the tool snapshot](../research/THIRD_PARTY_TOOLS_SNAPSHOT_2026-11-24.md).
-
-Historical research links:
-
-- [World placement and streaming](https://github.com/ItsNotRexed/Leonida/blob/main/docs/world.md): distinct placement records, transforms, bounds and streamed map cells.
-- [World census](https://github.com/ItsNotRexed/Leonida/blob/main/docs/world_census.md): a distinction between placement maps and metadata-only records.
-- [Navmesh research](https://github.com/ItsNotRexed/Leonida/blob/main/docs/navmesh.md): tile-based navigation resources, sparse spatial tables and different types of nav data.
-- [Model recovery](https://github.com/ItsNotRexed/Leonida/blob/main/docs/models.md): model/fragment/drawable data and incomplete decoding coverage.
-- [Game data](https://github.com/ItsNotRexed/Leonida/blob/main/docs/gamedata.md): configuration data and heightmap formats.
-
-These observations justify separating **location identity**, **coordinate spaces**, **placement/geometry**, **potential navigation** and **gameplay ownership** in our design. They do **not** justify adopting internal RAGE types or extracted assets as a server contract.
+This catalog contains project-authored planning locations only. Its IDs, coordinate spaces, geometry and labels are synthetic; they are not derived from GTA VI files, extracted maps or third-party compatibility projects. Detailed external file-format research is maintained outside CALM and does not define this model.
 
 ## Our independently implemented abstraction
 

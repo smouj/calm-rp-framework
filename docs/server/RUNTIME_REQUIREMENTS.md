@@ -44,9 +44,9 @@ A requirement cannot move to `VALIDATED` before it is `CONFIRMED`.
 
 Rockstar's general RP policy is subject to the Creator Platform rules. As of the 2026-11-27 review, the public Cfx `gamename` documentation lists `gta5` and `rdr3`, but not GTA VI. This does not establish GTA VI eligibility or a future outcome; `RT-001` remains `UNKNOWN` until GTA VI-specific authorization and runtime documentation are available. See [PLATFORM_STATUS.md](../research/PLATFORM_STATUS.md#current-cfx-fxserver-documentation-does-not-list-gta-vi-as-a-supported-game).
 
-## Executable research is not an integration contract
+## External compatibility research is not an integration contract
 
-The source-level [Leonida/VIctory compatibility review](../research/GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md) distinguishes offline console-runtime emulation, local storage, rendering and shader translation from GTA VI community-server scripting, identity, transport and entity synchronization. None of those observations promotes any RT requirement or unlocks `adapters/gta6`.
+CALM's detailed tracking of unofficial PC runners and reverse-engineering projects lives in a separate documentary repository. Those projects may report local execution or rendering progress; they do not establish GTA VI community-server scripting, identity, transport, entity synchronization, authorization or a supported resource API. They do not promote any `RT-*` requirement or unlock `adapters/gta6`.
 
 A [structural research evidence check](../../packages/contracts/src/runtime-evidence.ts) now reports which minimum requirements lack a reviewed first-party contract or a conformance test. Its result is only eligible for **human review**, never automatic permission or runtime validation.
 
@@ -61,7 +61,7 @@ They do **not** change `RT-003` or `RT-004` because neither source set publicly 
 - Rockstar's internal `game script` must not be treated as a public server scripting API;
 - C++ usage inside Rockstar game/Cfx platform engineering does not imply C++ will be the resource language for a future GTA VI server;
 - Lua, JavaScript and C# support in current FiveM must not be copied forward as a GTA VI guarantee;
-- TypeScript remains an internal project choice for game-agnostic code, not a prediction about the GTA VI runtime.
+- TypeScript is CALM's current implementation choice for its GTA VI-targeted domains and simulator, not a prediction about the GTA VI runtime.
 
 The adapter language decision therefore remains intentionally deferred until the relevant GTA VI runtime contract is public and implementable.
 

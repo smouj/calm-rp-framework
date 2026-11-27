@@ -1,5 +1,5 @@
--- F2: game-independent persistent inventory with ownership independent from
--- physical storage. The application locks containers before checking capacity;
+-- F2: CALM GTA VI RP inventory with ownership independent from physical
+-- storage. The application locks containers before checking capacity;
 -- these triggers provide the same serialization for direct SQL writes.
 
 CREATE TABLE inventory_item_definitions (

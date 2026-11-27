@@ -93,7 +93,13 @@ export type {
 } from './inventory.js';
 
 export type {
+  ConsumePersistentInventoryCommand,
+  CreatePersistentInventoryContainer,
+  MintPersistentInventoryCommand,
+  MovePersistentInventoryCommand,
   PersistInventoryOperation,
+  PersistentInventoryCommand,
+  PersistentInventoryCommandBase,
   PersistentInventoryContainer,
   PersistentInventoryContainerKind,
   PersistentInventoryItemDefinition,
@@ -104,7 +110,9 @@ export type {
   PersistentInventoryReceipt,
   PersistentInventoryStack,
   PersistentInventoryStore,
+  TransferPersistentInventoryCommand,
 } from './persistent-inventory.js';
+export { PersistentInventoryService } from './persistent-inventory-service.js';
 
 export type {
   LocationFilter,

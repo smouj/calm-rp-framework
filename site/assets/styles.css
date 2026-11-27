@@ -715,6 +715,30 @@ html:not([data-theme='light']) .hero-logo-light {
   font-size: 12px;
   margin: 12px 0 0;
 }
+.research-figure {
+  margin: 34px 0 0;
+  padding: 0;
+}
+.research-figure object {
+  display: block;
+  width: min(100%, 840px);
+  height: auto;
+  aspect-ratio: 1080 / 2140;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #101a32;
+}
+.research-figure figcaption {
+  max-width: 840px;
+  margin: 12px auto 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.research-figure figcaption a {
+  color: var(--accent);
+}
 .research-bottom {
   border-top: 1px solid var(--line);
   padding-top: 28px;

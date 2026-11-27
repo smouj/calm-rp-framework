@@ -1,4 +1,4 @@
-# Sitio informativo de CALM — Roleplay Framework
+# Sitio informativo de CALM Essentials — Roleplay para GTA VI
 
 Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. No requiere NPM ni un backend para visualizarlo.
 
@@ -6,7 +6,8 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 
 - Identidad visual propia: el banner social oficial de CALM (navy + rosa Miami) en la portada de los README, con la variante blanca del wordmark para el tema oscuro y navy para el claro.
 - Conjunto de iconos derivado del banner oficial: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` usan la estrella del banner trazada desde los píxeles fuente sobre el navy `#101020` del propio banner; `og-image.png` es el banner social completo (1280×640) para vistas previas sociales.
-- Secciones de arquitectura, módulos, ingeniería, investigación, hoja de ruta y contribuciones, con el enfoque CALM Essentials: mapa de sistemas de rol (personajes y economía con persistencia PostgreSQL entregada en F1), modelo de integración en tres niveles (motor / adaptador / framework), fases F0–F5 con F1 completada y tarjetas de investigación actualizadas (VIctory, XCL y síntesis de estrategia).
+- Secciones de arquitectura, sistemas, ingeniería, investigación, hoja de ruta y contribuciones. La página presenta el objetivo GTA VI-first, los dominios propios de CALM, la simulación con datos sintéticos y el runtime autorizado como bloqueado.
+- Sección de evidencia centrada en mecánicas públicas de GTA VI y en los requisitos propios de CALM; los estudios de compatibilidad de PC se mantienen fuera del framework.
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Efectos y animaciones sobre la paleta oficial (navy + rosa Miami): fondo global unificado con brillos fijos y retícula, orbes animados en la portada, animaciones de entrada, aparición progresiva al hacer scroll (IntersectionObserver con retardo escalonado), subrayado de navegación activa y cursores animados; todo se desactiva con `prefers-reduced-motion` y el contenido permanece visible sin JavaScript.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
@@ -14,7 +15,7 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 - Sección de ingeniería con la estructura real del monorepo, las puertas de calidad y las verificaciones de higiene que revisan cada cambio.
 - Enlaces directos a código, documentación y fuentes públicas.
 
-**La web es estática e informativa: NO ejecuta el núcleo TypeScript, no identifica jugadores, no persiste datos y no es un juego ni un servidor RP funcional.** El paquete `packages/core` es la referencia de reglas en el servidor; deben probarse por separado.
+**La web es estática e informativa: NO ejecuta el núcleo TypeScript, no identifica jugadores, no persiste datos y no es un juego ni un servidor RP funcional.** Las reglas de CALM y sus pruebas viven en el repositorio; la página no es una interfaz con GTA VI.
 
 ## Publicación en GitHub Pages
 
@@ -43,8 +44,8 @@ Visitar `http://localhost:8080`. Revisar manualmente los enlaces y acciones en e
 
 [site/legal.html](./legal.html) se publica como parte de la web. Permite consultar no afiliación, marcas, política de GTA VI, límites de interoperabilidad y funcionamiento básico de la web, incluso si el repositorio de código permanece privado.
 
-**Estado verificado 25/11/2026:** el sitio está publicado en `https://smouj.github.io/calm-rp-framework/` (HTTP 200 comprobado en `/`, `/legal.html` y los recursos de `assets/`). El lote de marca oficial (banner, iconos, paleta) se fusionó en #45 y se desplegó con éxito. La actualización de contenido de CALM Essentials (mapa de módulos, hoja de ruta F0–F5, nuevas tarjetas de investigación) sufrió el modo de fallo transitorio documentado en `docs/operations/GITHUB_PAGES_DEPLOYMENT.md` (artefacto subido, paso de despliegue fallido) y se publica con el siguiente `site/**` sobre `main`.
+**Estado de publicación:** los cambios de contenido de este candidato requieren un despliegue de GitHub Pages y una comprobación posterior de la portada, el aviso legal y los recursos. El historial de despliegues y sus fallos se registra en la documentación de operaciones.
 
 ## Identidad
 
-CALM es el nombre de trabajo del framework, no una marca registrada o liberada para uso comercial. El contraste conceptual con RAGE no implica vinculación con Rockstar. La web mantiene sus avisos de no afiliación y ausencia de integración GTA VI. Los paquetes técnicos y la URL del repositorio conservan sus identificadores actuales para evitar cambios incompatibles.
+CALM y CALM Essentials son nombres de trabajo, no marcas cuya exclusividad o disponibilidad comercial esté acreditada. El contraste conceptual con RAGE no implica vinculación con Rockstar. La web mantiene sus avisos de no afiliación y ausencia de integración GTA VI. Los paquetes técnicos y la URL del repositorio conservan sus identificadores actuales por compatibilidad.

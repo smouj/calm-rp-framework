@@ -18,6 +18,14 @@ describe('community site source checks', () => {
     expect(html).not.toMatch(/<link[^>]+href=["']https?:/i);
   });
 
+  it('keeps third-party PC execution research outside the CALM product site', () => {
+    expect(html).toContain('CALM es el framework; la investigación de compatibilidad es externa');
+    expect(html).toContain('docs/server/RUNTIME_REQUIREMENTS.md');
+    expect(html).not.toMatch(
+      /VIctory|XSEmu|Project ReCity|gta6-xbox-to-pc-architecture|xcl-dev\/xcl/i,
+    );
+  });
+
   it('has no duplicate IDs or broken internal navigation anchors', () => {
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
     const anchors = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
@@ -29,14 +37,16 @@ describe('community site source checks', () => {
 
   it('clearly identifies the limits of the game integration and simulator', () => {
     expect(html).toContain('no ejecuta directamente el paquete TypeScript');
-    expect(html).toContain('no proporcionan por sí mismos autorización');
-    expect(html).toContain('No hospedamos ni enlazamos archivos filtrados');
+    expect(html).toContain('no crean una interfaz RP autorizada');
+    expect(html).toMatch(/CALM no obtiene ni procesa archivos\s+del juego/);
   });
 
-  it('describes inventory only as an in-memory reference and names its limitations', () => {
+  it('presents CALM as GTA VI-first and describes the F2 inventory boundary', () => {
+    expect(html).toContain('proyecto GTA VI-first');
+    expect(html).not.toContain('en la línea de ESX y QBCore');
     expect(html).toContain('Inventario</h3>');
-    expect(html).toContain('equipamiento y contenedores');
-    expect(html).toContain('packages/core · no persistente');
+    expect(html).toContain('equipamiento y loadout');
+    expect(html).toContain('packages/core + persistence · F2');
     expect(html).toContain('Sin afiliación ni autorización de Rockstar Games');
   });
 
