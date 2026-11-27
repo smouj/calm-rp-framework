@@ -41,21 +41,25 @@ PR-head and post-merge hosted CI runs passed the live multi-connection suite aga
 
 F2 CI run #224 completed successfully on PR head `dcf6662`, including PostgreSQL 17. F1 PR #61's
 exact-head CI run #232 and post-merge `main` run #233 both completed successfully with PostgreSQL 17.
-Documentation PR #62's exact-head CI run #234 and post-merge `main` run #235, PR #63's exact-head CI run #236 and post-merge `main` run #237, and PR #64's exact-head CI run #238 and post-merge `main` run #239 all passed, including PostgreSQL 17.
+Documentation PR #62's exact-head CI run #234 and post-merge `main` run #235, PR #63's exact-head CI run #236 and post-merge `main` run #237, and PR #64's exact-head CI run #238 and post-merge `main` run #239 all passed, including PostgreSQL 17. PR #65 passed exact-head run [#240](https://github.com/smouj/calm-rp-framework/actions/runs/46038319024) and `main` run [#241](https://github.com/smouj/calm-rp-framework/actions/runs/46038679143); PR #66 passed [#242](https://github.com/smouj/calm-rp-framework/actions/runs/46040940883) and [#243](https://github.com/smouj/calm-rp-framework/actions/runs/46041232409); and the Atlas publication PR #67 passed [#244](https://github.com/smouj/calm-rp-framework/actions/runs/46044674483) and [#245](https://github.com/smouj/calm-rp-framework/actions/runs/46044994137). The six runs all passed, including the live PostgreSQL 17 suite.
 
 The CALM GitHub Pages site is published. Its original Leonida-inspired SVG is decorative site
 artwork, not an in-game capture or evidence of runtime support. The technical atlas and its evidence
 matrix remain independent documentary research; they are not CALM runtime inputs or GTA VI API
-contracts. Pages deployment run #20 succeeded on its second attempt; the live page and SVG returned
-HTTP 200 with the updated content.
+contracts. The Atlas merge's Pages run #21 passed site validation and upload but failed while
+retrieving the uploaded artifact. Retrying that same run produced duplicate `github-pages`
+artifacts, so a fresh manual dispatch was used instead: Pages run #22 succeeded. On 27 November,
+the live site returned HTTP 200 with the Atlas feature, and the linked PDF returned HTTP 200 as an
+`application/octet-stream` of 3,107,053 bytes. The earlier run #20 had also succeeded after a retry.
 
-Atlas edition 1.0 is now archived separately under `docs/research/atlas/` with its 30-page PDF,
-Markdown manuscript and 218-row evidence matrix. Its 24 original diagram pages were visually
-checked; the PDF contains no game screenshots. The manuscript's missing PNG references now link to
-the matching PDF pages. Rockstar's official screenshot gallery lists 138 captures. These checks
-confirm the publication package and its visual labeling, not every gameplay claim or source; owner
-provenance and broader historical/license review remain part of issue #2. No Word file, ZIP or
-generation source was supplied.
+Atlas edition 1.0 is archived separately under `docs/research/atlas/` with its 30-page PDF,
+24-chapter Markdown manuscript, 218-record evidence matrix and 24 original diagrams. The diagrams
+were visually checked; the PDF contains no gameplay screenshots. The manuscript's missing PNG
+references now link to the matching PDF pages. Rockstar's [official screenshot gallery](https://www.rockstargames.com/VI/media/screenshots)
+listed 138 captures when checked on 27 November and is linked as the primary visual reference. These checks confirm the
+publication package and its visual labeling, not every gameplay claim or source; owner provenance
+and broader historical/license review remain part of issue #2. No Word file, ZIP or generation
+source was supplied.
 
 ## Remaining publication work
 

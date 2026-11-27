@@ -6,9 +6,12 @@ GitHub Actions sufrió fallos de asignación de runner durante una revisión ant
 en [PR #61](https://github.com/smouj/calm-rp-framework/pull/61) como
 `96195bd77dbc81b1f77994148e99ec10fb9077b3`. Su CI de head exacto, [run #232](https://github.com/smouj/calm-rp-framework/actions/runs/46029698320),
 y el CI posterior de `main`, [run #233](https://github.com/smouj/calm-rp-framework/actions/runs/46030055051),
-pasaron con PostgreSQL 17. El despliegue de Pages [run #20](https://github.com/smouj/calm-rp-framework/actions/runs/46030055048)
-también se completó tras repetir el job de despliegue. Cada cambio futuro debe esperar el resultado
-del commit exacto antes de fusionarse.
+pasaron con PostgreSQL 17. Desde entonces, las PR #65, #66 y #67 también pasaron sus CI de head y
+los workflows posteriores de `main` (#240–#245), con PostgreSQL 17. Pages run #21 encontró una
+inconsistencia al recuperar el artefacto tras subirlo; el reintento del mismo run creó artefactos
+duplicados. Una ejecución manual nueva, [run #22](https://github.com/smouj/calm-rp-framework/actions/runs/46045682722),
+desplegó con éxito, y la página y el PDF del Atlas devolvieron HTTP 200. Cada cambio futuro debe
+esperar el resultado del commit exacto antes de fusionarse.
 
 ## Regla del proyecto
 

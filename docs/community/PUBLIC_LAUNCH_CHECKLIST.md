@@ -9,9 +9,10 @@ This checklist tracks repository settings and release hygiene. It is not legal c
 ## Current public repository snapshot
 
 - GitHub reports the repository as **public**, with Issues, Discussions and Pages enabled; the homepage points to the CALM site.
-- The default branch is `main`. PRs #57, #59, #60, #61, #62, #63 and #64 are merged; F1 issue [#32](https://github.com/smouj/calm-rp-framework/issues/32) and F2 issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) are completed. Only the repository safety audit [#2](https://github.com/smouj/calm-rp-framework/issues/2) remains open.
+- The default branch is `main`. PRs #57, #59–#67 are merged; PRs #65–#67 passed both exact-head and post-merge CI, including PostgreSQL 17. F1 issue [#32](https://github.com/smouj/calm-rp-framework/issues/32) and F2 issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) are completed. Only the maintainer-owned repository safety audit [#2](https://github.com/smouj/calm-rp-framework/issues/2) remains open.
 - The repository About description and topics identify CALM as GTA VI-first and remove legacy GTA V/FiveM/RAGEmp or generic-framework implications. The target-specific website is live, and its profile, README and contributor paths were checked anonymously.
 - The scope change does not offer a playable mod, PC port, client, multiplayer server or authorized runtime adapter. No game files or leaked internals are project inputs.
+- Atlas edition 1.0 is published as independent documentary research under `docs/research/atlas/`. It is not a CALM API contract or runtime dependency; its diagrams are original explanatory schemes, not screenshots. Pages run #22 succeeded after the first artifact lookup attempt failed; the live feature and PDF both returned HTTP 200 on 2026-11-27.
 
 ## Published GitHub About metadata
 
