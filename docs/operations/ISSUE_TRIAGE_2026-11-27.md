@@ -4,26 +4,27 @@
 
 ## Merged pull requests
 
-| Item                                                                                          | Result                                                                                                                      |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| [#57 — F1 persistence foundation](https://github.com/smouj/calm-rp-framework/pull/57)         | Merged; post-merge PostgreSQL CI passed.                                                                                    |
-| [#59 — GTA VI scope and F2 inventory](https://github.com/smouj/calm-rp-framework/pull/59)     | Merged; exact-head PostgreSQL 17 CI passed; issue #54 completed.                                                            |
-| [#60 — CALM site atmosphere](https://github.com/smouj/calm-rp-framework/pull/60)              | Merged; Pages deployment and post-merge CI passed.                                                                          |
-| [#61 — F1 identity and economy transport](https://github.com/smouj/calm-rp-framework/pull/61) | Merged as `96195bd`; exact-head CI #232 and post-merge `main` CI #233 passed, including PostgreSQL 17; issue #32 completed. |
+| Item                                                                                                   | Result                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| [#57 — F1 persistence foundation](https://github.com/smouj/calm-rp-framework/pull/57)                  | Merged; post-merge PostgreSQL CI passed.                                                                                    |
+| [#59 — GTA VI scope and F2 inventory](https://github.com/smouj/calm-rp-framework/pull/59)              | Merged; exact-head PostgreSQL 17 CI passed; issue #54 completed.                                                            |
+| [#60 — CALM site atmosphere](https://github.com/smouj/calm-rp-framework/pull/60)                       | Merged; Pages deployment and post-merge CI passed.                                                                          |
+| [#61 — F1 identity and economy transport](https://github.com/smouj/calm-rp-framework/pull/61)          | Merged as `96195bd`; exact-head CI #232 and post-merge `main` CI #233 passed, including PostgreSQL 17; issue #32 completed. |
+| [#62 — verified F1 closeout and repository status](https://github.com/smouj/calm-rp-framework/pull/62) | Merged as `d399ab5`; exact-head CI #234 and post-merge `main` CI #235 passed, including PostgreSQL 17.                      |
 
 No product pull request remains open at this snapshot.
 
 ## Open issues
 
-| Item                                                                                           | Owner   | State                  | Remaining work                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------------------------------------------------------------------------- | ------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [#2 — repository safety and launch audit](https://github.com/smouj/calm-rp-framework/issues/2) | `smouj` | Open; owner-side audit | Review full licensing/provenance across history, PR attachments and relevant Actions logs; verify private vulnerability reporting, Dependabot, secret scanning, push protection and `main` branch protection. Public profile, rendered README and English/Spanish contribution paths were checked anonymously and returned HTTP 200. |
+| Item                                                                                           | Owner   | State                  | Remaining work                                                                                                                                                                                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------- | ------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [#2 — repository safety and launch audit](https://github.com/smouj/calm-rp-framework/issues/2) | `smouj` | Open; owner-side audit | Review full licensing/provenance across history, PR attachments and relevant Actions logs; enable private vulnerability reporting and Secret Protection; require an approving review and `CI / validate` on `main`. Dependabot alerts/security updates are enabled; public profile, README and contributor paths returned HTTP 200. |
 
-F1 issue #32 and F2 issue #54 are closed as completed. Issue #2 remains open because the connected GitHub integration cannot inspect classic branch-protection settings or repository security controls; its history and attachment review also needs maintainer evidence.
+F1 issue #32 and F2 issue #54 are closed as completed. Read-only GitHub settings inspection confirmed that `main` requires a PR and conversation resolution, enforces linear history, and blocks force-push, deletion and admin bypass; it does not require approval or CI status checks. Dependency graph, Dependabot alerts, malware alerts and security updates are enabled; private vulnerability reporting and Secret Protection are off. Issue #2 remains open until those settings and the full history/attachment review are completed.
 
 ## Branch cleanup
 
-- `main` remains the integration branch. `codex/f1-api-security-closeout` is merged; it contains no unmerged work.
+- `main` is at `d399ab5` after PR #62, the local worktree is clean, and the remote has no topic branches. Local branches for merged PRs #59–#62 were retired after matching each branch head to its merged PR.
 - The remote `docs/f2-inventory-contract-20261125` branch had no associated PR and was three commits behind `main` with zero commits ahead; it was deleted after that comparison.
 - Two local-only pre-PR snapshots (`codex/calm-f2-design-schema` at `cda3bab` and `codex/calm-professionalization-2026-11-27` at `779cc9f`) were retired after preserving their refs in a verified, local-only Git bundle at `.git/calm-local-branch-snapshots-2026-11-27.bundle`. The bundle is not tracked or published and will not be available from a fresh clone.
 
