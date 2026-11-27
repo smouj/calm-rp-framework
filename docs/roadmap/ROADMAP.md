@@ -43,7 +43,7 @@ The first tangible goal: **a CALM GTA VI RP slice in which two characters hold j
 
 **Acceptance:** simulator flows preserve ownership while objects change storage; competing real PostgreSQL 17 transfers never duplicate or lose stock; embedded PostgreSQL close/reopen recovers state and idempotent receipts; failed operations leave no partial audit or stock mutation.
 
-**Progress (2026-11-27):** F2 includes the additive schema, authenticated transactional service/repository, simulator flow, capacity and rollback checks, and embedded restart recovery. The live PostgreSQL 17 multi-connection suite must pass on the exact pull-request head before acceptance.
+**Status (2026-11-27): ACCEPTED.** F2 includes the additive schema, authenticated transactional service/repository, simulator flow, capacity and rollback checks, and embedded restart recovery. The final PR #59 head passed [hosted CI #227](https://github.com/smouj/calm-rp-framework/actions/runs/46014326377), and merged `main` passed [CI #228](https://github.com/smouj/calm-rp-framework/actions/runs/46014689610), including live PostgreSQL 17 multi-connection tests; issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) is closed. Future changes to this area remain subject to the same CI gate.
 
 ## F3 — Jobs and organizations
 

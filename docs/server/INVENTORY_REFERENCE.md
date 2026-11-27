@@ -1,6 +1,6 @@
-# Portable inventory reference — review branch
+# In-memory inventory reference
 
-**Status:** in-memory development reference, not a production service or GTA VI integration.
+**Status:** supplementary in-memory example; not the accepted persistent F2 service or a GTA VI integration.
 
 This feature uses original TypeScript logic. It does not import FiveM/ESX/QBCore/Qbox source, Rockstar content, game archives or leaked files.
 
@@ -21,7 +21,7 @@ All actions use integer item quantities and integer gram weights. Every item has
 
 The caller-provided Principal and character resolver are trusted server-side dependencies. **Never build a principal from untrusted client JSON** or expose mint as a client-authorized operation.
 
-Everything in this reference runs in one JavaScript process. Its item registry, stocks, receipts and request IDs disappear on restart. The F2 design now defines additive PostgreSQL tables for item definitions, generalized containers, stacks, idempotency and immutable movement receipts, but this reference is not wired to those tables. The persistent repository and authenticated service still need to implement transaction locking, authorization, atomic stock changes, capacity enforcement under concurrency, and reconnect/retry behavior. The in-memory receipt log is not a production ledger.
+Everything in this reference runs in one JavaScript process. Its item registry, stocks, receipts and request IDs disappear on restart. F2 separately delivers the additive PostgreSQL schema, authenticated transactional service and repository, idempotency, immutable movement receipts, authorization and capacity enforcement; the final PR #59 head [CI #227](https://github.com/smouj/calm-rp-framework/actions/runs/46014326377) and post-merge `main` [CI #228](https://github.com/smouj/calm-rp-framework/actions/runs/46014689610) passed PostgreSQL 17. This in-memory reference is not wired to that persistent service and is not a production ledger. See [`PersistentInventoryService`](../../packages/core/src/persistent-inventory-service.ts), [`PgInventoryRepository`](../../packages/persistence/src/inventory.ts) and [ADR-0008](../adr/0008-persistent-inventory-containers.md).
 
 A future game adapter must project server-owned inventory state to an authorized runtime and only accept client intents. There is currently **no publicly supported GTA VI inventory native**, networking contract, game hook or legal permission assumed here.
 

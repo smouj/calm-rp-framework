@@ -20,7 +20,7 @@
 
 ## Consequences
 
-- The schema and core/store contracts landed first; the authenticated transactional repository and domain service are implemented in the current F2 change. Embedded close/reopen, rollback and simulator flow are covered locally; live PostgreSQL 17 races remain a merge gate.
+- The schema, contracts, authenticated transactional repository and domain service were delivered in PR #59. Its [final-head CI #227](https://github.com/smouj/calm-rp-framework/actions/runs/46014326377) and [post-merge `main` CI #228](https://github.com/smouj/calm-rp-framework/actions/runs/46014689610) passed the live PostgreSQL 17 suite, and issue #54 is closed. Future changes must continue to pass that concurrency gate; this acceptance does not imply a GTA VI adapter or runtime mapping.
 - `vehicle`, `property` and `warehouse` are CALM RP storage kinds informed by target-game roleplay requirements. Their rows do not assert that the current GTA VI campaign exposes matching multiplayer objects or interfaces.
 - Item metadata is a JSON object capped at 4 KiB. Applications must additionally validate allowed keys and values for each item type.
 - Capacity enforcement is deterministic and serialized by container row locks. Every service path must lock all touched containers in ascending UUID order before reading stacks; database triggers provide a guard for direct writes.
