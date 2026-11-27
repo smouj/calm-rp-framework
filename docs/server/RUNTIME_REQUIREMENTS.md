@@ -42,6 +42,8 @@ A requirement cannot move to `VALIDATED` before it is `CONFIRMED`.
 | RT-021 | Hosting/policy/monetization constraints      | `UNKNOWN`     | Ensures server operation remains within authorized policy              |
 | RT-022 | Development/test workflow                    | `UNKNOWN`     | Needed for repeatable local/staging integration and conformance tests  |
 
+Rockstar's general RP policy is subject to the Creator Platform rules. As of the 2026-11-27 review, the public Cfx `gamename` documentation lists `gta5` and `rdr3`, but not GTA VI. This does not establish GTA VI eligibility or a future outcome; `RT-001` remains `UNKNOWN` until GTA VI-specific authorization and runtime documentation are available. See [PLATFORM_STATUS.md](../research/PLATFORM_STATUS.md#current-cfx-fxserver-documentation-does-not-list-gta-vi-as-a-supported-game).
+
 ## Executable research is not an integration contract
 
 The source-level [Leonida/VIctory compatibility review](../research/GTA6_EXECUTION_TO_RP_CONTRACTS_2026-11-26.md) distinguishes offline console-runtime emulation, local storage, rendering and shader translation from GTA VI community-server scripting, identity, transport and entity synchronization. None of those observations promotes any RT requirement or unlocks `adapters/gta6`.

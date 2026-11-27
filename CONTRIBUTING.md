@@ -29,6 +29,8 @@ pnpm check
 
 Optional local infrastructure:
 
+Copy `.env.example` to `.env` and set a unique 64-character random hexadecimal `POSTGRES_PASSWORD` before starting PostgreSQL. The `.env` file is ignored by Git; never reuse this development password in production.
+
 ```bash
 docker compose -f infrastructure/docker/compose.yml up -d
 ```

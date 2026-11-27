@@ -12,8 +12,8 @@ concrete edits to `docs/roadmap/ROADMAP.md`.
 2. A leak exists, enforcement is aggressive (Leonida DMCA, 3,007 forks; Take-Two CEO
    statements) — research inputs must stay strictly legal; several tool classes depend on
    the leaked executable and are therefore non-admissible for us.
-3. QBCore's org moved to an engine-agnostic UE5 platform (Mantle): the market is
-   rewarding game-agnostic RP infrastructure — exactly CALM's lane.
+3. External projects may offer context on broad ecosystem trends, but they do not
+   define CALM's product or architecture; CALM's own requirements drive this roadmap.
 4. Public format research (RPF9/PSO/BCPack/navmesh/road graph) is rich and maturing —
    useful as _design reference_ and _conformance-test inspiration_, never as adapter code.
 

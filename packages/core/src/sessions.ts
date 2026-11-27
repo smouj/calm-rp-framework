@@ -5,7 +5,10 @@ import type { Clock, Capability } from './index.js';
 import type { Uuid } from './index.js';
 
 /** Capabilities a server may grant to a session. Extend per domain module. */
-export const SESSION_CAPABILITIES: readonly Capability[] = ['economy.grant', 'inventory.mint'];
+export const SESSION_CAPABILITIES: readonly Capability[] = Object.freeze([
+  'economy.grant',
+  'inventory.mint',
+]);
 
 /**
  * Trusted principal resolved from a server-issued session. Clients present an
@@ -68,10 +71,23 @@ export const nodeHashSource: HashSource = {
 };
 
 const TOKEN_BYTES = 32;
+const TOKEN_PATTERN = /^[A-Za-z0-9_-]{43}$/;
 const MIN_TTL_MS = 1_000;
+// Bound bearer-token exposure even if an internal caller requests an excessive lifetime.
+const MAX_TTL_MS = 30 * 24 * 60 * 60 * 1_000;
 
 function toBase64Url(bytes: Uint8Array): string {
   return Buffer.from(bytes).toString('base64url');
+}
+
+function sessionSnapshot(record: SessionRecord): SessionRecord {
+  return Object.freeze({
+    ...record,
+    capabilities: Object.freeze([...record.capabilities]),
+    issuedAt: new Date(record.issuedAt.getTime()),
+    expiresAt: new Date(record.expiresAt.getTime()),
+    revokedAt: record.revokedAt === null ? null : new Date(record.revokedAt.getTime()),
+  });
 }
 
 /**
@@ -106,39 +122,93 @@ export class SessionService {
     ) {
       throw new DomainError('INVALID_CAPABILITY', 'Unknown session capability requested.');
     }
-    if (!Number.isSafeInteger(command.ttlMs) || command.ttlMs < MIN_TTL_MS) {
-      throw new DomainError('INVALID_TTL', `Session TTL must be at least ${MIN_TTL_MS} ms.`);
+    if (
+      !Number.isSafeInteger(command.ttlMs) ||
+      command.ttlMs < MIN_TTL_MS ||
+      command.ttlMs > MAX_TTL_MS
+    ) {
+      throw new DomainError(
+        'INVALID_TTL',
+        `Session TTL must be between ${MIN_TTL_MS} and ${MAX_TTL_MS} ms.`,
+      );
     }
-    const issuedAt = this.#clock.now();
-    const token = toBase64Url(this.#random.bytes(TOKEN_BYTES));
-    const session: SessionRecord = {
+    const clockValue = this.#clock.now();
+    if (!(clockValue instanceof Date) || !Number.isFinite(clockValue.getTime())) {
+      throw new DomainError('INVALID_CLOCK', 'Session clock must return a valid date.');
+    }
+    const issuedAt = new Date(clockValue.getTime());
+    const expiresAt = new Date(issuedAt.getTime() + command.ttlMs);
+    if (!Number.isFinite(expiresAt.getTime())) {
+      throw new DomainError('INVALID_CLOCK', 'Session expiry is outside the supported date range.');
+    }
+    const tokenBytes = this.#random.bytes(TOKEN_BYTES);
+    if (!(tokenBytes instanceof Uint8Array) || tokenBytes.byteLength !== TOKEN_BYTES) {
+      throw new DomainError(
+        'INVALID_RANDOM_SOURCE',
+        'Session token generator returned invalid bytes.',
+      );
+    }
+    const token = toBase64Url(tokenBytes);
+    const session = sessionSnapshot({
       sessionId: newUuid(),
       accountId,
       tokenHash: this.#hashing.sha256Hex(token),
       capabilities: Object.freeze([...command.capabilities]),
       issuedAt,
-      expiresAt: new Date(issuedAt.getTime() + command.ttlMs),
+      expiresAt,
       revokedAt: null,
-    };
+    });
     await this.#store.create(session);
     return { token, session };
   }
 
   /** Resolve an active session from its bearer token, or `null`. */
   public async authenticate(token: string): Promise<SessionRecord | null> {
+    if (typeof token !== 'string') return null;
     const candidate = token.trim();
-    if (candidate.length === 0) return null;
+    if (!TOKEN_PATTERN.test(candidate)) return null;
     const record = await this.#store.findByTokenHash(this.#hashing.sha256Hex(candidate));
     if (record === null) return null;
     if (record.revokedAt !== null) return null;
-    if (this.#clock.now().getTime() >= record.expiresAt.getTime()) return null;
-    return record;
+    if (
+      !Array.isArray(record.capabilities) ||
+      record.capabilities.some((capability) => !SESSION_CAPABILITIES.includes(capability))
+    ) {
+      return null;
+    }
+    const now = this.#clock.now();
+    if (
+      !(now instanceof Date) ||
+      !(record.issuedAt instanceof Date) ||
+      !(record.expiresAt instanceof Date)
+    ) {
+      return null;
+    }
+    const nowMs = now.getTime();
+    const issuedAtMs = record.issuedAt.getTime();
+    const expiresAtMs = record.expiresAt.getTime();
+    if (
+      !Number.isFinite(nowMs) ||
+      !Number.isFinite(issuedAtMs) ||
+      !Number.isFinite(expiresAtMs) ||
+      issuedAtMs > nowMs ||
+      expiresAtMs <= issuedAtMs ||
+      expiresAtMs - issuedAtMs > MAX_TTL_MS ||
+      nowMs >= expiresAtMs
+    ) {
+      return null;
+    }
+    return sessionSnapshot(record);
   }
 
   /** Revoke a session; idempotent and server-side only. */
   public async revoke(sessionId: Uuid): Promise<boolean> {
     const id = requireUuid(sessionId, 'session ID');
-    return this.#store.revoke(id, this.#clock.now());
+    const revokedAt = this.#clock.now();
+    if (!(revokedAt instanceof Date) || !Number.isFinite(revokedAt.getTime())) {
+      throw new DomainError('INVALID_CLOCK', 'Session clock must return a valid date.');
+    }
+    return this.#store.revoke(id, new Date(revokedAt.getTime()));
   }
 
   /** The trusted principal a resolved session carries into domain services. */
@@ -163,12 +233,12 @@ export class InMemorySessionStore implements SessionStore {
         throw new DomainError('SESSION_TOKEN_EXISTS', 'Token hash is already registered.');
       }
     }
-    this.#byId.set(record.sessionId, record);
+    this.#byId.set(record.sessionId, sessionSnapshot(record));
   }
 
   public async findByTokenHash(tokenHash: string): Promise<SessionRecord | null> {
     for (const record of this.#byId.values()) {
-      if (record.tokenHash === tokenHash) return record;
+      if (record.tokenHash === tokenHash) return sessionSnapshot(record);
     }
     return null;
   }
@@ -176,7 +246,7 @@ export class InMemorySessionStore implements SessionStore {
   public async revoke(sessionId: Uuid, revokedAt: Date): Promise<boolean> {
     const record = this.#byId.get(sessionId);
     if (!record || record.revokedAt !== null) return false;
-    this.#byId.set(sessionId, { ...record, revokedAt });
+    this.#byId.set(sessionId, sessionSnapshot({ ...record, revokedAt }));
     return true;
   }
 }

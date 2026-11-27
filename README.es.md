@@ -10,7 +10,7 @@
 
 **CALM Essentials** — un **framework de roleplay** independiente, modular y de código abierto.
 
-CALM Essentials es el nombre de trabajo del producto: los sistemas base que un servidor de rol necesita — personajes, economía, inventario, empleos, organizaciones, propiedades, vehículos, permisos y extensiones — en la clase de producto de ESX Legacy y QBCore, desarrollados y probados **sin** el juego y preparados para una **posible futura** integración **autorizada** de GTA VI. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
+CALM Essentials es el nombre de trabajo de nuestro framework original de roleplay: sus dominios y contratos se diseñan para los objetivos propios de CALM, se desarrollan y prueban **sin** el juego y se preparan para una posible integración **futura y autorizada** con GTA VI. ESX Legacy, QBCore y Qbox son referencias externas, no el modelo de producto ni objetivos de compatibilidad de CALM. El repositorio se llama `calm-rp-framework`; el nombre del proyecto no incluye ninguna marca de Rockstar, y la referencia a GTA aparece solo como tema descriptivo en los _topics_. No se afirma compatibilidad, autorización ni colaboración con Rockstar Games. La revisión de marcas sigue pendiente.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
 [![Licencia MIT](https://img.shields.io/badge/licencia-MIT-101020.svg)](./LICENSE)
@@ -28,12 +28,14 @@ CALM Essentials es el nombre de trabajo del producto: los sistemas base que un s
 
 ## Funciones públicas y revisión legal (24 de noviembre de 2026)
 
-El proyecto distingue las funciones oficiales **FiveM/Qbox** de las interfaces aún desconocidas de **GTA VI**. El núcleo de rol incorpora contratos originales y capacidades explícitas del adaptador; las capacidades reales de GTA VI siguen sin verificar.
+El núcleo de CALM se define con dominios y contratos propios. La documentación de FiveM/Qbox solo sirve como referencia externa para comparar conceptos; no demuestra compatibilidad ni describe las interfaces desconocidas de GTA VI.
 
 - [Matriz de funciones, eventos y conceptos técnicos](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
 - [Matriz de capacidades de GTA VI — catálogo verificado de investigación de RAGE 9](./docs/research/GTA6_CAPABILITY_MATRIX_2026-11-25.md)
 - [Avances de ejecución de GTA VI en PC — VIctory, XCL, el DMCA de Leonida y por qué no son una interfaz](./docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md)
+- [Auditoría de código de VIctory — capa de compatibilidad, red sin conexión e implicaciones para CALM](./docs/research/VICTORY_SOURCE_AUDIT_2026-11-26.md)
 - [Mecánicas de GTA VI observadas por la prensa y consecuencias de diseño](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)
+- [Sistemas de la campaña de GTA VI y observaciones públicas sobre su implementación](./docs/research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md)
 - [Análisis preliminar de interoperabilidad, licencias y propiedad intelectual](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [Base jurídica: artículos concretos que hacen legal este proyecto](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md)
 - [Verificación local: el gate autoritativo, sin depender del CI alojado](./docs/operations/LOCAL_VERIFICATION.md)
@@ -46,13 +48,15 @@ El proyecto distingue las funciones oficiales **FiveM/Qbox** de las interfaces a
 
 Construir **CALM Essentials**: un framework de roleplay de desarrollo abierto que aporta los sistemas que un servidor de rol necesita. El objetivo **ya no es** una plataforma tipo FiveM: aquí no hay hospedaje, buscador de servidores, entorno de multijugador ni mercado de extensiones. Ya podemos construir lógica de personajes, economía, inventarios, empleos, organizaciones, propiedades, vehículos y permisos sin depender de archivos del juego, y probarla contra el simulador determinista. La integración real con GTA VI solo podrá abordarse si existe una vía técnica y jurídica verificable.
 
-Tomamos la simplicidad de ESX, la organización modular de QBCore y los servicios exportados explícitos de Qbox como **referencias de diseño** — solo conceptos, porque sus núcleos tienen licencia GPL y este proyecto es MIT. No se inventan API, nombres nativos, direcciones ni firmas de GTA VI.
+Podemos consultar documentación pública de ESX/QBCore/Qbox como **referencia externa** para comparar cómo se han abordado problemas comunes de roleplay. No define los requisitos, la arquitectura, las API ni la compatibilidad de CALM con GTA VI. El modelo de dominios de CALM es original; no inventamos API, nombres nativos, direcciones ni firmas de GTA VI.
 
 **Cualquier persona puede contribuir:** programación, pruebas, seguridad, documentación, diseño, accesibilidad e investigación con fuentes públicas. Las aportaciones se revisan mediante solicitudes de integración.
 
 - [ADR-0007 — la decisión de alcance de CALM Essentials](./docs/adr/0007-calm-essentials-framework-scope.md)
 - [Auditoría verificada del código actual: existente y pendiente](./docs/PROJECT_SCOPE.md)
-- [Propuesta de contratos de servicios y correspondencia con ESX/QBCore/Qbox](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [Propuesta de contratos de CALM y comparación con frameworks externos](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [Límite de diseño para la progresión de personajes](./docs/server/CHARACTER_PROGRESSION.md)
+- [Guía en español de arquitectura y simulador](./docs/community/SIMULATOR_GUIDE.es.md)
 
 ## Estado del proyecto
 
@@ -89,6 +93,10 @@ pnpm check
 ```
 
 Para iniciar la infraestructura local (opcional):
+
+1. Copia `.env.example` a `.env` y establece una contraseña hexadecimal aleatoria de 64 caracteres para `POSTGRES_PASSWORD`.
+   El archivo `.env` está excluido de Git. No reutilices esta clave en producción.
+2. Inicia los servicios:
 
 ```bash
 docker compose -f infrastructure/docker/compose.yml up -d

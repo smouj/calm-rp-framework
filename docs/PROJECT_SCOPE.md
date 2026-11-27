@@ -2,11 +2,11 @@
 
 **State:** Active community-led project scope
 **Working product name:** **CALM Essentials** — the roleplay framework developed in this repository
-**Updated:** 2026-11-25 · Scope decision recorded in [ADR-0007](./adr/0007-calm-essentials-framework-scope.md)
+**Updated:** 2026-11-27 · Scope decision and clarification recorded in [ADR-0007](./adr/0007-calm-essentials-framework-scope.md)
 
 ## Product definition
 
-CALM Essentials is an independent, fan-led, open-source **roleplay framework** in the product class of ESX Legacy and QBCore: the base systems a roleplay server needs — characters, economy, inventory, jobs, organizations, properties, vehicles, permissions and extensions — developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration.
+CALM Essentials is an independent, fan-led, open-source **roleplay framework** with CALM-owned domains and contracts: the base systems its intended RP communities need — characters, economy, inventory, jobs, organizations, properties, vehicles, permissions and extensions — developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration. ESX Legacy, QBCore and Qbox are external references only, not CALM's product model or compatibility targets.
 
 Today it is **not a playable mod, GTA VI client, custom game server, or supported multiplayer framework**. It is also **not** a FiveM-style platform: hosting, server browsing, a multiplayer network runtime and a plugin marketplace are out of scope. Publishing source code neither creates permission to use proprietary game material nor proves an integration path exists.
 
@@ -32,7 +32,7 @@ No GTA VI names, memory addresses, identifiers or function signatures are invent
 
 - RP domain systems: accounts, characters, sessions, economy, ledger, inventory, jobs, organizations, property, vehicles, police records, permissions and audit — as progressive modules with code, contracts, tests and documentation.
 - Game-independent simulators, synthetic fixtures, automated tests and reproducible infrastructure.
-- Public service contracts (proposal stage): session, character, economy, inventory, jobs, permissions and hooks interfaces mapped against documented ESX/QBCore/Qbox equivalents.
+- Public service contracts (proposal stage): CALM-owned session, character, economy, inventory, jobs, permissions and hooks interfaces. A separate comparative note references public ESX/QBCore/Qbox docs without making them architectural requirements or compatibility targets.
 - PostgreSQL-first durable state; transactional integrity, idempotency and recovery.
 - Community contribution guidelines, governance, bilingual onboarding and original branding.
 - Research into Rockstar/Cfx first-party announcements and clearly scoped third-party observations, with evidence grading.

@@ -8,7 +8,7 @@ The first tangible goal: **two simulated characters hold jobs, get paid, buy, st
 
 ## F0 — Project reformulation ✅ (completed 2026-11-25)
 
-**Goal:** adopt CALM Essentials as the working product name and reframe the project as an ESX/QBCore-class roleplay framework.
+**Goal:** establish CALM Essentials as the working product name and define its original roleplay framework scope, independently of external frameworks and GTA VI runtime details.
 
 - scope, architecture, roadmap, READMEs and the community site present the framework framing;
 - history and valid code are preserved — no rewrite, no gratuitous breakage;

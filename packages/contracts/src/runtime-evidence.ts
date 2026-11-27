@@ -3,14 +3,14 @@
  * Inputs must be curated by maintainers; strings and URLs are not verified here.
  * The adapter stays disabled until separate legal, security and technical review.
  */
-export const GTA6_MINIMUM_RUNTIME_REQUIREMENTS = [
+export const GTA6_MINIMUM_RUNTIME_REQUIREMENTS = Object.freeze([
   'RT-001',
   'RT-003',
   'RT-005',
   'RT-006',
   'RT-007',
   'RT-010',
-] as const;
+] as const);
 
 export type Gta6MinimumRequirement = (typeof GTA6_MINIMUM_RUNTIME_REQUIREMENTS)[number];
 

@@ -4,7 +4,7 @@ import type { AccountId, RequestId } from '@gta6-rp/core';
  * Independent project contracts. These are NOT GTA VI native functions,
  * observed function signatures, or a working game integration.
  */
-export const PORTABLE_CAPABILITIES = [
+export const PORTABLE_CAPABILITIES = Object.freeze([
   'session.resolve',
   'intent.receive',
   'projection.send',
@@ -12,7 +12,7 @@ export const PORTABLE_CAPABILITIES = [
   'location.query',
   'world.interact',
   'resource.lifecycle',
-] as const;
+] as const);
 
 export type PortableCapability = (typeof PORTABLE_CAPABILITIES)[number];
 export type RuntimeTarget = 'simulator' | 'authorized-adapter';

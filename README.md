@@ -10,7 +10,7 @@
 
 **CALM Essentials** — an independent, modular, open-source **roleplay framework**.
 
-CALM Essentials is the working product name: the base systems a roleplay server needs — characters, economy, inventory, jobs, organizations, properties, vehicles, permissions and extensions — designed in the product class of ESX Legacy and QBCore, developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. This is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
+CALM Essentials is the working product name for our original roleplay framework: its domains and contracts are being designed for CALM's own goals, developed and tested **without** the game, and prepared for a **possible future authorized** GTA VI integration. ESX Legacy, QBCore and Qbox are external references only, not CALM's product model or compatibility targets. The repository is named `calm-rp-framework`: the project name carries no Rockstar trademark, and GTA appears only as a descriptive topic. This is **not** evidence of GTA VI compatibility or a Rockstar endorsement. Brand and trademark clearance remain pending.
 
 [![CI](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml/badge.svg)](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-101020.svg)](./LICENSE)
@@ -30,11 +30,12 @@ CALM Essentials is the working product name: the base systems a roleplay server 
 
 Build **CALM Essentials**: an openly developed roleplay framework that supplies the systems an RP server needs. The goal is **not** a FiveM-style platform — there is no hosting, server browser, multiplayer network runtime or marketplace here. Contributors create reusable, server-authoritative roleplay systems, test them against the deterministic simulator, improve tooling and documentation, and prepare for integration **only when permission and technical support are verifiable**.
 
-We take ESX's simplicity, QBCore's modular organization and Qbox's explicit exported services as **design references** — concepts only, since their cores are GPL-licensed and this project is MIT. No GTA VI APIs, native names, addresses or signatures are invented. Developers, artists, testers, documentation writers, security specialists and fans are welcome. This project is not a fork of FiveM, ESX, QBCore or Qbox, and does not currently implement a GTA VI modification or multiplayer network.
+We may consult public ESX/QBCore/Qbox documentation as **external references** when comparing how familiar RP problems have been approached. They do not define CALM's requirements, architecture, APIs, or GTA VI compatibility. CALM's domain model is original; no GTA VI APIs, native names, addresses or signatures are invented. Developers, artists, testers, documentation writers, security specialists and fans are welcome. This project is not a fork of FiveM, ESX, QBCore or Qbox, and does not currently implement a GTA VI modification or multiplayer network.
 
 - [ADR-0007 — the CALM Essentials scope decision](./docs/adr/0007-calm-essentials-framework-scope.md)
 - [Verified audit of the current code: present vs. missing](./docs/PROJECT_SCOPE.md)
-- [Proposed service contracts and the ESX/QBCore/Qbox mapping](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [CALM service-contract proposal and external framework comparison](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [Character progression design boundary](./docs/server/CHARACTER_PROGRESSION.md)
 
 ## Public interfaces, legal boundaries and reverse-engineering research (24 November 2026)
 
@@ -43,7 +44,9 @@ The independent core now has original, fail-closed runtime capability contracts 
 - [Documented functions and original interface mapping](./docs/research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md)
 - [GTA VI capability matrix — verified RAGE 9 research catalog](./docs/research/GTA6_CAPABILITY_MATRIX_2026-11-25.md)
 - [GTA VI PC execution progress — VIctory, XCL, the Leonida DMCA, and why it is not an interface](./docs/research/GTA6_EXECUTION_PROGRESS_2026-11-25.md)
+- [VIctory source audit — compatibility layer, offline network boundary, and CALM implications](./docs/research/VICTORY_SOURCE_AUDIT_2026-11-26.md)
 - [GTA VI RP mechanics observed by the press and our design consequences](./docs/research/GTA6_RP_MECHANICS_2026-11-25.md)
+- [GTA VI campaign systems and public implementation observations](./docs/research/GTA6_INTERNAL_SYSTEMS_2026-11-27.md)
 - [Spain/EU interoperability and intellectual-property review](./docs/legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md)
 - [Legal basis: the specific articles that make this project lawful](./docs/legal/LEGAL_BASIS_ARTICLES_2026-11-24.md)
 - [Local verification: the authoritative gate, independent of hosted CI](./docs/operations/LOCAL_VERIFICATION.md)
@@ -126,6 +129,8 @@ pnpm check
 ```
 
 Optional development infrastructure:
+
+Copy `.env.example` to `.env`, set a unique 64-character random hexadecimal `POSTGRES_PASSWORD`, and do not reuse it in production. `.env` is ignored by Git.
 
 ```bash
 docker compose -f infrastructure/docker/compose.yml up -d

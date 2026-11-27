@@ -156,6 +156,15 @@ export class PgLedgerRepository implements LedgerStore {
         throw new DomainError('UNBALANCED_TRANSACTION', 'Transaction legs must sum to zero.');
       }
 
+      // Close the database transaction only after all legs and account
+      // invariants have passed. Database triggers serialize this transition
+      // with entry inserts and reject any later append.
+      await executor.query(
+        `INSERT INTO ledger_transaction_finalizations (transaction_id)
+         VALUES ($1::uuid)`,
+        [transactionId],
+      );
+
       return {
         transactionId,
         idempotencyKey: command.idempotencyKey,

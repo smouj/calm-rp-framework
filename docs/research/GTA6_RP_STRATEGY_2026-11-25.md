@@ -8,11 +8,11 @@
 
 A recurring failure mode in public discussion is treating "GTA VI", "a future GTA VI Online" and "possible GTA VI roleplay servers" as one product with shared rules. CALM keeps them separate:
 
-| Environment                   | What is publicly established (see [`PLATFORM_STATUS.md`](./PLATFORM_STATUS.md))                                                   | Consequence for CALM Essentials                              |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| GTA VI (shipped campaign)     | Available since 19 November 2026 on PS5 and Xbox Series X\|S as a single-player product; no first-party PC date                   | A source of **mechanics observations only** — no interfaces  |
-| GTA VI Online (hypothetical)  | No online mode, characteristics or timetable announced for GTA VI                                                                 | Unknown; design must not depend on it                        |
-| Authorized RP path for GTA VI | No public authorized community-server path identified; Rockstar's September 2026 nopixel V support covers the **GTA V** ecosystem | The adapter stays **BLOCKED**; we prepare, we do not presume |
+| Environment                                | What is publicly established (see [`PLATFORM_STATUS.md`](./PLATFORM_STATUS.md))                                                                                   | Consequence for CALM Essentials                                                                  |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| GTA VI (shipped campaign)                  | Available since 19 November 2026 on PS5 and Xbox Series X\|S as a single-player product; no first-party PC date                                                   | A source of **mechanics observations only** — no interfaces                                      |
+| GTA VI Online (hypothetical)               | No online mode, characteristics or timetable announced for GTA VI                                                                                                 | Unknown; design must not depend on it                                                            |
+| Rockstar RP policy and current Cfx runtime | Rockstar says RP servers are allowed through its Creator Platform under policy; the current FXServer `gamename` documentation lists `gta5` and `rdr3`, not GTA VI | This does not establish GTA VI eligibility or a stats/runtime API; the adapter stays **BLOCKED** |
 
 ## 2. Reasonable expectations versus confirmed capabilities
 
@@ -40,7 +40,7 @@ Planning consequence: CALM builds the **engine-independent** half of every row (
 | **B**    | Rockstar or Cfx.re publishes an authorized creator platform for GTA VI resources/scripts | **The scenario CALM prepares for technically** — an adapter study   |
 | **C**    | Rockstar authorizes specific RP projects under individual agreements                     | Integration only with a verifiable license and technical conditions |
 
-The project prepares for **B without presuming it**: the adapter boundary, ports and capability registry are designed so that scenario B could be adopted quickly, while scenarios A and C change nothing in the portable core. Rockstar's current RP policy (updated 15 September 2026, via the Creator Platform) is a ruleset for _their_ surfaces, not an authorization to run GTA VI community servers, and it is not treated as one.
+The project prepares for **B without presuming it**: the adapter boundary, ports and capability registry are designed so that scenario B could be adopted if an authorized runtime is documented, while scenarios A and C change nothing in the portable core. Rockstar's RP policy (updated 15 September 2026) describes RP servers through its Creator Platform, subject to policy; the Creator Platform agreement requires an authorized “Covered Game” and does not itself enumerate GTA VI. Current Cfx FXServer documentation lists only `gta5` and `rdr3` as supported games. These facts do not confirm GTA VI support or an authorized GTA VI server path. [Rockstar RP policy](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers) · [Creator Platform License Agreement](https://fivem.net/terms/) · [Cfx supported games](https://docs.fivem.net/docs/server-manual/server-commands/).
 
 ## 4. Three-layer integration model
 
@@ -126,8 +126,8 @@ The practical conclusion: **most of CALM Essentials does not need to wait for mu
 
 ## 7. Research lines from here
 
-1. **Game research** — document real GTA VI mechanics with reproducible evidence and contrasted analysis (continued in [`GTA6_RP_MECHANICS_2026-11-25.md`](./GTA6_RP_MECHANICS_2026-11-25.md)); it keeps CALM's domain model coherent with Leonida without guessing APIs.
-2. **Integration research** — watch for Rockstar/Cfx.re announcements of an authorized external-resource environment: permitted languages, player and entity management, event mechanisms, legal conditions. RAGE 9 recompilers and file explorers remain technical references, but they do not substitute for a real programming interface.
+1. **Game-system research — primary line** — document campaign behavior and named developers' public explanations of missions, AI, vehicles, animation and world systems. Keep observations separate from assumptions about internal source code; see [`GTA6_RP_MECHANICS_2026-11-25.md`](./GTA6_RP_MECHANICS_2026-11-25.md) and [`GTA6_INTERNAL_SYSTEMS_2026-11-27.md`](./GTA6_INTERNAL_SYSTEMS_2026-11-27.md).
+2. **Integration research — later gate** — monitor Rockstar/Cfx.re announcements of an authorized external-resource environment: permitted languages, player/entity management, event mechanisms and legal conditions. This is necessary before game-facing integration, but it is not required to study the campaign's systems or design CALM's independent roleplay domains.
 
 ## 8. Recommendation (project decision)
 
@@ -135,4 +135,4 @@ The practical conclusion: **most of CALM Essentials does not need to wait for mu
 - Do **build first** the engine-independent RP services every community needs: identity, money, property, containers, jobs, organizations, permissions — exactly the F1–F4 roadmap.
 - Then add **optional contracts** that exploit verified game mechanics when interfaces permit, gated per-capability.
 
-The question to answer when Rockstar announces GTA VI Online is not only "what does it include", but **"which capabilities does it expose to developers, and which can CALM use legally"**. That answer determines whether CALM can become the ESX/QBCore-class base for GTA VI; until then, the framework grows on its own evidence.
+The near-term research question is **how the released game's observable systems and Rockstar's public developer explanations can inform CALM's original RP domain design without pretending to know the proprietary source code**. Any future online/creator-service announcement will answer a separate integration question: which documented capabilities CALM may use under the applicable authorization.

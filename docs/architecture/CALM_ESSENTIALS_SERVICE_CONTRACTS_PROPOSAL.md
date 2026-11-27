@@ -2,11 +2,11 @@
 
 **Status:** PROPOSAL (design direction for roadmap Phases F1–F4; nothing here is implemented yet)
 **Date:** 2026-11-25 · **Scope decision:** [ADR-0007](../adr/0007-calm-essentials-framework-scope.md)
-**References:** documented public interfaces of ESX Legacy, QBCore and Qbox (studied as concepts only — their cores are GPL, this project is MIT)
+**Comparative references only:** documented public interfaces of ESX Legacy, QBCore and Qbox. They are not CALM's product model, requirements, or compatibility targets; the proposal's domains and contracts are independently specified.
 
 ## Naming and provenance
 
-The CALM operation names below are **original proposals**. They are not implemented functions, not copies of GTA VI signatures, and not compatibility shims. The correspondence table starts from the **verified public documentation** of the reference frameworks; the architecture comparison records the pattern verdicts.
+The CALM operation names below are **original proposals**. They are not implemented functions, not copies of GTA VI signatures, and not compatibility shims. The correspondence table is retained as a limited comparison of terminology; it does not establish that CALM follows these frameworks or that any of them describe GTA VI.
 
 ## Correspondence with documented reference interfaces
 
@@ -73,7 +73,7 @@ This is an **application contract, not a finished implementation**.
 - Identity comes from an **authenticated session**; `accountId`/`characterId` are never trusted just because a client includes them in a request.
 - Financial operations check **ownership, permissions, balance, idempotency and transactional isolation** before producing changes.
 - Money stays in integer minor units; every movement is auditable and restart-safe.
-- These requirements follow the documented security practices of the Cfx ecosystem and the Qbox development criteria.
+- These are CALM security requirements derived from its server-authority and persistence goals. External Cfx/Qbox documentation is comparative background only.
 
 ## Module manifest — proposal
 
@@ -93,7 +93,7 @@ A module declares its own dependencies and permissions via a CALM manifest. **Th
 }
 ```
 
-Sequencing rule: **first prove** that two independent modules communicate through public services, resolve dependencies correctly and keep their data; **then formalize** the extension system. Each module keeps control of its own tables and accesses the others through defined interfaces, never by querying their internal data (the discipline the Qbox documentation recommends for its resources).
+Sequencing rule: **first prove** that two independent CALM modules communicate through public services, resolve dependencies correctly and keep their data; **then formalize** the extension system. Each module keeps control of its own tables and accesses the others through defined interfaces, never by querying their internal data.
 
 ## Licensing note
 

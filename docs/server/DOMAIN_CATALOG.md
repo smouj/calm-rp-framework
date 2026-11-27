@@ -41,6 +41,25 @@ Core invariants:
 
 Runtime dependency: model/customization/spawn projection remains blocked.
 
+## Character progression
+
+Detailed design boundary: [Character Progression](./CHARACTER_PROGRESSION.md).
+
+Owns, only when enabled by community rules:
+
+- server-defined competencies, training and progression history;
+- versioned attribute definitions and progression rules;
+- idempotent records of activities or awards that change progression.
+
+Core invariants:
+
+- clients never submit authoritative stat values or progression awards;
+- definitions specify units, allowed ranges, version and change source;
+- long-term progression is separate from temporary health/injury and optional needs;
+- changes with gameplay or economic impact are auditable and replay-safe.
+
+Runtime dependency: mapping progression to GTA VI character stats remains `UNKNOWN`; no numerical schema or authorized read/write interface is assumed.
+
 ## Economy and ledger
 
 Owns:

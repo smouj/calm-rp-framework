@@ -26,7 +26,7 @@ For suspected compromise of a Rockstar account or official service, contact Rock
 - Money, inventory, staff permissions, identity and ownership are changed only through server-side validated commands.
 - Use atomic transactions for valuable state and immutable or compensating audit records.
 - Keep production secrets and personal data out of Git, logs, issue attachments and test fixtures.
-- Keep CI permissions limited, dependencies pinned/reviewed and caches non-authoritative.
+- Keep CI permissions limited, dependencies and container images pinned/reviewed, and caches non-authoritative.
 - Apply rate limits and resource limits to exposed interfaces as they become real.
 - Separate in-character RP authority from platform/admin privileges.
 - GTA VI integration cannot rely on private services, leaked code, unauthorized authentication, a speculative client or protected game data.
