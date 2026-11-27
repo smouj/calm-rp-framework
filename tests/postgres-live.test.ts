@@ -18,8 +18,9 @@ import { MIGRATIONS_DIR } from './helpers/database.js';
 /**
  * Live multi-connection suite, gated on a real `DATABASE_URL`:
  *
+ *   # Copy .env.example to .env and set a unique 64-character random hex password first.
  *   docker compose -f infrastructure/docker/compose.yml up -d
- *   DATABASE_URL=postgresql://gta6_rp:change-me-local-only@localhost:5432/gta6_rp pnpm vitest run tests/postgres-live.test.ts
+ *   DATABASE_URL=postgresql://gta6_rp:YOUR_LOCAL_HEX_PASSWORD@localhost:5432/gta6_rp pnpm vitest run tests/postgres-live.test.ts
  *
  * CI provides the same gate through the workflow's PostgreSQL service. When
  * no `postgres://`/`postgresql://` URL is present the suite skips with a

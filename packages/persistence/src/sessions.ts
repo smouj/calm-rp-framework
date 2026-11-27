@@ -28,7 +28,7 @@ const SELECT_SESSION = `
     FROM sessions`;
 
 function rowToSession(row: Record<string, unknown>): SessionRecord {
-  return {
+  return Object.freeze({
     sessionId: String(row['id']) as Uuid,
     accountId: String(row['account_id']) as Uuid,
     tokenHash: String(row['token_hash']),
@@ -36,7 +36,7 @@ function rowToSession(row: Record<string, unknown>): SessionRecord {
     issuedAt: readTimestamp(row, 'issued_at'),
     expiresAt: readTimestamp(row, 'expires_at'),
     revokedAt: readTimestampOrNull(row, 'revoked_at'),
-  };
+  });
 }
 
 /**

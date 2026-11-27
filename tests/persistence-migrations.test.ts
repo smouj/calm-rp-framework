@@ -71,13 +71,49 @@ describe('migration runner (embedded PostgreSQL)', () => {
                 ('00000000-0000-4000-8000-0000000000a3'::uuid, $2::uuid, $3::uuid, -20)`,
         [entryId, transactionId, treasuryId],
       );
+      await executor.query(
+        `INSERT INTO ledger_transaction_finalizations (transaction_id) VALUES ($1::uuid)`,
+        [transactionId],
+      );
     });
+
+    const unfinalizedTransactionId = '00000000-0000-4000-8000-0000000000a4';
+    await expect(
+      session.withTransaction((executor) =>
+        executor.query(
+          `INSERT INTO ledger_transactions (id, idempotency_key, command_fingerprint)
+           VALUES ($1::uuid, 'unfinalized-test', 'unfinalized-test')`,
+          [unfinalizedTransactionId],
+        ),
+      ),
+    ).rejects.toThrow('must be finalized before commit');
+    const rolledBack = await session.query(
+      'SELECT count(*)::int AS n FROM ledger_transactions WHERE id = $1::uuid',
+      [unfinalizedTransactionId],
+    );
+    expect(rolledBack.rows[0]).toEqual({ n: 0 });
+
+    await expect(
+      session.query(
+        `INSERT INTO ledger_entries (id, transaction_id, financial_account_id, amount_minor)
+         VALUES ('00000000-0000-4000-8000-0000000000a5'::uuid, $1::uuid, $2::uuid, 1)`,
+        [transactionId, treasuryId],
+      ),
+    ).rejects.toThrow('finalized');
 
     const mutations: readonly [string, readonly string[]][] = [
       ['UPDATE ledger_entries SET amount_minor = 30 WHERE id = $1::uuid', [entryId]],
       ['DELETE FROM ledger_entries WHERE id = $1::uuid', [entryId]],
       ['UPDATE ledger_transactions SET reference = NULL WHERE id = $1::uuid', [transactionId]],
       ['DELETE FROM ledger_transactions WHERE id = $1::uuid', [transactionId]],
+      [
+        'UPDATE ledger_transaction_finalizations SET finalized_at = now() WHERE transaction_id = $1::uuid',
+        [transactionId],
+      ],
+      [
+        'DELETE FROM ledger_transaction_finalizations WHERE transaction_id = $1::uuid',
+        [transactionId],
+      ],
     ];
     for (const [sql, params] of mutations) {
       await expect(session.query(sql, params)).rejects.toThrow('append-only');
@@ -99,6 +135,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
       '0001_bootstrap.sql',
       '0002_sessions_ledger_guards.sql',
       '0003_ledger_append_only.sql',
+      '0004_ledger_transaction_finalization.sql',
     ]);
 
     const tables = await session.query(
@@ -118,7 +155,7 @@ describe('migration runner (embedded PostgreSQL)', () => {
 
     expect(second).toEqual([]);
     const recorded = await runner.applied();
-    expect(recorded.map((migration) => migration.name)).toHaveLength(3);
+    expect(recorded.map((migration) => migration.name)).toHaveLength(4);
   });
 
   it('never reapplies migrations after a full restart of the database engine', async () => {
