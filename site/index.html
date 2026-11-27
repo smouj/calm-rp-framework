@@ -86,6 +86,16 @@
     </header>
     <main id="main">
       <section class="hero" id="inicio">
+        <div class="hero-scene" aria-hidden="true">
+          <img
+            src="./assets/leonida-atmosphere.svg"
+            alt=""
+            width="1600"
+            height="900"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
         <div class="wrap hero-grid">
           <div>
             <img
@@ -110,9 +120,9 @@
             <p class="hero-lead">
               CALM Essentials es un proyecto GTA VI-first. Diseña sistemas de roleplay propios a
               partir de mecánicas públicas observables y de las necesidades de su comunidad; no
-              adapta ESX, QBCore, Qbox ni FiveM. Ya cuenta con cuentas, sesiones, personajes y
-              economía persistentes. F2 desarrolla objetos transportados y almacenamiento. No hay
-              cliente, servidor multijugador, mod ni integración autorizada con GTA VI.
+              adapta ESX, QBCore, Qbox ni FiveM. F1 aporta la base persistente de identidad,
+              sesiones y economía; el cierre de API y seguridad sigue pendiente. F2 completó
+              inventario y almacenamiento persistentes. El runtime de GTA VI sigue bloqueado.
             </p>
             <div class="button-row">
               <a href="#plataforma" class="button button-primary">Cómo está diseñado →</a
@@ -152,7 +162,7 @@
               </p>
               <p>
                 <span class="key">database</span
-                ><span class="value ready">● PostgreSQL · base F1</span>
+                ><span class="value ready">● PostgreSQL · F1 + F2</span>
               </p>
               <p>
                 <span class="key">gta6.adapter</span
@@ -177,7 +187,9 @@
       <div class="status-strip reveal">
         <div class="wrap strip-inner">
           <div class="reveal"><strong>VI</strong><span>Objetivo GTA VI-first</span></div>
-          <div class="reveal"><strong>02</strong><span>Sistemas persistentes entregados</span></div>
+          <div class="reveal">
+            <strong>03</strong><span>Dominios persistentes implementados</span>
+          </div>
           <div class="reveal"><strong>00</strong><span>Adaptadores GTA VI funcionales</span></div>
           <div class="reveal"><strong>MIT</strong><span>Licencia del código propio</span></div>
         </div>
@@ -262,6 +274,35 @@
               >Ver requisitos pendientes ↗</a
             >
           </div>
+          <div class="module-architecture reveal">
+            <div class="module-architecture-copy">
+              <p class="eyebrow">NÚCLEO CALM / MÓDULOS PROPIOS</p>
+              <h3>Una base común. <em>Una función por módulo.</em></h3>
+              <p>
+                La dirección de diseño separa el núcleo CALM de los módulos que construya el
+                proyecto. <code>smj_character</code> y <code>smj_money</code> son ejemplos de IDs
+                futuros, no paquetes independientes ya publicados.
+              </p>
+              <a
+                href="https://github.com/smouj/calm-rp-framework/blob/main/docs/adr/0010-user-owned-feature-modules.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Leer la decisión de módulos ↗</a
+              >
+            </div>
+            <div class="module-stack" aria-label="Ejemplo de separación entre núcleo y módulos">
+              <div class="module-stack-core">
+                <span>CALM CORE</span>
+                <small>Contratos · sesiones · reglas de seguridad</small>
+              </div>
+              <span class="module-stack-link" aria-hidden="true"></span>
+              <div class="module-stack-row">
+                <div><span>smj_character</span><small>Identidad</small></div>
+                <div><span>smj_money</span><small>Economía</small></div>
+              </div>
+              <p>IDs ilustrativos · sin loader GTA VI</p>
+            </div>
+          </div>
         </div>
       </section>
       <section class="section section-muted" id="modulos">
@@ -275,15 +316,16 @@
           </div>
           <div class="filter-bar reveal" role="group" aria-label="Filtrar sistemas">
             <button class="filter active" data-module-filter="all" aria-pressed="true">Todos</button
-            ><button class="filter" data-module-filter="reference" aria-pressed="false">
+            ><button class="filter" data-module-filter="implemented" aria-pressed="false">
               Implementados</button
             ><button class="filter" data-module-filter="planned" aria-pressed="false">
-              En curso o previstos
+              Planificados
             </button>
           </div>
           <div class="module-grid" id="module-grid" data-stagger>
-            <article class="module-card reveal" data-module-status="reference">
-              <span class="module-symbol">01</span><span class="state state-ready">REFERENCIA</span>
+            <article class="module-card reveal" data-module-status="implemented">
+              <span class="module-symbol">01</span
+              ><span class="state state-ready">IMPLEMENTADO · F1</span>
               <h3>Personajes</h3>
               <p>
                 Identidad aislada por cuenta; registro validado y detección de duplicados. Sesiones
@@ -292,8 +334,9 @@
               </p>
               <span class="module-meta">packages/core + persistence · F1</span>
             </article>
-            <article class="module-card reveal" data-module-status="reference">
-              <span class="module-symbol">02</span><span class="state state-ready">REFERENCIA</span>
+            <article class="module-card reveal" data-module-status="implemented">
+              <span class="module-symbol">02</span
+              ><span class="state state-ready">IMPLEMENTADO · F1</span>
               <h3>Economía</h3>
               <p>
                 Saldo en unidades enteras, transferencias idempotentes, libro de movimientos y
@@ -302,9 +345,9 @@
               </p>
               <span class="module-meta">packages/core + persistence · F1</span>
             </article>
-            <article class="module-card reveal" data-module-status="planned">
+            <article class="module-card reveal" data-module-status="implemented">
               <span class="module-symbol">03</span
-              ><span class="state state-progress">F2 EN CURSO</span>
+              ><span class="state state-ready">IMPLEMENTADO · F2</span>
               <h3>Inventario</h3>
               <p>
                 Servicio persistente para cargar, consumir, almacenar, recuperar e intercambiar
@@ -608,12 +651,13 @@
             <div class="timeline-item reveal">
               <span class="timeline-number">F2</span>
               <div>
-                <strong>Economía, objetos transportados y almacenamiento</strong>
+                <strong>Inventario, objetos transportados y almacenamiento</strong>
                 <p>
-                  Transacciones durables, contenedores y propiedad independiente de la ubicación.
+                  Contenedores persistentes, transferencias seguras y propiedad independiente de la
+                  ubicación. La integración con el juego permanece bloqueada.
                 </p>
               </div>
-              <span class="state state-progress">EN CURSO</span>
+              <span class="state state-ready">COMPLETADA</span>
             </div>
             <div class="timeline-item reveal">
               <span class="timeline-number">F3</span>
@@ -626,10 +670,11 @@
             <div class="timeline-item reveal">
               <span class="timeline-number">F4</span>
               <div>
-                <strong>Módulos de dominio CALM</strong>
+                <strong>Extensiones modulares CALM</strong>
                 <p>
-                  Solo se estudiarán límites de módulos cuando los necesiten flujos concretos de
-                  CALM.
+                  Probar módulos propios con IDs <code>smj_*</code> mediante contratos CALM. Un
+                  manifiesto o loader independiente se formalizará solo después de validar módulos
+                  reales; no define un recurso GTA VI.
                 </p>
               </div>
               <span class="state state-blocked">DIFERIDA</span>

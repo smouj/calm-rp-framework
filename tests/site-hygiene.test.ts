@@ -12,8 +12,13 @@ describe('community site source checks', () => {
     expect(read('assets/styles.css').length).toBeGreaterThan(100);
     expect(read('assets/app.js').length).toBeGreaterThan(100);
     expect(read('assets/favicon.svg')).toContain('<svg');
+    const atmosphere = read('assets/leonida-atmosphere.svg');
+    expect(atmosphere).toContain('<svg');
+    expect(atmosphere).toContain('prefers-reduced-motion');
+    expect(atmosphere).not.toMatch(/<script|<foreignObject|<image\b/i);
     expect(html).toContain('href="./assets/styles.css"');
     expect(html).toContain('src="./assets/app.js"');
+    expect(html).toContain('src="./assets/leonida-atmosphere.svg"');
     expect(html).not.toMatch(/<script[^>]+src=["']https?:/i);
     expect(html).not.toMatch(/<link[^>]+href=["']https?:/i);
   });
@@ -47,6 +52,10 @@ describe('community site source checks', () => {
     expect(html).toContain('Inventario</h3>');
     expect(html).toContain('equipamiento y loadout');
     expect(html).toContain('packages/core + persistence · F2');
+    expect(html).toContain('IMPLEMENTADO · F2');
+    expect(html).not.toContain('F2 EN CURSO');
+    expect(html).toContain('smj_character');
+    expect(html).toContain('smj_money');
     expect(html).toContain('Sin afiliación ni autorización de Rockstar Games');
   });
 
