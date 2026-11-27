@@ -51,9 +51,9 @@ as represented and they can be safely retired.
 
 ### G5 — Open Issues and PRs triage
 
-**Status: IN PROGRESS (2026-11-27).** The GitHub connector is available. Issues #2, #32 and #54
-are open and assigned to `smouj`; each has explicit remaining acceptance or owner-side verification
-steps. The current candidate PR will be listed in `docs/operations/ISSUE_TRIAGE_2026-11-27.md`.
+**Status: DONE (2026-11-27 triage).** Issues #2, #32 and #54 are open, assigned to `smouj`, and
+have explicit remaining acceptance or owner-side verification steps. PR #59 is the only active PR;
+it has an owner and exact-head CI requirements. See `docs/operations/ISSUE_TRIAGE_2026-11-27.md`.
 
 **Goal:** no stale issues or PRs; every open item carries an owner and a verification step.
 **Done when:** a dated triage note is recorded (the repository pattern for this is `docs/operations/PR24_CI_TRIAGE.md`).

@@ -46,9 +46,9 @@ Toda afirmación de la línea base se comprobó el 25/11/2026 contra el sitio pu
 
 ### G5 — Triage de Issues y PRs abiertos
 
-**Estado: EN CURSO (27/11/2026).** El conector de GitHub está disponible. Las incidencias #2,
-#32 y #54 siguen abiertas y asignadas a `smouj`; cada una tiene criterios pendientes o pasos de
-verificación del mantenedor. El PR candidato se registrará en
+**Estado: HECHA (triage del 27/11/2026).** Las incidencias #2, #32 y #54 siguen abiertas,
+asignadas a `smouj` y con criterios pendientes o pasos de verificación explícitos. El PR #59 es el
+único PR activo, tiene responsable y exige CI sobre su commit exacto. Consulta
 `docs/operations/ISSUE_TRIAGE_2026-11-27.md`.
 
 **Objetivo:** ninguna incidencia o PR rancio; cada elemento abierto con responsable y paso de verificación.
