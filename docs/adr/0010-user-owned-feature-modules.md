@@ -21,10 +21,10 @@ The desired target is GTA VI. There is not yet a verified, authorized GTA VI res
 
 ## Example module split
 
-| Module ID | Owns | May use through CALM contracts |
-| --- | --- | --- |
+| Module ID       | Owns                                                        | May use through CALM contracts                       |
+| --------------- | ----------------------------------------------------------- | ---------------------------------------------------- |
 | `smj_character` | Character profiles, character lifecycle and its persistence | CALM authentication/session and permission contracts |
-| `smj_money` | Accounts, balances, transfers and an auditable ledger | CALM character identity and authorization contracts |
+| `smj_money`     | Accounts, balances, transfers and an auditable ledger       | CALM character identity and authorization contracts  |
 
 These examples are design illustrations, not claims that the modules or a runtime loader already exist. Prove cross-module calls and data ownership with real CALM modules before stabilizing a published extension ABI, as described in the service-contract proposal.
 
