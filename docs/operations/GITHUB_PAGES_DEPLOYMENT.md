@@ -1,6 +1,6 @@
 # GitHub Pages release and verification
 
-**Status at 25 November 2026 (post-reformulation): LIVE.**
+**Status at 27 November 2026 (Atlas publication): LIVE.**
 The site is published at **https://smouj.github.io/calm-rp-framework/** and every page and asset
 was verified returning HTTP 200 on 2026-11-25: `/`, `/legal.html`,
 `/assets/styles.css`, `/assets/app.js`, `/assets/favicon.svg`,
@@ -17,6 +17,10 @@ what unlocked Pages: GitHub does not offer Pages for a private repository on the
 - The CALM Essentials framing: a modular systems map (characters, economy, inventory, jobs,
   organizations, vehicles and properties, police, permissions and extensions), the F0–F5
   roadmap and the verified research sections.
+- A separate documentary feature for GTA VI Atlas edition 1.0. It links only supplied deliverables
+  (PDF, Markdown and evidence CSV), labels its 24 diagrams as original explanatory diagrams, and
+  links the [official Rockstar screenshot gallery](https://www.rockstargames.com/VI/media/screenshots)
+  as a visual source. The Atlas is excluded from CALM's runtime contracts and MIT license.
 - An engineering overview of the real monorepo, its quality gates and the local verification
   scripts. No Rockstar assets, no external scripts, no fonts, no analytics.
 - The legal notice covers non-affiliation, MIT scope, no game server, official source links,
@@ -60,6 +64,20 @@ possible with the maintenance token (fine-grained PAT without `actions:write`), 
 documented remediation applies: the next `site/**` push to `main` redeploys — this very
 update is that push, and its run is expected to complete the publication of the CALM
 Essentials content batch.
+
+### Atlas publication recovery (2026-11-27)
+
+The first deployment for the Atlas merge, [run #21](https://github.com/smouj/calm-rp-framework/actions/runs/46044994131),
+passed static validation and artifact upload but failed when the deploy action could not retrieve
+the just-uploaded `github-pages` artifact. Retrying the same run created multiple artifacts with the
+same name, so it failed again. We did not retry that run further. A fresh manual dispatch on `main`,
+[run #22](https://github.com/smouj/calm-rp-framework/actions/runs/46045682722), completed
+successfully. The live Atlas feature and its PDF were then checked over HTTP: both returned 200;
+the PDF was served as `application/octet-stream` with a reported length of 3,107,053 bytes.
+
+If this exact artifact lookup failure recurs, avoid repeatedly re-running a successful upload from
+the same workflow attempt: duplicate artifacts can make retrieval less reliable. Use a fresh
+deployment run or let the next site change trigger a new one, then verify the run and public URLs.
 
 ## Re-verifying after a change
 
