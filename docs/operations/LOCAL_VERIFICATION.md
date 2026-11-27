@@ -8,6 +8,11 @@ reciente de `main` comprobada fue
 `99c37ac52a82e836db6e06c81b7504593fe9e197`. La validación del PR #60 y la publicación de Pages
 también pasaron. Cada pull request debe esperar el resultado de su propio commit antes de fusionarse.
 
+El cierre F1 está propuesto en el [PR #61](https://github.com/smouj/calm-rp-framework/pull/61).
+`pnpm check`, `pnpm build`, `pnpm check:artifacts`, `pnpm check:secrets` y `pnpm check:site`
+pasaron localmente para la implementación; el resultado alojado del head exacto sigue siendo el gate
+de fusión.
+
 ## Regla del proyecto
 
 Para reproducir todos los controles localmente:

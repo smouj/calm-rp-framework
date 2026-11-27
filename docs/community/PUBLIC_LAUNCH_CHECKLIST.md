@@ -9,7 +9,7 @@ This checklist tracks repository settings and release hygiene. It is not legal c
 ## Current public repository snapshot
 
 - GitHub reports the repository as **public**, with Issues, Discussions and Pages enabled; the homepage points to the CALM site.
-- The default branch is `main`. PRs #57, #59 and #60 are merged; F2 issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) is completed. The remaining open issues are the repository safety audit [#2](https://github.com/smouj/calm-rp-framework/issues/2) and F1 closeout [#32](https://github.com/smouj/calm-rp-framework/issues/32).
+- The default branch is `main`. PRs #57, #59 and #60 are merged; F2 issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) is completed. The open issues are repository safety audit [#2](https://github.com/smouj/calm-rp-framework/issues/2) and F1 closeout [#32](https://github.com/smouj/calm-rp-framework/issues/32), which is being completed in [PR #61](https://github.com/smouj/calm-rp-framework/pull/61) pending exact-head CI and merge.
 - The repository About description and topics now identify CALM as GTA VI-first and remove generic GTA V/FiveM/RAGEmp implications. The target-specific website is live; maintainer-owned security and logged-out checks remain open.
 - The scope change does not offer a playable mod, PC port, client, multiplayer server or authorized runtime adapter. No game files or leaked internals are project inputs.
 
