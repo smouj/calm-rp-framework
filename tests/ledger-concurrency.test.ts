@@ -113,6 +113,8 @@ for (const [label, createWorld] of worldFactories) {
               requestId: 'race-grant',
               toCharacterId: alex.id,
               amountMinor: 1_000n,
+              reason: 'Test fixture grant',
+              correlationId: 'test-grant',
             })
             .then(
               (receipt) => ({ ok: true as const, receipt }),
@@ -142,6 +144,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'seed-race',
         toCharacterId: alex.id,
         amountMinor: 10_000n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
 
       // 12 distinct transfers of 250 each race while all are affordable
@@ -187,11 +191,15 @@ for (const [label, createWorld] of worldFactories) {
           requestId: 'conflicting',
           toCharacterId: alex.id,
           amountMinor: 500n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
         world.ledger.grant(admin, {
           requestId: 'conflicting',
           toCharacterId: alex.id,
           amountMinor: 700n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       ]);
 
@@ -222,6 +230,12 @@ for (const [label, createWorld] of worldFactories) {
           { financialAccountId: treasury.id, amountMinor: -(ceiling - 100n) },
           { financialAccountId: destination.id, amountMinor: ceiling - 100n },
         ],
+        privilegedAudit: {
+          action: 'economy.grant',
+          actorAccountId: admin.accountId,
+          reason: 'Seed the balance ceiling concurrency test',
+          correlationId: 'ceiling:seed',
+        },
       });
 
       const outcomes = await Promise.allSettled(
@@ -234,6 +248,12 @@ for (const [label, createWorld] of worldFactories) {
               { financialAccountId: treasury.id, amountMinor: -75n },
               { financialAccountId: destination.id, amountMinor: 75n },
             ],
+            privilegedAudit: {
+              action: 'economy.grant',
+              actorAccountId: admin.accountId,
+              reason: 'Test simultaneous incoming credits at the balance ceiling',
+              correlationId: `ceiling:${index}`,
+            },
           }),
         ),
       );
@@ -256,6 +276,8 @@ for (const [label, createWorld] of worldFactories) {
         requestId: 'funds',
         toCharacterId: alex.id,
         amountMinor: 1_000n,
+        reason: 'Test fixture grant',
+        correlationId: 'test-grant',
       });
 
       // Five transfers of 400 race for 1,000: at most two can ever win.

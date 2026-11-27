@@ -56,7 +56,21 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
 
-  apps/api: {}
+  apps/api:
+    dependencies:
+      '@gta6-rp/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@gta6-rp/persistence':
+        specifier: workspace:*
+        version: link:../../packages/persistence
+      pg:
+        specifier: ^8.23.1
+        version: 8.23.1
+    devDependencies:
+      esbuild:
+        specifier: 0.28.2
+        version: 0.28.2
 
   packages/contracts:
     dependencies:

@@ -4,7 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "build": "esbuild src/index.ts --bundle --platform=node --format=esm --target=node22 --external:pg --outfile=dist/index.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@gta6-rp/core": "workspace:*",
+    "@gta6-rp/persistence": "workspace:*",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
   }
 }

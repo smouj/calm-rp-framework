@@ -43,6 +43,13 @@ Adapter-normalized data is still untrusted until application authentication, aut
 
 Authentication identifies a caller; it does not make request fields trustworthy.
 
+**Current F1 implementation boundary:** the HTTP process is loopback-only and has a fixed,
+server-configured operator bootstrap identity. It issues a short-lived session with only the
+`economy.grant` capability. The request cannot choose the account or capabilities. There is no
+public player login, external identity-provider integration, remote listener or GTA VI runtime
+adapter. This bootstrap is for local operator workflows and must not be exposed through an Internet
+proxy.
+
 ### TB-04 — Application to PostgreSQL
 
 Privileged durability boundary. Queries must be parameterized and transactions must preserve domain invariants.
@@ -130,6 +137,13 @@ Staff tools must not become a universal bypass layer.
 - sensitive actions emit durable audit records;
 - emergency/manual database access is not a normal moderation workflow.
 
+The F1 grant path persists the server-resolved actor, reason, correlation ID and finalized ledger
+transaction in one PostgreSQL transaction. The audit row is append-only; a failed audit insert rolls
+back the money movement. API retries with the same idempotency key return the committed receipt and
+do not add a second audit row. A deferred database constraint also rejects any treasury posting that
+tries to commit without its matching privileged-action audit, including writes that bypass the
+application repository.
+
 ## Availability and abuse controls
 
 Security includes protecting the service from intentionally expensive usage.
@@ -140,6 +154,11 @@ Security includes protecting the service from intentionally expensive usage.
 - rate-limit abuse-prone commands per account/session and, where useful, connection/IP;
 - reject impossible requests before opening expensive transactions;
 - treat repeated authorization/invariant failures as security telemetry.
+
+The current local API has in-process limits (bootstrap per IP, authenticated requests per IP/session,
+and staff grants per operator account). They reset on process restart and do not coordinate multiple
+instances. A shared limiter and explicitly trusted proxy boundary are required before horizontal or
+public deployment. The API does not trust `X-Forwarded-For`.
 
 ## Supply-chain controls
 
@@ -188,4 +207,6 @@ A feature that changes valuable or privileged state should not merge until its P
 - abuse/rate-limit considerations;
 - runtime-specific assumptions, if any.
 
-See also `SECURITY.md`, `docs/architecture/BOUNDARIES.md` and `docs/operations/OPERATIONS_BASELINE.md`.
+See also `SECURITY.md`, `docs/architecture/BOUNDARIES.md`,
+`docs/operations/OPERATIONS_BASELINE.md`, the [F1 API guide](../operations/API_F1_LOCAL.es.md)
+and its [English summary](../../apps/api/README.md).

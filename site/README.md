@@ -11,7 +11,7 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Ambientación visual original de costa nocturna para Leonida, en SVG vectorial propio: horizonte, skyline, palmeras, luces de ciudad y reflejos lentos. Mantiene el navy y rosa de CALM con acentos aqua/sunset; no usa arte ni recursos gráficos del juego.
 - Efectos y animaciones: fondo global con brillos y retícula, orbes de portada, reflejos SVG animados, entradas, aparición progresiva al hacer scroll, navegación activa y estados interactivos. Se respetan `prefers-reduced-motion` y el contenido sigue visible sin JavaScript.
-- La portada refleja el estado publicado de F2: inventario y almacenamiento persistentes completados; la integración de juego permanece bloqueada. Un diagrama diferencia el núcleo CALM de los IDs ilustrativos de módulos `smj_*`.
+- La portada refleja los cierres F1 y F2: API HTTP de operador solo en loopback, grants auditados y servicios persistentes de identidad, economía e inventario. No ofrece login público ni integración de juego; el runtime permanece bloqueado. Un diagrama diferencia el núcleo CALM de los IDs ilustrativos `smj_*`.
 - Tema oscuro/claro con preferencia local cuando el navegador permite almacenamiento.
 - Filtro interactivo de módulos.
 - Sección de ingeniería con la estructura real del monorepo, las puertas de calidad y las verificaciones de higiene que revisan cada cambio.

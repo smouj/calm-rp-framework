@@ -33,8 +33,10 @@ que exista un servicio de progresión.
 ## Estado que sí está implementado
 
 - **Base F1:** personajes, sesiones autenticadas y ledger de doble entrada persistidos en
-  PostgreSQL, con transacciones idempotentes y controles de integridad. El cierre más amplio de F1
-  continúa en la [incidencia #32](https://github.com/smouj/calm-rp-framework/issues/32).
+  PostgreSQL, con transacciones idempotentes y controles de integridad. La API HTTP local exige
+  sesiones emitidas por el servidor, limita entradas y frecuencia, y audita las concesiones de
+  staff dentro de la transacción del ledger. Consulta la [guía operativa F1](../operations/API_F1_LOCAL.es.md).
+  No hay login público de jugadores ni integración con un runtime de GTA VI.
 - **F2:** el candidato local añade el servicio y repositorio transaccionales, contenedores, reglas
   de capacidad, recibos idempotentes, rollback, reinicio embebido y un flujo sintético del
   simulador. La concurrencia en PostgreSQL 17 real aún debe pasar en CI antes de cerrar la

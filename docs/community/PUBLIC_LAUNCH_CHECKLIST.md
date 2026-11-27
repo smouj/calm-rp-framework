@@ -9,17 +9,17 @@ This checklist tracks repository settings and release hygiene. It is not legal c
 ## Current public repository snapshot
 
 - GitHub reports the repository as **public**, with Issues, Discussions and Pages enabled; the homepage points to the CALM site.
-- The default branch is `main`. At this review there are no open pull requests and three open issues: repository safety audit [#2](https://github.com/smouj/calm-rp-framework/issues/2), F1 closeout [#32](https://github.com/smouj/calm-rp-framework/issues/32), and F2 inventory [#54](https://github.com/smouj/calm-rp-framework/issues/54).
-- The current About description and topics still imply a generic framework and GTA V/FiveM/RAGEmp targets. Correct these after the GTA VI-first scope change is merged.
+- The default branch is `main`. PRs #57, #59 and #60 are merged; F2 issue [#54](https://github.com/smouj/calm-rp-framework/issues/54) is completed. The open issues are repository safety audit [#2](https://github.com/smouj/calm-rp-framework/issues/2) and F1 closeout [#32](https://github.com/smouj/calm-rp-framework/issues/32), which is being completed in [PR #61](https://github.com/smouj/calm-rp-framework/pull/61) pending exact-head CI and merge.
+- The repository About description and topics now identify CALM as GTA VI-first and remove generic GTA V/FiveM/RAGEmp implications. The target-specific website is live; maintainer-owned security and logged-out checks remain open.
 - The scope change does not offer a playable mod, PC port, client, multiplayer server or authorized runtime adapter. No game files or leaked internals are project inputs.
 
 ## GitHub About metadata to apply
 
-**Description:**
+**Published description:**
 
 > CALM — an original GTA VI-first roleplay project. No authorized GTA VI multiplayer integration.
 
-**Keep only project and target topics:** `calm`, `gta-vi`, `gta6`, `roleplay`, `open-source`, `community-driven`, `typescript`.
+**Published project and target topics:** `calm`, `gta-vi`, `gta6`, `roleplay`, `open-source`, `community-driven`, `typescript`.
 
 Remove topics that imply a generic framework or GTA V/FiveM/RAGEmp support, including `fivem`, `framework`, `ragemp`, and `rage`. Keep the existing homepage only while it points to the maintained CALM site.
 
@@ -28,7 +28,7 @@ Remove topics that imply a generic framework or GTA V/FiveM/RAGEmp support, incl
 The preliminary history and platform scan recorded in issue #2 is useful evidence, but does not clear every file or setting. Complete and record each remaining item there:
 
 - [ ] Review licensing/provenance across full Git history, pull-request attachments and relevant Actions logs.
-- [ ] Apply the About description and target-specific topic list above.
+- [x] Apply the About description and target-specific topic list above; the remaining checks are owner-side settings and review.
 - [ ] Confirm private vulnerability reporting, Dependabot, secret scanning and push protection are enabled where available.
 - [ ] Confirm `main` protection requires the intended pull-request review and successful `CI / validate`, resolved conversations, and prohibits force-push and branch deletion.
 - [ ] Verify the public profile, README rendering and contributor path from a logged-out session.
@@ -38,7 +38,7 @@ Path scanners and secret-pattern checks are partial controls. They do not inspec
 ## Change and release gates
 
 - Keep F1 issue #32 open until its API/transport, attributable privileged-grant audit, request limits, failure tests and threat-model review are complete.
-- Keep F2 issue #54 open until its full acceptance criteria pass, including the live PostgreSQL 17 multi-connection tests on the exact pull-request head.
+- F2 issue #54 is completed after merge and exact-head PostgreSQL 17 verification; keep its evidence in the issue and release record.
 - Run the documented local checks before creating a pull request. Merge only when the final PR head has successful hosted CI and review requirements are satisfied.
 - Keep the GTA VI adapter blocked until a documented, authorized runtime contract and compatible test environment exist. Simulator success only verifies CALM's own rules.
 

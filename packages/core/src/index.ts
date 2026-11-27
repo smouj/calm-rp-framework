@@ -38,6 +38,7 @@ export type {
   LedgerEntryLine,
   LedgerLeg,
   LedgerStore,
+  PrivilegedActionAudit,
   PostTransactionCommand,
   PostedTransaction,
   TransferMoneyCommand,

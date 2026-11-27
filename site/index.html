@@ -120,9 +120,9 @@
             <p class="hero-lead">
               CALM Essentials es un proyecto GTA VI-first. Diseña sistemas de roleplay propios a
               partir de mecánicas públicas observables y de las necesidades de su comunidad; no
-              adapta ESX, QBCore, Qbox ni FiveM. F1 aporta la base persistente de identidad,
-              sesiones y economía; el cierre de API y seguridad sigue pendiente. F2 completó
-              inventario y almacenamiento persistentes. El runtime de GTA VI sigue bloqueado.
+              adapta ESX, QBCore, Qbox ni FiveM. F1 aporta identidad, sesiones, economía y una API
+              HTTP local de operador con límites y auditoría persistente. F2 completó inventario y
+              almacenamiento. No hay login público de jugadores ni runtime de GTA VI.
             </p>
             <div class="button-row">
               <a href="#plataforma" class="button button-primary">Cómo está diseñado →</a
@@ -328,9 +328,9 @@
               ><span class="state state-ready">IMPLEMENTADO · F1</span>
               <h3>Personajes</h3>
               <p>
-                Identidad aislada por cuenta; registro validado y detección de duplicados. Sesiones
-                autenticadas y persistencia PostgreSQL entregadas en la base F1; queda trabajo de
-                cierre de API y seguridad en la incidencia #32.
+                Identidad aislada por cuenta; sesiones emitidas por el servidor y propiedad de
+                personajes comprobada en cada ruta. La API local no permite elegir la cuenta desde
+                el cliente ni ofrece login público de jugadores.
               </p>
               <span class="module-meta">packages/core + persistence · F1</span>
             </article>
@@ -339,9 +339,9 @@
               ><span class="state state-ready">IMPLEMENTADO · F1</span>
               <h3>Economía</h3>
               <p>
-                Saldo en unidades enteras, transferencias idempotentes, libro de movimientos y
-                propiedad comprobada. Contabilidad de doble entrada persistente y prueba de
-                concurrencia entregadas en F1.
+                Saldo entero, transferencias idempotentes y libro de doble entrada. Las concesiones
+                privilegiadas exigen motivo y guardan actor, correlación y transacción en la misma
+                operación atómica; las pruebas cubren reintentos y rollback.
               </p>
               <span class="module-meta">packages/core + persistence · F1</span>
             </article>
@@ -438,7 +438,7 @@
                 </li>
                 <li>
                   <span class="path">apps/api</span
-                  ><span class="desc">Endpoint de estado; sin API de juego</span>
+                  ><span class="desc">API HTTP local F1; sin API de juego</span>
                 </li>
                 <li>
                   <span class="path">adapters/simulator</span
@@ -642,8 +642,9 @@
               <div>
                 <strong>Persistencia y personajes</strong>
                 <p>
-                  La base ya persiste personajes, sesiones y libro mayor. El cierre de API y
-                  seguridad de F1 continúa en la incidencia #32.
+                  Persistencia, sesiones del servidor, API local, límites de petición y auditoría de
+                  concesiones operan sobre PostgreSQL. El bootstrap solo crea una sesión fija de
+                  operador; no habilita login público ni integración con el juego.
                 </p>
               </div>
               <span class="state state-ready">BASE ENTREGADA</span>

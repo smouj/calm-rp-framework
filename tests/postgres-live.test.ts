@@ -95,6 +95,8 @@ maybeLive('live PostgreSQL — persistence, concurrency and recovery', () => {
       requestId: requestId('grant'),
       toCharacterId: alex.id,
       amountMinor: 900n,
+      reason: 'Test fixture grant',
+      correlationId: 'test-grant',
     });
     await ledger.transfer(playerOne, {
       requestId: requestId('transfer'),
@@ -137,6 +139,8 @@ maybeLive('live PostgreSQL — persistence, concurrency and recovery', () => {
       requestId: requestId('race-grant'),
       toCharacterId: alex.id,
       amountMinor: 1_000n,
+      reason: 'Test fixture grant',
+      correlationId: 'test-grant',
     });
 
     // Eight transfers of 400 race for 1,000 across distinct pool connections;
@@ -181,6 +185,8 @@ maybeLive('live PostgreSQL — persistence, concurrency and recovery', () => {
           requestId: requestId('dedupe'),
           toCharacterId: alex.id,
           amountMinor: 250n,
+          reason: 'Test fixture grant',
+          correlationId: 'test-grant',
         }),
       ),
     );
@@ -203,6 +209,8 @@ maybeLive('live PostgreSQL — persistence, concurrency and recovery', () => {
       requestId: requestId('append-only'),
       toCharacterId: alex.id,
       amountMinor: 50n,
+      reason: 'Test fixture grant',
+      correlationId: 'test-grant',
     });
     const rows = await sql.query(
       'SELECT id FROM ledger_entries WHERE transaction_id = $1::uuid LIMIT 1',

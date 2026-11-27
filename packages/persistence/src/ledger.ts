@@ -63,6 +63,9 @@ async function loadLegs(executor: SqlExecutor, transactionId: Uuid): Promise<Led
  *    and fails `INSUFFICIENT_FUNDS` if any would go negative — plus the
  *    commit-time constraint trigger that rejects unbalanced transactions
  *    outright, even for direct SQL written outside this repository.
+ * 6. finalizes the balanced transaction;
+ * 7. writes any privileged-action audit row before committing, so an audit
+ *    failure rolls the grant back.
  */
 export class PgLedgerRepository implements LedgerStore {
   readonly #sql: SqlSession;
@@ -155,6 +158,12 @@ export class PgLedgerRepository implements LedgerStore {
       if (readBigInt(total.rows[0] ?? {}, 'total') !== 0n) {
         throw new DomainError('UNBALANCED_TRANSACTION', 'Transaction legs must sum to zero.');
       }
+      if (
+        command.privilegedAudit === undefined &&
+        command.legs.some((leg) => leg.financialAccountId === TREASURY_ACCOUNT_ID)
+      ) {
+        throw new DomainError('AUDIT_REQUIRED', 'Treasury postings require a privileged audit.');
+      }
 
       // Close the database transaction only after all legs and account
       // invariants have passed. Database triggers serialize this transition
@@ -164,6 +173,21 @@ export class PgLedgerRepository implements LedgerStore {
          VALUES ($1::uuid)`,
         [transactionId],
       );
+
+      if (command.privilegedAudit !== undefined) {
+        await executor.query(
+          `INSERT INTO privileged_action_audits
+             (transaction_id, action, actor_account_id, reason, correlation_id)
+           VALUES ($1::uuid, $2, $3::uuid, $4, $5)`,
+          [
+            transactionId,
+            command.privilegedAudit.action,
+            command.privilegedAudit.actorAccountId,
+            command.privilegedAudit.reason,
+            command.privilegedAudit.correlationId,
+          ],
+        );
+      }
 
       return {
         transactionId,
