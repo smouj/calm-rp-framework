@@ -57,19 +57,19 @@ Source links are research references; they are not game downloads or permission 
 
 ## Project status
 
-The development branch also contains an **in-memory inventory reference** with ownership, capacity, transfer and idempotency tests. It is not persistent or connected to GTA VI. See [inventory reference](./docs/server/INVENTORY_REFERENCE.md) and [first-party evidence register](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
+The repository contains an **in-memory inventory reference** with ownership, capacity, transfer and idempotency tests. F2 now adds an additive PostgreSQL data model and typed persistence boundary; the runtime service and repository are still in progress. Neither is connected to GTA VI. See the [inventory reference](./docs/server/INVENTORY_REFERENCE.md), [F2 design decision](./docs/adr/0008-persistent-inventory-containers.md) and [first-party evidence register](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
 
-| Area                                                      | Actual state                                                                                                                                  |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Persistent characters, sessions and economy (F1)          | PostgreSQL services and repositories, UUID identifiers, authenticated sessions, double-entry ledger; restart, recovery and concurrency suites |
-| Characters, economy and inventory rules (in-memory)       | Reference implementations with tests                                                                                                          |
-| Inventory persistence and general containers              | **Missing — Phase F2** (see the [audit](./docs/PROJECT_SCOPE.md))                                                                             |
-| Game-independent simulator                                | Deterministic two-character prototype; fuller RP cycle pending                                                                                |
-| Persistence infrastructure                                | `packages/persistence`: migration runner, `pg` pool, embedded-PostgreSQL verification engine                                                  |
-| Security, research and automated checks                   | Foundation                                                                                                                                    |
-| Public Cfx/FiveM ecosystem research                       | Research only, not GTA VI compatibility                                                                                                       |
-| GTA VI game/runtime adapter                               | **BLOCKED** — authorization and runtime contracts unknown                                                                                     |
-| GTA VI client, multiplayer server or downloadable release | **NOT IMPLEMENTED**                                                                                                                           |
+| Area                                                      | Actual state                                                                                                                                          |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Persistent characters, sessions and economy (F1)          | PostgreSQL services and repositories, UUID identifiers, authenticated sessions, double-entry ledger; restart, recovery and concurrency suites         |
+| Characters, economy and inventory rules (in-memory)       | Reference implementations with tests                                                                                                                  |
+| Inventory persistence and general containers              | Additive schema and typed store contract delivered; transactional repository/service, authenticated access and restart/concurrency proof remain in F2 |
+| Game-independent simulator                                | Deterministic two-character prototype; fuller RP cycle pending                                                                                        |
+| Persistence infrastructure                                | `packages/persistence`: migration runner, `pg` pool, embedded-PostgreSQL verification engine                                                          |
+| Security, research and automated checks                   | Foundation                                                                                                                                            |
+| Public Cfx/FiveM ecosystem research                       | Research only, not GTA VI compatibility                                                                                                               |
+| GTA VI game/runtime adapter                               | **BLOCKED** — authorization and runtime contracts unknown                                                                                             |
+| GTA VI client, multiplayer server or downloadable release | **NOT IMPLEMENTED**                                                                                                                                   |
 
 Rockstar announced the game's console launch on **19 November 2026**; that does **not** establish community-server support. See the [official release announcement](https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available).
 

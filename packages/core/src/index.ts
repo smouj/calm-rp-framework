@@ -93,6 +93,20 @@ export type {
 } from './inventory.js';
 
 export type {
+  PersistInventoryOperation,
+  PersistentInventoryContainer,
+  PersistentInventoryContainerKind,
+  PersistentInventoryItemDefinition,
+  PersistentInventoryMetadata,
+  PersistentInventoryMetadataValue,
+  PersistentInventoryMovement,
+  PersistentInventoryOperationKind,
+  PersistentInventoryReceipt,
+  PersistentInventoryStack,
+  PersistentInventoryStore,
+} from './persistent-inventory.js';
+
+export type {
   LocationFilter,
   NearbyLocation,
   PlannedLocation,

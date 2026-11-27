@@ -79,6 +79,8 @@ The repository is intentionally split between **decisions we control now** and *
 
 Architecture Decision Records live in [`adr/`](./adr/).
 
+- [`0008-persistent-inventory-containers.md`](./adr/0008-persistent-inventory-containers.md) — F2 ownership/location model, immutable receipts, container capacity and the authenticated service boundary.
+
 - [`0001-game-agnostic-core.md`](./adr/0001-game-agnostic-core.md) — domain code remains independent from game runtimes.
 - [`0002-single-server-not-framework.md`](./adr/0002-single-server-not-framework.md) — historical single-server scope, superseded by ADR-0006.
 - [`0003-modular-monolith-first.md`](./adr/0003-modular-monolith-first.md) — keep deployment simple until measured requirements justify extraction.

@@ -21,7 +21,7 @@ All actions use integer item quantities and integer gram weights. Every item has
 
 The caller-provided Principal and character resolver are trusted server-side dependencies. **Never build a principal from untrusted client JSON** or expose mint as a client-authorized operation.
 
-Everything runs in one JavaScript process. The item registry, balances, receipts and request IDs disappear on restart. A real server needs: persisted character ownership, normalized item definitions, durable inventory rows, unique request IDs, audit records, transaction isolation and locking, capacity enforcement across concurrent requests, and tested reconnect/retry behavior. The receipt log is not an event-sourced production ledger.
+Everything in this reference runs in one JavaScript process. Its item registry, stocks, receipts and request IDs disappear on restart. The F2 design now defines additive PostgreSQL tables for item definitions, generalized containers, stacks, idempotency and immutable movement receipts, but this reference is not wired to those tables. The persistent repository and authenticated service still need to implement transaction locking, authorization, atomic stock changes, capacity enforcement under concurrency, and reconnect/retry behavior. The in-memory receipt log is not a production ledger.
 
 A future game adapter must project server-owned inventory state to an authorized runtime and only accept client intents. There is currently **no publicly supported GTA VI inventory native**, networking contract, game hook or legal permission assumed here.
 

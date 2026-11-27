@@ -60,11 +60,11 @@ Podemos consultar documentación pública de ESX/QBCore/Qbox como **referencia e
 
 ## Estado del proyecto
 
-La rama de desarrollo incluye una **referencia de inventario en memoria** con comprobaciones de propiedad, capacidad, transferencias e idempotencia. No tiene persistencia ni conexión con GTA VI. Consulta la [referencia de inventario](./docs/server/INVENTORY_REFERENCE.md) y el [registro de fuentes oficiales](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
+El repositorio incluye una **referencia de inventario en memoria** con comprobaciones de propiedad, capacidad, transferencias e idempotencia. F2 añade ahora un esquema PostgreSQL aditivo y un contrato de persistencia tipado; el repositorio y servicio transaccional siguen pendientes. Ninguna de estas piezas está conectada con GTA VI. Consulta la [referencia de inventario](./docs/server/INVENTORY_REFERENCE.md), la [decisión de diseño F2](./docs/adr/0008-persistent-inventory-containers.md) y el [registro de fuentes oficiales](./docs/research/FIRST_PARTY_EVIDENCE_2026-11-24.md).
 
 - **Implementado (F1):** personajes, sesiones y economía persistentes sobre PostgreSQL — identificadores UUID unificados, sesiones autenticadas sin identidad del cliente, contabilidad de doble entrada atómica e idempotente, con suites de reinicio, recuperación y concurrencia (motor PostgreSQL embebido + suite viva con `DATABASE_URL`).
 - **Implementado como referencia:** reglas de personajes, economía e inventario en memoria (con pruebas), contratos, tipos de dominio y simulador determinista básico.
-- **Pendiente (F2/F3):** persistencia de inventario, contenedores generales y empleos — consulte la [auditoría verificada](./docs/PROJECT_SCOPE.md).
+- **En curso (F2):** modelo PostgreSQL y contrato tipado de inventario entregados; faltan repositorio y servicio transaccionales, autorización integrada y pruebas de reinicio/concurrencia. **Pendiente (F3):** empleos y organizaciones — consulte la [auditoría verificada](./docs/PROJECT_SCOPE.md).
 - **Preparado como estructura:** API, PostgreSQL (`packages/persistence`: runner de migraciones, pool `pg`, motor de verificación embebido), infraestructura local y pruebas automatizadas.
 - **Investigación:** arquitectura y conceptos públicos de FiveM/Cfx, sin asumir compatibilidad con GTA VI.
 - **Bloqueado:** adaptador real de GTA VI, cliente multijugador y servidor jugable.
