@@ -40,6 +40,8 @@ The first tangible goal: **two simulated characters hold jobs, get paid, buy, st
 
 **Acceptance:** simulated concurrent transfers and item movements never duplicate value; all state survives restart.
 
+**Progress (2026-11-27):** F2's first delivery establishes the ownership/location ADR, additive PostgreSQL schema and typed store boundary. This is design and schema groundwork only; the transactional service/repository, simulator flow, restart coverage and real PostgreSQL race coverage are still required before F2 acceptance.
+
 ## F3 — Jobs and organizations
 
 **Goal:** jobs, grades, duty state, salaries and organizations.
