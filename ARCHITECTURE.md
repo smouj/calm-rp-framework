@@ -73,7 +73,7 @@ calm-rp-framework/
 └── site/
 ```
 
-Empty folders are not created ahead of code. Each module lands as a complete unit. The proposed public service surface (session/character/economy/inventory/jobs/permissions/hooks, mapped against documented ESX/QBCore/Qbox equivalents) is specified in the [service-contracts proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md).
+Empty folders are not created ahead of code. Each module lands as a complete unit. CALM's proposed public service surface (session/character/economy/inventory/jobs/permissions/hooks) is specified in the [service-contracts proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md); its external-framework comparison is contextual research, not a compatibility target.
 
 ## Current implementation (audited 2026-11-25, updated after Phase F1)
 

@@ -102,9 +102,11 @@ protecciones técnicas.
 
 **Aplicación al proyecto — hechos verificables:**
 
-1. El repositorio **no contiene** ejecutables, paquetes `.rpf`/`.rpf9`, modelos, texturas, audio,
-   mapas ni claves. La comprobación es automática y bloqueante: `scripts/check-no-proprietary-artifacts.sh`
-   falla si aparece un archivo de esas extensiones o un enlace a una descarga filtrada.
+1. A la fecha de esta revisión, el repositorio **no contiene** ejecutables, paquetes `.rpf`/`.rpf9`,
+   modelos, texturas, audio, mapas ni claves. `scripts/check-no-proprietary-artifacts.sh` bloquea
+   tipos y nombres conocidos en rutas indexadas y archivos no ignorados, y busca enlaces a descargas
+   en documentación indexada. Es una salvaguarda parcial: no inspecciona el contenido de archivos,
+   rutas ignoradas ni todo el historial, así que no equivale a una auditoría legal completa.
 2. El repositorio **no distribuye ni enlaza** la filtración de ~209 GB descrita en la documentación de
    investigación; solo registra su existencia, su falta de verificación y la prohibición de usarla.
 3. La web es **estática e informativa**: no permite jugar, no descarga contenido, no ejecuta nada del juego.

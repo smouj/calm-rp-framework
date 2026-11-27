@@ -1,6 +1,6 @@
 # GTA VI RP / Community Server Platform Status
 
-**Targeted update:** 2026-11-23 — GTA VI launch, platform availability and RP policy; older sections retain their original per-source verification dates.
+**Targeted update:** 2026-11-27 — GTA VI launch, platform availability, RP policy and current Cfx supported-game list; older sections retain their original per-source verification dates.
 
 This document is the project's source-of-truth snapshot for what is publicly confirmed versus what remains unknown. It must be updated before GTA VI-specific adapter work is approved.
 
@@ -151,6 +151,20 @@ Official sources:
 - Rockstar Support — RP policy: https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers
 - Rockstar — mod guidelines: https://www.rockstargames.com/es/community-resources/mod-guidelines
 - Cfx — Creator Platform License Agreement: https://fivem.net/terms/
+
+### Current Cfx FXServer documentation does not list GTA VI as a supported game
+
+**Classification:** `CONFIRMED` for what the current public FXServer documentation lists; this is **not** proof that Rockstar will never publish a separate GTA VI creator runtime.
+
+The Cfx server-command reference's `gamename` section lists two supported games: `gta5` (FiveM) and `rdr3` (RedM). It does not list GTA VI. The Creator Platform License Agreement defines a “Covered Game” as a Rockstar game authorized for Creator Services, but the agreement itself does not enumerate that list. Read together with Rockstar's general RP policy, these sources confirm RP under the Creator Platform for covered games, but do **not** establish that GTA VI is currently a covered/supported game or provide a GTA VI multiplayer/stat interface.
+
+**Project impact:** keep `RT-001` (authorized GTA VI community-server/runtime path), `RT-003` (scripting model), and all other GTA VI `RT-*` requirements `UNKNOWN`. Revisit only when Rockstar/Cfx publishes GTA VI-specific eligibility and technical documentation. This is a dated documentation snapshot, not a prediction about future support.
+
+Official sources:
+
+- Cfx Documentation — [Server Commands: `gamename` and supported games](https://docs.fivem.net/docs/server-manual/server-commands/), reviewed 2026-11-27.
+- Rockstar Support — [RP server policies](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers), updated 2026-09-15.
+- Cfx — [Creator Platform License Agreement](https://fivem.net/terms/), updated 2026-09-10, §§1.2 and 2.
 
 ### Cfx.re is part of Rockstar Games
 
