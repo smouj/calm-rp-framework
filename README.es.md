@@ -118,6 +118,7 @@ El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal a
 - [Hoja de ruta](./docs/roadmap/ROADMAP.md)
 - [Requisitos de GTA VI todavía sin confirmar](./docs/server/RUNTIME_REQUIREMENTS.md)
 - [Investigación y fuentes](./docs/research/PLATFORM_STATUS.md)
+- [Atlas técnico de GTA VI, edición 1.0 — publicación documental independiente](./docs/research/atlas/README.md)
 - [Preguntas frecuentes](./docs/community/FAQ.md)
 - [Guía de contribución en español](./CONTRIBUTING.es.md)
 - [Licencia MIT](./LICENSE)
@@ -128,6 +129,6 @@ El sitio informativo está en [`site/`](./site/README.md), con un [aviso legal a
 
 **Proyecto no oficial creado por aficionados. No existe afiliación, patrocinio ni respaldo de Rockstar Games, Take-Two Interactive o Cfx.re.** Grand Theft Auto, GTA VI, sus nombres, marcas, logotipos, personajes, imágenes, sonidos y demás materiales protegidos pertenecen a sus respectivos titulares, incluidos Rockstar Games y Take-Two Interactive, que conservan sus derechos.
 
-La [licencia MIT](./LICENSE) cubre únicamente el **código y la documentación originales** de este repositorio; no concede derechos sobre el videojuego ni sobre las marcas de Rockstar. No distribuimos ejecutables, claves ni contenido extraído de GTA VI, ni afirmamos disponer de autorización para alojar multijugador.
+La [licencia MIT](./LICENSE) cubre el software y la documentación originales del proyecto, salvo los materiales que tengan un aviso de licencia independiente. El [Atlas técnico de GTA VI](./docs/research/atlas/README.md) se excluye de la licencia MIT. Esta licencia no concede derechos sobre el videojuego, sus materiales o las marcas de Rockstar. No distribuimos ejecutables, claves ni contenido extraído de GTA VI, ni afirmamos disponer de autorización para alojar multijugador.
 
 Consulta [TRADEMARKS.md](./TRADEMARKS.md), las [directrices de Rockstar](https://www.rockstargames.com/es/community-resources/mod-guidelines), su [política sobre RP](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers) y las [condiciones de Creator Platform](https://fivem.net/terms/). Esta declaración de atribución **no sustituye ningún permiso** del titular de los derechos.

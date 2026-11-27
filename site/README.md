@@ -8,6 +8,7 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 - Conjunto de iconos derivado del banner oficial: `favicon.svg`, `favicon.ico` (16/32/48), `favicon-32.png` y `apple-touch-icon.png` usan la estrella del banner trazada desde los píxeles fuente sobre el navy `#101020` del propio banner; `og-image.png` es el banner social completo (1280×640) para vistas previas sociales.
 - Secciones de arquitectura, sistemas, ingeniería, investigación, hoja de ruta y contribuciones. La página presenta el objetivo GTA VI-first, los dominios propios de CALM, la simulación con datos sintéticos y el runtime autorizado como bloqueado.
 - Sección de evidencia centrada en mecánicas públicas de GTA VI y en los requisitos propios de CALM; los estudios de compatibilidad de PC se mantienen fuera del framework.
+- Ficha editorial del Atlas técnico GTA VI, edición 1.0, con métricas comprobadas y descargas del PDF, manuscrito y matriz. Se identifica como publicación documental independiente y enlaza la galería oficial de Rockstar (138 capturas); sus 24 diagramas son esquemas originales, no imágenes del juego.
 - Diseño adaptable, navegación móvil, salto al contenido, enfoque visible y reducción de movimiento.
 - Ambientación visual original de costa nocturna para Leonida, en SVG vectorial propio: horizonte, skyline, palmeras, luces de ciudad y reflejos lentos. Mantiene el navy y rosa de CALM con acentos aqua/sunset; no usa arte ni recursos gráficos del juego.
 - Efectos y animaciones: fondo global con brillos y retícula, orbes de portada, reflejos SVG animados, entradas, aparición progresiva al hacer scroll, navegación activa y estados interactivos. Se respetan `prefers-reduced-motion` y el contenido sigue visible sin JavaScript.
@@ -18,6 +19,8 @@ Este directorio contiene un sitio estático con HTML, CSS y JavaScript nativos. 
 - Enlaces directos a código, documentación y fuentes públicas.
 
 **La web es estática e informativa: NO ejecuta el núcleo TypeScript, no identifica jugadores, no persiste datos y no es un juego ni un servidor RP funcional.** Las reglas de CALM y sus pruebas viven en el repositorio; la página no es una interfaz con GTA VI.
+
+El Atlas enlazado desde la sección de investigación es una obra documental independiente, no una especificación, dependencia ni entrada de runtime de CALM. Consulta su [alcance, límites y licencia](../docs/research/atlas/README.md).
 
 ## Publicación en GitHub Pages
 

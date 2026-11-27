@@ -72,7 +72,7 @@ Rockstar announced the game's console launch on **19 November 2026**; that does 
 
 **Hosted CI is the merge gate.** It runs the full checks and live PostgreSQL 17 suite on each pull request. A locally skipped live suite is not evidence that the database gate passed; check the [current CI runs](https://github.com/smouj/calm-rp-framework/actions/workflows/ci.yml) for the exact candidate commit.
 
-See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). We never mark a proposed feature as implemented.
+See the [roadmap](./docs/roadmap/ROADMAP.md), [platform status](./docs/research/PLATFORM_STATUS.md) and [runtime requirements](./docs/server/RUNTIME_REQUIREMENTS.md). The Spanish [GTA VI Technical Atlas, edition 1.0](./docs/research/atlas/README.md) is an independent documentary publication, not a CALM specification or runtime input. We never mark a proposed feature as implemented.
 
 ## How it is designed
 
@@ -165,6 +165,6 @@ First tangible goal: a simulated GTA VI RP slice where two characters work, get 
 
 **Unofficial fan project. Not affiliated with, endorsed by or sponsored by Rockstar Games, Take-Two Interactive or Cfx.re.** Grand Theft Auto, GTA, Grand Theft Auto VI, game logos, names, artwork, characters, audio and other protected game content belong to their respective rights holders, including Rockstar Games and Take-Two Interactive. All rights to that content are reserved by its owners.
 
-The [MIT license](./LICENSE) covers **only the original source code and documentation** contributed to this repository. It does not license Rockstar's games, assets or trademarks. No game binaries, keys, extracted assets or leaked material are included. We do not claim authorization to host or connect to GTA VI multiplayer servers.
+The [MIT license](./LICENSE) covers the original project software and documentation, except materials marked with a separate notice. The independent [GTA VI Technical Atlas](./docs/research/atlas/README.md) is excluded from MIT. This license does not grant rights to Rockstar's games, assets or trademarks. No game binaries, keys, extracted assets or leaked material are included. We do not claim authorization to host or connect to GTA VI multiplayer servers.
 
 Read [TRADEMARKS.md](./TRADEMARKS.md), the [Rockstar RP policy](https://support.rockstargames.com/articles/5I66kExWgligszgMCU3XC1/roleplay-rp-servers), [mod guidelines](https://www.rockstargames.com/es/community-resources/mod-guidelines) and [Creator Platform terms](https://fivem.net/terms/). Attribution and disclaimers **do not constitute permission** from the rights holders.
