@@ -56,25 +56,27 @@ This is an **application contract, not a finished implementation**.
 - Money stays in integer minor units; every movement is auditable and restart-safe.
 - These are CALM security requirements derived from its server-authority and persistence goals.
 
-## Module manifest — proposal
+## Feature modules and manifest — proposal
 
-A module declares its own dependencies and permissions via a CALM manifest. **This format is a CALM proposal**, not a format recognized by GTA VI:
+A CALM feature module represents one cohesive roleplay domain. The project owner's `smj_` namespace is used for authored module IDs (for example, `smj_character` and `smj_money`); it does not imply a game-recognized resource name. See [ADR-0010](../adr/0010-user-owned-feature-modules.md) for the framework/module split.
+
+When the project has proved its contracts with independent modules, each module may declare dependencies and permissions through a CALM manifest. **This illustrative format is a CALM proposal**, not a format recognized by GTA VI:
 
 ```json
 {
-  "name": "calm-jobs",
+  "id": "smj_jobs",
   "version": "0.1.0",
   "description": "Roleplay employment services",
   "dependencies": {
-    "calm-core": "^0.1.0",
-    "calm-economy": "^0.1.0"
+    "calm:character-contract": "^0.1.0",
+    "smj_money": "^0.1.0"
   },
   "permissions": ["jobs.read", "jobs.assign", "jobs.manage"],
-  "target": "simulator"
+  "verificationTarget": "simulator"
 }
 ```
 
-Sequencing rule: **first prove** that two independent CALM modules communicate through public services, resolve dependencies correctly and keep their data; **then formalize** the extension system. Each module keeps control of its own tables and accesses the others through defined interfaces, never by querying their internal data.
+The `calm:character-contract` entry and all field names above are examples, not implemented package IDs or a final schema. Sequencing rule: **first prove** that two independent CALM modules communicate through public services, resolve dependencies correctly and keep their data; **then formalize** the extension system. Until then, modules are CALM-owned domain/package boundaries within the current modular monolith; no dynamic game-resource loading or third-party ABI is promised. Each module keeps control of its own tables and accesses others through defined interfaces, never by querying their internal data.
 
 ## Implementation gate
 

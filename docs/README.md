@@ -42,6 +42,7 @@ Detailed investigation of unofficial PC execution projects, reverse-engineering 
 - [`server/CHARACTER_PROGRESSION.md`](./server/CHARACTER_PROGRESSION.md) — configurable CALM progression model, server-authoritative change rules, and evidence gaps for GTA VI stats.
 - [`research/GTA6_RP_STRATEGY_2026-11-25.md`](./research/GTA6_RP_STRATEGY_2026-11-25.md) — strategy synthesis: three-environment boundary, integration scenarios, three-layer model with a per-capability adapter registry, Leonida region mapping and the build-now versus needs-GTA-VI split.
 - [`architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md`](./architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md) — original CALM-owned domain and application-service contracts.
+- [`adr/0010-user-owned-feature-modules.md`](./adr/0010-user-owned-feature-modules.md) — CALM core versus owner-namespaced feature modules such as `smj_character` and `smj_money`.
 - [`roadmap/ROADMAP.md`](./roadmap/ROADMAP.md) — phases F0–F5 with acceptance criteria; F0 completed 2026-11-25.
 
 ## Contributor examples

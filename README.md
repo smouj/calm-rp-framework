@@ -35,6 +35,7 @@ CALM does not use ESX/QBCore/Qbox or FiveM as its product blueprint or compatibi
 - [ADR-0009 — GTA VI-first product scope and evidence limits](./docs/adr/0009-gta-vi-first-product-scope.md)
 - [Verified audit of the current code: present vs. missing](./docs/PROJECT_SCOPE.md)
 - [CALM's original service-contract proposal](./docs/architecture/CALM_ESSENTIALS_SERVICE_CONTRACTS_PROPOSAL.md)
+- [ADR-0010 — owner-namespaced feature modules (`smj_*`)](./docs/adr/0010-user-owned-feature-modules.md)
 - [Character progression design boundary](./docs/server/CHARACTER_PROGRESSION.md)
 
 ## CALM product evidence and integration boundary
