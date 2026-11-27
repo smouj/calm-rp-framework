@@ -41,7 +41,7 @@ PR-head and post-merge hosted CI runs passed the live multi-connection suite aga
 
 F2 CI run #224 completed successfully on PR head `dcf6662`, including PostgreSQL 17. F1 PR #61's
 exact-head CI run #232 and post-merge `main` run #233 both completed successfully with PostgreSQL 17.
-Documentation PR #62's exact-head CI run #234 and post-merge `main` run #235, and PR #63's exact-head CI run #236 and post-merge `main` run #237, all passed including PostgreSQL 17.
+Documentation PR #62's exact-head CI run #234 and post-merge `main` run #235, PR #63's exact-head CI run #236 and post-merge `main` run #237, and PR #64's exact-head CI run #238 and post-merge `main` run #239 all passed, including PostgreSQL 17.
 
 The CALM GitHub Pages site is published. Its original Leonida-inspired SVG is decorative site
 artwork, not an in-game capture or evidence of runtime support. The technical atlas and its evidence
