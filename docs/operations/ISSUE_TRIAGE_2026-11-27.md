@@ -11,6 +11,7 @@
 | [#60 — CALM site atmosphere](https://github.com/smouj/calm-rp-framework/pull/60)                       | Merged; Pages deployment and post-merge CI passed.                                                                          |
 | [#61 — F1 identity and economy transport](https://github.com/smouj/calm-rp-framework/pull/61)          | Merged as `96195bd`; exact-head CI #232 and post-merge `main` CI #233 passed, including PostgreSQL 17; issue #32 completed. |
 | [#62 — verified F1 closeout and repository status](https://github.com/smouj/calm-rp-framework/pull/62) | Merged as `d399ab5`; exact-head CI #234 and post-merge `main` CI #235 passed, including PostgreSQL 17.                      |
+| [#63 — observed repository protections](https://github.com/smouj/calm-rp-framework/pull/63)            | Merged as `23af096`; exact-head CI #236 and post-merge `main` CI #237 passed, including PostgreSQL 17.                      |
 
 No product pull request remains open at this snapshot.
 
@@ -24,7 +25,7 @@ F1 issue #32 and F2 issue #54 are closed as completed. Read-only GitHub settings
 
 ## Branch cleanup
 
-- `main` is at `d399ab5` after PR #62, the local worktree is clean, and the remote has no topic branches. Local branches for merged PRs #59–#62 were retired after matching each branch head to its merged PR.
+- The local branch cleanup was first checked at `d399ab5` after PR #62; the settings-audit follow-up PR #63 then merged as `23af096`. The current local worktree is clean, the remote has no topic branches, and local topic branches for merged PRs #59–#63 were retired after matching each branch head to its merged PR.
 - The remote `docs/f2-inventory-contract-20261125` branch had no associated PR and was three commits behind `main` with zero commits ahead; it was deleted after that comparison.
 - Two local-only pre-PR snapshots (`codex/calm-f2-design-schema` at `cda3bab` and `codex/calm-professionalization-2026-11-27` at `779cc9f`) were retired after preserving their refs in a verified, local-only Git bundle at `.git/calm-local-branch-snapshots-2026-11-27.bundle`. The bundle is not tracked or published and will not be available from a fresh clone.
 
