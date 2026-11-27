@@ -50,7 +50,7 @@ Detailed investigation of unofficial PC execution projects, reverse-engineering 
 - [`community/SIMULATOR_GUIDE.es.md`](./community/SIMULATOR_GUIDE.es.md) — Spanish guide to CALM's GTA VI RP simulator, repository boundaries and local checks.
 - [`community/SIMULATOR_DOMAIN_EXAMPLES.md`](./community/SIMULATOR_DOMAIN_EXAMPLES.md) — compile-ready synthetic command/event example with server-side ownership validation; no GTA VI runtime behavior is implied.
 
-- [`server/INVENTORY_REFERENCE.md`](./server/INVENTORY_REFERENCE.md) — CALM item, inventory and ownership semantics, including the F2 PostgreSQL candidate; its live PostgreSQL 17 acceptance gate remains open.
+- [`server/INVENTORY_REFERENCE.md`](./server/INVENTORY_REFERENCE.md) — the separate in-memory inventory example; F2's persistent CALM-owned implementation is accepted after live PostgreSQL 17 CI, while GTA VI runtime integration remains blocked.
 - [`research/FIRST_PARTY_EVIDENCE_2026-11-24.md`](./research/FIRST_PARTY_EVIDENCE_2026-11-24.md) — first-party sources, scope limits and unconfirmed GTA VI runtime capabilities.
 
 - [`branding/FRAMEWORK_NAMING_OPTIONS.md`](./branding/FRAMEWORK_NAMING_OPTIONS.md) — CALM working product name, trademark conflicts and migration gates.
