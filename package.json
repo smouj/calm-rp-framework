@@ -38,6 +38,9 @@
     "vitest": "^5.1.1"
   },
   "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
     "overrides": {
       "minimatch": "11.0.1",
       "source-map-js": "1.2.2",

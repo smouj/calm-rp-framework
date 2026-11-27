@@ -26,8 +26,9 @@ Publicar no cambia la posición jurídica. Siguen siendo ciertas:
 
 1. **La licencia MIT cubre solo el código propio.** No licencia GTA VI, sus marcas ni contenido de
    terceros.
-2. **No se distribuyen archivos del juego.** `scripts/check-no-proprietary-artifacts.sh` falla el build
-   si aparece uno.
+2. **No se distribuyen archivos del juego.** `scripts/check-no-proprietary-artifacts.sh` bloquea
+   tipos y nombres conocidos cuando corre dentro de `verify-local`; no sustituye una revisión de
+   contenido ni del historial.
 3. **No existe integración con GTA VI.** El adaptador está bloqueado por diseño; no hay servidor
    multijugador ni cliente.
 4. **No hay afiliación con Rockstar Games, Take-Two Interactive ni Cfx.re.** El aviso legal debe

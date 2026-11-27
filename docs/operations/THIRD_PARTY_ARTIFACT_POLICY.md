@@ -3,7 +3,7 @@
 **State:** ACTIVE  
 **Reviewed:** 2026-11-23
 
-The private server repository stores only our source, synthetic fixtures, approved dependencies and written research. An external tool's ability to extract or translate game files does not confer permission to redistribute those files or integrate them into our RP platform.
+The project repository stores only our source, synthetic fixtures, approved dependencies and written research. An external tool's ability to extract or translate game files does not confer permission to redistribute those files or integrate them into our RP framework.
 
 ## Separation rules
 
@@ -22,13 +22,22 @@ The private server repository stores only our source, synthetic fixtures, approv
 5. Propose any new integration as a separate change with provenance, security, policy/license and ADR review.
 6. Keep all `RT-*` requirements `UNKNOWN` unless first-party GTA VI evidence explicitly satisfies them.
 
+## Dependency lifecycle scripts
+
+The repository uses pnpm 10's explicit `ignoredBuiltDependencies` policy for `esbuild`. Its
+install-time script remains blocked: the frozen lockfile includes the platform binary packages
+for the supported Windows x64 developer environment and Ubuntu x64 CI runner, and the full local
+test/build gates pass without executing the script. Revisit this decision if the supported
+platforms change or the locked package stops supplying the required binary; approve only the
+specific dependency after reviewing its script and provenance.
+
 For current public research classifications, see [the GTA VI research snapshot](../research/GTA6_RESEARCH_2026-11-24.md) and [functions and interfaces matrix](../research/FUNCTIONS_AND_INTERFACES_MATRIX_2026-11-24.md).
 
 ## Automated guard and limitations
 
-The repository hygiene test inspects **Git-tracked paths** and rejects known game package/export extensions (`.rpf`, `.rpf9`, `.ttpf`, `.awc`, `.xvc`, `.xex` and further high-risk extensions) and `game_scarlett_master.exe`. The `.gitignore` discourages accidental staging of these formats.
+The repository hygiene guard inspects **indexed paths and non-ignored untracked paths**. It rejects known executable, installer, archive and game-export extensions, including `.exe`, `.msi`, `.msix`, `.appx`, `.apk`, `.rpf`, `.rpf9`, `.ttpf`, `.awc`, `.xvc`, `.xvd`, `.xci`, `.xip`, common RAGE asset exports, generic opaque archives and `.torrent` files, as well as suspicious game-dump names. The `.gitignore` also discourages accidental staging of these formats.
 
-This check is **not** a binary classifier, content scanner, legal clearance or exfiltration prevention system. Proprietary data can also appear in `.json`, `.txt`, source code, images and test fixtures. Human review remains required; avoid attaching data-containing logs/screenshots to issues or pull requests.
+This check is **not** a binary classifier, content scanner, legal clearance or exfiltration prevention system. It does not scan ignored files, inspect archive contents, or identify proprietary data placed in allowed formats such as `.json`, `.txt`, source code, images and test fixtures. Human review remains required; avoid attaching data-containing logs/screenshots to issues or pull requests.
 
 ## No runtime decision implied
 

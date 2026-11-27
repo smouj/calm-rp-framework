@@ -1,5 +1,9 @@
 # Release-readiness audit — 24 November 2026
 
+> **Historical snapshot.** This report describes the repository and PR #31 as they stood on
+> 2026-11-24. It is superseded by [the CALM readiness review dated 2026-11-27](./RELEASE_READINESS_2026-11-27.md);
+> do not use its merge decision, visibility status or runner diagnosis as current state.
+
 **Project:** GTA VI RP Platform  
 **Target:** PR [#31](https://github.com/smouj/gta6-rp-platform/pull/31) into `main`  
 **Decision:** **NOT READY TO MERGE OR PUBLISH** until blocked validation gates clear.
@@ -11,7 +15,7 @@
 | Original source and independent modular RP design | REVIEWED                     | Character/ledger reference and runtime-neutral contracts in PR #31                                                                                       |
 | Public GTA VI scripting adapter                   | BLOCKED                      | No verified, authorized GTA VI runtime or community-server API                                                                                           |
 | Legal/IP scope                                    | PRELIMINARY                  | [Interoperability review](../legal/INTEROPERABILITY_AND_IP_REVIEW_2026-11-24.md); not legal advice                                                       |
-| Third-party/proprietary assets                    | GUARDED                      | [Artifact policy](./THIRD_PARTY_ARTIFACT_POLICY.md), `.gitignore` and tracked-path tests; **not** a full content or historical legal audit               |
+| Third-party/proprietary assets                    | GUARDED                      | [Artifact policy](./THIRD_PARTY_ARTIFACT_POLICY.md), `.gitignore` and path guard; **not** a full content or historical legal audit                       |
 | Browser site files, anchors and links             | STATICALLY REVIEWED          | Local paths, IDs and tested document links were reviewed; no browser-based accessibility certification                                                   |
 | Browser-site smoke tests                          | COMMITTED ONLY               | `tests/site-hygiene.test.ts`; not yet executed in hosted CI                                                                                              |
 | TypeScript, ESLint, Vitest, Prettier and build    | **NOT VERIFIED**             | [Runner incident #33](https://github.com/smouj/gta6-rp-platform/issues/33)                                                                               |
