@@ -2,16 +2,13 @@
 
 **Revisado:** 27 de noviembre de 2026
 
-GitHub Actions sufrió fallos de asignación de runner durante una revisión anterior. La ejecución más
-reciente de `main` comprobada fue
-[#46019821888](https://github.com/smouj/calm-rp-framework/actions/runs/46019821888), correcta sobre
-`99c37ac52a82e836db6e06c81b7504593fe9e197`. La validación del PR #60 y la publicación de Pages
-también pasaron. Cada pull request debe esperar el resultado de su propio commit antes de fusionarse.
-
-El cierre F1 está propuesto en el [PR #61](https://github.com/smouj/calm-rp-framework/pull/61).
-`pnpm check`, `pnpm build`, `pnpm check:artifacts`, `pnpm check:secrets` y `pnpm check:site`
-pasaron localmente para la implementación; el resultado alojado del head exacto sigue siendo el gate
-de fusión.
+GitHub Actions sufrió fallos de asignación de runner durante una revisión anterior. El F1 se fusionó
+en [PR #61](https://github.com/smouj/calm-rp-framework/pull/61) como
+`96195bd77dbc81b1f77994148e99ec10fb9077b3`. Su CI de head exacto, [run #232](https://github.com/smouj/calm-rp-framework/actions/runs/46029698320),
+y el CI posterior de `main`, [run #233](https://github.com/smouj/calm-rp-framework/actions/runs/46030055051),
+pasaron con PostgreSQL 17. El despliegue de Pages [run #20](https://github.com/smouj/calm-rp-framework/actions/runs/46030055048)
+también se completó tras repetir el job de despliegue. Cada cambio futuro debe esperar el resultado
+del commit exacto antes de fusionarse.
 
 ## Regla del proyecto
 
